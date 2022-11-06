@@ -1,0 +1,96 @@
+.form-container{
+    font-family: 'work sans';
+    align-self: center;
+    margin-left: 15%;
+    /* margin-right: 10%; */
+    margin-top: 75px;
+    width: 70%;
+    padding: 4px 8px;
+    border:2px solid #0B2F64;
+    padding-bottom: 2%;
+}
+.form-container-login{
+    /* padding: 10%; */
+    padding-left: 15%;
+    padding-top: 5%;
+}
+.headline{
+    padding-top: 3%;
+    text-align: center;
+    font-weight: bold;
+    font-size:34px;
+    color: #0B2F64;
+}
+.subHeader {
+    text-align: center;
+    font-weight: lighter;
+    font-size:14px;
+    color: #636364;
+}
+.later-part{
+    color: #636364;
+    font-size: 10px;
+    text-align: center;
+    padding-bottom: 5%;
+    width: 75%;
+}
+.to-Signup-page{
+    color: #0B2F64;
+    font-weight: bold;
+}
+/* .later-part-txt{
+    width: 42%;
+}
+.later-part-signup{
+    color: #0B2F64;
+    font-weight: bold;
+    float: right;
+    /* padding-right: 30%; */
+    /* width: 12%;
+    margin: 4;
+} */
+
+/* .later-part-signup:hover{
+    cursor: pointer;
+} */
+.abc{
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+    color: #636364;
+    font-size:12px;
+    width: 75%;
+    height: 20%;
+}
+.remm{
+    font-size: 12px;
+    width: 26%;
+    margin-bottom: -5;
+}
+.remm-fp{
+    font-size: 12px;
+    width: 26%;
+    float: right;
+    padding-right: 15%;
+}
+
+.SignInbtn{
+    display: inline-block;
+    width: 77%;
+    padding: 0.7rem;
+    background: linear-gradient(#BFD2F8,#0B2F64);
+    /* font-size: 14px; */
+    font-weight: medium;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none ;
+    border-radius: 5px;
+}
+.to-fp-page:hover,.to-Signup-page:hover{
+    cursor: pointer;
+    color: #DE8500;
+}
+.SignInbtn:hover {
+    cursor: pointer;
+    transform:scale(1.07);
+}
