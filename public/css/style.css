@@ -9,18 +9,27 @@ body {
 }
 .header-right{
     padding-top: 1%;
-    width: 40%;
+    width: 48%;
     float: right;
     display: flex;
+    font-size: medium;
 }
 .header-right-location{
     width: 33%;
+    display: flex;
 }
 .header-right-openH{
+    display: flex;
     width: 33%;
 }
-.header-right-emergency{
-    width: 33%;
+.header-right-contact{
+    display: flex;
+    width: 34%;
+}
+.header-txt-blue{
+    color: #2C61A3;
+    font-size: 77% !important;
+    /* text-size-adjust: 0.18 !important; */
 }
 .footer {
     position: absolute;

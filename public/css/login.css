@@ -5,7 +5,7 @@
     /* margin-right: 10%; */
     margin-top: 75px;
     width: 70%;
-    padding: 4px 8px;
+    padding: 4px 18px;
     border:2px solid #0B2F64;
     padding-bottom: 2%;
 }
@@ -60,7 +60,7 @@
     color: #636364;
     font-size:12px;
     width: 75%;
-    height: 20%;
+    /* height: 50%; */
 }
 .remm{
     font-size: 12px;

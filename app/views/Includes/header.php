@@ -6,23 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public\css\style.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <title>eZolar</title>
+    <title>eZolar Header</title>
 </head>
 <body>
     <div class = "header">
-        <img src="public\img\Logo.png" alt="Team eZolar">
+        <img src="public\img\Logo.png" alt="Team eZolar" style="height: 80px;">
         <div class="header-right">
-            <div class="header-right-emergency">
-                <img src="public\img\Contact.png" alt="Call">
-
+            <div class="header-right-contact">
+                <div class="header-right-img">
+                    <img src="public\img\Contact.png" alt="Call">
+                </div>
+                <div class="header-txt">CONTACT
+                    <div class= "header-txt-blue">(237) 681-812-255</div>
+                </div>
             </div>
             <div class="header-right-openH">
-                <img src="public\img\Clock.png" alt="Clock">
-
+                <div class="header-right-img">
+                    <img src="public\img\Clock.png" alt="Clock">
+                </div>
+                <div class="header-txt">OPEN HOURS
+                    <div class= "header-txt-blue">09:00 - 20:00 Everyday</div>
+                </div>
             </div>
             <div class="header-right-location">
-                <img src="public\img\Location.png" alt="Location">
-
+                <div class="header-right-img">
+                    <img src="public\img\Location.png" alt="Location">
+                </div>
+                    <div class="header-txt">FIND US
+                    <div class= "header-txt-blue">0123 Some Place</div>
+                </div>
             </div>
         </div>
     </div>

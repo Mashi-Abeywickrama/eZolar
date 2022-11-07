@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public\css\style.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <title>eZolar</title>
+    <title>eZolar Navbar</title>
 </head>
 <body>
     <div class="nav">
@@ -20,7 +20,7 @@
         </div>
         <div class="nav-right">
             <div class="btn1">
-                <p><button class="nav-btn">Login</button></p>
+                <p><button class="nav-btn">Logout</button></p>
             </div>
             <div class="noti">
                 <img src="public\img\Notifications.png" alt="Notifi">
