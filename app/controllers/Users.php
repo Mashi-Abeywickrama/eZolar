@@ -33,10 +33,12 @@ class Users extends Controller {
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_role'] = $user->role;
-      if($_SESSION['user_role'] === 'Student'){ $_SESSION['controller'] ='student'; $_SESSION['roleName'] = 'Student'; }
+      if($_SESSION['user_role'] === 'Customer'){ $_SESSION['controller'] ='Customer'; $_SESSION['roleName'] = 'Customer'; }
       if($_SESSION['user_role'] === 'Admin'){ $_SESSION['controller'] ='admin'; $_SESSION['roleName'] = 'Admin';}
-      if($_SESSION['user_role'] === 'Lecturer'){ $_SESSION['controller'] ='lecturer'; $_SESSION['roleName'] = 'Lecturer';}
-      if($_SESSION['user_role'] === 'Coursemanager'){ $_SESSION['controller'] ='coursemanager'; $_SESSION['roleName'] = 'Coursemanager';}
+      if($_SESSION['user_role'] === 'Engineer'){ $_SESSION['controller'] ='Engineer'; $_SESSION['roleName'] = 'Engineer';}
+      if($_SESSION['user_role'] === 'Salesperson'){ $_SESSION['controller'] ='Salesperson'; $_SESSION['roleName'] = 'Salesperson';}
+      if($_SESSION['user_role'] === 'Storekeeper'){ $_SESSION['controller'] ='Storekeeper'; $_SESSION['roleName'] = 'Storekeeper';}
+      if($_SESSION['user_role'] === 'Contractor'){ $_SESSION['controller'] ='Contractor'; $_SESSION['roleName'] = 'Contractor';}
       redirect('includes/index');
     }
 
@@ -48,3 +50,4 @@ class Users extends Controller {
 
     
   }
+?>

@@ -1,0 +1,102 @@
+body{
+    font-family: 'work sans';
+}
+
+/* this navigation bar is common for all customer dashboards */
+.btn2{
+    display: none;
+}
+.noti{
+    margin-left: 25%;
+}
+.nav-btn1::after{
+    content: 'Log Out';
+}
+.nav-btn1:hover, .noti:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.dash{
+    color: #DE8500;
+}
+.dash:hover{
+    cursor: arrow;
+    transform: none;
+}
+
+/* this part is common for all customer dashboard contents..
+left sub panel and the topic, left image and right image*/
+.left-panel{
+    position: absolute;
+    width: 250px;
+    height: 75%;
+    margin-top: 59px;
+    left: 0;
+    background: linear-gradient(268.65deg, #F1F1F1 0.5%, rgba(255, 255, 255, 0) 56.69%);
+    mix-blend-mode: normal;
+    border: 2px solid #0B2F64;
+    color: #0B2F64;
+    font-weight: bold !important;
+}
+.box1{
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-left: 5%;
+    /* padding-right: 3%; */
+    font-size: 22px;
+    height: 10%;
+    border-bottom: 2px solid #0B2F64;
+}
+.rest{
+    font-size: 16px;
+}
+.box2,.box3,.box4{
+    padding-top: 9%;
+    padding-left: 8%;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0B2F64;
+    height: 10%;
+}
+.box5{
+    margin-top: 93%;
+    padding-left: 8%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    border-bottom: 2px solid #0B2F64;
+    border-top: 2px solid #0B2F64;
+}
+.box6{
+    padding-left: 8%;
+    padding-top: 15px;
+}
+
+.common-main-container{
+    display: flex;
+}
+.dashboard-common-main-topic{
+    align-self: center;
+    display: flex;
+    margin-left: 250px;
+    margin-top: 80px;
+    width: 80%;
+
+}
+.common-main-left-img{
+    margin-left: 2%;
+}
+.common-main-right-img{
+    margin-right: 2%;
+}
+.common-main-txt{
+    margin-right: 30%;
+    color: #0B2F64;
+    font-size: 210%;
+    /* font-size: 34px; */
+    font-weight: bold;
+    margin-left: 2%;
+    width: 45%;
+}
+.common-main-right-img:hover{
+    cursor: pointer;
+    transform:scale(1.07);
+}

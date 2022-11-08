@@ -62,7 +62,7 @@ body {
 	right: 0;
 	left: 0;
     height: 8%;
-    color: #FCFEFE;
+    color: #FCFEFE !important;
 	background-color: #0B2F64;
     display: flex;
 }
@@ -71,17 +71,22 @@ body {
     display: flex;
 }
 .abt , .home , .packages, .contact, .dash {
-    padding-left: 20px;
+    padding-left: 5%;
+    margin-top: 2.5%;
 }
 .nav-right{
     display: flex;
 }
 .noti{
-    margin-left: 12%;
+    /* margin-left: 12%; */
     padding-top: 10px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
 }
-.nav-btn{
+.links{
+    color: #FCFEFE !important;
+    text-decoration: none;
+}
+.nav-btn1, .nav-btn2{
     display: inline-block;
     width: 100px;
     padding: 0.55rem;

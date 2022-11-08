@@ -94,3 +94,14 @@
     cursor: pointer;
     transform:scale(1.07);
 }
+.noti,.btn2,.dash{
+    display: none;
+}
+
+.nav-btn1::after{
+    content: 'Sign Up';
+}
+.nav-btn1:hover {
+    cursor: pointer;
+    transform:scale(1.07);
+}
