@@ -17,7 +17,7 @@
             Please enter your username and password.
         </div>
         <div class="form-container-login">
-            <form name="Login Form" action="/ezolar/users/login" method="POST">
+            <form name="Login Form" action="/ezolar/user/login" method="POST">
                 <p>Email <br>
                 <input class="abc" name="email" id="email" type="text" placeholder="Enter your email">
                 </p>
@@ -27,12 +27,12 @@
                 <p>
                     <div class="remm"><input id="check" type="checkbox"> Remember Me </div>
                     <div class="remm-fp"><a class="to-fp-page"> Forgot Password?</a></div>
-                    <button class="SignInbtn">Sign In</button>
+                    <button class="SignInbtn" >Sign In</button>
                 </p>
             </form>
             <div class="later-part">
                 <div class="later-part-txt">
-                    Don’t have an account?<a class="to-Signup-page"> Sign up!</a>
+                    Don’t have an account?<a class="to-Signup-page" href="/ezolar/register" > Sign up!</a>
                 </div>
                 <!-- <div class="later-part-signup">
                     Sign up!

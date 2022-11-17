@@ -18,6 +18,7 @@ body {
     width: 33%;
     display: flex;
 }
+
 .header-right-openH{
     display: flex;
     width: 33%;
@@ -72,7 +73,7 @@ body {
 }
 .abt , .home , .packages, .contact, .dash {
     padding-left: 5%;
-    margin-top: 2.5%;
+    margin-top: 2.4%;
 }
 .nav-right{
     display: flex;

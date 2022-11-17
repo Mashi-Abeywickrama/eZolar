@@ -28,7 +28,9 @@ body{
 left sub panel and the topic, left image and right image*/
 .left-panel{
     position: absolute;
-    width: 250px;
+    /* width: 250px; */
+    min-width: 240px;
+    /* max-width: 380px; */
     height: 75%;
     margin-top: 59px;
     left: 0;
@@ -58,7 +60,7 @@ left sub panel and the topic, left image and right image*/
     height: 10%;
 }
 .box5{
-    margin-top: 93%;
+    margin-top: 97%;
     padding-left: 8%;
     padding-bottom: 15px;
     padding-top: 15px;

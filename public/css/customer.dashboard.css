@@ -55,3 +55,8 @@
     cursor: pointer;
     transform:scale(1.02);
 }
+a{
+    text-decoration: none;
+    color: #000;
+
+}

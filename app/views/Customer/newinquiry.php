@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.newinquiry.css">
+    <title>My Projects</title>
+</head>
+<body>
+<!--    to be done later
+    1. add links to left sub panel 
+-->
+    <div class="left-panel">
+        <div class="box1">
+            Customer Dashboard
+        </div>
+        <div class="rest">
+            <div class="box2">
+                My Projects
+            </div>
+            <div class="box3">
+                Inquiries
+            </div>
+            <div class="box4">
+                Transactions
+            </div>
+            <div class="box5">
+                Profile
+            </div>
+            <div class="box6">
+                Settings
+            </div>
+        </div>
+    </div>
+    <!-- Remaining... -->
+    <div class="common-main-container">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-left-img">
+<!-- need to embed the link of my profile in the image -->
+                <a href=”” “text-decoration: none”>
+                    <img src="\ezolar\public\img\customer\Inquiry.png" alt="profile">
+                </a>
+            </div>
+            <div class="common-main-txt">
+                New Inquiry
+            </div>
+            
+            <div class="common-main-right-img">
+                <img src="\ezolar\public\img\profile.png" alt="profile">
+            </div>    
+        </div>
+    </div>
+    <div class="right-content">
+        <form name="Inquiry Form" action="" method="">
+            <div class="topic-container">
+                Topic:</br>
+                <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
+            </div>
+            <div class="type-id-container">
+                <div class="type-container">
+                        Type:</br>
+                    <select class="type-box" name="inquiry-type" id="inquiry-type" type="text" required>
+                        <option value="general">General</option> 
+                        <option value="warrenty">Warrenty</option> 
+                        <option value="troubleshoot">Troubleshoot</option>
+                    </select> 
+                </div>
+                <div class="id-container">
+                        Project ID:</br>
+                    <input class="id-box" name="id-box" id="id-box" type="text">
+                </div>
+            </div>
+            <div class="msg-container">
+                Message:</br>
+                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
+            </div>
+            <div class="inquiry-btns">
+            <button class="clearbtn">Clear</button>
+                <button class="sendbtn">Send</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

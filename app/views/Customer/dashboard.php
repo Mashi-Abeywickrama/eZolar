@@ -36,7 +36,7 @@
         </div>
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-                Inquiries
+                <a href="\ezolar\app\views\Customer\inquiry.php"> Inquiries</a>
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Inquiry.png" alt="profile">
