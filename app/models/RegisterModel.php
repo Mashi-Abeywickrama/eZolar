@@ -17,7 +17,7 @@ class RegisterModel{
     
         $this->db->query('INSERT INTO user(`email`, `password`,`type`) VALUES (:email,:password,:type)');
         $this->db->bind(':email', $data[3]);
-        $this->db->bind(':password', $data[7]);
+        $this->db->bind(':password', $data[9]);
         $this->db->bind(':type', $data[8]);
         
         $this->db->execute();

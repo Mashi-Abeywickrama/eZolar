@@ -1,6 +1,6 @@
 <?php
 
-  class Index extends Controller {
+class Index extends Controller {
     public function __construct(){ 
     }
     
@@ -12,6 +12,7 @@
       $this->view('Includes/header', $data);
       $this->view('Includes/footer', $data);
       $this->view('Includes/navbar', $data);
+      // $this->view('Customer/inquiry', $data);
       $this->view('Authentication/login', $data);
     }
 

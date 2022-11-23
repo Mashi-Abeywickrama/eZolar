@@ -24,7 +24,7 @@ function validatelName(){
         lnameErr.innerHTML='Enter a valid name';
         return false;
     }else{
-        fnameErr.innerHTML = ""
+        lnameErr.innerHTML = ""
         return true;
     }
 }

@@ -102,3 +102,6 @@
     cursor: pointer;
     transform:scale(1.07);
 }
+a{
+    text-decoration: none;
+}

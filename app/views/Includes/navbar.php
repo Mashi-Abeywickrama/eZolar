@@ -19,7 +19,7 @@
             <div class="abt"><a class="links" "about" href="about.php">About Us</a></div>
             <div class="packages"><a class="links" "link-packages" href="packages.php">Packages</a></div>
             <div class="contact"><a class="links" "link-contact" href="contact.php">Contact</a></div>
-            <div class="dash"><a class="links" "link-dash" href="dashboard.php">Dashboard</a></div>
+            <div class="dash"><a class="links" "link-dash" href="ezolar/dashboard">Dashboard</a></div>
         </div>
         <div class="nav-right">
             <div class="btn1">
@@ -29,7 +29,7 @@
                 <img src="\ezolar\public\img\Notifications.png" alt="Notifi">
             </div>
             <div class="btn2">
-                <p><button class="nav-btn2"></button></p>
+                <a href="/ezolar/user/logout"><button class="nav-btn2"></button></a>
             </div>
         </div>
 

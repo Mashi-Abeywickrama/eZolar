@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <!-- <link rel="stylesheet" href="../../../../ezolar/public/css/style.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <title>eZolar Header</title>
+    <title>eZolar</title>
+    <link rel="icon" href="\ezolar\public\img\logo.png" type="image/icon type">
 </head>
 <body>
     <div class = "header">

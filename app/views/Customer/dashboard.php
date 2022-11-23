@@ -28,7 +28,7 @@
         </div>
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-                My Projects
+               <a href=" ">My Projects</a>
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Projects.png" alt="profile">
@@ -36,7 +36,7 @@
         </div>
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-                <a href="\ezolar\app\views\Customer\inquiry.php"> Inquiries</a>
+           <a href="/ezolar/inquiry"> Inquiries</a>
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Inquiry.png" alt="profile">

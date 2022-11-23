@@ -12,7 +12,7 @@
         $this->db->bind(':email', $email);
         $row = $this->db->single();
 
-        $hashed_password = $row->password;
+        $hashed_password = $row->password; 
 
         if(password_verify($password, $hashed_password)){
           return true;
@@ -21,6 +21,11 @@
         }
 
       }
-
+      public function getUserID($email){
+        $this->db->query('SELECT UserID FROM user where email = :email');
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        print_r($row);die();
+      }
 
   }

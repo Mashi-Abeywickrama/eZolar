@@ -3,16 +3,20 @@ body{
 }
 
 /* this navigation bar is common for all customer dashboards */
-.btn2{
+.btn1{
     display: none;
 }
-.noti{
-    margin-left: 25%;
+.btn2{
+    display: flex;
+    align-items: center;
 }
-.nav-btn1::after{
+.noti{
+    margin-right: 25%;
+}
+.nav-btn2::after{
     content: 'Log Out';
 }
-.nav-btn1:hover, .noti:hover{
+.nav-btn2:hover, .noti:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
@@ -39,6 +43,11 @@ left sub panel and the topic, left image and right image*/
     border: 2px solid #0B2F64;
     color: #0B2F64;
     font-weight: bold !important;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 .box1{
     margin-top: 10px;
@@ -51,9 +60,15 @@ left sub panel and the topic, left image and right image*/
 }
 .rest{
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 98px);
+}
+.rest-top, .rest-bottom{
+    display: block;
 }
 .box2,.box3,.box4{
-    padding-top: 9%;
+    padding-top: 8%;
     padding-left: 8%;
     padding-bottom: 12px;
     border-bottom: 2px solid #0B2F64;
@@ -73,13 +88,17 @@ left sub panel and the topic, left image and right image*/
 }
 
 .common-main-container{
-    display: flex;
+    /* display: flex; */
+    display: grid;
+    margin: 5.8vh;
+    justify-items: center;
+    margin-left: 250px;
 }
 .dashboard-common-main-topic{
     align-self: center;
     display: flex;
-    margin-left: 250px;
-    margin-top: 80px;
+    margin-left: 10px;
+    margin-top: 30px;
     width: 80%;
 
 }

@@ -1,3 +1,10 @@
+<?php
+     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+     require_once(__ROOT__.'\views\Includes\header.php');
+     require_once(__ROOT__.'\views\Includes\navbar.php');
+     require_once(__ROOT__.'\views\Includes\footer.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,31 +14,35 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.newinquiry.css">
-    <title>My Projects</title>
+    <title>My newInquiry</title>
 </head>
 <body>
 <!--    to be done later
     1. add links to left sub panel 
 -->
     <div class="left-panel">
-        <div class="box1">
+        <div class ="box1">
             Customer Dashboard
         </div>
         <div class="rest">
-            <div class="box2">
-                My Projects
+            <div class="rest-top">
+                <div class="box2">
+                    My Projects
+                </div>
+                <div class="box3">
+                    Inquiries
+                </div>
+                <div class="box4">
+                    Transactions
+                </div>
             </div>
-            <div class="box3">
-                Inquiries
-            </div>
-            <div class="box4">
-                Transactions
-            </div>
-            <div class="box5">
-                Profile
-            </div>
-            <div class="box6">
-                Settings
+            <div class="rest-bottom">
+                <div class="box5">
+                    Profile
+                </div>
+                <div class="box6">
+                    Settings
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +52,7 @@
             <div class="common-main-left-img">
 <!-- need to embed the link of my profile in the image -->
                 <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\customer\Inquiry.png" alt="profile">
+                    <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
                 </a>
             </div>
             <div class="common-main-txt">
@@ -54,7 +65,7 @@
         </div>
     </div>
     <div class="right-content">
-        <form name="Inquiry Form" action="" method="">
+        <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
             <div class="topic-container">
                 Topic:</br>
                 <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
@@ -78,8 +89,8 @@
                 <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
             </div>
             <div class="inquiry-btns">
-            <button class="clearbtn">Clear</button>
-                <button class="sendbtn">Send</button>
+            <!-- <button class="clearbtn">Clear</button> -->
+                <button class="sendbtn" type="submit">Send</button>
             </div>
         </form>
     </div>
