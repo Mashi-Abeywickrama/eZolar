@@ -18,7 +18,8 @@
 <body>
     <div class="form-container">
         <div class="headline">
-            Registration Form
+            Registration Form <br>
+            <span class="err-box" id="final-err">hhhhhhhhhh</span>
         </div>
         <div class="form-container-signup">
             <form name="Login-Form" action="/ezolar/register/dashboard" method="POST">
@@ -26,6 +27,7 @@
                     <div class="first-container">
                         <div>
                             First name
+                            <span class="star">*</span>
                             <span class="err-box" id="fname-err"></span>
                         </div>
                         <input class="input-box" name="fname" id="fname" type="text" required onkeyup="validatefName()">

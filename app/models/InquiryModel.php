@@ -22,16 +22,32 @@
       $this->db->bind(':type', $data[2]);
       $this->db->bind(':message', $data[3]);
         
-      $this->db->execute();
+      // $this->db->execute();
+      if($this->db->execute()){
+        header('Location:/ezolar/inquiry');
+        // print_r("working");
+        // die();
+        return true;
+    } else {
+        return false;
+    }
     }
 
-    public function getAllInquiries(){
+    public function getAllInquiries($id){
+      // print_r($id);die;
       
-      $this->db->query('SELECT * FROM inquiry');
+      $this->db->query('SELECT * FROM inquiry WHERE  customerID = :customerID');
+      $this->db->bind(':customerID', $id);
+
+      // print_r($this->db->resultSet());die;
       $row = $this->db->resultSet();
       return $row;
 
 
+    }
+
+    public function viewMore(){
+      
     }
 
   }

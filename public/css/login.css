@@ -1,11 +1,12 @@
 .form-container{
-    font-family: 'work sans';
+    display: flex;
+    flex-direction: column;
     align-self: center;
-    margin-left: 15%;
+    /* margin-left: 15%; */
     /* margin-right: 10%; */
-    margin-top: 75px;
+    /* margin-top: 75px; */
     width: 70%;
-    padding: 4px 18px;
+    /* padding: 4px 18px; */
     border:2px solid #0B2F64;
     padding-bottom: 2%;
 }
@@ -15,14 +16,18 @@
     padding-top: 5%;
 }
 .headline{
+    display: flex;
+    justify-content: center;
     padding-top: 3%;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bold;
     font-size:34px;
     color: #0B2F64;
 }
 .subHeader {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
     font-weight: lighter;
     font-size:14px;
     color: #636364;
@@ -119,6 +124,10 @@
 }
 .noti,.btn2,.dash{
     display: none;
+}
+.btn1{
+    display: flex;
+    align-items: center;
 }
 
 .nav-btn1::after{

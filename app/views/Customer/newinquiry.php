@@ -29,9 +29,9 @@
                 <div class="box2">
                     My Projects
                 </div>
-                <div class="box3">
+                <a href="<?=URLROOT?>/inquiry"><div class="box3">
                     Inquiries
-                </div>
+                </div></a>
                 <div class="box4">
                     Transactions
                 </div>

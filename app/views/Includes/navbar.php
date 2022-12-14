@@ -15,15 +15,15 @@
         2. set logout
     -->
         <div class="nav-left">
-            <div class="home"><a class="links" "home" href="home.php">Home</a></div>
-            <div class="abt"><a class="links" "about" href="about.php">About Us</a></div>
+            <div class="home"><a class="links" "home" href="<?=URLROOT?>/user/dashboard">Home</a></div>
             <div class="packages"><a class="links" "link-packages" href="packages.php">Packages</a></div>
+            <div class="abt"><a class="links" "about" href="about.php">About Us</a></div>
             <div class="contact"><a class="links" "link-contact" href="contact.php">Contact</a></div>
-            <div class="dash"><a class="links" "link-dash" href="ezolar/dashboard">Dashboard</a></div>
+            <div class="dash"><a class="links" "link-dash" href="<?=URLROOT?>/user/dashboard">Dashboard</a></div>
         </div>
         <div class="nav-right">
             <div class="btn1">
-                <p><button class="nav-btn1"></button></p>
+                <a href="/ezolar/register"><button class="nav-btn1"></button></a>
             </div>
             <div class="noti">
                 <img src="\ezolar\public\img\Notifications.png" alt="Notifi">

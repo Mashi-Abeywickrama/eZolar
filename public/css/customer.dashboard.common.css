@@ -21,7 +21,7 @@ body{
     transform: scale(1.05);
 }
 .dash{
-    color: #DE8500;
+    color: #DE8500 !important;
 }
 .dash:hover{
     cursor: arrow;

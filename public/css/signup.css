@@ -14,6 +14,9 @@
     padding-top: 2%;
 }
 .headline{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     padding-top: 3%;
     text-align: center;
     font-weight: bold;
@@ -39,6 +42,11 @@
     width: 80%;
     height: 60%;
     margin-top: 2% ;
+}
+.star{
+    font-size: 0.7rem;
+    color: #e32;
+
 }
 .err{
     display: flex;
@@ -94,7 +102,10 @@
 .noti,.btn2,.dash{
     display: none;
 }
-
+.btn1{
+    display: flex;
+    align-items: center;
+}
 .nav-btn1::after{
     content: 'Login';
 }
@@ -104,4 +115,49 @@
 }
 a{
     text-decoration: none;
+}
+.successful-container{
+    display: flex;
+    height: 55vh;
+    justify-content: center;
+    /* min-height: 400px; */
+    /* max-height: 550px; */
+    width: 100%;
+    /* min-width: 500px;
+    max-width: 1000px; */
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.successful-image{
+    margin-bottom: 2vh;
+    /* min-height: ; */
+}
+
+.successful-text{
+    display: flex;
+    color: #0B2F64;
+    font-weight: bold;
+    font-size: 20px;
+}
+.ok-btn{
+    display: flex;
+    height: 40px;
+    width: 120px;
+    background: #2C61A3;
+    border-radius: 18px;
+    color: #FFFFFF;
+    justify-content: center;
+    margin-top: 15px;
+}
+.ok-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+.ok-btn-text{
+    align-self: center;
 }

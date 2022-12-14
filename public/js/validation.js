@@ -7,14 +7,19 @@ var cpwdErr = document.getElementById("cpwd-err");
 // var button = document.getElementById("Signupbtn")
 
 function validatefName(){
-    var regName = /^[A-Za-z]+$/;
     var fname = document.getElementById('fname').value;
-    if(!regName.test(fname)){
-        fnameErr.innerHTML='Enter a valid name';
-        return false;
-    }else{
-        fnameErr.innerHTML = ""
-        return true;
+    var regName = /^[A-Za-z]+$/;
+    if(fname === ""){
+        fnameErr.innerHTML='This field is required';
+    }
+    else{
+        if(!regName.test(fname)){
+            fnameErr.innerHTML='Enter a valid name';
+            return false;
+        }else{
+            fnameErr.innerHTML = ""
+            return true;
+        }
     }
 }
 function validatelName(){

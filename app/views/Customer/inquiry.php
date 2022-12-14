@@ -2,7 +2,7 @@
      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\views\Includes\header.php');
      require_once(__ROOT__.'\views\Includes\navbar.php');
-     require_once(__ROOT__.'\views\Includes\footer.php');
+    //  require_once(__ROOT__.'\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +27,9 @@
                 <div class="box2">
                     My Projects
                 </div>
-                <div class="box3">
+                <a href="<?=URLROOT?>/inquiry"><div class="box3">
                     Inquiries
-                </div>
+                </div></a>
                 <div class="box4">
                     Transactions
                 </div>
@@ -91,6 +91,7 @@
                                 <span class="inquiry-details-btn-text">More info</span>
                             </div>
                         </span>
+                        
                     </div>';
             }
             ?>
@@ -103,4 +104,7 @@
         </div>
     </div>
 </body>
+<?php 
+      $this->view('Includes/footer', $data);
+?>
 </html>

@@ -1,5 +1,12 @@
 body {
     font-family: 'work sans';
+    margin: 0;
+}
+.web-body{
+    display: flex;
+    justify-content: center;
+    margin-top: 9%;
+    /* background-color: aqua; */
 }
 .header {
     position: relative;

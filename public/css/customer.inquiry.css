@@ -20,7 +20,8 @@
 }
 
 .inquiry-box{
-    display: block;
+    display: flex;
+    justify-content: space-evenly;
     /* height: 120px; */
     width: 90%;
     background: #F9F9F9;
@@ -31,24 +32,25 @@
 }
 
 .inquiry-text-container{
-    display: inline-block;
-    height: 110px;
+    display: flex;
+    height: 90px;
     width: 75%;
-    min-width: 250px;
-    max-width: calc(100% - 280px);
+    /* min-width: 250px; */
+    /* max-width: calc(100% - 280px); */
     margin-top: 5px;
     margin-left: 5px;
-    overflow: auto;
+    /* overflow: auto; */
 }
 .inquiry-text-container-inner{
     display: flex;
     /* height: inherit; */
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .inquiry-details-btn-container{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     margin-top: 5%;
     height: 42%;
     /* height: 42px; */
@@ -56,12 +58,13 @@
     min-width: 112px;
     margin-bottom: 40px;
     /* margin-left: 5px; */
-    overflow: auto; 
+    /* overflow: auto;  */
 }
 .inquiry-details-btn{
     display: flex;
     /* height: 40px; */
-    height: 70%;
+    height: 80%;
+    width: 75%;
     /* width: 110px; */
     background: #2C61A3;
     border-radius: 20px;

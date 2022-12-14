@@ -3,9 +3,14 @@
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
+      
     }
 
 
+    public function dashboard(){
+      $title = "Dashboard";
+      $this->view('Customer/dashboard', $title);
+    }
     public function login(){
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -19,10 +24,10 @@ class User extends Controller {
             'password' => trim($_POST['password']),   
           ];
           $this->userModel->login($data['email'],$data['password']);
-          $title = "Dashboard";
           if($this->userModel->login($data['email'],$data['password'])){
             $_SESSION['user_email'] = $data['email'];
-            $this->view('Customer/dashboard', $title);
+            // header("Location: /");
+            redirect('user/dashboard');
           }
           else{
             header("Location: /ezolar/login");

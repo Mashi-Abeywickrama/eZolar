@@ -53,9 +53,9 @@
 }
 .dashboard-container-content:hover {
     cursor: pointer;
-    /* background: #0B2F64; */
+    background: #EEEFF1;
     transition-duration: 200ms;
-    transform:scale(1.02);
+    /* transform:scale(1.02); */
 }
 a{
     text-decoration: none;

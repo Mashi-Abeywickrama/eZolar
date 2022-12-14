@@ -5,7 +5,9 @@
     }
     
     public function index(){
-      $rows  = $this->inquiryModel-> getAllInquiries();
+      $customer_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
+      // print_r($customer_Id);die;
+      $rows  = $this->inquiryModel-> getAllInquiries($customer_Id);
       $_SESSION['rows'] = $rows;
       $data = [
         'title' => 'eZolar Inquiry',
