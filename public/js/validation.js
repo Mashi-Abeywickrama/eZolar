@@ -3,7 +3,9 @@ var lnameErr = document.getElementById("lname-err");
 var emailErr = document.getElementById("email-err");
 var nicErr = document.getElementById("nic-err");
 var pwdErr = document.getElementById("pwd-err");
+var mobileErr = document.getElementById("mobile-err");
 var cpwdErr = document.getElementById("cpwd-err");
+var password = document.getElementById("password");
 // var button = document.getElementById("Signupbtn")
 
 function validatefName(){
@@ -17,8 +19,14 @@ function validatefName(){
             fnameErr.innerHTML='Enter a valid name';
             return false;
         }else{
-            fnameErr.innerHTML = ""
-            return true;
+            if(fname.length>45){
+                lnameErr.innerHTML = "Exceed number of characters"
+                return false;
+            }
+            else{
+                lnameErr.innerHTML = ""
+                return true;
+            }
         }
     }
 }
@@ -29,8 +37,15 @@ function validatelName(){
         lnameErr.innerHTML='Enter a valid name';
         return false;
     }else{
-        lnameErr.innerHTML = ""
-        return true;
+        if(fname.length>45){
+            lnameErr.innerHTML = "Exceed number of characters"
+            return false;
+        }
+        else{
+            lnameErr.innerHTML = ""
+            return true;
+        }
+        
     }
 }
 function validateNIC(){
@@ -69,7 +84,7 @@ function validatePassword(){
     // console.log(pwd)
     let cpwd = document.getElementById("cpwd").value;
     
-    if (pwd.length>=8){
+    if (pwd.length>=8 && pwd.length<=10){
         pwdErr.innerHTML = ""
         if (pwd==cpwd){
             // console.log("matched")
@@ -82,7 +97,7 @@ function validatePassword(){
         }
     }
     else{
-        pwdErr.innerHTML = "passwords must contain at least 8 characters"
+        pwdErr.innerHTML = "passwords must contain 8 - 10 characters"
         return false;
 
     }
@@ -102,14 +117,39 @@ function validateEmail(){
     }
     //  emailErr.innerHTML = "aaaaaaaaaaaaa"
 }
+function validateTelNo(){
+    var mobileN = document.getElementById("mobile").value;
+    if(mobileN.length>10 || mobileN.length<10){
+        mobileErr.innerHTML='Length : 10 characters';
+        return false;
+    }else {
+        if(isNaN(mobileN)){
+            mobileErr.innerHTML='Contact Number should contain numbers';
+            return false;
+        }
+        else{
+            mobileErr.innerHTML = "";
+            return true;
+        }
+    }
+}
 
 function validateForm(){
-    if(!validatefName || !validatelName || !validateEmail() || !validatePassword() || !validateNIC ){
+    if(!validatefName || !validatelName || !validateEmail() || !validatePassword() || !validateNIC || !validateTelNo){
         document.querySelector(".Signupbtn").disabled = true;
+        
         // document.querySelector(".Signupbtn").hover = none;
         return false;
     }
     else{
         return true;
+    }
+}
+function showPassword(){
+    if (password.type === 'password'){
+        password.type = 'text';
+    }
+    else{
+        password.type = 'password';
     }
 }

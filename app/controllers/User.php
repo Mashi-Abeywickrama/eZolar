@@ -11,6 +11,11 @@ class User extends Controller {
       $title = "Dashboard";
       $this->view('Customer/dashboard', $title);
     }
+    public function sk_dashboard(){
+      $title = "Dashboard";
+      $this->view('Storekeeper/dashboard', $title);
+    }
+    
     public function login(){
         // Check for POST
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -27,7 +32,11 @@ class User extends Controller {
           if($this->userModel->login($data['email'],$data['password'])){
             $_SESSION['user_email'] = $data['email'];
             // header("Location: /");
-            redirect('user/dashboard');
+            if ($this->userModel->getUserRole($data['email']) == "Storekeeper"){
+              redirect('user/sk_dashboard');
+            }else{
+              redirect('user/dashboard');
+            }
           }
           else{
             header("Location: /ezolar/login");

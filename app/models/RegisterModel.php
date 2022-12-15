@@ -54,13 +54,17 @@ class RegisterModel{
             }
         }
         else{
-            print_r('Already Exist');die;
+
+            $_SESSION['err'] = 'Email already exist';
+            header('Location:/ezolar/register');
+            // print_r('Already Exist');die;
         }
     }
     public function ifEmailExist($data){
-        $value = $this->db->query('SELECT email FROM user WHERE EXISTS (SELECT email FROM user WHERE email = $data');
-        $this->db->bind(':email', $data);
-        print_r($value);
+        $value = $this->db->query("SELECT email FROM user WHERE email = :mail");
+        $this->db->bind(':mail',$data);
+        $this->db->execute();
+        // print_r($value);
         return $value;
 
     }

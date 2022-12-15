@@ -1,8 +1,7 @@
 <?php
-     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\views\Includes\header.php');
-     require_once(__ROOT__.'\views\Includes\navbar.php');
-     require_once(__ROOT__.'\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +66,12 @@
     <div class="right-content">
         <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
             <div class="topic-container">
-                Topic:</br>
+                Topic:<span class="star">*</span></br>
                 <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
             </div>
             <div class="type-id-container">
                 <div class="type-container">
-                        Type:</br>
+                        Type:<span class="star">*</span></br>
                     <select class="type-box" name="inquiry-type" id="inquiry-type" type="text" required>
                         <option value="general">General</option> 
                         <option value="warrenty">Warrenty</option> 
@@ -85,7 +84,7 @@
                 </div>
             </div>
             <div class="msg-container">
-                Message:</br>
+                Message:<span class="star">*</span></br>
                 <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
             </div>
             <div class="inquiry-btns">

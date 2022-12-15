@@ -19,7 +19,18 @@
     <div class="form-container">
         <div class="headline">
             Registration Form <br>
-            <span class="err-box" id="final-err">hhhhhhhhhh</span>
+            <span class="err-box" id="final-err"><?php
+                if(!empty($_SESSION['err'])){
+                    echo $_SESSION['err'];
+                    unset($_SESSION['err']);
+                }
+            ?></span>
+            <script>
+                setTimeout(()=>{
+                    const err=document.getElementById('final-err')
+                    err.style.visibility="hidden"
+                },3000);
+            </script>
         </div>
         <div class="form-container-signup">
             <form name="Login-Form" action="/ezolar/register/dashboard" method="POST">
@@ -35,6 +46,7 @@
                     <div class="second-container">
                         <div class="err">
                             Last name
+                            <span class="star">*</span>
                             <span class="err-box" id="lname-err"></span>
                         </div>
                         <input class="input-box" name="lname" id="lname" type="text" required onkeyup="validatelName()">
@@ -44,6 +56,7 @@
                     <div class="first-container">
                     <div class="err">
                         Email
+                            <span class="star">*</span>
                             <span class="err-box" name="emailErr" id="email-err"></span>
                         </div>
                         <input class="input-box" name="email" id="email" type="text" required onkeyup="validateEmail()">
@@ -51,15 +64,17 @@
                     <div class="second-container">
                         <div class="err">
                             Phone Number
+                            <span class="star">*</span>
                             <span class="err-box" id="mobile-err"></span>
                         </div>
-                        <input class="input-box" name="mobile" id="mobile" type="text" required>
+                        <input class="input-box" name="mobile" id="mobile" type="text" required onkeyup="validateTelNo()">
                     </div>
                 </div>
                 <div class="group-container">
                     <div class="first-container">
                         <div class="err">
                             NIC Number
+                            <span class="star">*</span>
                             <span class="err-box" id="nic-err"></span>
                         </div>
                         <input class="input-box" name="nic" id="nic" type="text" required onkeyup="validateNIC()">
@@ -73,6 +88,7 @@
                     <div class="first-container">
                         <div class="err">
                             Password
+                            <span class="star">*</span>
                             <span class="err-box" id="pwd-err"></span>
                         </div>
                         <input class="input-box" name="pwd" id="pwd" type="password" required>
@@ -80,6 +96,7 @@
                     <div class="second-container">
                         <div class="err">
                             Confirm Password
+                            <span class="star">*</span>
                             <span class="err-box" id="cpwd-err"></span>
                         </div>
                         <input class="input-box" name="cpwd" id="cpwd" type="password" required onkeyup="validatePassword()">

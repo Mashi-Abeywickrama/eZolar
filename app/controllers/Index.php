@@ -13,7 +13,7 @@ class Index extends Controller {
       $this->view('Includes/footer', $data);
       $this->view('Includes/navbar', $data);
       // $this->view('Customer/inquiry', $data);
-      $this->view('Authentication/success', $data);
+      $this->view('Authentication/login', $data);
     }
 
     public function about(){

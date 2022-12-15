@@ -5,7 +5,7 @@
     /* margin-right: 10%; */
     margin-top: 80px;
     width: 70vw;
-    padding: 4px 16px;
+    padding: 4px 15px;
     border:2px solid #0B2F64;
 }
 .form-container-signup{
@@ -90,6 +90,9 @@
     color: #FFFFFF;
     border: none ;
     border-radius: 5px;
+}
+.Signupbtn.disabled{
+    pointer-events: none;
 }
 .to-Signin-page:hover{
     cursor: pointer;

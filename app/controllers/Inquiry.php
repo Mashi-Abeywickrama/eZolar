@@ -1,10 +1,19 @@
 <?php
+  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+  require_once(__ROOT__.'\app\helpers\session_helper.php');
+
   class Inquiry extends Controller {
     public function __construct(){ 
         $this->inquiryModel = $this->model('InquiryModel');
     }
     
     public function index(){
+
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+
       $customer_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
       // print_r($customer_Id);die;
       $rows  = $this->inquiryModel-> getAllInquiries($customer_Id);
@@ -15,6 +24,10 @@
       $this->view('Customer/inquiry', $data);
     }
     public function newInquiryPage(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
       $data = [
         'title' => 'eZolar NewInquiry',
       ];
@@ -22,6 +35,10 @@
 
     }
     public function newInquiry(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
       // print_r($_SESSION['user_email']);die();
         $customer_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
         // print_r($_POST);die();

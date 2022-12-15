@@ -27,5 +27,11 @@
         $row = $this->db->single();
         print_r($row);die();
       }
-
+      
+      public function getUserRole($email){
+        $this->db->query('SELECT type FROM user where email = :email');
+        $this->db->bind(':email', $email);
+        $row = $this->db->single();
+        return ($row->type);
+      }
   }

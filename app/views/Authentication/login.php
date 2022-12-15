@@ -26,7 +26,7 @@
                         <input class="abc" name="password" id="password" type="password" placeholder="********">
                     </p>
                     <p>
-                        <div class="remm"><input id="check" type="checkbox"> Remember Me </div>
+                        <div class="remm"><input id="check" type="checkbox" onclick="showPassword()"> Show Password </div>
                         <div class="remm-fp"><a class="to-fp-page"> Forgot Password?</a></div>
                         <button class="SignInbtn" >Sign In</button>
                     </p>
@@ -43,5 +43,7 @@
 
         </div>
     </div>
+    <script src="public\js\validation.js"></script>
+
 </body> 
 </html>
