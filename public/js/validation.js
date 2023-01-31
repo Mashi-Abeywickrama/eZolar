@@ -135,13 +135,14 @@ function validateTelNo(){
 }
 
 function validateForm(){
-    if(!validatefName || !validatelName || !validateEmail() || !validatePassword() || !validateNIC || !validateTelNo){
+    if(!validatefName || !validatelName || !validateEmail() || !validatePassword() || !validateNIC() || !validateTelNo()){
         document.querySelector(".Signupbtn").disabled = true;
         
         // document.querySelector(".Signupbtn").hover = none;
         return false;
     }
     else{
+        document.querySelector(".Signupbtn").disabled = false;
         return true;
     }
 }
@@ -151,5 +152,32 @@ function showPassword(){
     }
     else{
         password.type = 'password';
+    }
+}
+
+function validateTopic(){
+    var topic = document.getElementById('topic-box');
+    if(topic.length>=100){
+        manufErr.innerHTML='Manufacturer Name should contain less than 100 characters';
+        return false;
+    }
+    else{
+        manufErr.innerHTML = "";
+        return true;
+    }
+}
+
+function validateMsg(){
+    var msg = document.getElementById('msg-box');
+
+}
+
+function validateNewInq(){
+    if(!validateTpic() || !validatemsg() ){
+        document.querySelector(".inq-submit").disabled = true;
+        return false;
+    }
+    else{
+        return true;
     }
 }

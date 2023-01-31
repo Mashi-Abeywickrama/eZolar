@@ -102,17 +102,17 @@
     cursor: pointer;
     transform:scale(1.07);
 }
-.noti,.btn2,.dash{
+.noti,.btn1,.dash{
     display: none;
 }
-.btn1{
+.btn2{
     display: flex;
     align-items: center;
 }
-.nav-btn1::after{
+.nav-btn2::after{
     content: 'Login';
 }
-.nav-btn1:hover {
+.nav-btn2:hover {
     cursor: pointer;
     transform:scale(1.07);
 }
