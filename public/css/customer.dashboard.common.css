@@ -41,7 +41,7 @@ left sub panel and the topic, left image and right image*/
     background: linear-gradient(268.65deg, #F1F1F1 0.5%, rgba(255, 255, 255, 0) 56.69%);
     mix-blend-mode: normal;
     border: 2px solid #0B2F64;
-    color: #0B2F64;
+    color: #0B2F64 !important;
     font-weight: bold !important;
     /* overflow-y: scroll; */
     /* overflow-x: hidden; */

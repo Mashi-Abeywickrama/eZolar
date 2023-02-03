@@ -66,7 +66,7 @@
     <div class="right-content">
         <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
             <div class="topic-container">
-                Topic:<span class="star">*</span></br>
+                Topic:<span class="star">*</span><span class="err-box" id="topic-err"></span></br>
                 <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
             </div>
             <div class="type-id-container">
@@ -84,14 +84,15 @@
                 </div>
             </div>
             <div class="msg-container">
-                Message:<span class="star">*</span></br>
+                Message:<span class="star">*</span><span class="err-box" id="msg-err"></span></br>
                 <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
             </div>
             <div class="inquiry-btns">
             <!-- <button class="clearbtn">Clear</button> -->
-                <button class="sendbtn" type="submit">Send</button>
+                <button class="sendbtn" type="submit" id="inq-submit">Send</button>
             </div>
         </form>
     </div>
+    <script src="public\js\validation.js"></script>
 </body>
 </html>

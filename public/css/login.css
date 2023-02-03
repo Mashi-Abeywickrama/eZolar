@@ -101,6 +101,7 @@
 }
 
 .form-container-fp{
+    /* display: flex; */
     /* padding: 10%; */
     padding-left: 15%;
     padding-top: 5%;
