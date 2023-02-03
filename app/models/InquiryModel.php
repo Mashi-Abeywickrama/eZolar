@@ -8,8 +8,8 @@
 
     public function getUserID($email){
       $this->db->query('SELECT UserID FROM user where email = :email');
-      $this->db->bind(':email', $email[0]);
-      $row = $this->db->single();
+      // $this->db->bind(':email', $email[0]);
+      $row = $this->db->single(['email' => $email[0]]);
       return ($row -> UserID);
     }
 
@@ -17,13 +17,13 @@
       // $userid  =($this->db->single());
       
       $this->db->query('INSERT INTO inquiry(`customerID`,`topic`, `type`,`message`) VALUES (:customerID,:topic,:type,:message)');
-      $this->db->bind(':customerID', $data[0]);
-      $this->db->bind(':topic', $data[1]);
-      $this->db->bind(':type', $data[2]);
-      $this->db->bind(':message', $data[3]);
+      // $this->db->bind(':customerID', $data[0]);
+      // $this->db->bind(':topic', $data[1]);
+      // $this->db->bind(':type', $data[2]);
+      // $this->db->bind(':message', $data[3]);
         
       // $this->db->execute();
-      if($this->db->execute()){
+      if($this->db->execute(['customerID' => $data[0], 'topic' => $data[1],'type' => $data[2],'message' => $data[3]])){
         header('Location:/ezolar/inquiry');
         // print_r("working");
         // die();
@@ -37,10 +37,9 @@
       // print_r($id);die;
       
       $this->db->query('SELECT * FROM inquiry WHERE  customerID = :customerID');
-      $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet());die;
-      $row = $this->db->resultSet();
+      $row = $this->db->resultSet(['customerID' => $id]);
       return $row;
 
 
