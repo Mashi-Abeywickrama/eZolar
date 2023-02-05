@@ -9,8 +9,7 @@
     // Login User
     public function login($email, $password){
         $this->db->query('SELECT * FROM user WHERE email = :email');
-        $this->db->bind(':email', $email);
-        $row = $this->db->single();
+        $row = $this->db->single(['email' => $email]);
 
         $hashed_password = $row->password; 
 
@@ -23,15 +22,13 @@
       }
       public function getUserID($email){
         $this->db->query('SELECT UserID FROM user where email = :email');
-        $this->db->bind(':email', $email);
-        $row = $this->db->single();
+        $row = $this->db->single(['email' => $email]);
         print_r($row);die();
       }
       
       public function getUserRole($email){
         $this->db->query('SELECT type FROM user where email = :email');
-        $this->db->bind(':email', $email);
-        $row = $this->db->single();
+        $row = $this->db->single(['email' => $email]);
         return ($row->type);
       }
   }

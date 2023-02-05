@@ -65,19 +65,19 @@
     }
 
     // Get result set as array of objects
-    public function resultSet(){
-      $this->execute();
+    public function resultSet($params){
+      $this->execute($params);
       return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     // Get single record as object
-    public function single(){
-      $this->execute();
+    public function single($params){
+      $this->execute($params);
       return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
     // Get row count
-    public function rowCount(){
+    public function rowCount($params){
       return $this->stmt->rowCount();
     }
   }
