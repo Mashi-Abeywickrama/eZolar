@@ -26,22 +26,25 @@
                 <img src="\ezolar\public\img\profile.png" alt="profile">
            </div>
         </div>
-        <div class="dashboard-container-content">
+
+        <a href="/ezolar/project"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-               <a href="/ezolar/Project">My Projects</a>
+               My Projects
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Projects.png" alt="profile">
            </div>
-        </div>
-        <div class="dashboard-container-content">
+        </div></a>
+
+        <a href="/ezolar/inquiry"> <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-           <a href="/ezolar/inquiry"> Inquiries</a>
+            Inquiries
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Inquiry.png" alt="profile">
            </div>
-        </div>
+        </div></a>
+
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Transactions
@@ -50,6 +53,7 @@
                 <img src="\ezolar\public\img\customer\Cash.png" alt="profile">
            </div>
         </div>
+
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Profile
@@ -58,14 +62,15 @@
                 <img src="\ezolar\public\img\customer\Person.png" alt="profile">
            </div>
         </div>
-        <div class="dashboard-container-content">
+        
+        <a href="/ezolar/customersettings"> <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Settings
            </div>
            <div class="dashboard-container-img">
-                <img src="\ezolar\public\img\customer\Setting.png" alt="profile">
+                <img src="\ezolar\public\img\setting\Setting.png" alt="profile">
            </div>
-        </div>
+        </div></a>
     </div>
 </body>
 </html>

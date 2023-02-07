@@ -102,16 +102,16 @@
     cursor: pointer;
     transform:scale(1.07);
 }
-.noti,.btn1,.dash{
+.btn1-1{
     display: none;
 }
-.btn2{
+.btn2-1{
     display: flex;
     align-items: center;
 }
-.nav-btn2::after{
+/* .nav-btn2-1::after{
     content: 'Login';
-}
+} */
 .nav-btn2:hover {
     cursor: pointer;
     transform:scale(1.07);

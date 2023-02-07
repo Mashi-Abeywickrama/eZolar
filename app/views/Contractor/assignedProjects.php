@@ -1,7 +1,7 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Customer\customerNavbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,25 +19,25 @@
 
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
+            Contractor Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
             <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
+                    Assigned Projects
                 </div></a>
                 <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
+                    My Schedule
                 </div></a>
                 <div class="box4">
-                    Transactions
+                    Report an Issue
                 </div>
             </div>
             <div class="rest-bottom">
                 <div class="box5">
                     Profile
                 </div>
-                <a href="<?=URLROOT?>/customersettings"> <div class="box6">
+                <a href="<?=URLROOT?>/setting"> <div class="box6">
                     Settings
                 </div>
             </div>
@@ -96,11 +96,6 @@
             }
             ?>
             
-        </div>
-        <div class="add-project-btn">
-            <div class="add-project-btn-text">
-              <a href="/ezolar/project/requestProjectPage"> New Project</a> 
-            </div>
         </div>
     </div>
 </body>

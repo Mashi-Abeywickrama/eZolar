@@ -18,17 +18,19 @@
 <body>
 
 <div class="left-panel">
-        <div class ="box1">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
-        </div>
+        </div></a>
         <div class="rest">
             <div class="rest-top">
-            <div class="box2">
+                <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
+
                 <a href="<?=URLROOT?>/inquiry"><div class="box3">
                     Inquiries
                 </div></a>
+                
                 <div class="box4">
                     Transactions
                 </div>
@@ -37,7 +39,7 @@
                 <div class="box5">
                     Profile
                 </div>
-                <div class="box6">
+                <a href="<?=URLROOT?>/customersettings"><div class="box6">
                     Settings
                 </div>
             </div>

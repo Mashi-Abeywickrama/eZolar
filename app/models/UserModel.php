@@ -5,7 +5,7 @@
     public function __construct(){
       $this->db = new Database;
     }
-
+    
     // Login User
     public function login($email, $password){
         $this->db->query('SELECT * FROM user WHERE email = :email');

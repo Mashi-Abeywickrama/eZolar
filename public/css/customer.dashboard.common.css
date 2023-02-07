@@ -3,9 +3,6 @@ body{
 }
 
 /* this navigation bar is common for all customer dashboards */
-.btn1{
-    display: none;
-}
 .btn2{
     display: flex;
     align-items: center;
@@ -13,9 +10,7 @@ body{
 .noti{
     margin-right: 25%;
 }
-.nav-btn2::after{
-    content: 'Log Out';
-}
+
 .nav-btn2:hover, .noti:hover{
     cursor: pointer;
     transform: scale(1.05);
@@ -35,6 +30,7 @@ left sub panel and the topic, left image and right image*/
     /* width: 250px; */
     min-width: 240px;
     /* max-width: 380px; */
+    /* height: auto; */
     height: 75%;
     margin-top: 59px;
     left: 0;
@@ -85,6 +81,8 @@ left sub panel and the topic, left image and right image*/
 .box6{
     padding-left: 8%;
     padding-top: 15px;
+    padding-bottom: 35px;
+
 }
 
 .common-main-container{

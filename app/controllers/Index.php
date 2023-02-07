@@ -6,14 +6,23 @@ class Index extends Controller {
     
     public function index(){
       $data = [
-        'title' => 'eZolar',
+        'title' => 'eZolar Home',
       ];
      
       $this->view('Includes/header', $data);
-      $this->view('Includes/footer', $data);
+      // $this->view('Includes/footer', $data);
+      $this->view('Includes/navbar1', $data);
+      // $this->view('Contractor/assignedProjects', $data);
+      $this->view('home', $data);
+    }
+    public function home(){
+      $data = [
+        'title' => 'eZolar Home',
+      ];
+     
+      $this->view('Includes/header', $data);
       $this->view('Includes/navbar', $data);
-      // $this->view('Customer/inquiry', $data);
-      $this->view('Authentication/login', $data);
+      $this->view('home', $data);
     }
 
     public function about(){
