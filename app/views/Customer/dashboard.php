@@ -28,7 +28,7 @@
         </div>
         <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
-               <a href=" ">My Projects</a>
+               <a href="/ezolar/Project">My Projects</a>
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Projects.png" alt="profile">

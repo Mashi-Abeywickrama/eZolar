@@ -94,3 +94,8 @@
     color: #e32;
 
 }
+.err-box{
+    font-size: 0.7rem;
+    color: #DE8500;
+    margin-left: 1%;
+}
