@@ -1,10 +1,9 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,12 +52,12 @@
         <div class="dashboard-common-heading-and-background-container">
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href="/ezolar/Product" “text-decoration: none”>
+                    <a href=”” “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>
                 <div class="dashboard-common-heading-text">
-                    <b>Product Details</b>
+                    <b>Edit a Product</b>
                 </div>
                 <div class="dashboard-common-heading-image">
                     <a href=”” “text-decoration: none”>
@@ -67,82 +66,77 @@
                 </div>
             </div>  
             <div class="form-background">
-                <div class="product-image-container">
-                    <img src="\ezolar\public\img\storekeeper\placeholder-image.png" alt="" class="product-image">
-                </div>
-                <div class="form-container">
-                    <div class="save-box"> <?php
-                            if ($_SESSION['flagUpdate']==1){
-                                echo 'Changes Saved!';
-                                $_SESSION['flagUpdate'] = 0;
-                            };?></div>
+                <form class="form-container" action="/ezolar/Product/editProduct/<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> productID;?>" method="POST">
                     <div class="form-inline">
                         <div class="form-item-container">
                             <div class="form-item-text">
-                                Product ID:
+                                Product ID:<span style="color:red;">*</span> <span class="err-box" id="pid-err"></span>
                             </div>
-                            <div class="form-item-input-disabled"><?php
+                            <input class="form-item-input" name="product-id" id="product-id" type="text" value="<?php
                             $row = $_SESSION['row'];
-                            echo $row -> productID;?></div>
+                            echo $row -> productID;?>" disabled>
                         </div>
                     </div>
                     <div class="form-inline">
                         <div class="form-item-container">
                             <div class="form-item-text">
-                                Product Name:
+                                Product Name:<span style="color:red;">*</span> <span class="err-box" id="pname-err"></span>
                             </div>
-                            <div class="form-item-input-disabled"><?php
+                            <input class="form-item-input" name="product-name" id="product-name" type="text" value="<?php
                             $row = $_SESSION['row'];
-                            echo $row -> productName;?></div>
+                            echo $row -> productName;?>" required onkeyup="validateProductName()">
                         </div>
                     </div>
                     <div class="form-inline">
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Manufacturer:
+                                Manufacturer: <span class="err-box" id="manuf-err"></span>
                             </div>
-                            <div class="form-item-input-disabled"><?php
+                            <input class="form-item-input" name="manufacturer" id="manufacturer" type="text" value="<?php
                             $row = $_SESSION['row'];
-                            echo $row -> manufacturer;?></div>
+                            echo $row -> manufacturer;?>" onkeyup="validateManufacturer()">
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
                                 Product Type:
                             </div>
-                            <div class="form-item-input-disabled"></div>
+                            <select class="form-item-input-dropdown" name="product-type" id="product-type" disabled>
+                                <option value="" selected disabled>Select Product Type</option>
+                                <option value="inverter">Inverter</option>
+                                <option value="panel">Solar Panels</option>
+                                <option value="battery">Battery</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-inline">
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Price (Rs.):
+                                Price (Rs.):<span style="color:red;">*</span> <span class="err-box" id="price-err"></span>
                             </div>
-                            <div class="form-item-input-disabled"><?php
+                            <input class="form-item-input" name="price" id="price" type="text" value="<?php
                             $row = $_SESSION['row'];
-                            echo $row -> cost;?></div>
+                            echo $row -> cost;?>" required onkeyup="validatePrice()">
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
                                 Availability:
                             </div>
-                            <div class="form-item-input-disabled"><?php
-                            $row = $_SESSION['row'];
-                            if ($row -> productID > 0){
-                                echo 'In-Stock';
-                            }
-                            else{
-                                echo 'Out of Stock';
-                            };?></div>
+                            <select class="form-item-input-dropdown" name="availability" id="availability">
+                                <option value="instock" selected>In-stock</option>
+                                <option value="nostock">Out of stock</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">
-                        <a href="/ezolar/Product/editProductPage/<?php $row = $_SESSION['row'];
-                            echo $row -> productID;?>"><button class="form-submit-btn">Edit Product</button></a>
-                        <button class="form-submit-btn">Delete Product</button>
+                        <button class="form-submit-btn" type="submit" onclick="return validateForm()">Save</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+    <script src="\ezolar\public\js\product_validation.js"></script>
 </body>
 </html>

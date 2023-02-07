@@ -10,8 +10,17 @@
     display: inline-flex;
     background: #D9D9D9;
     width: inherit;
-    height: 75%;
+    height: 85%;
     min-height: 500px;
+    justify-content: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+.form-background-details{
+    display: inline-flex;
+    background: #D9D9D9;
+    width: inherit;
     justify-content: center;
     overflow-y: auto;
     overflow-x: hidden;
@@ -54,7 +63,7 @@
     border-radius: 5px;
     font-size:16px;
     width: 95%;
-    min-height: 30px;
+    min-height: 20px;
 }
 .form-item-input:hover{
     border-color: #2C61A3;
@@ -79,11 +88,19 @@
     min-height: 45px;
 }
 
+
+.form-button-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
 .form-submit-btn{
     display: inline-block;
-    width: 50%;
+    width: 200px;
     min-width: 100px;
-    max-width: 250px;
     padding: 10px;
     background: #2C61A3;
     /* font-size: 14px; */
@@ -99,6 +116,100 @@
     background: #0B2F64;
     transition-duration: 200ms;
 }
+
+.form-table-container{
+    background: #F9F9F9;
+    min-height: 180px;
+    min-width: 350px;
+    width: 80%;
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-table-header-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+    margin-bottom: 10px;
+    background: #F9F9F9;
+    border-radius: 10px;
+    margin-top: -5px;
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.form-table-header-text{
+    margin-inline: 10px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.form-table-body-container{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 150px;
+}
+.form-table-row-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.form-table-row-container-alt{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+    margin-bottom: 10px;
+    background: #d9d9d9;
+}
+
+.form-table-row-text{
+    margin-inline: 10px;
+    margin-top: 5px;
+    margin-bottom:5px;
+}
+
+
+.form-item-adder-container{
+    width: 80%;
+    background: #F9F9F9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-item-adder-content-container{
+    margin: 5px;
+}
+
+.form-item-adder-btn{
+    display: inline-block;
+    width: 50%;
+    min-width: 100px;
+    max-width: 250px;
+    padding: 10px;
+    background: #2C61A3;
+    /* font-size: 14px; */
+    font-weight: medium;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none ;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-inline: 5px;
+}
+.form-item-adder-btn:hover{
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
 
 .product-image-container{
     margin-top: 30px;
