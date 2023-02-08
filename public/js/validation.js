@@ -181,3 +181,33 @@ function validateNewInq(){
         return true;
     }
 }
+
+function validateAddEmployee(){
+    if(!validatefName || !validatelName || !validateEmail() || !validateNIC || !validateTelNo){
+        document.querySelector(".form-submit-btn").disabled = true;
+        // document.querySelector(".Signupbtn").hover = none;
+        return false;
+    }
+    else{
+        document.querySelector(".form-submit-btn").disabled = false;
+        return true;
+    }
+}
+
+function validateEditProfile(){
+    if(!validatefName || !validateTelNo){
+        document.querySelector(".form-submit-btn").disabled = true;
+        return false;
+    }
+    else{
+        document.querySelector(".form-submit-btn").disabled = false;
+        return true;
+    }
+}
+
+function clearErrorMessage(){
+    fnameErr.innerHTML = "";
+    lnameErr.innerHTML = "";
+    nicErr.innerHTML = "";
+    emailErr.innerHTML = "";
+}

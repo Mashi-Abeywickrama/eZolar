@@ -1,0 +1,141 @@
+<?php
+// define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+    require_once(__ROOT__.'\app\views\Includes\header.php');
+    require_once(__ROOT__.'\app\views\Includes\navbar.php');
+    require_once(__ROOT__.'\app\views\Includes\footer.php');
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\admin\myProfile.css">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <title>My Projects</title>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-heading">
+        <b>Admin Dashboard</b>
+    </div>
+<!--    Side Bar-->
+    <div class="sidebar-link-container-group">
+        <div class="sidebar-link-container-top">
+            <a href="/ezolar/Employee"><div class="sidebar-link-container">
+                Employees
+            </div></a>
+            <div class="sidebar-link-container">
+                Packages
+            </div>
+            <div class="sidebar-link-container">
+                Products
+            </div>
+            <div class="sidebar-link-container">
+                Reports
+            </div>
+        </div>
+
+        <div class="sidebar-link-container-bottom">
+            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container-selected">
+                Profile
+            </div></a>
+            <div class="sidebar-link-container">
+                Settings
+            </div>
+        </div>
+    </div>
+</div>
+<div class="common-main-container">
+    <div class="dashboard-common-main-topic">
+        <div class="common-main-left-img">
+            <a href=”” “text-decoration: none”>
+                <img src="\ezolar\public\img\admin\profile.png" alt="employee-icon">
+            </a>
+        </div>
+        <div class="common-main-txt">
+            My Profile
+        </div>
+
+        <div class="common-main-right-img">
+            <img src="\ezolar\public\img\profile.png" alt="profile">
+        </div>
+    </div>
+
+
+
+
+
+        <?php
+        $results = $_SESSION['rows'];
+        foreach($results as $row){
+            echo '
+    <div class="profile-container">
+        <div class="profile-container-image">
+            <div class="profile-container-content">
+
+                    <img class="profile-img" src="\ezolar\public\img\admin\default-profile.png" alt="profile">
+<br>
+                <div class="profile-container-txt">
+                    <div class="profile-container-txt-name">
+                        ' . $row -> name . '
+                    </div>    <br>
+                    <div class="profile-container-txt-type">
+                        ' . $row -> type . '
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-container-details">
+            <div class="form-background">
+
+                <form class="form-container" method="GET">
+                    <div class="form-inline">
+
+                        <div class="form-item-container">
+                            <div class="form-item-text">
+                                Email :
+                            </div>
+                            <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $row -> email . '" readonly>
+                        </div><br>
+
+                        <div class="form-item-container">
+                            <div class="form-item-text">
+                                Contact Number :
+                            </div>
+                            <input class="form-item-input" name="telno" id="telno" type="text" placeholder="' . $row -> telno . '" readonly>
+                        </div><br>
+
+                        <div class="form-item-container">
+                            <div class="form-item-text">
+                                NIC :
+                            </div>
+                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> nic . '" readonly>
+                        </div>
+
+                    </div>
+
+                </form>
+                
+                    <a href="/ezolar/AdminEditProfile">
+                        <div class="edit-profile-btn">
+                            <div class="edit-profile-btn-text">
+                                Edit Profile
+                            </div>
+                        </div>
+                    </a>
+            </div>
+        </div>
+    </div>
+';
+        }
+        ?>
+
+
+</div>
+</body>
+</html>
