@@ -12,6 +12,7 @@ a:hover {
     cursor:pointer;  
 }
 
+
 /* this navigation bar is common for all customer dashboards */
 .btn1{
     display: none;
@@ -37,6 +38,7 @@ a:hover {
     cursor: arrow;
     transform: none;
 }
+
 
 /* this part is common for all storekeeer dashboard contents..
 left sub panel and the topic, left image and right image*/
@@ -103,6 +105,7 @@ left sub panel and the topic, left image and right image*/
 .sidebar-link-container-bottom  {
     display: block;
 }
+
 .sidebar-anchor{
     width: 100%;
     height: inherit;

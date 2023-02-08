@@ -1,20 +1,68 @@
 <?php
-
+  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+  require_once(__ROOT__.'/app/helpers/session_helper.php');
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
       
     }
 
-
+    public function home(){
+      $data = [
+        'title' => 'eZolar Home',
+      ];
+     
+      $this->view('Includes/header', $data);
+      $this->view('Includes/navbar', $data);
+      $this->view('home', $data);
+    }
+    
     public function dashboard(){
-      $title = "Dashboard";
-      $this->view('Customer/dashboard', $title);
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      else{
+        $title = "Dashboard";
+        if ($this->userModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+          $this->view('Storekeeper/dashboard', $title);
+        }
+        elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Contractor"){
+          $this->view('Contractor/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Admin"){
+          $this->view('Admin/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
+          $this->view('Engineer/dashboard', $title);
+        }else{
+          $this->view('Customer/dashboard', $title);
+        }
+      }
+
     }
-    public function sk_dashboard(){
-      $title = "Dashboard";
-      $this->view('Storekeeper/dashboard', $title);
-    }
+    // public function customer_dashboard(){
+    //   if(!isLoggedIn()){
+
+    //     redirect('login');
+    //   }
+    //   $title = "Dashboard";
+    //   $this->view('Customer/dashboard', $title);
+    // }
+    // public function sk_dashboard(){
+    //   if(!isLoggedIn()){
+
+    //     redirect('login');
+    //   }
+    //   $title = "Dashboard";
+    //   $this->view('Storekeeper/dashboard', $title);
+    // }
+    // public function contractor_dashboard(){
+    //   if(!isLoggedIn()){
+
+    //     redirect('login');
+    //   }
+    //   $title = "Dashboard";
+    //   $this->view('Contractor/dashboard', $title);
+    // }
     
     public function login(){
         // Check for POST
@@ -31,18 +79,42 @@ class User extends Controller {
           $this->userModel->login($data['email'],$data['password']);
           if($this->userModel->login($data['email'],$data['password'])){
             $_SESSION['user_email'] = $data['email'];
+            redirect('user/dashboard');
             // header("Location: /");
-            if ($this->userModel->getUserRole($data['email']) == "Storekeeper"){
-              redirect('user/sk_dashboard');
-            }else{
-              redirect('user/dashboard');
-            }
+            // if ($this->userModel->getUserRole($data['email']) == "Storekeeper"){
+            //   redirect('user/sk_dashboard');
+            // }
+            // elseif ($this->userModel->getUserRole($data['email']) == "Contractor"){
+            //   redirect('user/contractor_dashboard');
+            // }else{
+            //   redirect('user/dashboard');
+            // }
           }
           else{
             header("Location: /ezolar/login");
           }
         }
     }
+// this function is for viewing user profile
+    public function profile(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $title = "myprofile";
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      $id = $this->userModel->getUserID($_SESSION['user_email']);
+      $rows  = $this->userModel-> getProfile($id,$role);
+      $_SESSION['rows'] = $rows;
+      $this->view('Customer/Settings/profile', $title);
+      
+    }
+    
+//this function for edit profile
+     public function editprofile(){
+
+    }
+
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
@@ -65,4 +137,3 @@ class User extends Controller {
 
     
   }
-?>

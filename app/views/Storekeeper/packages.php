@@ -52,7 +52,7 @@
         <div class="dashboard-common-main-topic">
             <div class="common-main-left-img">
                 <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\storekeeper\Products.png" alt="Packages-icon">
+                    <img src="\ezolar\public\img\storekeeper\Packages.png" alt="Packages-icon">
                 </a>
             </div>
             <div class="common-main-txt">
