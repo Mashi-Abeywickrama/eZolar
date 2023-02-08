@@ -20,33 +20,32 @@
 <!--    to be done later
     1. add links to left sub panel 
 -->
-    <div>
-        <div class="left-panel">
-            <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-                Customer Dashboard
-            </div></a>
-            <div class="rest">
-                <div class="rest-top">
-                <a href="<?=URLROOT?>/project"><div class="box2">
-                        My Projects
-                    </div>
-                    <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                        Inquiries
-                    </div></a>
-                    <div class="box4">
-                        Transactions
-                    </div>
-                </div>
-                <div class="rest-bottom">
-                    <div class="box5">
-                        Profile
-                    </div>
-                    <a href="<?=URLROOT?>/customersetting"><div class="box6">
-                        Settings
-                    </div>
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Customer Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/project"><div class="box2">
+                    My Projects
+                </div></a>
+                <a href="<?=URLROOT?>/inquiry"><div class="box3">
+                    Inquiries
+                </div></a>
+                <div class="box4">
+                    Transactions
                 </div>
             </div>
+            <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                    Profile
+                </div></a>
+                <a href="<?=URLROOT?>/customersettings"><div class="box6">
+                    Settings
+                </div></a>
+            </div>
         </div>
+    </div>
         <!-- Remaining... -->
         <div class="common-main-container">
             <div class="dashboard-common-main-topic">

@@ -33,12 +33,12 @@
                 </div>
             </div>
             <div class="rest-bottom">
-                <div class="box5">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
                     Profile
-                </div>
-                <div class="box6">
+                </div></a>
+                <a href="<?=URLROOT?>/customersettings"><div class="box6">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
@@ -60,14 +60,14 @@
         </div>
 <!-- have to embed links  -->
         <div class="settings-body-container" >
-            <div class="dashboard-settings-container-content">
+            <a href="<?=URLROOT?>/user/editprofile"><div class="dashboard-settings-container-content">
                 <div class="dashboard-container-txt">
-                   <a href="#">Edit Profile Info</a>
+                   Edit Profile Info
                 </div>
                 <div class="dashboard-container-img">
                     <img src="\ezolar\public\img\setting\Edit.png" alt="Edit">
                 </div>
-            </div>
+            </div></a>
             <div class="dashboard-settings-container-content">
                 <div class="dashboard-container-txt">
                     <a href="#"> Change Password</a>

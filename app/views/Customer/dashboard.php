@@ -1,8 +1,7 @@
 <?php
-     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\views\Includes\header.php');
-     require_once(__ROOT__.'\views\Includes\navbar.php');
-     require_once(__ROOT__.'\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,14 +53,14 @@
            </div>
         </div>
 
-        <div class="dashboard-container-content">
+        <a href="<?=URLROOT?>/user/profile"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Profile
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Person.png" alt="profile">
            </div>
-        </div>
+        </div></a>
         
         <a href="/ezolar/customersettings"> <div class="dashboard-container-content">
            <div class="dashboard-container-txt">

@@ -34,12 +34,12 @@
                 </div>
             </div>
             <div class="rest-bottom">
-                <div class="box5">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
                     Profile
-                </div>
-                <a href="<?=URLROOT?>/customersettings"> <div class="box6">
+                </div></a>
+                <a href="<?=URLROOT?>/customersettings"><div class="box6">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>

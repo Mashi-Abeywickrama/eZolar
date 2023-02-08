@@ -1,0 +1,303 @@
+.box5{
+    color: #ffffff;
+    background-color: #0b2f64;
+}
+.main-txt{
+    color: #0B2F64;
+    font-size: 36px;
+    font-weight: bold;
+    width: 50%;
+}
+.main-img{
+    margin-left: 45%;
+    margin-right: 2%;
+}
+.main-img:hover{
+    cursor: pointer;
+    transform:scale(1.07);
+}
+.profile-img{
+    max-width: 100%;  
+    height: auto; 
+}
+.profile-container{
+    display: flex;
+    align-self: end;
+    width: 65%;
+    height: 95%;
+    align-items: stretch;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.profile-container-content{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    align-items: center;
+    width: 50%;
+}
+
+.profile-container-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-container-txt{
+    color: #000;
+    /*font-size: 20px;*/
+    /*font-weight: bold;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-container-txt-name{
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile-container-txt-type{
+    font-size: 20px;
+    color: #858585;
+}
+
+.form-inline{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* overflow: auto; */
+    margin-bottom: 10px;
+}
+
+.form-background{
+    width:95%;
+}
+
+.form-item-container{
+    min-width: 250px;
+}
+
+.form-item-text{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+.form-item-input{
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    font-size:14px;
+    width: 90%;
+    min-height: 25px;
+    border-color: #2C61A3;
+    border-width: 1.5px;
+}
+.form-item-input:hover{
+    border-color: #2C61A3;
+}
+
+.form-item-input-disabled{
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-radius: 5px;
+    background: #EEEFF1;
+    font-size:16px;
+    width: 93%;
+    min-height: 30px;
+}
+
+.edit-profile-btn{
+    display: flex;
+    height: 40px;
+    width: 200px;
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF;
+    justify-content: center;
+    align-self: center;
+    margin-top: 15px;
+}
+.edit-profile-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+.edit-profile-btn-text{
+    align-self: center;
+}
+
+a{
+    text-decoration: none;
+    color: #0B2F64;
+}
+/*.profile-container{*/
+/*    display: flex;*/
+/*    align-self: center;*/
+/*    margin-left: 10%;*/
+/*    !* margin-right: 10%; *!*/
+/*    margin-top: 5vh;*/
+/*    padding: 4px 18px;*/
+/*    padding-bottom: 2%;*/
+/*    align-items: stretch;*/
+/*    width: 75%;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+/*.profile-container-image{*/
+/*    align-self: center;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*width: 50%;*!*/
+/*}*/
+
+/*.profile-container-content{*/
+/*    align-self: center;*/
+/*    !*background: #F9F9F9;*!*/
+/*    !*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*!*/
+/*    !*border-radius: 10px;*!*/
+/*    width: 40%;*/
+/*    margin-bottom: 20px;*/
+/*    margin-left: 5%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 70px;*/
+/*    align-items: center;*/
+/*    !*min-width: 315px;*!*/
+/*    !*max-height: 70px;*!*/
+/*    !*min-height: 60px;*!*/
+/*}*/
+/*.profile-container-txt{*/
+/*    margin-top: 2.35%;*/
+/*    margin-bottom: 2.35%;*/
+/*    !*margin-left: 6%;*!*/
+/*    color: #000;*/
+/*    font-size: 22px;*/
+/*    font-weight: bold;*/
+/*    width: 40%;*/
+/*}*/
+
+/*.profile-img{*/
+/*    width: 209px;*/
+/*    height: 209px;*/
+/*}*/
+
+
+/*!*.profile-container-image{*!*/
+/*!*    margin-top: 1.28%;*!*/
+/*!*    margin-left: 45%;*!*/
+/*!*    margin-right: 2%;*!*/
+/*!*    max-width: 30%;*!*/
+/*!*}*!*/
+
+
+/*a{*/
+/*    text-decoration: none;*/
+/*}*/
+
+
+
+/*.form-background{*/
+/*    flex-direction: column;*/
+/*    display: inline-flex;*/
+/*    !*background: #D9D9D9;*!*/
+/*    width: 40%;*/
+/*    max-width: 900px;*/
+/*    min-width: 400px;*/
+/*    height: 75%;*/
+/*    min-height: 350px;*/
+/*    justify-content: center;*/
+/*    overflow-y: auto;*/
+/*    overflow-x: hidden;*/
+/*    border-radius: 10px;*/
+/*    !* margin-top: -50px; *!*/
+/*}*/
+/*.form-container{*/
+/*    width: 85%;*/
+/*    overflow: auto;*/
+/*    min-width: 400px;*/
+/*    margin: 20px;*/
+/*}*/
+/*.form-inline{*/
+/*    width: 100%;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-between;*/
+/*    overflow: auto;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+/*.form-item-container{*/
+/*    width:55%;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.form-item-container-half{*/
+/*    width: 45%;*/
+/*    overflow: hidden;*/
+/*    margin-right: 3%;*/
+/*}*/
+/*.form-item-text{*/
+/*    font-size: 16px;*/
+/*    font-weight: bold;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+
+
+/*.form-item-input{*/
+/*    text-align: left;*/
+/*    margin-bottom: 5px;*/
+/*    padding: 5px;*/
+/*    border-style: solid;*/
+/*    border-radius: 5px;*/
+/*    font-size:14px;*/
+/*    width: 90%;*/
+/*    min-height: 25px;*/
+/*    border-color: #2C61A3;*/
+/*    border-width: 1.5px;*/
+/*}*/
+/*.form-item-input:hover{*/
+/*    border-color: #2C61A3;*/
+/*}*/
+
+/*.form-item-input-disabled{*/
+/*    text-align: left;*/
+/*    margin-bottom: 5px;*/
+/*    padding: 5px;*/
+/*    border-style: solid;*/
+/*    border-radius: 5px;*/
+/*    background: #EEEFF1;*/
+/*    font-size:16px;*/
+/*    width: 93%;*/
+/*    min-height: 30px;*/
+/*}*/
+
+
+/*.edit-profile-btn{*/
+/*    display: flex;*/
+/*    height: 40px;*/
+/*    width: 200px;*/
+/*    background: #2C61A3;*/
+/*    border-radius: 5px;*/
+/*    color: #FFFFFF;*/
+/*    justify-content: center;*/
+/*    align-self: center;*/
+/*    margin-top: -5px;*/
+/*}*/
+/*.edit-profile-btn:hover{*/
+/*    cursor: pointer;*/
+/*    background: #0B2F64;*/
+/*    transition-duration: 200ms;*/
+/*}*/
+/*.edit-profile-btn-text{*/
+/*    align-self: center;*/
+/*}*/
+
+

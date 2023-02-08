@@ -1,5 +1,6 @@
 <?php
-
+  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+  require_once(__ROOT__.'/app/helpers/session_helper.php');
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
@@ -12,7 +13,7 @@ class User extends Controller {
       ];
      
       $this->view('Includes/header', $data);
-      $this->view('Customer/customerNavbar', $data);
+      $this->view('Includes/navbar', $data);
       $this->view('home', $data);
     }
     
@@ -90,6 +91,26 @@ class User extends Controller {
           }
         }
     }
+// this function is for viewing user profile
+    public function profile(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $title = "myprofile";
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      $id = $this->userModel->getUserID($_SESSION['user_email']);
+      $rows  = $this->userModel-> getProfile($id,$role);
+      $_SESSION['rows'] = $rows;
+      $this->view('Customer/Settings/profile', $title);
+      
+    }
+    
+//this function for edit profile
+     public function editprofile(){
+
+    }
+
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
