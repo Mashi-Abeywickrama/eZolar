@@ -29,6 +29,8 @@ class User extends Controller {
         }
         elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Contractor"){
           $this->view('Contractor/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Admin"){
+          $this->view('Admin/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
