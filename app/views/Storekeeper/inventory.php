@@ -14,6 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\products.css">
+    <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
@@ -24,10 +25,10 @@
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a class="sidebar-anchor" href="/ezolar/Inventory"><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/Inventory"><div class="sidebar-link-container-selected">
                     Inventory
                 </div></a>
-                <a class="sidebar-anchor" href="/ezolar/Product"><div class="sidebar-link-container-selected">
+                <a class="sidebar-anchor" href="/ezolar/Product"><div class="sidebar-link-container">
                     Products
                 </div></a>
                 <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container">
@@ -52,64 +53,47 @@
         <div class="dashboard-common-main-topic">
             <div class="common-main-left-img">
                 <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\storekeeper\Products.png" alt="Products-icon">
+                    <img src="\ezolar\public\img\storekeeper\Inventory.png" alt="Products-icon">
                 </a>
             </div>
             <div class="common-main-txt">
-                Products
+                Inventory
             </div>
             
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>   
         </div>
-        <div class="product-list-container">
-            <!--<div class="product-card">
-                <div class="product-image-container">
-
-                </div>
-                <div class="product-text-container">
-                    <div class="product-text-container-inner">
-                    <div class="product-text-no">Product No. 123456</div>
-                    <div class="product-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                    <div class="product-text-price">Price: Rs. 30,000</div>
+        <div class="form-table-container">
+                    <div class="form-table-header-container">
+                        <span class="form-table-header-text"> Product Name</span>  <span class="form-table-header-text"> Manufacturer</span><span class="form-table-header-text"> Price per item</span> <span class="form-table-header-text"> Quantity</span>
                     </div>
-                </div>
-                <div class="product-details-btn-container">
-                    <div class="product-details-btn">
-                        <div class="product-details-btn-text">More info</div>
+                    <div class="form-table-body-container">
+                                                <?php
+                        $results = $_SESSION['rows'];
+                        $counter = 0;
+                        foreach($results as $product){
+                            if ($counter == 1){
+                                $styleClass = 'form-table-row-container-alt';
+                            }else{
+                                $styleClass = 'form-table-row-container';
+                            };
+                            echo '<div class="'.$styleClass.'">
+                            <span class="form-table-row-text">'.$product -> productName.'</span> 
+                            <span class="form-table-row-text">'.$product -> manufacturer.'</span> 
+                            <span class="form-table-row-text">'.$product -> cost.'</span> 
+                            <span class="form-table-row-text">'.$product -> quantity.'</span>
+                            </div>';
+                            $counter = ($counter+1)%2;
+                        }
+                        ?>
                     </div>
+                    
                 </div>
-            </div>-->
-            <?php
-            $results = $_SESSION['rows'];
-            foreach($results as $row){
-                echo '<div class="product-card">
-                <div class="product-image-container">
-
-                </div>
-                <div class="product-text-container">
-                    <div class="product-text-container-inner">
-                    <div class="product-text-no">Product No.' .$row -> productID.'</div>
-                    <div class="product-text-name"><b>'.$row -> productName.'</b></div>
-                    <div class="product-text-price">Price: Rs.' .$row -> cost.'</div>
-                    </div>
-                </div>
-                <div class="product-details-btn-container">
-                    <a href="/ezolar/Product/productDetailspage/'.$row -> productID.'"><div class="product-details-btn">
-                        <div class="product-details-btn-text">More info</div>
-                    </div></a>
-                </div>
-            </div>';
-            }
-            ?>
-        </div>
-        <a href="/ezolar/Product/newProductPage">
-        <div class="add-product-btn">
-            <div class="add-product-btn-text">
-                Add Product
+                <div class="form-button-container" style="justify-content:center;">
+                <a href=""><button class="form-submit-btn">Add Stock</button></a>
+                <a href="/ezolar/Inventory/viewStocks"><button class="form-submit-btn">View Stock Entries</button></a>
             </div>
-        </div></a>
     </div>
 </body>
 </html>

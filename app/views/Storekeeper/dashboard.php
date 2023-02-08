@@ -27,14 +27,14 @@
         </div>
         </div>
         <div class="dashboard-container-nav" align="center">
-            <div class="dashboard-container-content">
+                <a href="/ezolar/Inventory"><div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Inventory
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Inventory.png" alt="profile">
                 </div>
-            </div>
+            </div></a>
             
             <a href="/ezolar/Package"> <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
