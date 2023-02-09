@@ -1,7 +1,7 @@
 <?php
      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\views\Includes\header.php');
-     require_once(__ROOT__.'\views\Includes\navbar.php');
+     require_once(__ROOT__.'\views\Includes\navbar1.php');
      require_once(__ROOT__.'\views\Includes\footer.php');
 ?>
 

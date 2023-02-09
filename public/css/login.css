@@ -100,19 +100,68 @@
     transform:scale(1.03);
 }
 
+                            /* forgot passwprd page */
 .form-container-fp{
     /* display: flex; */
     /* padding: 10%; */
-    padding-left: 15%;
+    /* padding-left: 15%; */
     padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.kkkk{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.fp-form-container{
+    display: flex;
+    flex-direction: column;
+    /* align-self: center; */
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 75px;
+    width: 70%;
+    border: 2px solid #0B2F64;
+    padding-bottom: 2%;
+}
+.fp-headline{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    padding-top: 3%;
+    /* text-align: center; */
+    font-weight: bold;
+    font-size:2rem;
+    color: #0B2F64;
+}
+.email-div{
+    width: 75%;
+}
+.fp-subHeader {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    align-items: center;
+    /* text-align: center; */
+    font-weight: lighter;
+    font-size:14px;
+    color: #636364;
 }
 .group{
     display: flex;
+    width: 70%;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    justify-content: space-around;
 }
-.btn{
-    display: inline-block;
+.OTP-btn, .resend-btn, .submit-btn{
+    /* display: inline-block; */
     padding: 0.7rem;
     width: 130px;
     height: 40px;
@@ -123,15 +172,22 @@
     background: linear-gradient(180deg, #BFD2F8 0%, #0B2F64 100%);
     border-radius: 12px;
 }
-.noti,.btn2,.dash{
+.OTP-btn-div{
+    /* margin-left: 30%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2%;
+}
+.btn2-1{
     display: none;
 }
-.btn1{
+.btn1-1{
     display: flex;
     align-items: center;
 }
 
-.nav-btn1::after{
+.nav-btn1-1::after{
     content: 'Sign Up';
     /* onclick="location.href ='/ezolar/registers'" value="clicked" */
 }

@@ -10,7 +10,7 @@ body {
 }
 .header {
     position: relative;
-    height:4%;
+    height:80px;
 	width:100%;
 	margin:-8px;
 }
@@ -70,7 +70,7 @@ body {
     position: absolute;
 	right: 0;
 	left: 0;
-    height: 8%;
+    height: 60px;
     color: #FCFEFE !important;
 	background-color: #0B2F64;
     display: flex;
@@ -92,7 +92,7 @@ body {
     /* padding-left: 15px; */
 }
 .links{
-    color: #FCFEFE !important;
+    color: #FCFEFE;
     text-decoration: none;
 }
 .nav-btn1, .nav-btn2{
@@ -107,4 +107,19 @@ body {
     color: #2C61A3;
     border: none ;
     border-radius: 50px;
+}
+.nav-btn1:hover, .nav-btn2:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.btn2-1, .btn1-1{
+    display: flex;
+    align-items: center;
+}
+/* .btn1, .btn2{
+    display: flex;
+    align-items: center;
+} */
+.btn1-1{
+    margin-right: 10%;
 }

@@ -22,7 +22,7 @@
       $rows  = $this->projectModel-> getAllProjects($customer_Id);
       $_SESSION['rows'] = $rows;
       $data = [
-        'title' => 'eZolar Inquiry',
+        'title' => 'eZolar Project',
       ];
       $this->view('Customer/project', $data);
     }

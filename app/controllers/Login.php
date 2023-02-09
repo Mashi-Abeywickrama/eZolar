@@ -11,7 +11,7 @@
      
       $this->view('Includes/header', $data);
       $this->view('Includes/footer', $data);
-      $this->view('Includes/navbar', $data);
+      $this->view('Includes/navbar1', $data);
       $this->view('Authentication/login', $data);
     }
 

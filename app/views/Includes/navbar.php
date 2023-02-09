@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <title>eZolar Navbar</title>
@@ -15,21 +16,18 @@
         2. set logout
     -->
         <div class="nav-left">
-            <div class="home"><a class="links" "home" href="<?=URLROOT?>/user/dashboard">Home</a></div>
+            <div class="home"><a class="links" "home" href="<?=URLROOT?>/user/home">Home</a></div>
             <div class="packages"><a class="links" "link-packages" href="packages.php">Packages</a></div>
             <div class="abt"><a class="links" "about" href="about.php">About Us</a></div>
             <div class="contact"><a class="links" "link-contact" href="contact.php">Contact</a></div>
             <div class="dash"><a class="links" "link-dash" href="<?=URLROOT?>/user/dashboard">Dashboard</a></div>
         </div>
         <div class="nav-right">
-            <div class="btn1">
-                <a href="/ezolar/register"><button class="nav-btn1"></button></a>
-            </div>
             <div class="noti">
                 <img src="\ezolar\public\img\Notifications.png" alt="Notifi">
             </div>
             <div class="btn2">
-                <a href="/ezolar/user/logout"><button class="nav-btn2"></button></a>
+                <a href="/ezolar/user/logout"><button class="nav-btn2">Log Out</button></a>
             </div>
         </div>
 
