@@ -49,4 +49,16 @@
 
     }
 
+         // salesperson functions
+
+         public function SalespersonAssignedProjects(){
+
+          $rows  = $this->projectModel->getSalespersonProjects();
+          $_SESSION['rows'] = $rows;
+          $data = [
+              'title' => 'eZolar Salesperson Assigned Projects',
+          ];
+          $this->view('Salesperson/assigned-projects', $data);
+          }
+
   }
