@@ -23,21 +23,15 @@
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee">
-                    <div class="sidebar-link-container-selected">
+                <a href="/ezolar/Employee"><div class="sidebar-link-container-selected">
                     Employees
-                    </div>
-                </a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container">
-                        Products
-                    </div>
-                </a>
+                </div></a>
+                <div class="sidebar-link-container">
+                    Packages
+                </div>
+                <div class="sidebar-link-container">
+                    Products
+                </div>
                 <div class="sidebar-link-container">
                     Reports 
                 </div>
@@ -46,7 +40,7 @@
             <div class="sidebar-link-container-bottom">
                 <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
                     Profile
-                </div>
+                </div></a>
                 <div class="sidebar-link-container">
                     Settings
                 </div>
