@@ -14,42 +14,37 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>Add Package</title>
 </head>
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
         <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
+            <b>Storekeeper Dashboard</b>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
-                    Employees
+                <a class="sidebar-anchor" href="/ezolar/Inventory"><div class="sidebar-link-container">
+                    Inventory
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container-selected">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
+                <a class="sidebar-anchor" href="/ezolar/Product"><div class="sidebar-link-container">
+                    Products
+                </div></a>
+                <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container-selected">
+                    Packages
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
+                    Reports & Stats
+                </div></a>
             </div>
 
             <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container">
                     Profile
-                </div>
-                <div class="sidebar-link-container">
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
@@ -62,7 +57,7 @@
                     </a>
                 </div>
                 <div class="dashboard-common-heading-text">
-                    <b>Add a new Package</b>
+                    <b>Edit a Package</b>
                 </div>
                 <div class="dashboard-common-heading-image">
                     <a href=”” “text-decoration: none”>
@@ -77,7 +72,9 @@
                             <div class="form-item-text">
                                 Package ID:<span style="color:red;">*</span> <span class="err-box" id="pckid-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" required onkeyup="validatePackageID()">
+                            <input class="form-item-input" name="pack-id" id="pack-id" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> packageID;?>" disabled onkeyup="validatePackageID()">
                         </div>
                     </div>
                     <div class="form-inline">
@@ -85,7 +82,9 @@
                             <div class="form-item-text">
                                 Package Name:<span style="color:red;">*</span> <span class="err-box" id="pckname-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-name" id="pack-name" type="text" placeholder="Enter Package Name" required onkeyup="validatePackageName()">
+                            <input class="form-item-input" name="pack-name" id="pack-name" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> name;?>" required onkeyup="validatePackageName()">
                         </div>
                     </div>
                     <div class="form-inline">
@@ -93,7 +92,9 @@
                             <div class="form-item-text">
                                 Package Type: <span class="err-box" id="pck-type-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-type" id="pack-type" type="text" placeholder="Eg:- Residential" onkeyup="validateType()">
+                            <input class="form-item-input" name="pack-type" id="pack-type" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> type;?>" onkeyup="validateType()">
                         </div>
                     </div>
                     <div class="form-item-text">
@@ -104,13 +105,19 @@
                             <div class="form-item-text">
                                 Lower Limit:
                             </div>
-                            <input class="form-item-input" name="price-range-lower" id="price-range-lower" type="text" placeholder="Eg:- 200,000" onkeyup="validateBudget()">
+                            <input class="form-item-input" name="price-range-lower" id="price-range-lower" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            $budget = explode(" - ",$row -> budgetRange);
+                            echo $budget[0];?>" onkeyup="validateBudget()">
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
                                 Upper Limit:
                             </div>
-                            <input class="form-item-input" name="price-range-upper" id="price-range-upper" type="text" placeholder="Eg:- 200,000" onkeyup="validateBudget()">
+                            <input class="form-item-input" name="price-range-upper" id="price-range-upper" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            $budget = explode(" - ",$row -> budgetRange);
+                            echo $budget[1];?>" onkeyup="validateBudget()">
                         </div>
                     </div>
                     <!--<div class="form-inline">
@@ -136,7 +143,7 @@
                         </div>
                     </div>-->
                     <div class="form-inline" style="justify-content:center;">
-                        <button class="form-submit-btn" type="submit" onclick="return validateForm()">Continue</button>
+                        <button class="form-submit-btn" type="submit" onclick="return validateForm()">Save</button>
                     </div>
                 </form>
             </div>

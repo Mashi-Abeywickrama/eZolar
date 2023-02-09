@@ -1,0 +1,95 @@
+/* Change product to pacakge */
+
+.project-list-container{
+    margin-top: 20px;
+    height: 80%;
+    min-height: 400px;
+    max-height: 550px;
+    width: 70%;
+    min-width: 500px;
+    max-width: 1000px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.project-card{
+    display: block;
+    height: 120px;
+    width: 90%;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.project-image-container{
+    display: inline-block;
+    height: 110px;
+    width: 110px;
+    margin-left: 15px;
+    background: #FFFFFF;
+}
+
+.project-text-container{
+    display: inline-block;
+    height: 110px;
+    width: 75%;
+    min-width: 250px;
+    max-width: calc(100% - 280px);
+    margin-top: 5px;
+    margin-left: 5px;
+    overflow: auto;
+}
+.project-text-container-inner{
+    display: flex;
+    height: inherit;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-details-btn-container{
+    display: inline-block;
+    margin-top: 5px;
+    height: 42px;
+    width: auto;
+    min-width: 112px;
+    margin-bottom: 40px;
+    margin-left: 5px;
+    overflow: auto; 
+}
+.project-details-btn{
+    display: flex;
+    height: 40px;
+    width: 110px;
+    background: #2C61A3;
+    border-radius: 20px;
+    color: #FFFFFF;
+    justify-content: center;
+}
+.project-details-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
+.project-details-btn-text{
+    align-self: center;
+}
+
+
+.project-text-no{
+    margin: 5px;
+    font-size: 16px;
+}
+
+.project-text-status{
+    margin: 5px;
+    font-size: 22px;
+    font-style: bold;
+}
+
+.project-text-location{
+    margin: 5px;
+    font-size: 18px;
+}

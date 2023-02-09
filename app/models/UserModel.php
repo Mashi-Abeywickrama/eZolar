@@ -41,6 +41,15 @@
             $row = $this->db->resultSet(['customerID' => $id]);
             // print_r($row);die;
             return $row;
-          }
+        } else {
+          $this->db->query('SELECT user.email,employee.name,employee.type,employee_telno.telno,employee.nic FROM employee_telno INNER JOIN employee ON employee.empID = employee_telno.Employee_empID INNER JOIN user ON employee.empID = user.userID WHERE employee.empID= :ED');
+          //$this->db->query('SELECT nic FROM employee WHERE empID=:empID');
+          $row = $this->db->resultSet(['ED' => $id]);
+          //$row = $this->db->resultSet();
+          return $row;
+        }
+      }
+      public function editProfile($data){
+
       }
   }

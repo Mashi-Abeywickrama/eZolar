@@ -31,6 +31,8 @@ class User extends Controller {
           $this->view('Contractor/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Admin"){
           $this->view('Admin/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
+          $this->view('Engineer/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
@@ -104,13 +106,35 @@ class User extends Controller {
       $id = $this->userModel->getUserID($_SESSION['user_email']);
       $rows  = $this->userModel-> getProfile($id,$role);
       $_SESSION['rows'] = $rows;
-      $this->view('Customer/Settings/profile', $title);
+      if ($role == "Storekeeper"){
+        $this->view('Storekeeper/profile', $title);
+      }
+      elseif ($role == "Contractor"){
+        $this->view('Contractor/profile', $title);
+      }elseif ($role == "Admin"){
+        $this->view('Admin/myProfile', $title);
+      }elseif ($role == "Engineer"){
+        $this->view('Engineer/profile', $title);
+      }else{
+        $this->view('Customer/Settings/profile', $title);
+      }
       
     }
     
 //this function for edit profile
      public function editprofile(){
+      if(!isLoggedIn()){
 
+        redirect('login');
+      }
+      
+      $title = "edit profile";
+
+      $this->view('Customer/Settings/editprofile', $title);
+      $inputs = array($_POST);
+    print_r($_POST);
+    die;
+    $this->userModel->editProfile($inputs);
     }
 
     public function createUserSession($user){
@@ -135,4 +159,3 @@ class User extends Controller {
 
     
   }
-?>

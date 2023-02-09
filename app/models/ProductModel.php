@@ -22,4 +22,15 @@
 
     }
 
+    public function getProductDetails($productID){
+      $this->db->query('SELECT * FROM product WHERE productID = :productID');
+      $row = $this->db->single(['productID' => $productID]);
+      return $row;
+    }
+
+    public function editProduct($data){
+      $this->db->query('UPDATE product SET `productName` = :productName, `cost` = :cost, `manufacturer` = :manufacturer WHERE `productID` = :productID'); 
+      $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3]]);
+    }
+
   }

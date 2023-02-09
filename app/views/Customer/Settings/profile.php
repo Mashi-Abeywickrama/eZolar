@@ -123,7 +123,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 
                 </form>
                 
-                    <a href="/user/editprofile">
+                    <a href="'.URLROOT.'/user/editprofile">
                         <div class="edit-profile-btn">
                             <div class="edit-profile-btn-text">
                                 Edit Profile

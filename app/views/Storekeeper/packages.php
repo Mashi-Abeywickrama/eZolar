@@ -14,42 +14,37 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>My Projects</title>
 </head>
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
         <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
+            <b>Storekeeper Dashboard</b>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
-                    Employees
+                <a class="sidebar-anchor" href="/ezolar/Inventory"><div class="sidebar-link-container">
+                    Inventory
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container-selected">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
+                <a class="sidebar-anchor" href="/ezolar/Product"><div class="sidebar-link-container">
+                    Products
+                </div></a>
+                <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container-selected">
+                    Packages
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
+                    Reports & Stats
+                </div></a>
             </div>
 
             <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container">
                     Profile
-                </div>
-                <div class="sidebar-link-container">
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>

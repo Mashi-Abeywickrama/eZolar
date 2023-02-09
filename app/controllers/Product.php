@@ -1,6 +1,8 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
   require_once(__ROOT__.'\app\helpers\session_helper.php');
+  if (!array_key_exists('flagUpdate',$_SESSION)){
+  $_SESSION['flagUpdate']=0;};
 
   class Product extends Controller {
     public function __construct(){ 

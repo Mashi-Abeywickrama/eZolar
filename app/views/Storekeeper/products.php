@@ -24,27 +24,27 @@
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/Inventory"><div class="sidebar-link-container">
                     Inventory
-                </div>
-                <div class="sidebar-link-container-selected">
+                </div></a>
+                <a class="sidebar-anchor" href="/ezolar/Product"><div class="sidebar-link-container-selected">
                     Products
-                </div>
-                <div class="sidebar-link-container">
+                </div></a>
+                <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container">
                     Packages
-                </div>
-                <div class="sidebar-link-container">
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
                     Reports & Stats
-                </div>
+                </div></a>
             </div>
 
             <div class="sidebar-link-container-bottom">
-                <div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container">
                     Profile
-                </div>
-                <div class="sidebar-link-container">
+                </div></a>
+                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
@@ -96,9 +96,9 @@
                     </div>
                 </div>
                 <div class="product-details-btn-container">
-                    <div class="product-details-btn">
+                    <a href="/ezolar/Product/productDetailspage/'.$row -> productID.'"><div class="product-details-btn">
                         <div class="product-details-btn-text">More info</div>
-                    </div>
+                    </div></a>
                 </div>
             </div>';
             }
