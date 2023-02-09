@@ -1,6 +1,8 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
   require_once(__ROOT__.'\app\helpers\session_helper.php');
+  if (!array_key_exists('flagUpdate',$_SESSION)){
+  $_SESSION['flagUpdate']=0;};
 
   class Product extends Controller {
     public function __construct(){ 
@@ -47,4 +49,48 @@
 
     }
 
-  }
+    public function productDetailspage($productID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+        $row = $this->ProductModel->getProductDetails($productID);
+        $_SESSION['row'] = $row;
+        $data = [
+          'title' => 'eZolar Product details',
+        ];
+        $this->view('Storekeeper/product-details',$data);
+
+    }
+
+    public function editProduct($productId){
+      if(!isLoggedIn()){
+        redirect('login');
+      }
+        $name = $_POST['product-name'];
+        $cost = $_POST['price'];
+        $manufacturer = $_POST['manufacturer'];
+        $quantity = 0;
+        
+        
+        $inputs = array($productId,$name,$cost,$manufacturer);
+        $this->ProductModel->editProduct($inputs);
+        $_SESSION['flagUpdate'] = 1;
+        redirect('Product/productDetailspage/'.$productId);
+
+    }
+
+    public function editProductPage($productID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $row = $this->ProductModel->getProductDetails($productID);
+        $_SESSION['row'] = $row;
+        $data = [
+          'title' => 'eZolar Edit Product details',
+        ];
+        $this->view('Storekeeper/edit-products',$data);
+    }
+
+    }

@@ -12,6 +12,7 @@ a:hover {
     cursor:pointer;  
 }
 
+
 /* this navigation bar is common for all customer dashboards */
 .btn1{
     display: none;
@@ -19,7 +20,9 @@ a:hover {
 .noti{
     margin-left: 25%;
 }
-
+.nav-btn2::after{
+    content: 'Log Out';
+}
 .nav-btn2:hover, .noti:hover{
     cursor: pointer;
     transform: scale(1.05);
@@ -35,6 +38,7 @@ a:hover {
     cursor: arrow;
     transform: none;
 }
+
 
 /* this part is common for all storekeeer dashboard contents..
 left sub panel and the topic, left image and right image*/
@@ -101,6 +105,7 @@ left sub panel and the topic, left image and right image*/
 .sidebar-link-container-bottom  {
     display: block;
 }
+
 .sidebar-anchor{
     width: 100%;
     height: inherit;

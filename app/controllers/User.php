@@ -31,6 +31,8 @@ class User extends Controller {
           $this->view('Contractor/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Admin"){
           $this->view('Admin/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
+          $this->view('Engineer/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
@@ -135,4 +137,3 @@ class User extends Controller {
 
     
   }
-?>
