@@ -19,36 +19,39 @@
 <body>
 
 <div class="sidebar">
-    <div class="sidebar-heading">
-        <b>Admin Dashboard</b>
-    </div>
-    <!--    Side Bar-->
-    <div class="sidebar-link-container-group">
-        <div class="sidebar-link-container-top">
-        <a href="/ezolar/Employee"><div class="sidebar-link-container">
-                Employees
-            </div>
-            <div class="sidebar-link-container">
-                Packages
-            </div>
-            <div class="sidebar-link-container">
-                Products
-            </div>
-            <div class="sidebar-link-container">
-                Reports
-            </div>
+        <div class="sidebar-heading">
+            <b>Admin Dashboard</b>
         </div>
+        <div class="sidebar-link-container-group">
+            <div class="sidebar-link-container-top">
+                <a href="/ezolar/Employee"><div class="sidebar-link-container">
+                    Employees
+                </div></a>
+                <a href=/ezolar/Package>
+                    <div class="sidebar-link-container">
+                        Packages
+                    </div>
+                </a>
+                <a href=/ezolar/Product>
+                    <div class="sidebar-link-container">
+                        Products
+                    </div>
+                </a>
+                <div class="sidebar-link-container">
+                    Reports 
+                </div>
+            </div>
 
-        <div class="sidebar-link-container-bottom">
-            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container-selected">
-                Profile
-            </div>
-            <div class="sidebar-link-container">
-                Settings
+            <div class="sidebar-link-container-bottom-selected">
+                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
+                    Profile
+                </div>
+                <div class="sidebar-link-container">
+                    Settings
+                </div>
             </div>
         </div>
     </div>
-</div>
 <div class="common-main-container">
     <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">

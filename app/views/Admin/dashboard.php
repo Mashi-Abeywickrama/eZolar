@@ -38,7 +38,7 @@
             </div>
             </a>
         
-            
+        <a href="/ezolar/Package">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Packages
@@ -47,7 +47,9 @@
                         <img src="\ezolar\public\img\admin\packages.png" alt="packages">
                 </div>
             </div>
+        </a>
 
+        <a href="/ezolar/product">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Products
@@ -56,6 +58,7 @@
                         <img src="\ezolar\public\img\admin\products.png" alt="products">
                 </div>
             </div>
+        </a>
 
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
