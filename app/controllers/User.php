@@ -106,7 +106,18 @@ class User extends Controller {
       $id = $this->userModel->getUserID($_SESSION['user_email']);
       $rows  = $this->userModel-> getProfile($id,$role);
       $_SESSION['rows'] = $rows;
-      $this->view('Customer/Settings/profile', $title);
+      if ($role == "Storekeeper"){
+        $this->view('Storekeeper/profile', $title);
+      }
+      elseif ($role == "Contractor"){
+        $this->view('Contractor/profile', $title);
+      }elseif ($role == "Admin"){
+        $this->view('Admin/myProfile', $title);
+      }elseif ($role == "Engineer"){
+        $this->view('Engineer/profile', $title);
+      }else{
+        $this->view('Customer/Settings/profile', $title);
+      }
       
     }
     

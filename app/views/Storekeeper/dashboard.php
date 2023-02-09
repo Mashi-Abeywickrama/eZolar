@@ -62,14 +62,14 @@
                 </div>
             </div>
 
-            <div class="dashboard-container-content">
+            <a href="/ezolar/User/profile"><div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Profile
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Profile.png" alt="profile">
                 </div>
-            </div>
+            </div></a>
             
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">

@@ -40,7 +40,7 @@
             </div>
 
             <div class="sidebar-link-container-bottom">
-                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container">
                     Profile
                 </div></a>
                 <a class="sidebar-anchor" href=""><div class="sidebar-link-container">

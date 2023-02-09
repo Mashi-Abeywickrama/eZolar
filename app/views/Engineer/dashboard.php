@@ -52,7 +52,7 @@
            </div></a>
         </div>
         <div class="dashboard-container-content">
-        <a href="" class="dashboard-anchor"><div class="dashboard-container-txt">
+        <a href="/ezolar/User/profile" class="dashboard-anchor"><div class="dashboard-container-txt">
                 Profile
            </div>
            <div class="dashboard-container-img">
