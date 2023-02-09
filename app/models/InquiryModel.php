@@ -49,4 +49,13 @@
       
     }
 
+        // * * * * salesperson functions * * * *
+     // TODO -> CHECK IS ALL INQUIRIES SHOWS TO ALL THE SALESPERSONS
+     public function getSalespersonInquiries(){
+
+      $this->db->query('SELECT customer.name,inquiry.topic FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID ORDER BY inquiryID');
+      $row = $this->db->resultSet([]);
+      return $row;
+  }
+
   }

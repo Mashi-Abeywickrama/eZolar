@@ -18,7 +18,15 @@
       $data = [
         'title' => 'eZolar Products',
       ];
-      $this->view('Storekeeper/products', $data);
+
+      if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/products', $data);
+      }
+      elseif ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/products', $data);
+      }
+
+      
     }
     public function newProductPage(){
       if(!isLoggedIn()){
@@ -28,7 +36,14 @@
       $data = [
         'title' => 'eZolar NewProduct',
       ];
-      $this->view('Storekeeper/add-products', $data);
+
+      if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/add-products', $data);
+      }
+      elseif ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/add-products', $data);
+      }
+      // $this->view('Storekeeper/add-products', $data);
 
     }
     public function newProduct(){
@@ -59,7 +74,15 @@
         $data = [
           'title' => 'eZolar Product details',
         ];
-        $this->view('Storekeeper/product-details',$data);
+
+        if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+          $this->view('Storekeeper/product-details', $data);
+        }
+        elseif ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Admin"){
+          $this->view('Admin/product-details', $data);
+        }
+
+        // $this->view('Storekeeper/product-details',$data);
 
     }
 
@@ -90,7 +113,14 @@
         $data = [
           'title' => 'eZolar Edit Product details',
         ];
-        $this->view('Storekeeper/edit-products',$data);
+
+        if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+          $this->view('Storekeeper/edit-products', $data);
+        }
+        elseif ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Admin"){
+          $this->view('Admin/edit-products', $data);
+        }
+        // $this->view('Storekeeper/edit-products',$data);
     }
 
     }

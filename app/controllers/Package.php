@@ -18,7 +18,14 @@
       $data = [
         'title' => 'eZolar Packages',
       ];
-      $this->view('Storekeeper/packages', $data);
+
+      if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/packages', $data);
+      }
+      elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/packages', $data);
+      }
+      // $this->view('Storekeeper/packages', $data);
     }
     public function newPackagePage(){
       if(!isLoggedIn()){
@@ -28,7 +35,14 @@
       $data = [
         'title' => 'eZolar NewPackage',
       ];
-      $this->view('Storekeeper/add-package', $data);
+
+      if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/add-package', $data);
+      }
+      elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/add-package', $data);
+      }
+      // $this->view('Storekeeper/add-package', $data);
 
     }
     public function newPackage(){
@@ -61,7 +75,14 @@
       $data = [
         'title' => 'eZolar Pacakge details',
       ];
-        $this->view('Storekeeper/package-details',$data);
+
+      if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/package-details', $data);
+      }
+      elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/package-details', $data);
+      }
+        // $this->view('Storekeeper/package-details',$data);
 
 
     }
@@ -77,7 +98,14 @@
       $data = [
         'title' => 'eZolar Edit Pacakge details',
       ];
-      $this->view('Storekeeper/edit-package',$data);
+
+      if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/edit-package', $data);
+      }
+      elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/edit-package', $data);
+      }
+      // $this->view('Storekeeper/edit-package',$data);
     }
 
     public function editPackageInfo($packID){
@@ -88,7 +116,7 @@
       $name = $_POST['pack-name'];
       $budget = $_POST['price-range-lower'].' - '.$_POST['price-range-upper'];
       $type = $_POST['pack-type'];
-      $inputs = array($packId,$name,$type,$budget);
+      $inputs = array($packID,$name,$type,$budget);
       $this->PackageModel->editPackage($inputs);
       $_SESSION['flagUpdate'] = 1;
       redirect('Package/packageDetailspage/'.$packID);
@@ -106,7 +134,14 @@
       $data = [
         'title' => 'eZolar Edit Pacakge content',
       ];
-      $this->view('Storekeeper/edit-package-content',$data);
+
+      if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+        $this->view('Storekeeper/edit-package', $data);
+      }
+      elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
+        $this->view('Admin/edit-package-content', $data);
+      }
+      // $this->view('Storekeeper/edit-package-content',$data);
     }
 
     public function packageAddItem($packID){

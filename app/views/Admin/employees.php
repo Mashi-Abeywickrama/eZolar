@@ -18,7 +18,7 @@
 </head>
 <body>
 
-    <div class="sidebar">
+<div class="sidebar">
         <div class="sidebar-heading">
             <b>Admin Dashboard</b>
         </div>
@@ -27,12 +27,16 @@
                 <a href="/ezolar/Employee"><div class="sidebar-link-container-selected">
                     Employees
                 </div></a>
-                <div class="sidebar-link-container">
-                    Packages
-                </div>
-                <div class="sidebar-link-container">
-                    Products
-                </div>
+                <a href=/ezolar/Package>
+                    <div class="sidebar-link-container">
+                        Packages
+                    </div>
+                </a>
+                <a href=/ezolar/Product>
+                    <div class="sidebar-link-container">
+                        Products
+                    </div>
+                </a>
                 <div class="sidebar-link-container">
                     Reports 
                 </div>
@@ -41,7 +45,7 @@
             <div class="sidebar-link-container-bottom">
                 <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
                     Profile
-                </div></a>
+                </div>
                 <div class="sidebar-link-container">
                     Settings
                 </div>

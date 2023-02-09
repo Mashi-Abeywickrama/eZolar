@@ -65,16 +65,38 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
 
 
     public function engineers(){
-        if (!isLoggedIn()){
+
+        if(!isLoggedIn()){
+
             redirect('login');
         }
-      $rows  = $this->employeeModel-> getAllEngineers();
-      $_SESSION['rows'] = $rows;
-      $data = [
-        'title' => 'ezolar Engineers',
-      ];
-    
-      $this->view('Admin/engineers', $data);
+
+        else{
+            $rows  = $this->employeeModel-> getAllEngineers();
+            $_SESSION['rows'] = $rows;
+
+            $data = [
+                'title' => 'ezolar Engineers',
+            ];
+            if ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Admin"){
+                $this->view('Admin/engineers', $data);
+            }
+            elseif ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
+                $this->view('Salesperson/engineers', $data);
+            }
+        }
+
+
+//        if (!isLoggedIn()){
+//            redirect('login');
+//        }
+//      $rows  = $this->employeeModel-> getAllEngineers();
+//      $_SESSION['rows'] = $rows;
+//      $data = [
+//        'title' => 'ezolar Engineers',
+//      ];
+//
+//      $this->view('Admin/engineers', $data);
     }
 
     public function storekeepers(){
@@ -104,17 +126,52 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
     }
 
     public function contractors(){
+
+        if(!isLoggedIn()){
+
+            redirect('login');
+        }
+
+        else{
+            $rows  = $this->employeeModel-> getAllContractors();
+            $_SESSION['rows'] = $rows;
+
+            $data = [
+                'title' => 'ezolar Contractors',
+            ];
+            if ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Admin"){
+                $this->view('Admin/contractors', $data);
+            }
+            elseif ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
+                $this->view('Salesperson/contractors', $data);
+            }
+        }
+
+
+
+//        if (!isLoggedIn()){
+//            redirect('login');
+//        }
+//      $rows  = $this->employeeModel-> getAllContractors();
+//      $_SESSION['rows'] = $rows;
+//      $data = [
+//        'title' => 'ezolar Contractors',
+//      ];
+//
+//      $this->view('Admin/contractors', $data);
+    }
+
+    public function EngineersAndContractors(){
         if (!isLoggedIn()){
             redirect('login');
         }
-      $rows  = $this->employeeModel-> getAllContractors();
-      $_SESSION['rows'] = $rows;
-      $data = [
-        'title' => 'ezolar Contractors',
-      ];
-    
-      $this->view('Admin/contractors', $data);
+        $data = [
+            'title' => 'ezolar Engineers and Contractors',
+        ];
+
+        $this->view('Salesperson/engineers-contractors', $data);
     }
+
 
     // public function addSuccessful(){
     //   $data = [

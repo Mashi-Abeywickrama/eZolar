@@ -12,7 +12,11 @@
       $row = $this->db->single(['email' => $email[0]]);
       return ($row -> UserID);
     }
-
+    public function getUserRole($email){
+      $this->db->query('SELECT type FROM user where email = :email');
+      $row = $this->db->single(['email' => $email]);
+      return ($row->type);
+    }
     public function getAllProjects($id){
       // print_r($id);die;
       
@@ -42,6 +46,13 @@
           return false;
       }
     }
+
+    public function getSalespersonProjects(){
+      $this->db->query('SELECT * FROM project');
+      $row = $this->db->resultSet([]);
+      return $row;
+
+  }
 
   }
 ?>

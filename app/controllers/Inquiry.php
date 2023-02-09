@@ -51,5 +51,19 @@
         $this->inquiryModel->addInquiry($inputs);
 
     }
-
+          // * * * * salesperson functions * * * *
+          public function viewSalesperson(){
+            if(!isLoggedIn()){
+    
+                redirect('login');
+            }
+    
+            $rows  = $this->inquiryModel-> getSalespersonInquiries();
+            $_SESSION['rows'] = $rows;
+            $data = [
+                'title' => 'eZolar View Inquiries',
+            ];
+            $this->view('Salesperson/inquiries', $data);
+    
+        }
   }
