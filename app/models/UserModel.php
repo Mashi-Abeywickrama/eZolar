@@ -43,4 +43,7 @@
             return $row;
           }
       }
+      public function editProfile($data){
+
+      }
   }

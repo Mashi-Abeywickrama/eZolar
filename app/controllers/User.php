@@ -112,7 +112,18 @@ class User extends Controller {
     
 //this function for edit profile
      public function editprofile(){
+      if(!isLoggedIn()){
 
+        redirect('login');
+      }
+      
+      $title = "edit profile";
+
+      $this->view('Customer/Settings/editprofile', $title);
+      $inputs = array($_POST);
+    print_r($_POST);
+    die;
+    $this->userModel->editProfile($inputs);
     }
 
     public function createUserSession($user){

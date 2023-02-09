@@ -119,3 +119,6 @@ left sub panel and the topic, left image and right image*/
     cursor: pointer;
     transform:scale(1.07);
 }
+/* .btn-ban{
+    display: none !important;
+} */

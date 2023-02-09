@@ -27,7 +27,7 @@
                     </p>
                     <p>
                         <div class="remm"><input id="check" type="checkbox" onclick="showPassword()"> Show Password </div>
-                        <div class="remm-fp"><a class="to-fp-page"> Forgot Password?</a></div>
+                        <div class="remm-fp"><a class="to-fp-page" href ="<?=URLROOT?>/login/forgotpassword "> Forgot Password?</a></div>
                         <button class="SignInbtn" >Sign In</button>
                     </p>
                 </form>

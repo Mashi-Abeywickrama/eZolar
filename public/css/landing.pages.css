@@ -1,4 +1,308 @@
 body{
     font-family: 'work sans';
 }
+.section1{
+    /* background-color: black; */
+    width:100%;
+    height: 65vh;
 
+}
+.section1 img{
+    width: 100%;
+}
+
+.ban-con {
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    left: 10.417vw;
+    top: 20vw;
+    text-align: center;
+}
+
+.b1 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+    line-height: 1vw;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    color: #FCFEFE;
+}
+
+.b2 {
+    width: 40vw;
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    line-height: 3vw;
+    color: #0B2F64;
+}
+
+.btn-ban {
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-start; */
+    padding: 1.111vw 2.847vw;
+    gap: 0.694vw;
+    position: absolute;
+    width: 10.330vw;
+    height: 3.125vw;
+    background: #2C61A3;
+    border-radius: 3.472vw;
+    border: #0B2F64;
+    font-size: 1vw;
+    color: #FCFEFE;
+}
+.section2{
+    /* background-color: black; */
+    width:100%;
+    height: 65vh;
+
+}
+.getin {
+    /* position: relative; */
+    width: 100vw;
+    height: 31.333vw;
+    /* margin: auto; */
+}
+
+.getin-head {
+    width: 30vw;
+    margin: auto;
+}
+
+.gp1 {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.250vw;
+    line-height: 1.458vw;
+    text-align: center;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #2C61A3;
+}
+
+.gp2 {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.222vw;
+    line-height: 1.269vw;
+    /* identical to box height */
+    text-align: center;
+    color: #0B2F64;
+}
+
+.div-b2{
+    background-color: #FCFEFE;
+    opacity: 80%;
+}
+.contact-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    margin: auto;
+}
+
+.contact-details img {
+    width: 3.472vw;
+    height: 3.472vw;
+    align-content: center;
+    margin: 1.111vw 0 0 0;
+}
+
+.contact-details h3 {
+    font-family: 'work sans';
+    color: #FFFFFF;
+    font-size: 1.250vw;
+    font-weight: bold;
+    margin-bottom: 1.111vw;
+}
+
+.contact-details p {
+    font-family: 'work sans';
+    color: #FFFFFF;
+    font-size: 1.111vw;
+    margin-bottom: 1.111vw;
+}
+
+.phone {
+    padding-left: 1.042vw;
+    padding-top: 1.042vw;
+    width: 23.488vw;
+    height: 17.605vw;
+    background-color: #0B2F64;
+}
+
+.locations {
+    padding-left: 1.042vw;
+    padding-top: 1.042vw;
+    width: 23.488vw;
+    height: 17.605vw;
+    background-color: #0B2F64;
+}
+
+.locations h3,
+.locations p {
+    color: #FFFFFF;
+}
+
+.email {
+    padding-left: 1.042vw;
+    padding-top: 1.042vw;
+    width: 23.488vw;
+    height: 17.605vw;
+    background-color: #0B2F64;
+}
+
+.clock {
+    padding-left: 1.042vw;
+    padding-top: 1.042vw;
+    width: 23.488vw;
+    height: 17.605vw;
+    background-color: #0B2F64;
+}
+
+/* Footer is starting from here*/
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #0B2F64;
+    color: #FCFEFE;
+    font-family: 'yeseva one';
+}
+
+.footer-section {
+    width: 25%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.footer-container h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.company h4 {
+    font-family: 'Yeseva One';
+    font-size: 2.2em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #FBDAD9;
+    /* margin-left: -7vw; */
+    margin-top: -2vh;
+}
+
+.links h4 {
+    font-family: 'Work Sans';
+    font-size: 1.4em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #FBDAD9;
+    /* margin-left: -7vw; */
+    margin-top: 1vh;
+}
+
+.contact h4 {
+    align-items: center;
+    font-family: 'Work Sans';
+    font-size: 1.4em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #FBDAD9;
+    /* margin-left: -18vw; */
+    padding-top: 1vh;
+    margin-bottom: 0vh;
+}
+
+.findus h4 {
+    font-family: 'Work Sans';
+    font-size: 1.4em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #FBDAD9;
+    margin-left: -32vw;
+    margin-top: 0vh;
+    margin-bottom: 7vh;
+}
+
+.footer-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+.footer-container ul li a {
+    color: #FCFEFE;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    /* padding-left: -15vw; */
+    /* padding-right: 9vw; */
+}
+
+.footer-container p {
+    font-size: 0.9em;
+    /* margin-left: -17.3vw; */
+    font-family: 'Work Sans';
+    line-height: 140%;
+    color: #FCFEFE;
+}
+
+.footer-container img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.company p {
+    font-size: 0.9em;
+    /* margin-left: 3.7vw; */
+    font-family: 'Work Sans';
+    line-height: 140%;
+    color: #FCFEFE;
+}
+
+.social-media {
+    margin-left: -28vw;
+}
+
+footer hr {
+    width: 100%;
+    color: #FCFEFE;
+}
+
+.end p {
+    margin-left: -4.3vw;
+}
+
+.login-btn {
+    color: #F5AEAC;
+    margin: 4vh 90vh 3vh 36vh;
+    background-color: #0B2F64;
+    cursor: pointer;
+    font-size: -2.5vw;
+    border: none;
+}
+
+@media (max-width:768px) {
+    .login-btn {
+        font-size: 3vw;
+    }
+}
