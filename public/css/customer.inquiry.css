@@ -63,8 +63,8 @@
 .inquiry-details-btn{
     display: flex;
     /* height: 40px; */
-    height: 80%;
-    width: 75%;
+    height: 4vh;
+    width: 8vw;
     /* width: 110px; */
     background: #2C61A3;
     border-radius: 20px;

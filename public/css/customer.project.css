@@ -63,8 +63,8 @@
 .project-details-btn{
     display: flex;
     /* height: 40px; */
-    height: 80%;
-    width: 75%;
+    height: 4vh;
+    width: 8vw;
     /* width: 110px; */
     background: #2C61A3;
     border-radius: 20px;
@@ -87,7 +87,7 @@
     width: 200px;
     background: #2C61A3;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     justify-content: center;
     margin-top: 2%;
     /* margin-top: -50px; */
@@ -124,4 +124,102 @@ a{
 .add-project-btn a{
     text-decoration: none;
     color: #FFFFFF;
+}
+.project-progress-bar-wrapper{
+    width:80%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-progress-bar-container{
+    width:100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.project-progress-bar{
+    background: #d9d9d9;
+    width: 92%;
+    height: 10px;
+    margin-top: -67px;
+}
+
+.project-progress-bar-bullet-container{
+    width:50px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-progress-bar-bullet{
+    height: 35px;
+    width: 35px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+.project-progress-bar-bullet-highlighted{
+    height: 35px;
+    width: 35px;
+    background-color: #DE8500;
+    border-radius: 50%;
+}
+.project-progress-bar-bullet-text{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+}
+
+.project-details-inline{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    min-height: 200px;
+    margin-top: 60px;
+}
+
+.project-details-steps-container{
+    display: grid;
+    width: 35%;
+    line-height: 2.5;
+    padding: 20px;
+    font-size: 20px
+}
+
+.project-details-steps-tick{
+    margin-right:5px ;
+}
+
+.project-details-steps-text-colored{
+    display: flex;
+    align-items: center;
+    color:#DE8500;
+}
+
+.project-details-steps-text{
+    display: flex;
+    align-items: center;
+    color:#636364;
+}
+
+.project-details-info-container{
+    width: 50%;
+    padding: 10px;
+    background: #d9d9d9;
+    border-radius: 10px;
+    margin-right:20px;
+    line-height: 1.8;
+}
+
+.project-details-btn-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

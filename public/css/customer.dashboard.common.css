@@ -122,3 +122,36 @@ left sub panel and the topic, left image and right image*/
 /* .btn-ban{
     display: none !important;
 } */
+.dashboard-main-container{
+    width: 70%;
+    height: 70%;
+    justify-items: center;
+    display: grid;
+    margin-right:50px;
+}
+
+.dashboard-common-heading-container{
+    display: flex;
+    width: 70%;
+    height: 90px;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-right: 50px;
+    justify-content: space-between;
+}
+
+.dashboard-common-heading-text{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 80%;
+    font-size: 22px;
+    margin-inline: 5px;
+}
+
+.dashboard-common-heading-back-btn{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+}
+

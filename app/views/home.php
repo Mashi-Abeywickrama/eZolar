@@ -14,14 +14,19 @@
             <p class="b1">
                 rent the sun
             </p>
-            <p class="b2">
+            <div class="div-b2"><p class="b2">
                 Invest in the sun and save the future.
-            </p>
+            </p></div>
             <button class="btn-ban"> Join now </button>
         </div>
    </div> 
    <div class="section2">
-
+        <div class="getin-head">
+            <p class="gp1">WELCOME TO eZolar </p>
+            <div class="gp2">One Sun | One Earth | Once in a lifetime investment</div>
+            <div>Solar power is the most affordable renewable energy source available to the general consumers. 
+                Do your part to save the earth by converting to Solar today.</div>
+        </div>
    </div>
    <div class="getin">
         <div class="getin-head">

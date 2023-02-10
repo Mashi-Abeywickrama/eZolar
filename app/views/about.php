@@ -11,44 +11,23 @@
    <div class = "section1">
         <img src="<?=URLROOT?>/public/img/landings/homebg1.png" alt="">
         <div class="ban-con">
-            <p class="b2">
-                Invest in the sun and save the future.
-            </p>
+            <div class="div-b2"><p class="b2">
+                What is eZolar?
+            </p></div>
             <button class="btn-ban"> Join now </button>
         </div>
     </div>
-    <div class="section2"></div>
-    <div class="getin">
+    <div class="section3">
         <div class="getin-head">
-            <p class="gp1">Get in touch</p>
-            <p class="gp2">Contact</p>
-            </div>
-            <div class="contact-details">
-                <div class="phone">
-                    
-                    <img src="../../../public/img/g1.png" alt="Phone icon">
-                    <h3>Phone</h3>
-                    <p>+94112369931-4</p>
-                </div>
-                <div class="locations">
-                    <img src="../../../public//img/g2.png" alt="Location icon">
-                    <h3>Location</h3>
-                    <p>Colombo 00500</p>
-                    <p>Sri Lanka</p>
-                </div>
-                <div class="email">
-                    <img src="../../../public/img/g3.png" alt="Email icon">
-                    <h3>Email</h3>
-                    <p>info@nbts.health.gov.lk</p>
-                </div>
-                <div class="clock">
-                    <img src="../../../public/img/g4.png" alt="Clock icon">
-                    <h3>Working Hours</h3>
-                    <p>Monday-Sunday: 9am-8pm</p>
-                </div>
-                
-            </div>
+            <p class="gp1">Who are we? </p>
+            <div class="gp2">Team eZolar is a,</div>
+            <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+</div>
         </div>
-    </div> 
+   </div>          
 </body>
 </html>

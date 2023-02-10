@@ -20,9 +20,7 @@ a:hover {
 .noti{
     margin-left: 25%;
 }
-.nav-btn2::after{
-    content: 'Log Out';
-}
+
 .nav-btn2:hover, .noti:hover{
     cursor: pointer;
     transform: scale(1.05);

@@ -51,6 +51,17 @@
         $this->inquiryModel->addInquiry($inputs);
 
     }
+    public function viewInquiry(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $data = [
+        'title' => 'eZolar NewInquiry',
+      ];
+      $this->view('Customer/viewinquiry', $data);
+
+    }
           // * * * * salesperson functions * * * *
           public function viewSalesperson(){
             if(!isLoggedIn()){

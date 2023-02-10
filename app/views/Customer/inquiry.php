@@ -87,7 +87,7 @@
                         </span>
                         <span class="inquiry-details-btn-container">
                             <div class="inquiry-details-btn">
-                                <span class="inquiry-details-btn-text">More info</span>
+                                <span class="inquiry-details-btn-text"><a href="ezolar/inquiry/viewInquiry" style ="color: #FFFFFF ">More info</a></span>
                             </div>
                         </span>
                         

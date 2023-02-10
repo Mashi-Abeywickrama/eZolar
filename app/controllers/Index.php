@@ -12,7 +12,7 @@ class Index extends Controller {
       $this->view('Includes/header', $data);
       // $this->view('Includes/footer', $data);
       $this->view('Includes/navbar1', $data);
-      // $this->view('Contractor/assignedProjects', $data);
+      // $this->view('Customer/viewinquiry', $data);
       $this->view('home', $data);
     }
     public function home(){
@@ -35,6 +35,7 @@ class Index extends Controller {
       $data = [
         'title' => 'eZolar about',
       ];
+      $this->view('Includes/header', $data);
       if(!isLoggedIn()){
 
         $this->view('Includes/navbar1', $data);
@@ -43,7 +44,6 @@ class Index extends Controller {
 
       } else {
 
-        $this->view('Includes/header', $data);
         $this->view('Includes/navbar', $data);
         $this->view('about', $data);
         $this->view('Includes/footer1', $data);

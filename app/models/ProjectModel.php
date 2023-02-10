@@ -47,6 +47,12 @@
       }
     }
 
+    public function getContractorProjects(){
+      $this->db->query('SELECT * FROM project');
+      $row = $this->db->resultSet([]);
+      return $row;
+
+  }
     public function getSalespersonProjects(){
       $this->db->query('SELECT * FROM project');
       $row = $this->db->resultSet([]);

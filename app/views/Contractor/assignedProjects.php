@@ -1,7 +1,7 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Customer\customerNavbar.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,20 +23,20 @@
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/project"><div class="box2">
+            <a href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class="box2">
                     Assigned Projects
                 </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
+                <a href="<?=URLROOT?>/"><div class="box3">
                     My Schedule
                 </div></a>
-                <div class="box4">
+                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
                     Report an Issue
-                </div>
+                </div></a>
             </div>
             <div class="rest-bottom">
-                <div class="box5">
+                <a href="<?=URLROOT?>/user/profile"><div class="box5">
                     Profile
-                </div>
+                </div></a>
                 <a href="<?=URLROOT?>/setting"> <div class="box6">
                     Settings
                 </div>
@@ -52,7 +52,7 @@
                 </a>
             </div>
             <div class="common-main-txt">
-                My Projects
+                Assigned Projects
             </div>
             
             <div class="common-main-right-img">

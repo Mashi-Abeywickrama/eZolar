@@ -48,6 +48,16 @@
         $this->projectModel->newProject($_POST);
 
     }
+    public function projectdetails(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $data = [
+        'title' => 'eZolar Request Project',
+      ];
+      $this->view('Customer/projectdetails', $data);
+    }
 
          // salesperson functions
 
@@ -59,6 +69,16 @@
               'title' => 'eZolar Salesperson Assigned Projects',
           ];
           $this->view('Salesperson/assigned-projects', $data);
+          }
+
+          public function COntractorAssignedProjects(){
+
+            $rows  = $this->projectModel->getContractorProjects();
+            $_SESSION['rows'] = $rows;
+            $data = [
+                'title' => 'eZolar COntractor Assigned Projects',
+            ];
+            $this->view('Contractor/assignedProjects', $data);
           }
 
   }

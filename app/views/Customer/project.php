@@ -88,7 +88,7 @@
                         </span>
                         <span class="project-details-btn-container">
                             <div class="project-details-btn">
-                                <span class="project-details-btn-text">More info</span>
+                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF">More info</a></span>
                             </div>
                         </span>
                         

@@ -33,6 +33,8 @@ class User extends Controller {
           $this->view('Admin/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
           $this->view('Engineer/dashboard', $title);
+        }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
+          $this->view('Salesperson/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
@@ -129,8 +131,15 @@ class User extends Controller {
       }
       
       $title = "edit profile";
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
 
-      $this->view('Customer/Settings/editprofile', $title);
+      if ($role == "Storekeeper"){
+        $this->view('Storekeeper/editprofile', $title);
+      }elseif ($role == "Customer"){
+        $this->view('Customer/Settings/editprofile', $title);
+      }if ($role == "Contractor"){
+        $this->view('Contractor/editprofile', $title);
+      }
       $inputs = array($_POST);
     print_r($_POST);
     die;
