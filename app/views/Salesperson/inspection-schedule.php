@@ -30,7 +30,7 @@ $calendar->create();
     </div>
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
-            <a href=""><div class="sidebar-link-container">
+            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
                     Assigned Projects
                 </div></a>
             <a href="/ezolar/Inquiry/viewSalesperson">

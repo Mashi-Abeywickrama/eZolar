@@ -22,7 +22,7 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     </div>
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
-            <a href=""><div class="sidebar-link-container">
+            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
                     Assigned Projects
                 </div></a>
             <a href="/ezolar/Inquiry/viewSalesperson">
@@ -30,15 +30,20 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
                     Inquiries
                 </div>
             </a>
-            <div class="sidebar-link-container">
-                Inspection Schedule
-            </div>
+
+                <div class="sidebar-link-container">
+                    Inspection Schedule
+                </div>
+
             <div class="sidebar-link-container">
                 Delivery Schedule
             </div>
+
+<a href="/ezolar/Employee/EngineersAndContractors">
             <div class="sidebar-link-container-selected">
                 Engineers & Contractors
             </div>
+</a>
         </div>
 
         <div class="sidebar-link-container-bottom">

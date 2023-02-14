@@ -13,7 +13,7 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\salesperson\assigned-project.css">
+    <link rel="stylesheet" href="\ezolar\public\css\salesperson\assigned-projects.css">
     <title>My Projects</title>
 </head>
 <body>

@@ -24,7 +24,7 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     </div>
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
-            <a href="/ezolar/Employee"><div class="sidebar-link-container">
+            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
                     Assigned Projects
                 </div></a>
             <div class="sidebar-link-container-selected">
