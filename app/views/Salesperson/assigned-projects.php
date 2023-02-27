@@ -76,47 +76,69 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
         </div>
     </div>
     <div class="project-list-container">
-        <!-- <div class="project-box">
-            <div class="project-text-container">
-                <div class="project-text-container-inner">
-                    <div class="project-text-no">project No. 123456</div>
-                    <div class="project-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                    <div class="project-text-price">Price: Rs. 30,000</div>
-                </div>
-                <div class="project-details-btn-container">
-                    <div class="project-details-btn">
-                        <div class="project-details-btn-text">More info</div>
-                    </div>
-                </div>
+
+        <div class="assigned-project-list-container">
+            <div class="project-list-topic">
+                My Projects
             </div>
-        </div> -->
 
-        <?php
-        $results = $_SESSION['rows'];
-        foreach($results as $row){
-            echo '<div class="project-box">
-                        <span class="project-text-container">
-                            <div class="project-text-container-inner">
-                                <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
-                                <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+            <?php
+            $results = $_SESSION['rows'];
+            foreach($results as $row){
+                if ($row -> Salesperson_Employee_empID != NULL)
+                echo '<div class="project-box">
+                            <div class="project-text-container">
+                                <div class="project-text-container-inner">
+                                    <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
+                                    <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                    <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                                </div>
                             </div>
-                        </span>
-                        <span class="project-details-btn-container">
-                            <div class="project-details-btn">
-                                <span class="project-details-btn-text">More info</span>
+                            <div class="project-details-btn-container">
+                                <a href="/ezolar/Project/getProjectDetails/'.$row -> projectID.'">
+                                    <div class="project-details-btn">
+                                        <div class="project-details-btn-text">More Info</div>
+                                    </div>
+                                </a>
                             </div>
-                        </span>
-                        
-                    </div>';
-        }
-        ?>
+                        </div>';
+            }
+            ?>
+        </div>
 
+        <div class="new-project-list-container">
+            <div class="project-list-topic">
+                New Projects
+            </div>
+
+            <?php
+            $results = $_SESSION['rows'];
+            foreach($results as $row){
+                if ($row -> Salesperson_Employee_empID == NULL)
+                echo '<div class="project-box-new">
+                            <div class="project-text-container">
+                                <div class="project-text-container-inner">
+                                    <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
+                                    <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                    <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                                </div>
+                            </div>
+                            <div class="project-details-btn-container">
+                                <a href="/ezolar/Project/salespersonAssignedProject/'.$row -> projectID.'">
+                                    <div class="project-details-btn-new">
+                                        <div class="project-details-btn-text">Take Project</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>';
+            }
+            ?>
+        </div>
     </div>
 </div>
 </body>
 <?php
-$this->view('Includes/footer', $data);
+//$this->view('Includes/footer', $data);
 ?>
 </html>
 

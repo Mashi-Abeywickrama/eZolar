@@ -34,8 +34,8 @@ class User extends Controller {
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
           $this->view('Engineer/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
-          $this->view('Salesperson/dashboard', $title);
-        }else{
+            $this->view('Salesperson/dashboard', $title);
+        } else{
           $this->view('Customer/dashboard', $title);
         }
       }
@@ -117,7 +117,9 @@ class User extends Controller {
         $this->view('Admin/myProfile', $title);
       }elseif ($role == "Engineer"){
         $this->view('Engineer/profile', $title);
-      }else{
+      }elseif ($role == "Salesperson") {
+          $this->view('Salesperson/profile', $title);
+      } else {
         $this->view('Customer/Settings/profile', $title);
       }
       
@@ -133,17 +135,21 @@ class User extends Controller {
       $title = "edit profile";
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
 
-      if ($role == "Storekeeper"){
-        $this->view('Storekeeper/editprofile', $title);
-      }elseif ($role == "Customer"){
-        $this->view('Customer/Settings/editprofile', $title);
-      }if ($role == "Contractor"){
-        $this->view('Contractor/editprofile', $title);
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      $user_Id = $this->userModel->getUserID($_SESSION['user_email']);
+
+      $inputs = ($_POST);
+      if ($this->userModel->editProfile($inputs,$role,$user_Id)){
+          if ($role == "Storekeeper"){
+              $this->view('Storekeeper/editprofile', $title);
+          }elseif ($role == "Customer"){
+              $this->view('Customer/Settings/editprofile', $title);
+          }elseif ($role == "Contractor"){
+              $this->view('Contractor/editprofile', $title);
+          }elseif ($role == "Salesperson"){
+              $this->view('Salesperson/editProfile',$title);
+          }
       }
-      $inputs = array($_POST);
-    print_r($_POST);
-    die;
-    $this->userModel->editProfile($inputs);
     }
 
     public function createUserSession($user){

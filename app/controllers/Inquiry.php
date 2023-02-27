@@ -1,6 +1,6 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-  require_once(__ROOT__.'\app\helpers\session_helper.php');
+  require_once(__ROOT__.'/app/helpers/session_helper.php');
 
   class Inquiry extends Controller {
     public function __construct(){ 
@@ -63,18 +63,45 @@
 
     }
           // * * * * salesperson functions * * * *
-          public function viewSalesperson(){
-            if(!isLoggedIn()){
-    
-                redirect('login');
-            }
-    
-            $rows  = $this->inquiryModel-> getSalespersonInquiries();
-            $_SESSION['rows'] = $rows;
-            $data = [
-                'title' => 'eZolar View Inquiries',
-            ];
-            $this->view('Salesperson/inquiries', $data);
+
+    public function getSalespersonInquiries(){
+        if(!isLoggedIn()){
+            redirect('login');
+        }
+        $rows  = $this->inquiryModel->getSalespersonInquiries();
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'eZolar View Inquiries',
+        ];
+        $this->view('Salesperson/inquiries', $data);
     
         }
+
+    public function viewInquiry($inquiryID){
+        if(!isLoggedIn()){
+            redirect('login');
+        }
+        $rows  = $this->inquiryModel->viewInquiries($inquiryID);
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'eZolar respond Inquiries',
+        ];
+        $this->view('Salesperson/respond-inquiries', $data);
+    }
+
+    public function respondInquiry($inquiryID){
+        if(!isLoggedIn()){
+            redirect('login');
+        }
+
+        $salesperson_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
+        $response = $_POST['response'];
+
+        $inputs = array($response,$salesperson_Id);
+        $this->inquiryModel->respondInquiries($inquiryID,$inputs);
+
+        redirect("Inquiry/getSalespersonInquiries");
+    }
+
+
   }

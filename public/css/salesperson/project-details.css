@@ -1,0 +1,233 @@
+.dashboard-common-heading-and-background-container{
+    width: 80%;
+    max-width: 1000px;
+    min-width: 800px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.project-list-container{
+    margin-top: 20px;
+    height: 55vh;
+    /* min-height: 400px; */
+    /* max-height: 500vh; */
+    width: 80%;
+    /* min-width: 500px; */
+    /* max-width: 1000px; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/*.project-list-container::-webkit-scrollbar {
+    display: none;
+}*/
+
+.box2{
+    color: #ffffff;
+    background-color: #0b2f64;
+}
+
+.project-box{
+    display: flex;
+    justify-content: space-evenly;
+    /* height: 120px; */
+    width: 90%;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.project-text-container{
+    display: flex;
+    height: 90px;
+    width: 75%;
+    /* min-width: 250px; */
+    /* max-width: calc(100% - 280px); */
+    margin-top: 5px;
+    margin-left: 5px;
+    /* overflow: auto; */
+}
+.project-text-container-inner{
+    display: flex;
+    /* height: inherit; */
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.project-details-btn-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    height: 42%;
+    /* height: 42px; */
+    width: auto;
+    min-width: 112px;
+    margin-bottom: 40px;
+    /* margin-left: 5px; */
+    /* overflow: auto;  */
+}
+.project-details-btn{
+    display: flex;
+    /* height: 40px; */
+    height: 4vh;
+    width: 8vw;
+    /* width: 110px; */
+    background: #2C61A3;
+    border-radius: 20px;
+    color: #FFFFFF;
+    justify-content: center;
+}
+.project-details-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
+.project-details-btn-text{
+    align-self: center;
+}
+
+.add-project-btn{
+    display: flex;
+    height: 40px;
+    width: 200px;
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF !important;
+    justify-content: center;
+    margin-top: 2%;
+    /* margin-top: -50px; */
+}
+.add-project-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+.add-project-btn-text{
+    align-self: center;
+}
+
+.project-text-no{
+    margin: 5px;
+    font-size: 16px;
+}
+
+.project-text-name{
+    margin: 5px;
+    font-size: 22px;
+    font-style: bold;
+}
+
+.project-text-price{
+    margin: 5px;
+    font-size: 18px;
+}
+
+a{
+    text-decoration: none;
+    color: #0B2F64;
+}
+.add-project-btn a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.project-progress-bar-wrapper{
+    width:80%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-progress-bar-container{
+    width:100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.project-progress-bar{
+    background: #d9d9d9;
+    width: 92%;
+    height: 10px;
+    margin-top: -67px;
+}
+
+.project-progress-bar-bullet-container{
+    width:50px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-progress-bar-bullet{
+    height: 35px;
+    width: 35px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+.project-progress-bar-bullet-highlighted{
+    height: 35px;
+    width: 35px;
+    background-color: #DE8500;
+    border-radius: 50%;
+}
+.project-progress-bar-bullet-text{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+}
+
+.project-details-inline{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    min-height: 200px;
+    margin-top: 60px;
+}
+
+.project-details-steps-container{
+    display: grid;
+    width: 35%;
+    line-height: 2.5;
+    padding: 20px;
+    font-size: 20px
+}
+
+.project-details-steps-tick{
+    margin-right:5px ;
+}
+
+.project-details-steps-text-colored{
+    display: flex;
+    align-items: center;
+    color:#DE8500;
+}
+
+.project-details-steps-text{
+    display: flex;
+    align-items: center;
+    color:#636364;
+}
+
+.project-details-info-container{
+    width: 50%;
+    padding: 10px;
+    background: #d9d9d9;
+    border-radius: 10px;
+    margin-right:20px;
+    line-height: 1.8;
+}
+
+.project-details-btn-container{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

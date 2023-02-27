@@ -1,8 +1,8 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'/app/views/Includes/header.php');
+require_once(__ROOT__.'/app/views/Includes/navbar.php');
+require_once(__ROOT__.'/app/views/Includes/footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -22,20 +22,19 @@
     <div class="sidebar-heading">
         <b>Admin Dashboard</b>
     </div>
-<!--    Side Bar-->
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
             <a href="/ezolar/Employee">
-                <div class="sidebar-link-container">
+                <div class="sidebar-link-container-selected">
                     Employees
                 </div>
             </a>
-            <a href="/ezolar/Package">
+            <a href=/ezolar/Package>
                 <div class="sidebar-link-container">
                     Packages
                 </div>
             </a>
-            <a href="/ezolar/Product">
+            <a href=/ezolar/Product>
                 <div class="sidebar-link-container">
                     Products
                 </div>
@@ -46,39 +45,42 @@
         </div>
 
         <div class="sidebar-link-container-bottom">
-            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container-selected">
-                Profile
-            </div></a>
-            <div class="sidebar-link-container">
-                Settings
-            </div>
+            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
+                    Profile
+                </div>
+                <div class="sidebar-link-container">
+                    Settings
+                </div>
         </div>
     </div>
 </div>
 <div class="common-main-container">
-    <div class="dashboard-common-main-topic">
-        <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
-                <img src="\ezolar\public\img\admin\profile.png" alt="employee-icon">
-            </a>
+    <div class="dashboard-common-heading-and-background-container">
+        <div class="dashboard-common-heading-container">
+            <div class="dashboard-common-heading-back-btn">
+                <a href="/ezolar/Employee/">
+                    <img src="\ezolar\public\img\admin\back.png">
+                </a>
+            </div>
+            <div class="dashboard-common-heading-text">
+                <b>View Employee Profile</b>
+            </div>
+            <div class="dashboard-common-heading-image">
+<!--                <a href=”” “text-decoration: none”>-->
+                    <img src="\ezolar\public\img\admin\edit.png" alt="edit-icon">
+<!--                </a>-->
+            </div>
+
         </div>
-        <div class="common-main-txt">
-            My Profile
-        </div>
-
-        <div class="common-main-right-img">
-            <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>
-    </div>
 
 
 
 
 
-        <?php
-        $results = $_SESSION['rows'];
-        foreach($results as $row){
-            echo '
+    <?php
+    $results = $_SESSION['rows'];
+    foreach($results as $row){
+        echo '
     <div class="profile-container">
         <div class="profile-container-image">
             <div class="profile-container-content">
@@ -106,39 +108,61 @@
                             <div class="form-item-text">
                                 Email :
                             </div>
-                            <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $row -> email . '" readonly>
+                            <input class="form-item-input" name="name" id="name" type="text" value="' . $row -> email . '" readonly>
                         </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 Contact Number :
                             </div>
-                            <input class="form-item-input" name="telno" id="telno" type="text" placeholder="' . $row -> telno . '" readonly>
+                            <input class="form-item-input" name="nic" id="nic" type="text" value="' . $row -> telno . '" readonly>
                         </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 NIC :
                             </div>
-                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> nic . '" readonly>
+                            <input class="form-item-input" name="nic" id="nic" type="text" value="' . $row -> nic . '" readonly>
+                        </div>
+
+                        <div class="form-item-container">
+                            <div class="form-item-text">
+                                Bio :
+                            </div>
+                            <textarea class="form-item-input" name="bio" id="bio" rows="5" cols="50" readonly>' . $row -> bio . '</textarea>
                         </div>
 
                     </div>
 
                 </form>
-               
                 
-                    <a href="/ezolar/AdminEditProfile">
-                        <button class="edit-profile-btn">Edit Profile</button>
-                    </a>
+                    <div class="form-inline-button">
+                         
+                        <a href="/ezolar/Employee/editEmployeeView/'.$row -> empID.'">
+                            <button class="edit-profile-btn">Edit Profile</button>
+                        </a>
+                    
+                        <a href="/ezolar/Employee/deleteEmployee/'.$row -> empID.'">
+                            <button class="delete-profile-btn">Detele Profile</button>
+                        </a>
+                    </div>
+                
+                
+               
             </div>
         </div>
     </div>
 ';
-        }
-        ?>
+    }
+    ?>
 
-
+    </div>
 </div>
 </body>
 </html>
+
+<!--<a href="ezolar/Employee/editEmployeeView/'.$row -> empID.'">-->
+<!--    <button class="edit-profile-btn">Edit Profile</button>-->
+<!--</a>-->
+
+

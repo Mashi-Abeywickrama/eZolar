@@ -1,8 +1,8 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'/app/views/Includes/header.php');
+require_once(__ROOT__.'/app/views/Includes/navbar.php');
+require_once(__ROOT__.'/app/views/Includes/footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
             <a href="/ezolar/Employee">
-                <div class="sidebar-link-container">
+                <div class="sidebar-link-container-selected">
                     Employees
                 </div>
             </a>
@@ -46,12 +46,12 @@
         </div>
 
         <div class="sidebar-link-container-bottom">
-            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container-selected">
-                Profile
-            </div>
-            <div class="sidebar-link-container">
-                Settings
-            </div>
+            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
+                    Profile
+                </div>
+                <div class="sidebar-link-container">
+                    Settings
+                </div>
         </div>
     </div>
 </div>
@@ -59,47 +59,60 @@
     <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
-                <a href="/ezolar/AdminViewProfile" “text-decoration: none”>
-                    <img src="\ezolar\public\img\admin\back.png">
+                <?php
+                $results = $_SESSION['rows'];
+                foreach($results as $row){
+                    echo '
+                    <a href="/ezolar/Employee/EmployeeDetails/' . $row -> empID . '">
+    ';
+    }
+    ?>
+                <img src="\ezolar\public\img\admin\back.png">
                 </a>
             </div>
             <div class="dashboard-common-heading-text">
-                <b>Edit My Profile</b>
+                <b>Edit Employee Profile</b>
             </div>
             <div class="dashboard-common-heading-image">
-                <a “text-decoration: none”>
-                    <img src="\ezolar\public\img\setting\Edit.png" alt="edit-icon">
-                </a>
+<!--                <a href=”” “text-decoration: none”>-->
+                    <img src="\ezolar\public\img\admin\edit.png" alt="edit-icon">
+<!--                </a>-->
             </div>
 
         </div>
 
 
-
+    <?php
+    $results = $_SESSION['rows'];
+    foreach($results as $row){
+        echo '
     
     <div class="form-background">
 
-        <form class="form-container" action="/ezolar/AdminEditProfile/editProfile" method="POST">
-            <?php $results = $_SESSION['rows'];
-            foreach($results as $row){
-                echo '
-
+        <form class="form-container" action="/ezolar/Employee/editEmployee/' . $row -> empID . '" method="POST">
             <div class="form-inline">
-
                 <div class="form-item-container-half">
                     <div class="form-item-text">
                         Name :
-                        <span class="err-box" class="fullnameErr" id="fullname-err"></span>
+                        <span class="err-box" name="fullnameErr" id="fullname-err"></span>
                     </div>
                     <input class="form-item-input" name="name" id="name" type="text" value="' . $row -> name . '"  onkeyup="validateFullName()" required>
                 </div>
-
                 <div class="form-item-container-half">
                     <div class="form-item-text">
                         Tel No :
-                        <span class="err-box" class="mobileErr" id="mobile-err"></span>
+                        <span class="err-box" name="mobileErr" id="mobile-err"></span>
                     </div>
                     <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row -> telno . '"  onkeyup="validateTelNo()" required>
+                </div>
+            </div>
+            <div class="form-inline">
+                <div class="form-item-container">
+                    <div class="form-item-text">
+                        Email :
+                        <span class="err-box" name="emailErr" id="email-err"></span>
+                    </div>
+                    <input class="form-item-input" name="email" id="email" type="text" value="' . $row -> email . '" onkeyup="validateEmail()" required>
                 </div>
             </div>
             <div class="form-inline">
@@ -110,10 +123,6 @@
                     <textarea class="form-item-input" name="bio" id="bio" rows="5" cols="50" >' . $row -> bio . ' </textarea>
                 </div>
             </div>
-            
-
-                            ';} ?>
-
 
             <div class="form-inline-button">
                 <div class="cancel-btn">
@@ -123,28 +132,16 @@
                     <button type="submit" class="form-submit-btn" onclick="return validateEditProfile()">Submit</button>
                 </div>
             </div>
-
         </form>
     </div>
-
-
-
-
-
+    ';
+    }
+    ?>
     </div>
+
 </div>
-    <script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
+<script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
 
 </body>
 </html>
 
-
-<?php
-//$results = $_SESSION['rows'];
-//foreach($results as $row){
-//    echo '
-//
-//
-//                    ';
-//}
-//?>

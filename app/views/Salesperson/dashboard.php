@@ -1,8 +1,8 @@
 <?php
 //      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+require_once(__ROOT__.'/app/views/Includes/header.php');
+require_once(__ROOT__.'/app/views/Includes/navbar.php');
+require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     </div>
     <div class="dashboard-container-nav" align="center">
 
-        <a href="/ezolar/Project/SalespersonAssignedProjects">
+        <a href="/ezolar/Project/SalespersonViewProjects">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt" >
                     Assigned Projects
@@ -38,7 +38,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </a>
 
-        <a href="/ezolar/Inquiry/viewSalesperson">
+        <a href="/ezolar/Inquiry/getSalespersonInquiries">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Inquiries

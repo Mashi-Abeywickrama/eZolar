@@ -75,17 +75,19 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
         $results = $_SESSION['rows'];
         foreach($results as $row){
             echo '<div class="inquiry-box">
-                        <span class="inquiry-text-container">
+                        <div class="inquiry-text-container">
                             <div class="inquiry-text-container-inner">
                                 <div class="inquiry-text-no">Type:' .  $row -> name . '</div>
                                 <div class="inquiry-text-name"><b>Topic :' . $row -> topic . '</b></div>
                             </div>
-                        </span>
-                        <span class="inquiry-details-btn-container">
-                            <div class="inquiry-details-btn">
-                                <span class="inquiry-details-btn-text">Respond</span>
-                            </div>
-                        </span>
+                        </div>
+                        <div class="inquiry-details-btn-container">
+                            <a href="/ezolar/Inquiry/viewInquiry/'.$row -> inquiryID.'">
+                                <div class="inquiry-details-btn">
+                                    <div class="inquiry-details-btn-text">Respond</div>
+                                </div>
+                            </a>
+                        </div>
                         
                     </div>';
         }

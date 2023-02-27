@@ -8,6 +8,6 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'https://localhost/ezolar');
+  define('URLROOT', 'http://localhost/ezolar');
   // Site Name
   define('SITENAME', 'eZolar');

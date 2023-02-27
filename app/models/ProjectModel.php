@@ -47,17 +47,30 @@
       }
     }
 
-    public function getContractorProjects(){
+    // projects which assigned a salesperson
+//    public function getSalespersonAssignedProjects($salespersonID){
+//      $this->db->query('SELECT * FROM project WHERE Salesperson_Employee_empID = :salespersonID');
+//      $row = $this->db->resultSet(['salespersonID'=>$salespersonID]);
+//      return $row;
+//  }
+
+
+  public function SalespersonViewProjects(){
+//      $this->db->query('SELECT * FROM project WHERE Salesperson_Employee_empID IS NULL');
       $this->db->query('SELECT * FROM project');
       $row = $this->db->resultSet([]);
       return $row;
-
   }
-    public function getSalespersonProjects(){
-      $this->db->query('SELECT * FROM project');
-      $row = $this->db->resultSet([]);
-      return $row;
 
+  public function salespersonAssignedProject($salespersonID,$projectID){
+      $this->db->query('UPDATE project SET Salesperson_Employee_empID = :salespersonID WHERE projectID = :projectID');
+      $this->db->execute(['salespersonID' => $salespersonID,'projectID' => $projectID]);
+  }
+
+  public function getProjectDetails($projectID){
+      $this->db->query('SELECT * FROM project WHERE projectID = :projectID');
+      $row = $this->db->resultSet(['projectID' => $projectID]);
+      return $row;
   }
 
   }
