@@ -233,31 +233,10 @@ function validateEditProfile(){
         return true;
     }
 }
-function validatePassword(){
-    if(!validatefName || !validateTelNo){
-        document.querySelector(".form-submit-btn").disabled = true;
-        return false;
-    }
-    else{
-        document.querySelector(".form-submit-btn").disabled = false;
-        return true;
-    }
-}
 function clearErrorMessage(){
     fnameErr.innerHTML = "";
     lnameErr.innerHTML = "";
     nicErr.innerHTML = "";
     emailErr.innerHTML = "";
+    fullnameErr.innerHTML = "";
 }
-
-
-// Once u clicked the OTP button, disable it
-const sendOTPbtn = document.getElementById('emailbtn');
-btn.addEventListener('click', () => {
-    // 👇️ hide button
-    sendOTPbtn.style.display = 'none';
-  
-    // 👇️ show div
-    const box = document.getElementById('box');
-    box.style.display = 'block';
-  });

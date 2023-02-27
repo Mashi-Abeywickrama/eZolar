@@ -1,8 +1,8 @@
 <?php
 //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+require_once(__ROOT__.'/app/views/Includes/header.php');
+require_once(__ROOT__.'/app/views/Includes/navbar.php');
+require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +82,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                             </div>
                         </div>
                         <div class="inquiry-details-btn-container">
-                            <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$row -> inquiryID.'">
+                            <a href="/ezolar/Inquiry/viewInquiry/'.$row -> inquiryID.'">
                                 <div class="inquiry-details-btn">
                                     <div class="inquiry-details-btn-text">Respond</div>
                                 </div>

@@ -1,6 +1,6 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-  require_once(__ROOT__.'\app\helpers\session_helper.php');
+  require_once(__ROOT__.'/app/helpers/session_helper.php');
 
   class Inquiry extends Controller {
     public function __construct(){ 
@@ -82,8 +82,8 @@
         $this->view('Salesperson/inquiries', $data);
     
         }
-//change the name
-    public function viewSalespersonInquiry($inquiryID){
+
+    public function viewInquiry($inquiryID){
         if(!isLoggedIn()){
             redirect('login');
         }
@@ -110,18 +110,4 @@
     }
 
 
-    public function viewSalesperson(){
-        if(!isLoggedIn()){
-
-            redirect('login');
-        }
-
-        $rows  = $this->inquiryModel-> getSalespersonInquiries();
-        $_SESSION['rows'] = $rows;
-        $data = [
-            'title' => 'eZolar View Inquiries',
-        ];
-        $this->view('Salesperson/inquiries', $data);
-
-    }
   }
