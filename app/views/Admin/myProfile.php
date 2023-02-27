@@ -1,8 +1,8 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\myProfile.css">
+    <link rel="stylesheet" href="\ezolar\public\css\common\profile.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <title>My Projects</title>
 </head>
@@ -25,15 +25,21 @@
 <!--    Side Bar-->
     <div class="sidebar-link-container-group">
         <div class="sidebar-link-container-top">
-            <a href="/ezolar/Employee"><div class="sidebar-link-container">
-                Employees
-            </div></a>
-            <div class="sidebar-link-container">
-                Packages
-            </div>
-            <div class="sidebar-link-container">
-                Products
-            </div>
+            <a href="/ezolar/Employee">
+                <div class="sidebar-link-container">
+                    Employees
+                </div>
+            </a>
+            <a href="/ezolar/Package">
+                <div class="sidebar-link-container">
+                    Packages
+                </div>
+            </a>
+            <a href="/ezolar/Product">
+                <div class="sidebar-link-container">
+                    Products
+                </div>
+            </a>
             <div class="sidebar-link-container">
                 Reports
             </div>
@@ -101,14 +107,14 @@
                                 Email :
                             </div>
                             <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $row -> email . '" readonly>
-                        </div><br>
+                        </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 Contact Number :
                             </div>
                             <input class="form-item-input" name="telno" id="telno" type="text" placeholder="' . $row -> telno . '" readonly>
-                        </div><br>
+                        </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
@@ -120,13 +126,10 @@
                     </div>
 
                 </form>
+               
                 
                     <a href="/ezolar/AdminEditProfile">
-                        <div class="edit-profile-btn">
-                            <div class="edit-profile-btn-text">
-                                Edit Profile
-                            </div>
-                        </div>
+                        <button class="edit-profile-btn">Edit Profile</button>
                     </a>
             </div>
         </div>

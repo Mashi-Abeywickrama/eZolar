@@ -23,17 +23,16 @@ class AdminEditProfileModel{
 
     public function editProfile($data){
 
+        $this->db->query('UPDATE employee,employee_telno
+            SET employee_telno.telno = :telno,employee.name = :name,employee.bio = :bio
+            WHERE employee.empID = employee_telno.Employee_empID 
+            AND employee.empID = :userid;');
+        $this->db->execute(['name' => $data[0], 'bio' => $data[1],'telno' => $data[2],'userid' => $data[3]]);
 
-
-//        $this->db->query('SELECT `userID` FROM user WHERE email = :email');
-//        $userid  =($this->db->single(['email'=> $data[1]]));
-//        print_r($userid);
-
-
-        $this->db->query('UPDATE employee SET name = :name,bio = :bio WHERE empID = :userid');
-        $this->db->execute(['userid' => $data[3],'name' => $data[0],'bio' => $data[1]]);
-        $this->db->query('UPDATE employee_telno SET telno = :telno WHERE Employee_empID = :userid');
-        $this->db->execute(['userid' => $data[3],'telno' => $data[2]]);
+//        $this->db->query('UPDATE employee SET name = :name,bio = :bio WHERE empID = :userid');
+//        $this->db->execute(['userid' => $data[3],'name' => $data[0],'bio' => $data[1]]);
+//        $this->db->query('UPDATE employee_telno SET telno = :telno WHERE Employee_empID = :userid');
+//        $this->db->execute(['userid' => $data[3],'telno' => $data[2]]);
     }
 
 

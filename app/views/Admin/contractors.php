@@ -1,8 +1,8 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,15 +23,23 @@
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container-selected">
+                <a href="/ezolar/Employee">
+                    <div class="sidebar-link-container-selected">
                     Employees
-                </div>
-                <div class="sidebar-link-container">
-                    Packages
-                </div>
-                <div class="sidebar-link-container">
-                    Products
-                </div>
+                    </div>
+                </a>
+
+                <a href="/ezolar/Package">
+                    <div class="sidebar-link-container">
+                        Packages
+                    </div>
+                </a>
+
+                <a href="/ezolar/Product">
+                    <div class="sidebar-link-container">
+                        Products
+                    </div>
+                </a>
                 <div class="sidebar-link-container">
                     Reports 
                 </div>

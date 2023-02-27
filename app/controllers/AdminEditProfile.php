@@ -23,13 +23,18 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
     }
 
     public function editProfile(){
+        if (!isLoggedIn()){
+            redirect('login');
+        }
+
         $name = $_POST['name'];
         $bio = $_POST['bio'];
-        $telno = $_POST['telno'];
+        $telno = $_POST['mobile'];
         $user_Id = $this->adminEditProfileModel->getUserID([$_SESSION['user_email']]);
 
         $inputs = array($name,$bio,$telno,$user_Id);
         $this->adminEditProfileModel->editProfile($inputs);
+        redirect("AdminViewProfile");
 
     }
 

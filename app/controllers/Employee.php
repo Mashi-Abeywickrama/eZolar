@@ -86,17 +86,6 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
             }
         }
 
-
-//        if (!isLoggedIn()){
-//            redirect('login');
-//        }
-//      $rows  = $this->employeeModel-> getAllEngineers();
-//      $_SESSION['rows'] = $rows;
-//      $data = [
-//        'title' => 'ezolar Engineers',
-//      ];
-//
-//      $this->view('Admin/engineers', $data);
     }
 
     public function storekeepers(){
@@ -147,18 +136,32 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
             }
         }
 
+    }
 
+    // **********************
+    public function getEmployees($empType){
+        if(!isLoggedIn()){
+            redirect('login');
+        }
 
-//        if (!isLoggedIn()){
-//            redirect('login');
-//        }
-//      $rows  = $this->employeeModel-> getAllContractors();
-//      $_SESSION['rows'] = $rows;
-//      $data = [
-//        'title' => 'ezolar Contractors',
-//      ];
-//
-//      $this->view('Admin/contractors', $data);
+        $_SESSION['row'] = ucfirst($empType).'s';
+        if ($empType == 'salesperson'){
+            $_SESSION['row'] = 'Salespeople';
+        }
+
+        $rows  = $this->employeeModel-> getEmployees($empType);
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'ezolar Employee lists',
+        ];
+
+        if ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Admin"){
+            $this->view('Admin/employee-list', $data);
+        }
+        elseif (($this->employeeModel->getUserRole($_SESSION['user_email']) == "Salesperson")){
+            $this->view('Salesperson/'.$empType, $data);
+        }
+
     }
 
     public function EngineersAndContractors(){
@@ -171,6 +174,65 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
 
         $this->view('Salesperson/engineers-contractors', $data);
     }
+
+    public function EmployeeDetails($empID){
+
+
+        if (!isLoggedIn()){
+            redirect('login');
+        }
+        $rows  = $this->employeeModel-> getEmployeeDetails($empID);
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'ezolar employee details',
+        ];
+
+        $this->view('Admin/employee-details', $data);
+
+    }
+
+    public function editEmployeeView($empID){
+        if (!isLoggedIn()){
+            redirect('login');
+        }
+
+        $rows  = $this->employeeModel->getEmployeeDetails($empID);
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'ezolar Edit employee Profile',
+        ];
+        $this->view('Admin/edit-employee-details', $data);
+
+    }
+
+    public function editEmployee($empID){
+        if (!isLoggedIn()){
+            redirect('login');
+        }
+
+        $name = $_POST['name'];
+        $bio = $_POST['bio'];
+        $telno = $_POST['mobile'];
+        $email = $_POST['email'];
+
+        $inputs = array($name,$bio,$telno,$email);
+        $this->employeeModel->editEmployee($empID,$inputs);
+        redirect('Employee/EmployeeDetails/'.$empID);
+    }
+
+    public function deleteEmployee($empID){
+        if (!isLoggedIn()){
+            redirect('login');
+        }
+        $this->employeeModel->deleteEmployee($empID);
+        $data = [
+            'title' => 'ezolar delete employees',
+        ];
+
+        redirect('Employee');
+    }
+
+
 
 
     // public function addSuccessful(){
