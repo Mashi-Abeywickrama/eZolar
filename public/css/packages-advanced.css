@@ -147,6 +147,7 @@
     margin-inline: 10px;
     font-weight: bold;
     margin-top: 15px;
+    text-align: center;
 }
 .form-table-body-container{
     overflow-x: hidden;
@@ -174,6 +175,33 @@
     margin-inline: 10px;
     margin-top: 5px;
     margin-bottom:5px;
+    text-align: center;
+}
+
+.pack-content-col1{
+    width :40%;
+}
+.pack-content-col2{
+    width :20%;
+}
+.pack-content-col3{
+    width :15%;
+}
+.pack-content-col4{
+    width:5%;
+}
+
+.inventory-col1{
+    width :30%;
+}
+.inventory-col2{
+    width :25%;
+}
+.inventory-col3{
+    width :18%;
+}
+.inventory-col4{
+    width :12%;
 }
 
 
@@ -240,4 +268,42 @@
     font-size: 0.7rem;
     color: #0B2F64;
     margin-left: 1%;
+}
+
+.form-idgen-btn{
+    width:7%;
+    height: 44px;
+    border-radius: 5px;
+    background: #2C61A3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-idgen-btn:hover{
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
+.form-idgen-img{
+    height: 70%;
+}
+
+.form-idgen-inline{
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-item-remover-container{
+    height: 19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-item-remover-icon{
+    height: 80%;
 }

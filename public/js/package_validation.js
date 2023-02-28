@@ -2,9 +2,11 @@ var pckidErr = document.getElementById("pckid-err");
 var packnameErr = document.getElementById("pckname-err");
 var pcktypeErr = document.getElementById("pck-type-err");
 var budgetErr = document.getElementById("price-rng-err");
+var pckidField = document.getElementById("pack-id");
 
 
-function validatePackageID(){
+
+function validatePackageID(IDs){
     var regName = /^[A-Za-z0-9]+$/;
     var packid = document.getElementById('pack-id').value;
     if(!regName.test(packid)){
@@ -18,7 +20,14 @@ function validatePackageID(){
             return false;
         }
         else{
+            if(IDs.includes(packid)){
+                pckidErr.innerHTML='Package ID already exist';
+                return false;
+            }
+            else
+            {
             return true;
+            }
         }
     }
 }
@@ -74,5 +83,27 @@ function validateForm(){
     }
     else{
         return true;
+    }
+}
+
+function generatePackageID(IDs){
+    var packType = document.getElementById('pack-type').value;
+    if(packType==''){
+        pckidErr.innerHTML='Package type should be selected before generating ID';
+    }
+    else{
+        pckidErr.innerHTML='';
+        var pckidprefix = packType.slice(0, 3).toUpperCase();
+        var pckidno = 1;
+        var pckid = pckidprefix.concat(String(pckidno).padStart(3, '0'));
+        while (IDs.includes(pckid)){
+            pckidno +=1;
+            pckid = pckidprefix.concat(String(pckidno).padStart(3, '0'));
+            if (pckidno>=999){
+                break;
+            }
+        }
+        pckidField.value = pckid;
+
     }
 }

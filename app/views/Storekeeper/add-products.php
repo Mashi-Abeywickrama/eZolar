@@ -72,7 +72,22 @@
                             <div class="form-item-text">
                                 Product ID:<span style="color:red;">*</span> <span class="err-box" id="pid-err"></span>
                             </div>
-                            <input class="form-item-input" name="product-id" id="product-id" type="text" placeholder="Enter Product ID" required onkeyup="validateProductID()">
+                            <div class="form-idgen-inline">
+                                <input class="form-item-input" name="product-id" id="product-id" type="text" placeholder="Enter Product ID" style="width:88%;" required onkeyup="validateProductID(<?php
+                                        $a = array();
+                                        if  (count($_SESSION['rows'])>0){
+                                            for ($x = 0; $x < count((array)$_SESSION['rows']); $x++) {
+                                                array_push($a,$_SESSION['rows'][$x]->productID);
+                                            }
+                                        }
+                                        //ignore the errors
+                                        $finalArray = "['" . implode ( "', '", $a ) . "']";
+                                        echo $finalArray
+                                        ?>)" >
+                                <div class="form-idgen-btn" title="Auto Generate ID" onclick="generateProductID(<?php echo $finalArray?>)">   
+                                    <img src="\ezolar\public\img\storekeeper\idgen.png" class="form-idgen-img">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-inline">
