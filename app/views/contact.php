@@ -12,17 +12,17 @@
         <img src="<?=URLROOT?>/public/img/landings/homebg1.png" alt="">
         <div class="ban-con">
             <div class="div-b2"><p class="b2">
-                Invest in the sun and save the future.
+                Just one call away from you.
             </p></div>
             <button class="btn-ban"> Join now </button>
         </div>
     </div>
     <div class="getin">
         <div class="getin-head">
-            <p class="gp1">Lrt's Get in Touch</p>
-            <p class="gp2">Contact</p>
-            <p class="gp2">We are Happy to Hear from You</p>
-            </div>
+            <p class="gp1">Let's Get in Touch</p>
+            <p class="gp2">Contact Us <br><br>
+            We are Happy to Hear from You!!!</p>
+        </div>
             <div class="contact-details">
                 <div class="phone">
                     

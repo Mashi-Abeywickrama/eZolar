@@ -5,7 +5,12 @@
     public function __construct(){
       $this->db = new Database;
     }
-
+    
+    public function getUserRole($email){
+      $this->db->query('SELECT type FROM user where email = :email');
+      $row = $this->db->single(['email' => $email]);
+      return ($row->type);
+    }
     public function addPackage($data){
       
       $this->db->query('INSERT INTO package(`packageID`,`name`, `type`,`budgetRange`) VALUES (:packID,:name_,:type_,:budget)'); 

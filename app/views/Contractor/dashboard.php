@@ -1,10 +1,8 @@
 <?php
-
-     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\views\Includes\header.php');
-     require_once(__ROOT__.'\views\Customer\customerNavbar.php');
-     require_once(__ROOT__.'\views\Includes\footer.php');
-
+     // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +27,7 @@
            </div>
         </div>
 
-        <a href="/ezolar/project"><div class="dashboard-container-content">
+        <a href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                Assigned Projects
            </div>
@@ -38,32 +36,32 @@
            </div>
         </div></a>
 
-        <a href="/ezolar/inquiry"> <div class="dashboard-container-content">
+        <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
             My Schedule
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Calendar.png" alt="Schedule">
            </div>
-        </div></a>
+        </div>
 
-        <div class="dashboard-container-content">
+        <a href="<?=URLROOT?>/Contractor/reportissue"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Report an Issue
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Issue.png" alt="Issues">
            </div>
-        </div>
+        </div></a>
 
-        <div class="dashboard-container-content">
+        <a href="<?=URLROOT?>/user/profile"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Profile
            </div>
            <div class="dashboard-container-img">
                 <img src="\ezolar\public\img\customer\Person.png" alt="profile">
            </div>
-        </div>
+        </div></a>
         
         <a href=""> <div class="dashboard-container-content">
            <div class="dashboard-container-txt">

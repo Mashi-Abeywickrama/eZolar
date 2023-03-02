@@ -5,6 +5,7 @@
   class Inquiry extends Controller {
     public function __construct(){ 
         $this->inquiryModel = $this->model('InquiryModel');
+        $this->userModel = $this->model('UserModel');
     }
     
     public function index(){
@@ -14,7 +15,7 @@
         redirect('login');
       }
 
-      $customer_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
+      $customer_Id = $this->userModel->getUserID2([$_SESSION['user_email']]);
       // print_r($customer_Id);die;
       $rows  = $this->inquiryModel-> getAllInquiries($customer_Id);
       $_SESSION['rows'] = $rows;
@@ -40,7 +41,7 @@
         redirect('login');
       }
       // print_r($_SESSION['user_email']);die();
-        $customer_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
+      $customer_Id = $this->userModel->getUserID2([$_SESSION['user_email']]);
         // print_r($_POST);die();
         $topic = $_POST['topic-box'];
         $type = $_POST['inquiry-type'];
@@ -51,8 +52,23 @@
         $this->inquiryModel->addInquiry($inputs);
 
     }
-          // * * * * salesperson functions * * * *
+    public function viewInquiry($id){
+      // print_r($id);die();
+      if(!isLoggedIn()){
 
+        redirect('login');
+      }
+      $data = [
+        'title' => 'eZolar NewInquiry',
+      ];
+      $rows = $this->inquiryModel->viewMore($id);
+      $_SESSION['rows'] = $rows;
+      $this->view('Customer/viewinquiry', $data);
+      // print_r($_SESSION['rows']);die;
+
+
+    }
+          // * * * * salesperson functions * * * *
     public function getSalespersonInquiries(){
         if(!isLoggedIn()){
             redirect('login');
@@ -65,7 +81,7 @@
         $this->view('Salesperson/inquiries', $data);
     
         }
-
+//change the name
     public function viewInquiry($inquiryID){
         if(!isLoggedIn()){
             redirect('login');
@@ -93,4 +109,18 @@
     }
 
 
+    public function viewSalesperson(){
+        if(!isLoggedIn()){
+
+            redirect('login');
+        }
+
+        $rows  = $this->inquiryModel-> getSalespersonInquiries();
+        $_SESSION['rows'] = $rows;
+        $data = [
+            'title' => 'eZolar View Inquiries',
+        ];
+        $this->view('Salesperson/inquiries', $data);
+
+    }
   }

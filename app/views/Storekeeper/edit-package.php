@@ -52,7 +52,9 @@
         <div class="dashboard-common-heading-and-background-container">
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href=”” “text-decoration: none”>
+                    <a href="/ezolar/Package/packageDetailspage/<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> packageID;?>" “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>

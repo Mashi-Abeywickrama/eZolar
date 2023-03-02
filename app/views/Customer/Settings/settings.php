@@ -16,12 +16,16 @@
     <title>eZolar Dashboard</title>
 </head>
 <body>
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -45,15 +49,16 @@
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
-            <div class="common-main-left-img">
-                <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\setting\Setting.png" alt="settings">
-                </a>
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\setting\Setting.png" alt="settings">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    Settings
+                </div>
             </div>
-            <div class="common-main-txt">
-                Settings
-            </div>
-            
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>   
@@ -102,5 +107,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

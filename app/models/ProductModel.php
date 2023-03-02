@@ -6,6 +6,11 @@
       $this->db = new Database;
     }
 
+    public function getUserRole($email){
+      $this->db->query('SELECT type FROM user where email = :email');
+      $row = $this->db->single(['email' => $email]);
+      return ($row->type);
+    }
     public function addProduct($data){
       
       $this->db->query('INSERT INTO product(`productID`,`productName`, `cost`,`manufacturer`,`quantity`) VALUES (:productID,:productName,:cost,:manufacturer,:quantity)');

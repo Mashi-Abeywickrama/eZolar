@@ -75,7 +75,9 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         $results = $_SESSION['rows'];
         foreach($results as $row){
             echo '<div class="inquiry-box">
+
                         <div class="inquiry-text-container">
+
                             <div class="inquiry-text-container-inner">
                                 <div class="inquiry-text-no">Type:' .  $row -> name . '</div>
                                 <div class="inquiry-text-name"><b>Topic :' . $row -> topic . '</b></div>

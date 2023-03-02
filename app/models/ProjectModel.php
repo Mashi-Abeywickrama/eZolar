@@ -46,6 +46,12 @@
           return false;
       }
     }
+     public function getContractorProjects(){
+      $this->db->query('SELECT * FROM project');
+      $row = $this->db->resultSet([]);
+      return $row;
+
+  }
 
     // projects which assigned a salesperson
 //    public function getSalespersonAssignedProjects($salespersonID){
@@ -57,6 +63,7 @@
 
   public function SalespersonViewProjects(){
 //      $this->db->query('SELECT * FROM project WHERE Salesperson_Employee_empID IS NULL');
+  
       $this->db->query('SELECT * FROM project');
       $row = $this->db->resultSet([]);
       return $row;

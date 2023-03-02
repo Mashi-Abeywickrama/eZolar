@@ -1,7 +1,5 @@
 <?php
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -16,13 +14,28 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <title>My Profile</title>
 </head>
 <body>
-
+    <?php
+        require_once(__ROOT__.'\app\views\popupList\profilePopup.php');
+        if (isset($_POST['sub'])) {
+            print_r("Shit");
+            echo '
+            <script>
+                document.getElementById('."'id01'".').style.display='."'block'".';
+            </script>
+            
+            ';
+        }
+    ?>
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -45,7 +58,6 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     </div>
 
 <div class="common-main-container">
-    <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
                 <a href="<?=URLROOT?>/user/profile" “text-decoration: none”>
@@ -62,7 +74,6 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
 
         </div>
-    </div>
 
 <?php
 $results = $_SESSION['rows'];
@@ -71,7 +82,7 @@ foreach($results as $row){
     
     <div class="form-background">
 
-        <form class="form-container" action="/ezolar/user/editProfile" method="POST">
+        <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -101,26 +112,47 @@ foreach($results as $row){
                     <div class="form-item-text">
                         NIC Number :
                     </div>
-                    <input class="form-item-input" name="nic" id="bio" type="nic" value="' . $row ->nic . '">
+                    <input class="form-item-input" name="nic" id="bio" type="nic" value="' . $row ->nic . '" readonly>
                 </div>
-            </div>
+                <div class="form-item-container">
+                    <div class="form-item-text">
+                        Click on the "Choose File" button to upload a profile image:
+                    </div>
+                    <input type="file"  id="file-input" name="fileToUpload" onchange="loadFile(this)">
+                </div>
+                <p><img scr="" id="output" width="200"/></p> '; ?>
+                <script>
+                    function loadFile(input) {
+                        if(input.files && input.files[0] ) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementById("output").src = e.target.result;
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
+            <?php echo '</div>
 
             <div class="form-inline-button">
                 <div class="cancel-btn">
                     <button class="form-cancel-btn" type="reset" value="reset" onclick="clearErrorMessage()">Cancel</button>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" class="form-submit-btn" onclick="return validateEditProfile()">Submit</button>
+                    <button type="submit" name="sub" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
                 </div>
             </div>
+            
         </form>
     </div>
     ';
 }
 ?>
 
-
-
+</div>
+</div>
+<div class = "f"> 
+    <?php require_once(__ROOT__.'\app\views\Includes\footer.php'); ?>
 </div>
 <script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
 </body>
