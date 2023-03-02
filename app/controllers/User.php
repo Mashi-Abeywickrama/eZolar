@@ -1,6 +1,6 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-  require_once(__ROOT__.'/app/helpers/session_helper.php');
+  require_once(__ROOT__.'\app\helpers\session_helper.php');
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
