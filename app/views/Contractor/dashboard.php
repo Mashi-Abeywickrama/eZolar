@@ -1,23 +1,15 @@
 <?php
-<<<<<<< HEAD
 
-=======
-<<<<<<< Updated upstream
->>>>>>> d60d267 (update employee,inquiries)
      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\views\Includes\header.php');
      require_once(__ROOT__.'\views\Customer\customerNavbar.php');
      require_once(__ROOT__.'\views\Includes\footer.php');
-<<<<<<< HEAD
-
-=======
 =======
      // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 require_once(__ROOT__.'/app/views/Includes/header.php');
      require_once(__ROOT__.'/app/views/Includes/navbar.php');
      require_once(__ROOT__.'/app/views/Includes/footer.php');
 >>>>>>> Stashed changes
->>>>>>> d60d267 (update employee,inquiries)
 ?>
 <!DOCTYPE html>
 <html lang="en">
