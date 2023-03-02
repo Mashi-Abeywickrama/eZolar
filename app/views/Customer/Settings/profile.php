@@ -1,8 +1,6 @@
 <?php
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
-
+// require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +14,16 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <title>My Profile</title>
 </head>
 <body>
-
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -44,22 +45,20 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         </div>
     </div>
 
-<div class="common-main-container">
-    <div class="dashboard-common-main-topic">
-        <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
-                <img src="\ezolar\public\img\customer\Person.png" alt="profile">
-            </a>
+    <div class="common-main-container">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\Person.png" alt="profile">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    My Profile
+                </div>
+            </div>
         </div>
-        <div class="common-main-txt">
-            My Profile
-        </div>
-
-        <div class="common-main-right-img">
-            <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>
-    </div>
-
+    
 
 
 
@@ -73,12 +72,13 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         <div class="profile-container-image">
             <div class="profile-container-content">
 
-                    <img class="profile-img" src="\ezolar\public\img\profile.png" alt="profile">
-<br>
+                <div class = "profile-img-div">
+                    <img class="profile-img" src="/ezolar/public/img/user-pics/'.$row->profile.'" alt="profile">
+                </div>
                 <div class="profile-container-txt">
                     <div class="profile-container-txt-name">
                         ' . $row -> name . '
-                    </div>    <br>
+                    </div>
                     <div class="profile-container-txt-type">
                         ' . $row -> address . '
                     </div>
@@ -138,6 +138,12 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         ?>
 
 
+</div>
+    </div>
+<div  class="f">
+    <?php
+require_once(__ROOT__.'\app\views\Includes\footer.php');
+?>
 </div>
 </body>
 </html>

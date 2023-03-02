@@ -8,12 +8,16 @@
     HIII
 </head>
 <body>
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -34,5 +38,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

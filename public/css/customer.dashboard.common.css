@@ -1,8 +1,33 @@
 body{
+    background-color: #F1F1F1;
     font-family: 'work sans';
 }
+.body-container-main{
 
+    /* background-color: yellow; */
+}
+.body-container{
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: auto;
+    /* height: 100%; */
+    justify-content: flex-start;
+    min-height: 695px;
+}
 /* this navigation bar is common for all customer dashboards */
+nav {
+    /* position: absolute; */
+    right: 0;
+    left: 0;
+    height: 75px;
+    color: #FCFEFE !important;
+    background-color: #0B2F64;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .btn2{
     display: flex;
     align-items: center;
@@ -26,94 +51,104 @@ body{
 /* this part is common for all customer dashboard contents..
 left sub panel and the topic, left image and right image*/
 .left-panel{
-    position: absolute;
-    /* width: 250px; */
-    min-width: 240px;
-    /* max-width: 380px; */
-    /* height: auto; */
-    height: 75%;
-    margin-top: 59px;
-    left: 0;
-    background: linear-gradient(268.65deg, #F1F1F1 0.5%, rgba(255, 255, 255, 0) 56.69%);
+    border-radius: 5px;
+    width: 18rem;
+    /* width: 18rem; */
+    /* height: 100%; */
+    background: white;
     mix-blend-mode: normal;
-    border: 2px solid #0B2F64;
+    /* border: 2px solid #0B2F64; */
     color: #0B2F64 !important;
+    box-shadow: 0px 4px 4px rgb(155 200 245 / 55%);
     font-weight: bold !important;
-    /* overflow-y: scroll; */
-    /* overflow-x: hidden; */
+
 }
 .sidebar::-webkit-scrollbar {
     display: none;
 }
 .box1{
-    margin-top: 10px;
-    padding-top: 15px;
-    padding-left: 5%;
-    /* padding-right: 3%; */
-    font-size: 22px;
-    height: 10%;
-    border-bottom: 2px solid #0B2F64;
+    display: flex;
+    font-size: 1.2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.5rem solid #F1F1F1;
+    align-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap
 }
 .rest{
-    font-size: 16px;
+    font-size: 0.9rem;
     display: flex;
     flex-direction: column;
     height: calc(100% - 98px);
+    justify-content: space-between;
+    flex-wrap: nowrap;
 }
 .rest-top, .rest-bottom{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
-.box2,.box3,.box4{
-    padding-top: 8%;
-    padding-left: 8%;
-    padding-bottom: 12px;
-    border-bottom: 2px solid #0B2F64;
-    height: 10%;
+.box2,.box3,.box4,.box5, .box6, .box7{
+    display: flex;
+    border-bottom: 0.5rem solid #F1F1F1;
+    align-content: space-around;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 1rem;
 }
 .box5{
-    margin-top: 90%;
-    padding-left: 8%;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    border-bottom: 2px solid #0B2F64;
-    border-top: 2px solid #0B2F64;
+    border-top: 0.5rem solid #F1F1F1;
 }
-.box6{
-    padding-left: 8%;
-    padding-top: 15px;
-    padding-bottom: 12px;
-
-}
-
 .common-main-container{
-    /* display: flex; */
-    display: grid;
-    margin: 5.8vh;
+    width: 100%;
+    display: flex;
+    /* display: grid; */
+    margin: 0 2.5vh 0;
+    flex-direction: column;
     justify-items: center;
-    margin-left: 250px;
+    /* margin-left: 250px; */
+    /* align-items: center; */
+    
 }
 .dashboard-common-main-topic{
-    align-self: center;
+    padding: 0.5rem;
+    background-color: white;
+    width: 96%;
     display: flex;
-    margin-left: 10px;
-    margin-top: 30px;
-    width: 80%;
+    /* padding: 1rem; */
+    /* display: grid; */
+    /* margin: 5.8vh; */
+    box-shadow: 0px 4px 4px rgb(155 200 245 / 50%);
+    justify-items: center;
+    justify-content: space-between;
+    /* margin-left: 250px; */
+    flex-direction: row;
+    border-radius: 5px;
 
 }
-.common-main-left-img{
-    margin-left: 2%;
-}
-.common-main-right-img{
-    margin-right: 2%;
+.common-main-topic-left{
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
 }
 .common-main-txt{
-    margin-right: 30%;
+    /* margin-right: 30%; */
     color: #0B2F64;
     font-size: 210%;
     /* font-size: 34px; */
     font-weight: bold;
-    margin-left: 2%;
-    width: 45%;
+    /* margin-left: 2%; */
+    /* width: 55%; */
+}
+.common-main-topic-left{
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    align-items: center;
 }
 .common-main-right-img:hover{
     cursor: pointer;
@@ -132,26 +167,38 @@ left sub panel and the topic, left image and right image*/
 
 .dashboard-common-heading-container{
     display: flex;
-    width: 70%;
-    height: 90px;
+    width: 85%;
+    height: 5.2rem;
     background: #F9F9F9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 10px;
-    margin-right: 50px;
     justify-content: space-between;
+    font-size: 1.75rem ;
 }
-
+.dashboard-common-heading-image{
+    display: flex;
+    padding: 2.5rem;
+    align-items: center;
+}
 .dashboard-common-heading-text{
-    margin-top: auto;
-    margin-bottom: auto;
-    width: 80%;
-    font-size: 22px;
-    margin-inline: 5px;
+    display: flex;
+    padding: 1rem;
+    /* font-size: 2rem; */
+    width: 85%;
+    /* margin-inline: 5px; */
+    align-items: center;
 }
 
 .dashboard-common-heading-back-btn{
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 20px;
+    display: flex;
+    padding: 1.5rem;
+    align-items: center;
+}
+.body-list-container{
+    margin-top: 20px;
+    height: 55vh;
+    align-self: center;
+    width: 80%;
+
 }
 

@@ -16,7 +16,7 @@
     <title>My Projects</title>
 </head>
 <body>
-
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Contractor Dashboard
@@ -39,27 +39,28 @@
                 </div></a>
                 <a href="<?=URLROOT?>/setting"> <div class="box6">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
-            <div class="common-main-left-img">
-                <a href=”#” “text-decoration: none”>
-                    <img src="\ezolar\public\img\customer\projects.png" alt="project">
-                </a>
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”#” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\projects.png" alt="project">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    Assigned Projects
+                </div>
             </div>
-            <div class="common-main-txt">
-                Assigned Projects
-            </div>
-            
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>   
         </div>
-        <div class="project-list-container">
+        <div class="body-list-container">
             <!-- <div class="project-box">
                 <div class="project-text-container">
                     <div class="project-text-container-inner">
@@ -98,6 +99,7 @@
             
         </div>
     </div>
+</div>
 </body>
 <?php 
       $this->view('Includes/footer', $data);

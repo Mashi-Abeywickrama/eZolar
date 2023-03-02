@@ -1,7 +1,5 @@
 <?php
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,15 +14,17 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <title>My newInquiry</title>
 </head>
 <body>
-<!--    to be done later
-    1. add links to left sub panel 
--->
+<div class = "body-container-main">
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -48,21 +48,22 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <!-- Remaining... -->
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
-            <div class="common-main-left-img">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
 <!-- need to embed the link of my profile in the image -->
-                <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
-                </a>
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    New Inquiry
+                </div>
             </div>
-            <div class="common-main-txt">
-                New Inquiry
-            </div>
-            
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>    
         </div>
-    </div>
+
     <div class="right-content">
         <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
             <div class="topic-container">
@@ -93,6 +94,15 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </form>
     </div>
-    <script src="public\js\validation.js"></script>
+</div>
+</div>
+<!-- add footer to the page -->
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
+<div>
+<script src="public\js\validation.js"></script>
 </body>
 </html>

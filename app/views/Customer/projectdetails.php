@@ -16,13 +16,16 @@
     <title>My Projects</title>
 </head>
 <body>
-
-<div class="left-panel">
+<div class="body-container">
+    <div class="left-panel">
         <div class ="box1">
             Customer Dashboard
         </div>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -46,15 +49,16 @@
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
-            <div class="common-main-left-img">
-                <a href=”#” “text-decoration: none”>
-                    <img src="\ezolar\public\img\customer\projects.png" alt="project">
-                </a>
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”#” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\projects.png" alt="project">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    My Projects
+                </div>
             </div>
-            <div class="common-main-txt">
-                My Projects
-            </div>
-            
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>   
@@ -130,6 +134,7 @@
         </div>
         
     </div>
+</div>
 </body>
 <?php 
       $this->view('Includes/footer', $data);

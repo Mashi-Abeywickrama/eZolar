@@ -1,3 +1,8 @@
+<?php
+    //  require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,15 +15,16 @@
     <title>My newInquiry</title>
 </head>
 <body>
-<!--    to be done later
-    1. add links to left sub panel 
--->
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
+                </div></a>
             <a href="<?=URLROOT?>/project"><div class="box2">
                     My Projects
                 </div></a>
@@ -42,42 +48,61 @@
     <!-- Remaining... -->
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
-            <div class="common-main-left-img">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
 <!-- need to embed the link of my profile in the image -->
-                <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
-                </a>
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    View Inquiry
+                </div>
             </div>
-            <div class="common-main-txt">
-                View Inquiry
-            </div>
-            
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>    
         </div>
-    </div>
-    <div class="right-content" style = "background-color: #D9D9D9">
-        <form name="Inquiry Form" >
+
+    <div class="right-content-detail">
+        <?php
+            $result = $_SESSION['rows'];
+            echo '
             <div class="topic-container">
-                Topic:</span></br>
-                <input class="topic-box" name="topic-box" id="topic-box" type="text" readonly>
+                Topic:</br>
+                <input class="topic-box" name="topic-box" id="topic-box" type="text" placeholder = "'.  $result[0] -> topic .'" readonly>
             </div>
             <div class="type-id-container">
                 <div class="type-container">
                         Type:</br>
-                    <input class="type-box" name="inquiry-type" id="inquiry-type" type="text" readonly>
+                    <input class="type-box" name="inquiry-type" id="inquiry-type" type="text"  placeholder = "'.  $result[0] -> type .'"readonly>
                 </div>
                 <div class="id-container">
                         Project ID:</br>
-                    <input class="id-box" name="id-box" id="id-box" type="text">
+                    <input class="id-box" name="id-box" id="id-box" type="text" readonly>
                 </div>
             </div>
             <div class="msg-container">
                 Message:</br>
-                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" readonly></textarea>
+                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" placeholder = "'.  $result[0] -> message .'" readonly></textarea>
             </div>
-        </form>
+            <div class="msg-container">
+                Response:</br>
+                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" placeholder = "'.  $result[0] -> message .'" readonly></textarea>
+            </div>'
+            ?>
+            <div class="inquiry-btns">
+                <button class="sendbtn" id="inq-submit" onclick="location.href='../'">OK</button>
+            </div>
     </div>
+    <!-- <div class="footer-div">
+    <?php
+
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
+?> -->
+</div>
+</div>
+</div>
 </body>
+
 </html>

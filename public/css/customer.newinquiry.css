@@ -6,34 +6,53 @@
     margin-top: 0.5%;
 }
 .right-content{
-    /* margin-left: 25%;*/
-    margin-left: 290px;
-    margin-top: 1%;
+    display: flex;
+    padding: 2rem;
     border: 2px solid #0B2F64;
     font-size: 16px;
-    font-weight: 600; 
-    width: 60%;
+    font-weight: 600;
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+}
+.right-content-detail{
+    display: flex;
+    padding: 2rem;
+    /* border: 2px solid #0B2F64; */
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    font-size: 16px;
+    font-weight: 600;
+    width: 85%;
+    flex-direction: column;
+    /* align-items: center; */
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 85% !important;
+    margin: auto;
 }
 .topic-container{
-    margin-left: 3.5%;
+    /* margin-left: 3.5%; */
     margin-top: 2%;
 }
 .topic-box{
     border: 2px solid #0B2F64;
-    width:90%;
+    width:100%;
     margin-top: 2% ;
 }
 .type-id-container{
-    margin-left: 3.5%;
-    margin-top: 2% ;
+    margin-top: 2%;
     display: flex;
+    flex-direction: row;
 }
 .type-container{
     width:50%;
 }
 .type-box{
     border: 2px solid #0B2F64;
-    width:80%;
+    width:100%;
     margin-top: 2% ;
     /* width: 150%; */
 }
@@ -45,25 +64,27 @@
 }
 .id-box{
     border: 2px solid #0B2F64;
-    width: 80%;
+    width: 100%;
     margin-top: 2% ;
 }
 .msg-container{
     margin-top: 2%;
-    margin-left: 3.5%;
-    margin-bottom: 2%;
 }
 .msg-box{
     border: 2px solid #0B2F64;
-    width:90%;
+    width:100%;
+    border-radius: 5px;
     margin-top: 2% ;
 }
+.topic-box, .id-box, .type-box{
+    border-radius: 5px;
+    height: 20px;
+}
 .inquiry-btns{
-    margin-left: 5%;
-    /* width: 35%; */
-    margin-top: 4%;
-    margin-bottom: 4%;
     display: flex;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+    justify-content: center;
 }
 .sendbtn, .clearbtn{
     display: inline-block;
@@ -102,4 +123,12 @@
 a{
     text-decoration: none;
     color: #0B2F64;
+}
+
+.footer-div {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    margin-left: -243px;
+    margin-top: 820px;
 }

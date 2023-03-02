@@ -1,45 +1,65 @@
-.inquiry-list-container{
-    margin-top: 20px;
-    height: 55vh;
-    /* min-height: 400px; */
-    /* max-height: 500vh; */
-    width: 80%;
-    /* min-width: 500px; */
-    /* max-width: 1000px; */
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+.body-container{
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 }
-
-/*.inquiry-list-container::-webkit-scrollbar {
-    display: none;
-}*/
-
+.body-list-container{
+    /* padding: 1rem; */
+    display: flex;
+    gap: 1.5rem;
+    /* margin-top: 20px; */
+    height: 100%;
+    align-self: center;
+    width: 100%;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 .box3{
     color: #ffffff;
     background-color: #0b2f64;
 }
 
 .inquiry-box{
+    gap: 1rem;
+    /* padding: 1rem; */
+    /* margin: 1rem; */
     display: flex;
-    justify-content: space-evenly;
+    max-height: 10rem;
+    justify-content: flex-end;
     /* height: 120px; */
-    width: 90%;
-    background: #F9F9F9;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 30%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgb(155 200 245 / 55%);
     border-radius: 10px;
-    margin-bottom: 20px;
-    overflow: auto;
+    /* margin-bottom: 20px; */
+    /* overflow: auto; */
+    width: 31%;
+    /* min-width: 250px; */
+    /* max-width: calc(100% - 280px); */
+    /* margin-top: 5px; */
+    /* margin-left: 5px; */
+    /* overflow: auto; */
+    flex-direction: column;
+    /* justify-content: flex-start; */
 }
 
 .inquiry-text-container{
     display: flex;
-    height: 90px;
-    width: 75%;
+    /* height: 90px; */
+    width: 100%;
     /* min-width: 250px; */
     /* max-width: calc(100% - 280px); */
-    margin-top: 5px;
-    margin-left: 5px;
+    /* margin-top: 5px; */
+    /* margin-left: 5px; */
     /* overflow: auto; */
+    flex-direction: column;
+    justify-content: center;
 }
 .inquiry-text-container-inner{
     display: flex;
@@ -51,23 +71,24 @@
 .inquiry-details-btn-container{
     display: flex;
     justify-content: center;
-    margin-top: 5%;
-    height: 42%;
+    /* margin-top: 5%; */
+    /* height: 42%; */
     /* height: 42px; */
-    width: auto;
-    min-width: 112px;
-    margin-bottom: 40px;
+    width: 100%;
+    /* min-width: 112px; */
+    /* margin-bottom: 40px; */
     /* margin-left: 5px; */
-    /* overflow: auto;  */
+    /* overflow: auto; */
 }
 .inquiry-details-btn{
+    z-index: 1;
+    width: 85%;
+    border-radius: 0px 0px 0 5px;
+    height: 2.5em;
     display: flex;
     /* height: 40px; */
-    height: 4vh;
-    width: 8vw;
     /* width: 110px; */
     background: #2C61A3;
-    border-radius: 20px;
     color: #FFFFFF;
     justify-content: center;
 } 
@@ -80,25 +101,53 @@
 .inquiry-details-btn-text{
     align-self: center;
 }
+.inquiry-delete-btn{
+    z-index: 2;
+    width: 15%;
+    cursor: pointer;
+    background: rgb(219 237 255);
+    transition-duration: 200ms;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0 0 5px 0;
+}
+.inquiry-delete-btn:hover{
+    position: absolute;
+    width: 24%;
+    cursor: pointer;
+    transition-duration: 200ms;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0 0 5px 5px;
+    /* inquiry-details-btn:display:none; */
+}
+.delete-icon{
+    width: 26px;
+    height: auto;
+}
 .add-inquiry-btn a{
     text-decoration: none;
-    color: #FFFFFF;
+    color: #2C61A3;
 }
 .add-inquiry-btn{
     display: flex;
-    height: 40px;
-    width: 200px;
-    background: #2C61A3;
+    align-self: center;
+    /* height: 40px;
+    width: 200px; */
+    border:2px solid #2C61A3;
     border-radius: 5px;
-    color: #FFFFFF;
+    color: #2C61A3;
     justify-content: center;
-    margin-top: 2%;
+    /* margin-top: 2%; */
     /* margin-top: -50px; */
 }
 .add-inquiry-btn:hover{
     cursor: pointer;
-    background: #0B2F64;
-    transition-duration: 200ms;
+
 }
 .add-inquiry-btn-text{
     align-self: center;
@@ -107,11 +156,13 @@
 .inquiry-text-no{
     margin: 5px;
     font-size: 16px;
+    text-align: center;
 }
 
 .inquiry-text-name{
     margin: 5px;
     font-size: 22px;
+    text-align: center;
     font-style: bold;
 }
 
