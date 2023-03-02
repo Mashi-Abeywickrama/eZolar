@@ -84,7 +84,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                             </div>
                         </div>
                         <div class="inquiry-details-btn-container">
-                            <a href="/ezolar/Inquiry/viewInquiry/'.$row -> inquiryID.'">
+                            <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$row -> inquiryID.'">
                                 <div class="inquiry-details-btn">
                                     <div class="inquiry-details-btn-text">Respond</div>
                                 </div>

@@ -82,7 +82,7 @@
     
         }
 //change the name
-    public function viewInquiry($inquiryID){
+    public function viewSalespersonInquiry($inquiryID){
         if(!isLoggedIn()){
             redirect('login');
         }
