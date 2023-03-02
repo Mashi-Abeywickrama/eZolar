@@ -1,8 +1,8 @@
 <?php
 //      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,35 +27,38 @@
         </div>
         <div class="dashboard-container-nav" align="center">
         
-        <a href="/ezolar/Employee">
-            <div class="dashboard-container-content">
-                <div class="dashboard-container-txt" >
-                Employees
+            <a href="/ezolar/Employee">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt" >
+                    Employees
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\employees.png" alt="employee">
+                    </div>
                 </div>
-                <div class="dashboard-container-img">
-                        <img src="\ezolar\public\img\admin\employees.png" alt="employee">
-                </div>
-            </div>
             </a>
-        
-            
-            <div class="dashboard-container-content">
-                <div class="dashboard-container-txt">
-                        Packages
-                </div>
-                <div class="dashboard-container-img">
-                        <img src="\ezolar\public\img\admin\packages.png" alt="packages">
-                </div>
-            </div>
 
-            <div class="dashboard-container-content">
-                <div class="dashboard-container-txt">
-                        Products
+            <a href="/ezolar/Package">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt">
+                            Packages
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\packages.png" alt="packages">
+                    </div>
                 </div>
-                <div class="dashboard-container-img">
-                        <img src="\ezolar\public\img\admin\products.png" alt="products">
+            </a>
+
+            <a href="/ezolar/Product">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt">
+                            Products
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\products.png" alt="products">
+                    </div>
                 </div>
-            </div>
+            </a>
 
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">

@@ -46,11 +46,23 @@
 
         // * * * * salesperson functions * * * *
      // TODO -> CHECK IS ALL INQUIRIES SHOWS TO ALL THE SALESPERSONS
-     public function getSalespersonInquiries(){
 
-      $this->db->query('SELECT customer.name,inquiry.topic FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID ORDER BY inquiryID');
-      $row = $this->db->resultSet([]);
+    public function getSalespersonInquiries(){
+    $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID ORDER BY inquiryID');
+    $row = $this->db->resultSet([]);
+    return $row;
+  }
+
+  public function viewInquiries($inquiryID){
+      $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID WHERE inquiryID = :inquiryID');
+      $row = $this->db->resultSet(['inquiryID'=>$inquiryID]);
       return $row;
   }
+  public function respondInquiries($inquiryID,$data){
+       $this->db->query('UPDATE inquiry SET response = :response WHERE inquiryID = :inquiryID;');
+       $row = $this->db->resultSet(['response' => $data[0],'inquiryID'=>$inquiryID]);
+       return $row;
+      }
+
 
   }

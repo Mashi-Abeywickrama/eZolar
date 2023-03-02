@@ -1,5 +1,6 @@
 var fnameErr = document.getElementById("fname-err");
 var lnameErr = document.getElementById("lname-err");
+var fullnameErr = document.getElementById("fullname-err");
 var emailErr = document.getElementById("email-err");
 var nicErr = document.getElementById("nic-err");
 var pwdErr = document.getElementById("pwd-err");
@@ -20,11 +21,11 @@ function validatefName(){
             return false;
         }else{
             if(fname.length>45){
-                lnameErr.innerHTML = "Exceed number of characters"
+                fnameErr.innerHTML = "Exceed number of characters"
                 return false;
             }
             else{
-                lnameErr.innerHTML = ""
+                fnameErr.innerHTML = ""
                 return true;
             }
         }
@@ -139,6 +140,29 @@ function validateTelNo(){
     }
 }
 
+function validateFullName(){
+    var fullName = document.getElementById('name').value;
+    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    if(fullName === ""){
+        fullnameErr.innerHTML='This field is required';
+    }
+    else{
+        if(!regName.test(fullName)){
+            fullnameErr.innerHTML='Enter a valid name';
+            return false;
+        }else{
+            if(fullName.length>100){
+                fullnameErr.innerHTML = "Exceed number of characters"
+                return false;
+            }
+            else{
+                fullnameErr.innerHTML = ""
+                return true;
+            }
+        }
+    }
+}
+
 function validateForm(){
     if(!validatefName || !validatelName || !validateEmail() || !validatePassword() || !validateNIC() || !validateTelNo()){
         document.querySelector(".Signupbtn").disabled = true;
@@ -200,7 +224,7 @@ function validateAddEmployee(){
 }
 
 function validateEditProfile(){
-    if(!validatefName || !validateTelNo){
+    if(!validateFullName || !validateTelNo || !validateEmail()){
         document.querySelector(".form-submit-btn").disabled = true;
         return false;
     }
@@ -224,6 +248,7 @@ function clearErrorMessage(){
     lnameErr.innerHTML = "";
     nicErr.innerHTML = "";
     emailErr.innerHTML = "";
+    fullnameErr.innerHTML = "";
 }
 
 

@@ -52,7 +52,12 @@
       }
 
       public function getAllEngineers(){
-        $this->db->query('SELECT employee_telno.telno,employee.empID,employee.name FROM employee_telno INNER JOIN employee ON employee.empID = employee_telno.Employee_empID WHERE employee.type="engineer" ORDER BY empID');
+        $this->db->query('SELECT employee_telno.telno,employee.empID,employee.name,user.isDeactivated
+                        FROM employee_telno 
+                        INNER JOIN employee ON employee.empID = employee_telno.Employee_empID 
+                        INNER JOIN user ON employee.empID = user.userID
+                        WHERE employee.type="engineer" AND isDeactivated = 0
+                        ORDER BY empID;');
         $row = $this->db->resultSet([]);
         return $row;
       }
@@ -74,5 +79,45 @@
         $row = $this->db->resultSet([]);
         return $row;
       }
+
+      // ***********************
+      public function getEmployees($empType){
+          $this->db->query('SELECT employee_telno.telno,employee.empID,employee.name,user.type,user.isDeactivated
+                        FROM employee_telno 
+                        INNER JOIN employee ON employee.empID = employee_telno.Employee_empID 
+                        INNER JOIN user ON employee.empID = user.userID
+                        WHERE employee.type=:empType AND isDeactivated = 0
+                        ORDER BY empID;');
+          $row = $this->db->resultSet(['empType' => $empType]);
+          return $row;
+      }
+
+      public function getEmployeeDetails($empID){
+          $this->db->query('SELECT * FROM employee INNER JOIN employee_telno ON employee.empID = employee_telno.Employee_empID INNER JOIN user ON employee.empID = user.userID WHERE empID = :empID');
+          $row = $this->db->resultSet(['empID' => $empID]);
+          //print_r($row);die;
+          return $row;
+      }
+
+      public function editEmployee($empID,$data){
+        $this->db->query('UPDATE employee,employee_telno,user
+                        SET employee_telno.telno = :telno ,employee.name = :name,employee.bio = :bio,user.email = :email
+                        WHERE employee.empID = user.userID
+                        AND employee.empID = employee_telno.Employee_empID 
+                        AND employee.empID = :userid;');
+        $this->db->execute(['userid' => $empID,'name' => $data[0],'bio' => $data[1],'telno' => $data[2],'email' => $data[3]]);
+
+//          $this->db->query('UPDATE employee SET name = :name,bio = :bio WHERE empID = :userid');
+//          $this->db->execute(['userid' => $empID,'name' => $data[0],'bio' => $data[1]]);
+//          $this->db->query('UPDATE employee_telno SET telno = :telno WHERE Employee_empID = :userid');
+//          $this->db->execute(['userid' => $empID,'telno' => $data[2]]);
+      }
+
+      public function deleteEmployee($empID){
+        $this->db->query('UPDATE user SET isDeactivated = 1 WHERE userID = :empID');
+        $this->db->execute(['empID' => $empID]);
+      }
+
+
 
   }

@@ -1,8 +1,8 @@
 <?php
     // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -24,9 +24,11 @@
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container-selected">
+                <a href="/ezolar/Employee">
+                    <div class="sidebar-link-container-selected">
                     Employees
-                </div></a>
+                    </div>
+                </a>
                 <a href=/ezolar/Package>
                     <div class="sidebar-link-container">
                         Packages
@@ -70,7 +72,7 @@
         
 
         <div class="dashboard-container">
-        <a href="/ezolar/Employee/engineers">
+        <a href="/ezolar/Employee/getEmployees/engineer">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Engineers
@@ -78,7 +80,7 @@
             </div>
         </a>
 
-        <a href="/ezolar/Employee/storekeepers">
+        <a href="/ezolar/Employee/getEmployees/storekeeper">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Storekeepers
@@ -86,15 +88,15 @@
             </div>
         </a>    
 
-        <a href="/ezolar/Employee/salespersons">
+        <a href="/ezolar/Employee/getEmployees/salesperson">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
-                    Salespersons
+                    Salespeople
                 </div>
             </div>
         </a>    
 
-        <a href="/ezolar/Employee/contractors">
+        <a href="/ezolar/Employee/getEmployees/contractor">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Contractors

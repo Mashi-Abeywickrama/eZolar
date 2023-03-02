@@ -1,8 +1,8 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +127,10 @@
                             </div>
                             <select class="form-item-input-dropdown" name="employee-type" id="employee-type" required>
                                 <option value="" selected disabled>Select</option>
-                                <option value="engineer">Engineer</option>
-                                <option value="salesperson">Salesperson</option>
-                                <option value="storekeeper">Storekeeper</option>
-                                <option value="contractor">Contractor</option>
+                                <option value="Engineer">Engineer</option>
+                                <option value="Salesperson">Salesperson</option>
+                                <option value="Storekeeper">Storekeeper</option>
+                                <option value="Contractor">Contractor</option>
                             </select>
                         </div>
                         <div class="form-item-container-half">

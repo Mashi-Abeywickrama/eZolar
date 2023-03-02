@@ -43,7 +43,6 @@
       }
 
       public function getProfile($id,$role){
-        
         if ($role == "Customer") {
           $this->db->query('SELECT * FROM customer where customerID = :customerID');
           //$this->db->query('SELECT nic FROM employee WHERE empID=:empID');
@@ -61,7 +60,11 @@
           
          // print_r($row);die;
           return $row;
-         } else {
+         }elseif ($role == "Salesperson"){
+            $this->db->query('SELECT employee.name,employee.type,employee_telno.telno,employee.bio,employee.nic FROM employee_telno INNER JOIN employee ON employee.empID = employee_telno.Employee_empID WHERE employee.empID= :ED');
+            $row = $this->db->resultSet(['ED' => $id]);
+            return $row;
+        } else {
             $this->db->query('SELECT user.email,employee.name,employee.type,employee_telno.telno,employee.nic FROM employee_telno INNER JOIN employee ON employee.empID = employee_telno.Employee_empID INNER JOIN user ON employee.empID = user.userID WHERE employee.empID= :ED');
             //$this->db->query('SELECT nic FROM employee WHERE empID=:empID');
             $row = $this->db->resultSet(['ED' => $id]);
@@ -97,6 +100,7 @@
             return $row;
         }
       }
+
       public function editProfile($data,$role,$id,$img){
         // print_r($data);die;
         
@@ -105,7 +109,8 @@
           $this->db->query('UPDATE user SET email = :email WHERE userID = :userid');
           $this->db->execute(['userid' => $id,'email' => $data['email']]);
           return true;
-        
+
+
 
       }
   }

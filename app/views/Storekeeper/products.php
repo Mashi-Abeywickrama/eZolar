@@ -1,8 +1,8 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__.'\app\views\Includes\navbar.php');
+require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -64,23 +64,6 @@
             </div>   
         </div>
         <div class="product-list-container">
-            <!--<div class="product-card">
-                <div class="product-image-container">
-
-                </div>
-                <div class="product-text-container">
-                    <div class="product-text-container-inner">
-                    <div class="product-text-no">Product No. 123456</div>
-                    <div class="product-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                    <div class="product-text-price">Price: Rs. 30,000</div>
-                    </div>
-                </div>
-                <div class="product-details-btn-container">
-                    <div class="product-details-btn">
-                        <div class="product-details-btn-text">More info</div>
-                    </div>
-                </div>
-            </div>-->
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){

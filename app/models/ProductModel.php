@@ -38,4 +38,6 @@
       $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3]]);
     }
 
+
+
   }

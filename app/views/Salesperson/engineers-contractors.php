@@ -1,8 +1,8 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'/app/views/Includes/header.php');
-require_once(__ROOT__.'/app/views/Includes/navbar.php');
-require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__.'\app\views\Includes\navbar.php');
+require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -71,7 +71,8 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
 
 
     <div class="dashboard-container">
-        <a href="/ezolar/Employee/engineers">
+        <a href="/ezolar/Employee/getEmployees/engineer">
+
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Engineers

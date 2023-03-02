@@ -4,31 +4,40 @@
     min-width: 800px;
     overflow: auto;
     margin-top: 10px;
-    margin-bottom: 20px;
 }
 
-.dashboard-common-main-container{
-    width: 80%;
-    max-width: 1000px;
-    min-width: 800px;
-    overflow: auto;
-    margin-top: 10px;
+.forms{
+    overflow-y: scroll ;
 }
-
 .form-background{
-    margin-top: 20px;
-
-    height: 58vh;
-    min-height: 400px;
-    max-height: 550px;
-    width: 70%;
-    min-width: 500px;
-    max-width: 1000px;
-    border-radius: 10px;
     display: inline-flex;
-    /*background: #D9D9D9;*/
+    background: #D9D9D9;
+    width: 70%;
+    max-width: 900px;
+    min-width: 700px;
+    height: 55%;
+    min-height: 300px;
     justify-content: center;
+    overflow-y: scroll;
+    overflow-x: auto;
+    border-radius: 10px;
+    /* margin-top: -50px; */
 }
+
+.respond-form-background{
+    display: inline-flex;
+    width: 70%;
+    max-width: 900px;
+    min-width: 700px;
+    height: 30%;
+    min-height: 100px;
+    justify-content: center;
+    overflow-y: scroll;
+    overflow-x: auto;
+    border-radius: 10px;
+    /* margin-top: -50px; */
+}
+
 .form-container{
     width: 85%;
     overflow: auto;
@@ -92,11 +101,11 @@
 
 }
 
-.submit-btn{
+.send-btn{
     justify-content: flex-end;
 }
 
-.form-submit-btn{
+.form-send-btn{
 
     width: 9vw;
     min-width: 100px;
@@ -107,7 +116,6 @@
     font-weight: medium;
     text-decoration: none;
     color: #FFFFFF;
-    border: none ;
     border-radius: 5px;
     margin-top: 20px;
     margin-inline: 5px;
@@ -117,7 +125,7 @@
     justify-content: center;
     align-items: center;
 }
-.form-submit-btn:hover{
+.form-send-btn:hover{
     background: #0B2F64;
     transition-duration: 200ms;
 }
@@ -137,11 +145,9 @@
     font-weight: medium;
     text-decoration: none;
     color: #0B2F64;
-    border: none ;
     border-radius: 5px;
     margin-top: 20px;
     margin-inline: 5px;
-
     border: 1px solid black;
     height: 30px;
     display: flex;;
@@ -154,24 +160,3 @@
     transition-duration: 200ms;
     color: #FFFFFF;
 }
-
-.err{
-    display: flex;
-}
-.err-box{
-    font-size: 0.7rem;
-    color: #DE8500;
-    margin-left: 1%;
-}
-
-.err-box-main{
-    font-size: 0.7rem;
-    color: #DE8500;
-    text-align: center;
-    justify-content: center;
-    margin-left: 17rem;
-}
-
-
-
-

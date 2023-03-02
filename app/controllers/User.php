@@ -1,6 +1,6 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-  require_once(__ROOT__.'/app/helpers/session_helper.php');
+  require_once(__ROOT__.'\app\helpers\session_helper.php');
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
@@ -35,7 +35,7 @@ class User extends Controller {
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
           $this->view('Engineer/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
-          $this->view('Salesperson/dashboard', $title);
+            $this->view('Salesperson/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
@@ -128,7 +128,9 @@ class User extends Controller {
         $this->view('Admin/myProfile', $title);
       }elseif ($role == "Engineer"){
         $this->view('Engineer/profile', $title);
-      }else{
+      }elseif ($role == "Salesperson") {
+          $this->view('Salesperson/profile', $title);
+      } else {
         $this->view('Customer/Settings/profile', $title);
       }
       
@@ -155,14 +157,15 @@ class User extends Controller {
         $this->view('Storekeeper/editprofile', $title);
       }elseif ($role == "Customer"){
         $this->view('Customer/Settings/editprofile', $title);
-      }if ($role == "Contractor"){
+      }elseif ($role == "Contractor"){
         $this->view('Contractor/editprofile', $title);
-      }
+      }elseif ($role == "Salesperson"){
+              $this->view('Salesperson/editProfile',$title);
+          }
     }
-
+    
     public function updateprofile(){
       
-
       $title = "edit profile";
       //get user role and the user id from the session
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
