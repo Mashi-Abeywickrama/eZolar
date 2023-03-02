@@ -1,4 +1,5 @@
 <?php
+  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
 class Contractor extends Controller
 {

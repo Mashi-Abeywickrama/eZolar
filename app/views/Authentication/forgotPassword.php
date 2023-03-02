@@ -1,8 +1,8 @@
 <?php
      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
      require_once(__ROOT__.'\views\Includes\header.php');
-     require_once(__ROOT__.'\views\Includes\navbar1.php');
-     require_once(__ROOT__.'\views\Includes\footer.php');
+    //  require_once(__ROOT__.'\views\Includes\navbar1.php');
+    //  require_once(__ROOT__.'\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,40 +16,56 @@
     <title>eZolar forgot password</title>
 </head>
 <body>
-    <div class="fp-form-container ">
-        
-        <div class="form-container-fp">
-            <div class="kkkk">
-                <div class="fp-headline">
-                    RESET YOUR PASSSWORD
-                </div>
-
-                <div class="fp-subHeader">
-                Please enter your email address below and click on “Send OTP” button. You will recieve an OTP via email.
-                </div>
-
-                <!-- <form name="fp Form" action="" method="POST"> -->
-                    <div class="email-div">Email</div>
-                    <input class="abc" name="email" id="email" type="text" placeholder="Enter your email">
-                    <div class="OTP-btn-div"><button class="OTP-btn" >Send OTP</button></div>
-                    <div class="fp-subHeader">
-                        Please check your emails and Enter the OTP (One Time Password) In the given Box.
-                        <input class="abc" name="otp" id="otp" placeholder="Enter Your OTP here">
-                    </div>
-                    <div class = "group" >
-                        <button class="resend-btn" type="submit" >Resend OTP</button>
-                        <button class="submit-btn" type="submit">Submit</button>
-                    </div>
-
-                    <div class="later-part">
-                        <div class="later-part-txt">
-                            Remember your Password? <a class="to-Signup-page" href="/ezolar/login" > Sign In!</a>
-                        </div>
-
-                    </div>
-            </div>
-            
+    <!-- forgot password user interface -->
+    <div class ="fp-web-body">
+        <div class="fp-web-img">
+            <img class ="fp-web-img-s" src="<?=URLROOT?>/public/img/fpImg.jpg" alt="login-image">
         </div>
+        <div class="fp-web-text">
+            <div class="form-container-fp">
+                <div class="kkkk">
+                    <div class="fp-headline">
+                        RESET YOUR PASSSWORD
+                    </div>
+
+                    <div class="fp-subHeader">
+                        <ol>
+                            <li>Enter your email address in the box below. </li>
+                            <li> Click on “Send OTP” button.</li>
+                            <li>You will recieve your One Time Password (OTP) via email.</li>
+                        </ol>
+                    </div>
+                    <div class="fp-subHeader" style = "font-weight:bold">
+                    Please make sure to enter the email which you used for your eZolar account.
+                    </div>
+
+                    <form class = "fp-form" name="fp Form" action="" method="POST">
+                        <div class="email-div">Email</div>
+                        <input class="fp-abc" name="email" id="email" type="text" placeholder="Enter your email">
+                        <div class="OTP-btn-div"><button type="submit" name="emailbtn" id = "" class="OTP-btn">Send OTP</button></div>
+
+                    </form>
+
+                    <!-- <form class = "fp-form" action="" method="POST">
+                        <div class="fp-subHeader">
+                            Please check your emails and Enter the OTP (One Time Password) In the given Box.
+                            <input class="abc" name="otp" id="otp" placeholder="Enter Your OTP here">
+                        </div>
+                        <div class = "group" >
+                            <button class="resend-btn" type="submit" >Resend OTP</button>
+                            <button class="submit-btn" name="OTPBtn" type="submit">Submit</button>
+                        </div>
+                    </form> -->
+
+                        <div class="later-part">
+                            <div class="later-part-txt">
+                                Back to <a class="to-Signup-page" href="/ezolar/login" > Log In!</a>
+                            </div>
+
+                        </div>
+                </div>
+
+            </div>
 
     </div>
 </body>

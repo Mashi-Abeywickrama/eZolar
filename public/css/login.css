@@ -1,19 +1,42 @@
 .form-container{
+    margin: 3.28rem 2rem 3rem;
     display: flex;
     flex-direction: column;
     align-self: center;
     /* margin-left: 15%; */
     /* margin-right: 10%; */
     /* margin-top: 75px; */
-    width: 70%;
+    width: 100%;
     /* padding: 4px 18px; */
-    border:2px solid #0B2F64;
-    padding-bottom: 2%;
+    /* border: 2px solid #0B2F64; */
+    /* padding-bottom: 2%; */
 }
 .form-container-login{
     /* padding: 10%; */
     padding-left: 15%;
-    padding-top: 5%;
+}
+.web-body{
+    border: 1rem solid #2C61A3;
+    background-color: #FFFFFF;
+    display: flex;
+    margin-top: 9%;
+    border-radius: 5px;
+    width: 80%;
+    height: 500px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 4rem 8rem 5rem;
+}
+.web-img{
+    width: 50%;
+    display: flex;
+}
+.web-img-s{
+    width: 100%;
+}
+.web-text{
+    display: flex;
+    width: 50%;
 }
 .headline{
     display: flex;
@@ -61,11 +84,13 @@
 .abc{
     text-align: left;
     padding: 5px;
+    border: 2px solid #0B2F64;
     border-radius: 5px;
     color: #636364;
-    font-size:12px;
+    font-size: 12px;
     width: 75%;
-    /* height: 50%; */
+    height: 1.5rem;
+    /* height: 50%;*/
 }
 .remm{
     font-size: 12px;
@@ -83,7 +108,7 @@
     display: inline-block;
     width: 77%;
     padding: 0.7rem;
-    background: linear-gradient(#BFD2F8,#0B2F64);
+    background-color: #2C61A3;
     /* font-size: 14px; */
     font-weight: medium;
     text-decoration: none;
@@ -101,11 +126,34 @@
 }
 
                             /* forgot password page */
+.fp-web-body{
+    border: 1rem solid #2C61A3;
+    background-color: #FFFFFF;
+    display: flex;
+    margin-top: 9%;
+    border-radius: 5px;
+    width: 65%;
+    height: 500px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 4rem 16rem 5rem;
+}
+.fp-web-img{
+    width: 35%;
+    display: flex;
+}
+.fp-web-img-s{
+    width: 100%;
+}
+.fp-web-text{
+    display: flex;
+    width: 60%;
+}
 .form-container-fp{
-    /* display: flex; */
+    display: flex;
     /* padding: 10%; */
     /* padding-left: 15%; */
-    padding-top: 5%;
+    /* padding-top: 5%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,7 +162,14 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    align-items: center;
+}
+.fp-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
 }
 .fp-form-container{
@@ -132,14 +187,59 @@
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    padding-top: 3%;
+    /* padding-top: 3%; */
     /* text-align: center; */
     font-weight: bold;
     font-size:2rem;
     color: #0B2F64;
 }
 .email-div{
-    width: 75%;
+    font-weight: lighter;
+    color: #636364;
+    width: 100%;
+}
+.otp-web-img{
+    width: 40%;
+    display: flex;
+}
+
+.otp-web-body{
+    border: 1rem solid #2C61A3;
+    background-color: #FFFFFF;
+    display: flex;
+    margin-top: 9%;
+    border-radius: 5px;
+    width: 65%;
+    height: 500px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 4rem 16rem 5rem;
+}
+.otp-web-text{
+    display: flex;
+}
+.otp-abc{
+        /* text-align: center; */
+        padding: 5px;
+        border: 2px solid #0B2F64;
+        border-radius: 5px;
+        color: #636364;
+        font-size: 12px;
+        width: 90%;
+        height: 1.5rem;
+        /* height: 50%; */
+        margin-left: 1.5rem;
+}
+.fp-abc{
+    text-align: left;
+    padding: 4px;
+    border: 2px solid #0B2F64;
+    border-radius: 5px;
+    color: #636364;
+    font-size: 12px;
+    width: 95.5%;
+    height: 1.5rem;
+    /* height: 50%;*/
 }
 .fp-subHeader {
     gap: 0.5rem;
@@ -147,7 +247,7 @@
     flex-direction: column;
     justify-content: left;
     width: 100%;
-    align-items: center;
+    /* align-items: center; */
     /* text-align: center; */
     font-weight: lighter;
     font-size:14px;
@@ -169,7 +269,7 @@
     text-decoration: none;
     color: #FFFFFF;
     border: none ;
-    background: linear-gradient(180deg, #BFD2F8 0%, #0B2F64 100%);
+    background-color: #2C61A3;
     border-radius: 12px;
 }
 .OTP-btn-div{
@@ -180,6 +280,7 @@
     margin-bottom: 2%;
 }
 .btn2-1{
+
     display: none;
 }
 .btn1-1{
@@ -197,4 +298,5 @@
 }
 a{
     text-decoration: none;
+    color: black;
 }

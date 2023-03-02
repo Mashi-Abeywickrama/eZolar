@@ -16,7 +16,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <title>My Profile</title>
 </head>
 <body>
-
+<div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Contractor Dashboard
@@ -39,7 +39,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                 </div></a>
                 <a href="<?=URLROOT?>/setting"> <div class="box6">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
@@ -121,6 +121,7 @@ foreach($results as $row){
 
 
 
+</div>
 </div>
 <script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
 </body>
