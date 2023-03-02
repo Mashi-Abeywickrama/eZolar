@@ -1,7 +1,10 @@
 <?php
-     // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'/app/views/Includes/header.php');
-     require_once(__ROOT__.'/app/views/Includes/navbar.php');
+
+     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+     require_once(__ROOT__.'\views\Includes\header.php');
+     require_once(__ROOT__.'\views\Customer\customerNavbar.php');
+     require_once(__ROOT__.'\views\Includes\footer.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
