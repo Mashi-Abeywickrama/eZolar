@@ -82,8 +82,8 @@
         $this->view('Salesperson/inquiries', $data);
     
         }
-
-    public function viewInquiry($inquiryID){
+//change the name
+    public function viewSalespersonInquiry($inquiryID){
         if(!isLoggedIn()){
             redirect('login');
         }
