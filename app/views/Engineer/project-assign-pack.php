@@ -12,13 +12,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
+    <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\packages.css">
     <title>My Projects</title>
 </head>
 <body>
 
-    <div class="sidebar">
+<div class="sidebar">
         <div class="sidebar-heading">
             <b>Engineer Dashboard</b>
         </div>
@@ -49,36 +49,35 @@
         <div class="dashboard-common-main-topic">
             <div class="common-main-left-img">
                 <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\engineer\Projects.png" alt="projects-icon">
+                    <img src="\ezolar\public\img\storekeeper\Packages.png" alt="Packages-icon">
                 </a>
             </div>
             <div class="common-main-txt">
-                Assigned Projects
+                Packages
             </div>
             
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
             </div>   
         </div>
-        <div class="project-list-container">
+        <div class="package-list-container">
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
-                echo '<div class="project-card">
-                <div class="project-image-container">
+                echo '<div class="package-card">
+                <div class="package-image-container">
 
                 </div>
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                    <div class="project-text-no">Project ID : ' .strtoupper($row -> projectID).'</div>
-                    <div class="project-text-status"><b>Status : '.$row -> status.'</b></div>
-                    <div class="project-text-location">Site Location : ' .$row -> siteAddress.'</div>
+                <div class="package-text-container">
+                    <div class="package-text-container-inner">
+                    <div class="package-text-no">Package No.' .$row -> packageID.'</div>
+                    <div class="package-text-name"><b>'.$row -> name.'</b></div>
+                    <div class="package-text-price">Price: Rs.' .$row -> budgetRange.'</div>
                     </div>
                 </div>
-                <div class="project-details-btn-container">
-                    <a href="/ezolar/EngineerProject/projectDetailsPage/'.$row -> projectID.'">
-                    <div class="project-details-btn">
-                        <div class="project-details-btn-text">More info</div>
+                <div class="package-details-btn-container">
+                    <a href="/ezolar/EngineerProject/assignPackage/'.$row -> packageID.'"><div class="package-details-btn">
+                        <div class="package-details-btn-text">Select Package</div>
                     </div></a>
                 </div>
             </div>';
