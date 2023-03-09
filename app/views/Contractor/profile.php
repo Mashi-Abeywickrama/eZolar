@@ -1,7 +1,7 @@
 <?php
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+// require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
+// require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -12,11 +12,14 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.Profile.css">
+    <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <title>My Profile</title>
 </head>
 <body>
-<div class="left-panel">
+<div class = "body-container-main">    
+<div class="body-container">
+    <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Contractor Dashboard
         </div></a>
@@ -38,29 +41,26 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                 </div></a>
                 <a href="<?=URLROOT?>/setting"> <div class="box6">
                     Settings
-                </div>
+                </div></a>
             </div>
         </div>
     </div>
-<div class="common-main-container">
-    <div class="dashboard-common-main-topic">
-        <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
-                <img src="\ezolar\public\img\customer\Person.png" alt="profile">
-            </a>
+    <div class="common-main-container">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\Person.png" alt="profile">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    My Profile
+                </div>
+            </div>
+            <div class="common-main-right-img">
+                <img src="\ezolar\public\img\profile.png" alt="profile">
+            </div>
         </div>
-        <div class="common-main-txt">
-            My Profile
-        </div>
-
-        <div class="common-main-right-img">
-            <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>
-    </div>
-
-
-
-
 
         <?php
         $mail = $_SESSION['user_email'];
@@ -76,9 +76,9 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                 <div class="profile-container-txt">
                     <div class="profile-container-txt-name">
                         ' . $row -> name . '
-                    </div>    <br>
+                    </div>
                     <div class="profile-container-txt-type">
-                        ' . $row -> type . '
+                        ' . $row -> bio . '
                     </div>
                 </div>
             </div>
@@ -101,13 +101,27 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                             <div class="form-item-text">
                                 Contact Number :
                             </div>
-                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="0' . $row -> telno . '" readonly>
+                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> telno . '" readonly>
+                        </div>
+                        <div class="form-item-container">
+                            <div class="form-item-container-half">
+                                <div class="form-item-text">
+                                    NIC Number :
+                                </div>
+                                <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> nic . '" readonly>
+                            </div>
+                            <div class="form-item-container-half">
+                                <div class="form-item-text">
+                                    Gender :
+                                </div>
+                                <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> gender . '" readonly>
+                            </div>
                         </div>
                         <div class="form-item-container">
                             <div class="form-item-text">
-                                NIC :
+                                Bio :
                             </div>
-                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> nic . '" readonly>
+                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> bio . '" readonly>
                         </div>
 
                     </div>
@@ -128,7 +142,13 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         }
         ?>
 
-
+    </div>
+</div>
+<div class = "f">
+    <?php
+        include_once(__ROOT__.'\app\views\Includes\footer.php');
+    ?>
+</div>
 </div>
 </body>
 </html>

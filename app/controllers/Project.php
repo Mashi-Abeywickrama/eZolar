@@ -61,15 +61,40 @@
 
          // salesperson functions
 
-         public function SalespersonAssignedProjects(){
+      public function SalespersonViewProjects(){
 
-          $rows  = $this->projectModel->getSalespersonProjects();
+//          $salesperson_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
+//          $rowsAssigned  = $this->projectModel->getSalespersonAssignedProjects($salesperson_Id);
+//          $_SESSION['rowsAssigned'] = $rowsAssigned;
+
+          $rows  = $this->projectModel->SalespersonViewProjects();
           $_SESSION['rows'] = $rows;
+
           $data = [
               'title' => 'eZolar Salesperson Assigned Projects',
           ];
           $this->view('Salesperson/assigned-projects', $data);
           }
+
+          public function salespersonAssignedProject($projectID){
+
+              if (!isLoggedIn()){
+                  redirect('login');
+              }
+              $salesperson_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
+              $this->projectModel->salespersonAssignedProject($salesperson_Id,$projectID);
+              redirect('Project/SalespersonViewProjects');
+          }
+
+          public function getProjectDetails($projectID){
+              if (!isLoggedIn()){
+                  redirect('login');
+              }
+              $this->projectModel->getProjectDetails($projectID);
+              $data = [
+                  'title' => 'eZolar Salesperson Assigned Projects',
+              ];
+              $this->view('Salesperson/project-details', $data);
 
           public function COntractorAssignedProjects(){
 

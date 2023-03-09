@@ -1,5 +1,6 @@
 var fnameErr = document.getElementById("fname-err");
 var lnameErr = document.getElementById("lname-err");
+var fullnameErr = document.getElementById("fullname-err");
 var emailErr = document.getElementById("email-err");
 var nicErr = document.getElementById("nic-err");
 var pwdErr = document.getElementById("pwd-err");
@@ -20,11 +21,11 @@ function validatefName(){
             return false;
         }else{
             if(fname.length>45){
-                lnameErr.innerHTML = "Exceed number of characters"
+                fnameErr.innerHTML = "Exceed number of characters"
                 return false;
             }
             else{
-                lnameErr.innerHTML = ""
+                fnameErr.innerHTML = ""
                 return true;
             }
         }
@@ -79,27 +80,32 @@ function validateNIC(){
         return false;
     }
 }
+function validatePassword1(){
+    let pwd = document.getElementById("pwd").value;
+    // console.log(pwd)
+    
+    if (pwd.length>=8 && pwd.length<=10){
+        pwdErr.innerHTML = ""
+    }
+    else{
+        pwdErr.innerHTML = "password must contain 8 - 10 characters"
+        return false;
+
+    }
+}
 function validatePassword(){
     let pwd = document.getElementById("pwd").value;
     // console.log(pwd)
     let cpwd = document.getElementById("cpwd").value;
     
-    if (pwd.length>=8 && pwd.length<=10){
-        pwdErr.innerHTML = ""
-        if (pwd==cpwd){
+    if (pwd==cpwd){
             // console.log("matched")
             cpwdErr.innerHTML = "";
             return true;
-        }
-        else{
-            cpwdErr.innerHTML = "passwords didn't match"
-            return false;
-        }
     }
     else{
-        pwdErr.innerHTML = "passwords must contain 8 - 10 characters"
-        return false;
-
+        cpwdErr.innerHTML = "passwords didn't match"
+            return false;
     }
 }
 
@@ -130,6 +136,29 @@ function validateTelNo(){
         else{
             mobileErr.innerHTML = "";
             return true;
+        }
+    }
+}
+
+function validateFullName(){
+    var fullName = document.getElementById('name').value;
+    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    if(fullName === ""){
+        fullnameErr.innerHTML='This field is required';
+    }
+    else{
+        if(!regName.test(fullName)){
+            fullnameErr.innerHTML='Enter a valid name';
+            return false;
+        }else{
+            if(fullName.length>100){
+                fullnameErr.innerHTML = "Exceed number of characters"
+                return false;
+            }
+            else{
+                fullnameErr.innerHTML = ""
+                return true;
+            }
         }
     }
 }
@@ -195,6 +224,16 @@ function validateAddEmployee(){
 }
 
 function validateEditProfile(){
+    if(!validateFullName || !validateTelNo || !validateEmail()){
+        document.querySelector(".form-submit-btn").disabled = true;
+        return false;
+    }
+    else{
+        document.querySelector(".form-submit-btn").disabled = false;
+        return true;
+    }
+}
+function validatePassword(){
     if(!validatefName || !validateTelNo){
         document.querySelector(".form-submit-btn").disabled = true;
         return false;
@@ -204,10 +243,22 @@ function validateEditProfile(){
         return true;
     }
 }
-
 function clearErrorMessage(){
     fnameErr.innerHTML = "";
     lnameErr.innerHTML = "";
     nicErr.innerHTML = "";
     emailErr.innerHTML = "";
+    fullnameErr.innerHTML = "";
 }
+
+
+// Once u clicked the OTP button, disable it
+const sendOTPbtn = document.getElementById('emailbtn');
+btn.addEventListener('click', () => {
+    // 👇️ hide button
+    sendOTPbtn.style.display = 'none';
+  
+    // 👇️ show div
+    const box = document.getElementById('box');
+    box.style.display = 'block';
+  });

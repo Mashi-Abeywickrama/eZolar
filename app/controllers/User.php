@@ -1,6 +1,6 @@
 <?php
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-  require_once(__ROOT__.'/app/helpers/session_helper.php');
+  require_once(__ROOT__.'\app\helpers\session_helper.php');
 class User extends Controller {
     public function __construct(){
       $this->userModel = $this->model('UserModel');
@@ -24,6 +24,7 @@ class User extends Controller {
       }
       else{
         $title = "Dashboard";
+        //load correctt dashboard according to the user role
         if ($this->userModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
           $this->view('Storekeeper/dashboard', $title);
         }
@@ -34,7 +35,7 @@ class User extends Controller {
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Engineer"){
           $this->view('Engineer/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
-          $this->view('Salesperson/dashboard', $title);
+            $this->view('Salesperson/dashboard', $title);
         }else{
           $this->view('Customer/dashboard', $title);
         }
@@ -81,21 +82,28 @@ class User extends Controller {
           $this->userModel->login($data['email'],$data['password']);
           if($this->userModel->login($data['email'],$data['password'])){
             $_SESSION['user_email'] = $data['email'];
+            $id = $this->userModel->getUserID($data['email']);
+            $role = $this->userModel->getUserRole($_SESSION['user_email']);
+            $name = $this->userModel->getProfile($id,$role)[0]->name;
+            $_SESSION['user_pic'] = $this->userModel->getProfile($id,$role)[0]->profile;
+  
+            
+            $_SESSION['name'] = $name;
             redirect('user/dashboard');
-            // header("Location: /");
-            // if ($this->userModel->getUserRole($data['email']) == "Storekeeper"){
-            //   redirect('user/sk_dashboard');
-            // }
-            // elseif ($this->userModel->getUserRole($data['email']) == "Contractor"){
-            //   redirect('user/contractor_dashboard');
-            // }else{
-            //   redirect('user/dashboard');
-            // }
+
           }
           else{
             header("Location: /ezolar/login");
           }
         }
+    }
+
+    //a function to get username in header
+    public function getName(){
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      $name = $this->userModel->getProfile($role,$_SESSION['user_email']);
+      print_r($name);die;
+      $_SESSION['name'] = $name;
     }
 // this function is for viewing user profile
     public function profile(){
@@ -105,8 +113,11 @@ class User extends Controller {
       }
       $title = "myprofile";
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      
       $id = $this->userModel->getUserID($_SESSION['user_email']);
+      
       $rows  = $this->userModel-> getProfile($id,$role);
+      
       $_SESSION['rows'] = $rows;
       if ($role == "Storekeeper"){
         $this->view('Storekeeper/profile', $title);
@@ -117,39 +128,134 @@ class User extends Controller {
         $this->view('Admin/myProfile', $title);
       }elseif ($role == "Engineer"){
         $this->view('Engineer/profile', $title);
-      }else{
+      }elseif ($role == "Salesperson") {
+          $this->view('Salesperson/profile', $title);
+      } else {
         $this->view('Customer/Settings/profile', $title);
       }
       
     }
     
-//this function for edit profile
+//this function for loading edit profile page
      public function editprofile(){
       if(!isLoggedIn()){
 
         redirect('login');
       }
       
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      
+      $id = $this->userModel->getUserID($_SESSION['user_email']);
+      $rows  = $this->userModel-> getProfile($id,$role);
+      
+      $_SESSION['rows'] = $rows;
+      
       $title = "edit profile";
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
-
+      //redirect to the correct edit profile page according to the user
       if ($role == "Storekeeper"){
         $this->view('Storekeeper/editprofile', $title);
       }elseif ($role == "Customer"){
         $this->view('Customer/Settings/editprofile', $title);
-      }if ($role == "Contractor"){
+      }elseif ($role == "Contractor"){
         $this->view('Contractor/editprofile', $title);
+      }elseif ($role == "Salesperson"){
+              $this->view('Salesperson/editProfile',$title);
+          }
+    }
+    
+    public function updateprofile(){
+      
+      $title = "edit profile";
+      //get user role and the user id from the session
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      $user_Id = $this->userModel->getUserID($_SESSION['user_email']); 
+
+      $target_dir = "C:/xampp/htdocs/ezolar/public/img/user-pics/";
+        $file_upload = false;
+        // Checking whether a file is uploaded
+        if ($_FILES["fileToUpload"]["error"] == UPLOAD_ERR_OK) {
+            $filename = basename($_FILES["fileToUpload"]["name"]);
+            $file_upload = true;
+        } else {
+            $filename = $_SESSION['user_pic'];
+        }
+        $target_file = $target_dir . $filename;
+        
+        
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if($file_upload){
+                // Check if image file is a actual image or fake image
+                if (isset($_POST["submit"])) {
+                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                    if ($check !== false) {
+                        echo "File is an image - " . $check["mime"] . ".";
+                        $uploadOk = 1;
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
+                }
+
+                // Check if file already exists
+                if (file_exists($target_file)) {
+                    echo "Sorry, file already exists.";
+                    $uploadOk = 0;
+                }
+
+                // Check file size
+                if ($_FILES["fileToUpload"]["size"] > 500000) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+
+                // Allow certain file formats
+                if (
+                    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif"
+                ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+
+                // Check if $uploadOk is set to 0 by an error
+                if ($uploadOk == 0) {
+                    echo "Sorry, your file was not uploaded.";
+                    // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+
+        }
+
+      $inputs = ($_POST); 
+      // print_r($inputs);die;
+      if($this->userModel->editProfile($inputs,$role, $user_Id,$filename)){
+        if ($role == "Storekeeper"){
+          $this->view('Storekeeper/editprofile', $title);
+        }elseif ($role == "Customer"){
+          $this->view('Customer/Settings/editprofile', $title);
+          
+        }if ($role == "Contractor"){
+          $this->view('Contractor/editprofile', $title);
+        }
       }
-      $inputs = array($_POST);
-    print_r($_POST);
-    die;
-    $this->userModel->editProfile($inputs);
+      else{
+        echo "Mashi is idiot";
+      };
     }
 
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;
       $_SESSION['user_email'] = $user->email;
+      $_SESSION['user_pic'] = $user->profile;
       $_SESSION['user_role'] = $user->role;
       if($_SESSION['user_role'] === 'Customer'){ $_SESSION['controller'] ='Customer'; $_SESSION['roleName'] = 'Customer'; }
       if($_SESSION['user_role'] === 'Admin'){ $_SESSION['controller'] ='admin'; $_SESSION['roleName'] = 'Admin';}
