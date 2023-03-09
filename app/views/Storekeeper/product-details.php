@@ -138,7 +138,8 @@
                     <div class="form-inline" style="justify-content:center;">
                         <a href="/ezolar/Product/editProductPage/<?php $row = $_SESSION['row'];
                             echo $row -> productID;?>"><button class="form-submit-btn">Edit Product</button></a>
-                        <button class="form-submit-btn">Delete Product</button>
+                        <a href="/ezolar/Product/removeProduct/<?php $row = $_SESSION['row'];
+                            echo $row -> productID;?>"><button class="form-submit-btn">Delete Product</button></a>
                     </div>
                 </div>
             </div>

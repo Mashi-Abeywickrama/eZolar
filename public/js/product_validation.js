@@ -2,9 +2,10 @@ var pidErr = document.getElementById("pid-err");
 var pnameErr = document.getElementById("pname-err");
 var manufErr = document.getElementById("manuf-err");
 var priceErr = document.getElementById("price-err");
+var pidField = document.getElementById("product-id");
 
 
-function validateProductID(){
+function validateProductID(IDs){
     var regName = /^[A-Za-z0-9]+$/;
     var productid = document.getElementById('product-id').value;
     if(!regName.test(productid)){
@@ -18,7 +19,14 @@ function validateProductID(){
             return false;
         }
         else{
+            if(IDs.includes(productid)){
+                pidErr.innerHTML='Product ID already exist';
+                return false;
+            }
+            else
+            {
             return true;
+            }
         }
     }
 }
@@ -67,5 +75,29 @@ function validateForm(){
     }
     else{
         return true;
+    }
+}
+
+function generateProductID(IDs){
+    var productname = document.getElementById('product-name').value;
+    var manufname = document.getElementById('manufacturer').value;
+    var productType = document.getElementById('product-type').value;
+    if(productname.length<=0 || manufname.length<=0 || productType==''){
+        pidErr.innerHTML='Product name, type & Manufacturer should be filled before generating ID';
+    }
+    else{
+        pidErr.innerHTML='';
+        var pidprefix = Array.from(productType)[0].concat(Array.from(manufname)[0],Array.from(productname)[0]).toUpperCase();
+        var pidno = 1;
+        var pid = pidprefix.concat(String(pidno).padStart(3, '0'));
+        while (IDs.includes(pid)){
+            pidno +=1;
+            pid = pidprefix.concat(String(pidno).padStart(3, '0'));
+            if (pidno>=999){
+                break;
+            }
+        }
+        pidField.value = pid;
+
     }
 }

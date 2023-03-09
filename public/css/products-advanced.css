@@ -130,3 +130,42 @@
     color: #0B2F64;
     margin-left: 1%;
 }
+
+
+.form-idgen-btn{
+    width:7%;
+    height: 44px;
+    border-radius: 5px;
+    background: #2C61A3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-idgen-btn:hover{
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
+.form-idgen-img{
+    height: 70%;
+}
+
+.form-idgen-inline{
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-item-remover-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-item-remover-icon{
+    height: 80%;
+}

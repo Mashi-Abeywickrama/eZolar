@@ -19,5 +19,16 @@
       return $row;
     }
 
+    public function getAssignedProjectDetails($eng_Id, $prj_ID){
+      $this->db->query('SELECT * FROM projectengineer INNER JOIN project ON projectengineer.Project_projectID = project.projectID WHERE  Engineer_empID = :engID AND Project_projectID = :prjID');
+      $row = $this->db->single(['engID' => $eng_Id,'prjID' => $prj_ID]);
+      return $row;
+    }
+
+    public function projectAssignPack($prj_ID,$pck_ID){
+      $this->db->query('UPDATE project SET Package_packageID = :packID WHERE projectID = :projID');
+      $this->db->execute(['packID'=> $pck_ID, 'projID'=> $prj_ID]);
+    }
+
   }
 ?>

@@ -1,8 +1,8 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+     require_once(__ROOT__.'\app\views\Includes\header.php');
+     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,38 +53,47 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                 </a>
             </div>
             <div class="common-main-txt">
-                Assigned Projects
+                Assigned Project : <?php echo strtoupper($_SESSION['row']->projectID);?>
             </div>
             
             <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>   
-        </div>
-        <div class="project-list-container">
-            <?php
-            $results = $_SESSION['rows'];
-            foreach($results as $row){
-                echo '<div class="project-card">
-                <div class="project-image-container">
+            </div>
+            </div>
+            <div class="project-details-container">
+                <div class="project-details-basic-container">
+                    <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
+                    <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
+                    <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                </div>
 
+                <div class="project-details-schedule-container">
+                    <p><b>Inspection Date : </b></p>
+                    <p><b>Delivery Date : </b></p>
                 </div>
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                    <div class="project-text-no">Project ID : ' .strtoupper($row -> projectID).'</div>
-                    <div class="project-text-status"><b>Status : '.$row -> status.'</b></div>
-                    <div class="project-text-location">Site Location : ' .$row -> siteAddress.'</div>
-                    </div>
+
+                <div class="project-details-pack-container">
+                    <p class="project-details-pack-text"><b>Package : </b> <?php echo strtoupper($_SESSION['row']->Package_packageID)?></p>
+                    <?php
+                    $packAssignedFlag = True;
+                    if ($_SESSION['row']->Package_packageID == 'Not Assigned'){
+                        echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">Assign Package</div></a>';
+                        $packAssignedFlag = False;
+                    } else {
+                        echo '<a href="/ezolar/EngineerProject/projectPackageDetailsPage/'.$_SESSION['row']->Package_packageID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                    }
+                    ?>
                 </div>
-                <div class="project-details-btn-container">
-                    <a href="/ezolar/EngineerProject/projectDetailsPage/'.$row -> projectID.'">
-                    <div class="project-details-btn">
-                        <div class="project-details-btn-text">More info</div>
-                    </div></a>
+
+                <div class="project-details-btns-container">
+                    <?php 
+                    if ($packAssignedFlag)
+                    {echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>';} ?>
+                    <a href=""><div class="project-details-btns">Modify Package</div></a>
+                    <a href=""><div class="project-details-btns">Request Reshedule</div></a>
                 </div>
-            </div>';
-            }
-            ?>
         </div>
+        
     </div>
 </body>
 </html>

@@ -72,7 +72,22 @@
                             <div class="form-item-text">
                                 Package ID:<span style="color:red;">*</span> <span class="err-box" id="pckid-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" required onkeyup="validatePackageID()">
+                            <div class="form-idgen-inline">
+                                <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" style="width:88%;" required onkeyup="validatePackageID(<?php
+                                            $a = array();
+                                            if  (count($_SESSION['rows'])>0){
+                                                for ($x = 0; $x < count((array)$_SESSION['rows']); $x++) {
+                                                    array_push($a,$_SESSION['rows'][$x]->packageID);
+                                                }
+                                            }
+                                            //ignore the errors
+                                            $finalArray = "['" . implode ( "', '", $a ) . "']";
+                                            echo $finalArray
+                                            ?>)">
+                                        <div class="form-idgen-btn" title="Auto Generate ID" onclick="generatePackageID(<?php echo $finalArray?>)">   
+                                            <img src="\ezolar\public\img\storekeeper\idgen.png" class="form-idgen-img">
+                                        </div>
+                                </div>
                         </div>
                     </div>
                     <div class="form-inline">
@@ -88,7 +103,12 @@
                             <div class="form-item-text">
                                 Package Type: <span class="err-box" id="pck-type-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-type" id="pack-type" type="text" placeholder="Eg:- Residential" onkeyup="validateType()">
+                            <select class="form-item-input" name="pack-type" id="pack-type">
+                                    <option value="" selected disabled>Select Package Types</option>
+                                    <option value="Residential">Residential</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Industrial">Industrial</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-item-text">

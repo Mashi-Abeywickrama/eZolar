@@ -66,7 +66,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         </div>
         <div class="form-table-container">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text"> Product Name</span>  <span class="form-table-header-text"> Manufacturer</span><span class="form-table-header-text"> Price per item</span> <span class="form-table-header-text"> Quantity</span>
+                        <span class="form-table-header-text inventory-col1"> Product Name</span>  <span class="form-table-header-text inventory-col2"> Manufacturer</span><span class="form-table-header-text inventory-col3"> Price per item</span> <span class="form-table-header-text inventory-col4"> Quantity</span>
                     </div>
                     <div class="form-table-body-container">
                                                 <?php
@@ -79,10 +79,10 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                                 $styleClass = 'form-table-row-container';
                             };
                             echo '<div class="'.$styleClass.'">
-                            <span class="form-table-row-text">'.$product -> productName.'</span> 
-                            <span class="form-table-row-text">'.$product -> manufacturer.'</span> 
-                            <span class="form-table-row-text">'.$product -> cost.'</span> 
-                            <span class="form-table-row-text">'.$product -> quantity.'</span>
+                            <span class="form-table-row-text inventory-col1">'.$product -> productName.'</span> 
+                            <span class="form-table-row-text inventory-col2">'.$product -> manufacturer.'</span> 
+                            <span class="form-table-row-text inventory-col3">'.$product -> cost.'</span> 
+                            <span class="form-table-row-text inventory-col4">'.$product -> quantity.'</span>
                             </div>';
                             $counter = ($counter+1)%2;
                         }
@@ -91,7 +91,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                     
                 </div>
                 <div class="form-button-container" style="justify-content:center;">
-                <a href=""><button class="form-submit-btn">Add Stock</button></a>
+                <a href="/ezolar/Inventory/addStocksPage"><button class="form-submit-btn">Add Stock</button></a>
                 <a href="/ezolar/Inventory/viewStocks"><button class="form-submit-btn">View Stock Entries</button></a>
             </div>
     </div>

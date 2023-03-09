@@ -67,7 +67,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         </div>  
         <div class="form-table-container">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text">Stock ID</span>  <span class="form-table-header-text">Arrival Date</span><span class="form-table-header-text">Type</span> <span class="form-table-header-text">Details</span>
+                        <span class="form-table-header-text inventory-col1">Stock ID</span>  <span class="form-table-header-text inventory-col2">Arrival Date</span><span class="form-table-header-text inventory-col3">Type</span> <span class="form-table-header-text inventory-col4">Details</span>
                     </div>
                     <div class="form-table-body-container">
                                                 <?php
@@ -80,10 +80,10 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                                 $styleClass = 'form-table-row-container';
                             };
                             echo '<div class="'.$styleClass.'">
-                            <span class="form-table-row-text"> Stock #'.$stock -> stockID .'</span> 
-                            <span class="form-table-row-text">'.$stock -> arrivalDate.'</span> 
-                            <span class="form-table-row-text">'.$stock -> stockType.'</span> 
-                            <span class="form-table-row-text"><a href="">Details</a></span>
+                            <span class="form-table-row-text inventory-col1"> Stock #'.$stock -> stockID .'</span> 
+                            <span class="form-table-row-text inventory-col2">'.$stock -> arrivalDate.'</span> 
+                            <span class="form-table-row-text inventory-col3">'.$stock -> stockType.'</span> 
+                            <span class="form-table-row-text inventory-col4"><a href="">Details</a></span>
                             </div>';
                             $counter = ($counter+1)%2;
                         }
@@ -92,7 +92,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                     
                 </div>
                 <div class="form-button-container" style="justify-content:center;">
-                <a href=""><button class="form-submit-btn">Add Stock</button></a>
+                <a href="/ezolar/Inventory/addStocksPage"><button class="form-submit-btn">Add Stock</button></a>
             </div>
     </div>
 </body>
