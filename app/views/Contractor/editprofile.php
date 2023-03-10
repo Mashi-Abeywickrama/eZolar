@@ -71,7 +71,7 @@ foreach($results as $row){
     
     <div class="form-background">
 
-        <form class="form-container" action="/ezolar/user/editProfile" method="POST">
+        <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -87,9 +87,9 @@ foreach($results as $row){
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
-                        My Role :
+                        Bio :
                     </div>
-                    <input class="form-item-input" name="address" id="address" type="text" value="' . $row ->type . '" readonly>
+                    <input class="form-item-input" name="bio" id="bio" type="text" value="' . $row ->bio . '">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -103,6 +103,25 @@ foreach($results as $row){
                     </div>
                     <input class="form-item-input" name="nic" id="bio" type="nic" value="' . $row ->nic . '" readonly>
                 </div>
+                <div class="form-item-container">
+                    <div class="form-item-text">
+                        Click on the "Choose File" button to upload a profile image:
+                    </div>
+                    <input type="file"  id="file-input" name="fileToUpload" onchange="loadFile(this)">
+                </div>
+                <p><img scr="" id="output" width="200"/></p> '; ?>
+                <script>
+                    function loadFile(input) {
+                        if(input.files && input.files[0] ) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                document.getElementById("output").src = e.target.result;
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
+            <?php echo '</div>
             </div>
 
             <div class="form-inline-button">

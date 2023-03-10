@@ -80,7 +80,7 @@ $results = $_SESSION['rows'];
 foreach($results as $row){
     echo '
     
-    <div class="form-background">
+    <div class="form-background-edit">
 
         <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">

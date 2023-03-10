@@ -59,9 +59,19 @@
                     My Projects
                 </div>
             </div>
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>   
+           
+        </div>
+        <div class="project-type">
+            <div class = "project-sub-topic" style="background: #ad1515; border: 3px solid #0B2F64;">
+            <a href="/ezolar/project">Ongoing Projects</a>
+            </div>
+            <div class = "project-sub-topic">
+            <a href="/ezolar/project/completedProjects">Completed Projects</a>
+            </div>
+            <div class = "project-sub-topic">
+            <a href="/ezolar/project/cancelledProjects">Cancelled Projects</a>
+            </div>
+
         </div>
         <div class="body-list-container">
             <!-- <div class="project-box">
@@ -108,8 +118,11 @@
         </div>
     </div>
 </div>
+<div class = "f">
+    <?php 
+          $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
-<?php 
-      $this->view('Includes/footer', $data);
-?>
+
 </html>

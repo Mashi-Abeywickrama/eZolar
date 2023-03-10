@@ -1,5 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+    //  require_once(__ROOT__.'\app\views\Includes\header.php');
      require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
@@ -18,25 +19,28 @@
 <div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Contractor Dashboard
+            Customer Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class="box2">
-                    Assigned Projects
+            <a href="<?=URLROOT?>#"><div class="box7">
+                    Packages
                 </div></a>
-                <a href="<?=URLROOT?>/"><div class="box3">
-                    My Schedule
+            <a href="<?=URLROOT?>/project"><div class="box2">
+                    My Projects
                 </div></a>
-                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
-                    Report an Issue
+                <a href="<?=URLROOT?>/inquiry"><div class="box3">
+                    Inquiries
                 </div></a>
+                <div class="box4">
+                    Transactions
+                </div>
             </div>
             <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
                     Profile
                 </div></a>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
+                <a href="<?=URLROOT?>/customersettings"><div class="box6">
                     Settings
                 </div></a>
             </div>
@@ -52,27 +56,24 @@
                     </a>
                 </div>
                 <div class="common-main-txt">
-                    Assigned Projects
+                    My Projects
                 </div>
             </div>
-            
+           
+        </div>
+        <div class="project-type">
+            <div class = "project-sub-topic">
+            <a href="/ezolar/project">Ongoing Projects</a>
+            </div>
+            <div class = "project-sub-topic">
+            <a href="/ezolar/project/completedProjects">Completed Projects</a>
+            </div>
+            <div class = "project-sub-topic" style="background: #ad1515; border: 3px solid #0B2F64;">
+            <a href="/ezolar/project/cancelledProjects" >Cancelled Projects</a>
+            </div>
+
         </div>
         <div class="body-list-container">
-            <!-- <div class="project-box">
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                        <div class="project-text-no">project No. 123456</div>
-                        <div class="project-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                        <div class="project-text-price">Price: Rs. 30,000</div>
-                    </div>
-                    <div class="project-details-btn-container">
-                        <div class="project-details-btn">
-                            <div class="project-details-btn-text">More info</div>
-                        </div>
-                    </div>
-                </div>  
-            </div> -->
-
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
@@ -86,7 +87,7 @@
                         </span>
                         <span class="project-details-btn-container">
                             <div class="project-details-btn">
-                                <span class="project-details-btn-text">More info</span>
+                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF">More info</a></span>
                             </div>
                         </span>
                         
@@ -95,10 +96,33 @@
             ?>
             
         </div>
+        <div class="add-project-btn">
+            <div class="add-project-btn-text">
+              <a href="/ezolar/project/requestProjectPage"> New Project</a> 
+            </div>
+        </div>
     </div>
 </div>
+<div class = "f">
+    <?php 
+          $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
-<?php 
-      $this->view('Includes/footer', $data);
-?>
+<script>
+    const boxes = document.querySelectorAll('.project-sub-topic');
+
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener('click', function() {
+          // remove border from all boxes
+            for (let j = 0; j < boxes.length; j++) {
+              boxes[j].classList.remove('selected');
+            } 
+            // add border to clicked box
+            this.classList.add('selected');
+        });
+    }
+
+</script>
+
 </html>

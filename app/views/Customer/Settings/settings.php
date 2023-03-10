@@ -1,8 +1,7 @@
 <?php
      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\Includes\header.php');
-     require_once(__ROOT__.'\Includes\navbar.php');
-     require_once(__ROOT__.'\Includes\footer.php');
+     require_once(__ROOT__.'/Customer/navbar.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.css">
+    <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <title>eZolar Dashboard</title>
@@ -59,9 +59,7 @@
                     Settings
                 </div>
             </div>
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>   
+
         </div>
 <!-- have to embed links  -->
         <div class="settings-body-container" >
@@ -73,14 +71,14 @@
                     <img src="\ezolar\public\img\setting\Edit.png" alt="Edit">
                 </div>
             </div></a>
-            <div class="dashboard-settings-container-content">
+            <a href="<?=URLROOT?>/user/updatePassword"><div class="dashboard-settings-container-content">
                 <div class="dashboard-container-txt">
-                    <a href="#"> Change Password</a>
+                    Change Password
                 </div>
                 <div class="dashboard-container-img">
                     <img src="\ezolar\public\img\setting\Lock.png" alt="Change Password">
                 </div>
-            </div>
+            </div></a>
             <div class="dashboard-settings-container-content">
                <div class="dashboard-container-txt">
                     Appearence
@@ -107,6 +105,11 @@
             </div>
         </div>
     </div>
+</div>
+<div  class="f">
+    <?php
+        require_once(__ROOT__.'\Includes\footer.php');
+    ?>
 </div>
 </body>
 </html>

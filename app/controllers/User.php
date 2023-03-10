@@ -85,7 +85,7 @@ class User extends Controller {
             $id = $this->userModel->getUserID($data['email']);
             $role = $this->userModel->getUserRole($_SESSION['user_email']);
             $name = $this->userModel->getProfile($id,$role)[0]->name;
-            $_SESSION['user_pic'] = $this->userModel->getProfile($id,$role)[0]->profile;
+            $_SESSION['user_pic'] = $this->userModel->getProfile($id,$role)[0]->profilePhoto;
   
             
             $_SESSION['name'] = $name;
@@ -172,85 +172,109 @@ class User extends Controller {
       $user_Id = $this->userModel->getUserID($_SESSION['user_email']); 
 
       $target_dir = "C:/xampp/htdocs/ezolar/public/img/user-pics/";
-        $file_upload = false;
-        // Checking whether a file is uploaded
-        if ($_FILES["fileToUpload"]["error"] == UPLOAD_ERR_OK) {
-            $filename = basename($_FILES["fileToUpload"]["name"]);
-            $file_upload = true;
-        } else {
-            $filename = $_SESSION['user_pic'];
-        }
-        $target_file = $target_dir . $filename;
-        
-        
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-        if($file_upload){
-                // Check if image file is a actual image or fake image
-                if (isset($_POST["submit"])) {
-                    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-                    if ($check !== false) {
-                        echo "File is an image - " . $check["mime"] . ".";
-                        $uploadOk = 1;
-                    } else {
-                        echo "File is not an image.";
-                        $uploadOk = 0;
-                    }
-                }
-
-                // Check if file already exists
-                if (file_exists($target_file)) {
-                    echo "Sorry, file already exists.";
-                    $uploadOk = 0;
-                }
-
-                // Check file size
-                if ($_FILES["fileToUpload"]["size"] > 500000) {
-                    echo "Sorry, your file is too large.";
-                    $uploadOk = 0;
-                }
-
-                // Allow certain file formats
-                if (
-                    $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif"
-                ) {
-                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                    $uploadOk = 0;
-                }
-
-                // Check if $uploadOk is set to 0 by an error
-                if ($uploadOk == 0) {
-                    echo "Sorry, your file was not uploaded.";
-                    // if everything is ok, try to upload file
-                } else {
-                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-                    } else {
-                        echo "Sorry, there was an error uploading your file.";
-                    }
-                }
-
-        }
-
-      $inputs = ($_POST); 
-      // print_r($inputs);die;
-      if($this->userModel->editProfile($inputs,$role, $user_Id,$filename)){
-        if ($role == "Storekeeper"){
-          $this->view('Storekeeper/editprofile', $title);
-        }elseif ($role == "Customer"){
-          $this->view('Customer/Settings/editprofile', $title);
-          
-        }if ($role == "Contractor"){
-          $this->view('Contractor/editprofile', $title);
-        }
+      $file_upload = false;
+      // Checking whether a file is uploaded
+      if ($_FILES["fileToUpload"]["error"] == UPLOAD_ERR_OK) {
+          $filename = basename($_FILES["fileToUpload"]["name"]);
+          $file_upload = true;
+      } else {
+          $filename = $_SESSION['user_pic'];
       }
-      else{
-        echo "Mashi is idiot";
-      };
+      $target_file = $target_dir . $filename;
+      
+      
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      if($file_upload){
+              // Check if image file is a actual image or fake image
+              if (isset($_POST["submit"])) {
+                  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                  if ($check !== false) {
+                      echo "File is an image - " . $check["mime"] . ".";
+                      $uploadOk = 1;
+                  } else {
+                      echo "File is not an image.";
+                      $uploadOk = 0;
+                  }
+              }
+              // Check if file already exists
+              if (file_exists($target_file)) {
+                  echo "Sorry, file already exists.";
+                  $uploadOk = 0;
+              }
+              // Check file size
+              if ($_FILES["fileToUpload"]["size"] > 500000) {
+                  echo "Sorry, your file is too large.";
+                  $uploadOk = 0;
+              }
+              // Allow certain file formats
+              if (
+                  $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                  && $imageFileType != "gif"
+              ) {
+                  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                  $uploadOk = 0;
+              }
+              // Check if $uploadOk is set to 0 by an error
+              if ($uploadOk == 0) {
+                  echo "Sorry, your file was not uploaded.";
+                  // if everything is ok, try to upload file
+              } else {
+                  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                      echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                  } else {
+                      echo "Sorry, there was an error uploading your file.";
+                  }
+              }
+
+        }
+
+        $inputs = ($_POST); 
+        // print_r($inputs);die;
+        if($this->userModel->editProfile($inputs,$role, $user_Id,$filename)){
+          $_SESSION['user_pic'] = $filename;
+          $_SESSION['name'] = $inputs['name'];
+
+          if ($role == "Storekeeper"){
+            $this->view('Storekeeper/editprofile', $title);
+          }elseif ($role == "Customer"){
+            $this->view('Customer/Settings/editprofile', $title);
+
+          }if ($role == "Contractor"){
+            $this->view('Contractor/editprofile', $title);
+          }
+        }
+        else{
+          echo "Mashi is idiot";
+        };
     }
 
+    public function updatePassword(){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      
+      $id = $this->userModel->getUserID($_SESSION['user_email']);
+      $rows  = $this->userModel-> getProfile($id,$role);
+      
+      $_SESSION['rows'] = $rows;
+      
+      $title = "edit profile";
+      $role = $this->userModel->getUserRole($_SESSION['user_email']);
+      //redirect to the correct edit profile page according to the user
+      if ($role == "Storekeeper"){
+        $this->view('Storekeeper/editprofile', $title);
+      }elseif ($role == "Customer"){
+        $this->view('Customer/Settings/changepassword', $title);
+      }elseif ($role == "Contractor"){
+        $this->view('Contractor/editprofile', $title);
+      }elseif ($role == "Salesperson"){
+        $this->view('Salesperson/editProfile',$title);
+      }
+    }
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;

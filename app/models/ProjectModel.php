@@ -46,9 +46,9 @@
           return false;
       }
     }
-     public function getContractorProjects(){
-      $this->db->query('SELECT * FROM project');
-      $row = $this->db->resultSet([]);
+     public function getContractorProjects($id){
+      $this->db->query('SELECT * FROM projectContractor INNER JOIN project ON projectContractor.Project_projectID = project.projectID where Contractor_contractorID = :userID');
+      $row = $this->db->resultSet(['userID'=>$id]);
       return $row;
 
   }

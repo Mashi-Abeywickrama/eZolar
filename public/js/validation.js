@@ -252,13 +252,13 @@ function clearErrorMessage(){
 }
 
 
-// Once u clicked the OTP button, disable it
-const sendOTPbtn = document.getElementById('emailbtn');
-btn.addEventListener('click', () => {
-    // 👇️ hide button
-    sendOTPbtn.style.display = 'none';
+// // Once u clicked the OTP button, disable it
+// const sendOTPbtn = document.getElementById('emailbtn');
+// btn.addEventListener('click', () => {
+//     // 👇️ hide button
+//     sendOTPbtn.style.display = 'none';
   
-    // 👇️ show div
-    const box = document.getElementById('box');
-    box.style.display = 'block';
-  });
+//     // 👇️ show div
+//     const box = document.getElementById('box');
+//     box.style.display = 'block';
+//   });

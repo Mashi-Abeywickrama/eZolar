@@ -73,7 +73,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <div class="profile-container-content">
 
                 <div class = "profile-img-div">
-                    <img class="profile-img" src="/ezolar/public/img/user-pics/'.$row->profile.'" alt="profile">
+                    <img class="profile-img" src="/ezolar/public/img/user-pics/'.$row->profilePhoto.'" alt="profile">
                 </div>
                 <div class="profile-container-txt">
                     <div class="profile-container-txt-name">
@@ -97,14 +97,14 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                                 Email :
                             </div>
                             <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $mail . '" readonly>
-                        </div><br>
+                        </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 Address :
                             </div>
                             <input class="form-item-input" name="address" id="address" type="text" placeholder="' . $row -> address . '" readonly>
-                        </div><br>
+                        </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
