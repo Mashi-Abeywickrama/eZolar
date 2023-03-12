@@ -22,6 +22,7 @@ class ChatSystemModel
     }
 
     // view messages chat function for salesperson
+    //TODO -> check on how salesperson interact with inquiry and change salesperson ID to check other inquiry messages
     public function viewMessages($inquiryID,$salespersonID){
         $this->db->query('SELECT * FROM inquiry INNER JOIN inquiry_message WHERE inquiryID = inquiry_inquiryID AND Salesperson_Employee_empID=:salespersonID AND inquiryID = :inquiryID');
         $row = $this->db->resultSet(['salespersonID' => $salespersonID, 'inquiryID' => $inquiryID]);

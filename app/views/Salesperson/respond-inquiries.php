@@ -110,31 +110,6 @@ foreach($results as $row){
                 ';
 }
 ?>
-<!--        <div class="respond-form-background">-->
-<!--            <form class="form-container" action="/ezolar/Inquiry/respondInquiry/' . $row -> inquiryID . '" method="POST">-->
-<!--                <div class="form-inline">-->
-<!--                    <div class="form-item-container">-->
-<!--                        <div class="form-item-text">-->
-<!--                            Response-->
-<!--                        </div>-->
-<!--                        <textarea class="form-item-input" name="response" id="response" rows="5" cols="50"></textarea>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--    -->
-<!--                <div class="form-inline-button">-->
-<!--                    <div class="cancel-btn">-->
-<!--                        <button class="form-cancel-btn" type="reset" value="reset">Cancel</button>-->
-<!--                    </div>-->
-<!--                    <div class="send-btn">-->
-<!--                        <button type="submit" class="form-send-btn">Send</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--    -->
-<!--            </form>-->
-<!--        </div>-->
-
-<!--        <button id="button" onclick="get_message()">Hello</button>-->
-
         <div id='message-container' class="message-container">
 
 <!--            --><?php

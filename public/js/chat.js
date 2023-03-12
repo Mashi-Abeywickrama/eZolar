@@ -17,6 +17,8 @@ setInterval(() =>{
             if (xhr.status === 200){
                 console.log(xhr.response);
                 chat.innerHTML = xhr.response;
+                // scroll up when message send
+                chat.scrollTop = chat.scrollHeight;
             }
         }
     }
