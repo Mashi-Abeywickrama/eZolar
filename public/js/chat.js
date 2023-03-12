@@ -17,8 +17,7 @@ setInterval(() =>{
             if (xhr.status === 200){
                 console.log(xhr.response);
                 chat.innerHTML = xhr.response;
-                // scroll up when message send
-                chat.scrollTop = chat.scrollHeight;
+                // chat.scrollTop = chat.scrollHeight;
             }
         }
     }
@@ -33,6 +32,8 @@ send_message.onclick = () => {
         if (xhr.readyState === XMLHttpRequest.DONE){
             if (xhr.status === 200){
                 text_field.value = "";
+                // scroll up when message send
+                // chat.scrollTop = chat.scrollHeight;
             }
         }
     }

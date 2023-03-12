@@ -142,12 +142,10 @@ foreach($results as $row){
 
     </div>
 </div>
-
+<script type="text/javascript" src="\ezolar\public\js\chat.js"></script>
 </body>
 
-<script type="text/javascript" src="\ezolar\public\js\chat.js">
-// document.getElementById("button").addEventListener('click',get_message())
-</script>
+
 
 <!--<script type="text/javascript">-->
 <!--    $(document).ready(function (){-->
