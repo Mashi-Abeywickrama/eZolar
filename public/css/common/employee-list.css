@@ -34,6 +34,10 @@
     margin-bottom: 20px;
 }
 
+.employee-card:hover{
+    border: #DE8500 solid;
+}
+
 .employee-image-container{
     display: inline-block;
     height: 110px;

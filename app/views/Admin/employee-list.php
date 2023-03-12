@@ -1,8 +1,8 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\employee-list.css">
+    <link rel="stylesheet" href="\ezolar\public\css\common\employee-list.css">
     <title>My Projects</title>
 </head>
 <body>

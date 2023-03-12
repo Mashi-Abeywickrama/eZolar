@@ -1,6 +1,6 @@
 <?php
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\helpers\session_helper.php');
+require_once(__ROOT__.'/app/helpers/session_helper.php');
   class Employee extends Controller {
     public function __construct(){ 
       $this->employeeModel = $this->model('EmployeeModel');
@@ -159,7 +159,7 @@ require_once(__ROOT__.'\app\helpers\session_helper.php');
             $this->view('Admin/employee-list', $data);
         }
         elseif (($this->employeeModel->getUserRole($_SESSION['user_email']) == "Salesperson")){
-            $this->view('Salesperson/'.$empType, $data);
+            $this->view('Salesperson/employee-list', $data);
         }
 
     }

@@ -1,8 +1,8 @@
 <?php
 //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +71,17 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     </div>
     <div class="inquiry-list-container">
 
+        <div class="toggle-btn">
+            <label class="switch">
+                <input type="checkbox" id="togBtn" onclick="return check_toggle_status()">
+                <div class="slider"></div>
+            </label>
+        </div>
+
         <?php
         $results = $_SESSION['rows'];
         foreach($results as $row){
+
             echo '<div class="inquiry-box">
 
                         <div class="inquiry-text-container">
@@ -83,7 +91,8 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                                 <div class="inquiry-text-name"><b>Topic :' . $row -> topic . '</b></div>
                             </div>
                         </div>
-                        <div class="inquiry-details-btn-container">
+                        <div class="inquiry-details-btn-container" >
+                    
                             <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$row -> inquiryID.'">
                                 <div class="inquiry-details-btn">
                                     <div class="inquiry-details-btn-text">Respond</div>
@@ -99,5 +108,6 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 </div>
 </body>
+<script type="text/javascript" src="\ezolar\public\js\inquiry.js"></script>
 </html>
 

@@ -86,8 +86,9 @@
               redirect('Project/SalespersonViewProjects');
           }
 
-          public function getProjectDetails($projectID){
-              if (!isLoggedIn()){
+          public function getProjectDetails($projectID)
+          {
+              if (!isLoggedIn()) {
                   redirect('login');
               }
               $this->projectModel->getProjectDetails($projectID);
@@ -95,6 +96,7 @@
                   'title' => 'eZolar Salesperson Assigned Projects',
               ];
               $this->view('Salesperson/project-details', $data);
+          }
 
           public function COntractorAssignedProjects(){
 

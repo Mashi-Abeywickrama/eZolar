@@ -16,7 +16,7 @@
     max-width: 900px;
     min-width: 700px;
     height: 55%;
-    min-height: 300px;
+    min-height: 200px;
     justify-content: center;
     overflow-y: scroll;
     overflow-x: auto;
@@ -159,4 +159,46 @@
     background: #0B2F64;
     transition-duration: 200ms;
     color: #FFFFFF;
+}
+
+/*CSS for chat system*/
+
+.message-container{
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: #0000cc 2px solid;
+}
+
+.sender-container{
+    text-align: right;
+}
+
+.receiver-container{
+    text-align: left;
+}
+
+.sending-message{
+    background-color: lightblue;
+    word-wrap: break-word;
+    display: inline-block;
+    padding: 5px;
+    border-radius:10px;
+    max-width: 70%;
+}
+.incoming-message{
+    background-color: yellow;
+    word-wrap: break-word;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.insert-message{
+    height: 70px
+}
+
+.send-message-btn{
+    height: 70px
 }
