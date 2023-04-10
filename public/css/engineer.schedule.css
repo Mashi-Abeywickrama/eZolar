@@ -17,9 +17,8 @@
     border: 1px groove #0B2F64;
     padding-right: 2px;
     padding-top: 5px;
-    height: 90px;
+    height: 80px;
     width: calc(100%/7);
-    box-sizing: border-box;
 }
 
 .calendar-date-container{
