@@ -23,9 +23,9 @@ class Statistics extends Controller
         }
 
         $data = $this->StatisticsModel->salesPerMonth();
-//        $labels = array('January','February','March','April','May','June','July','August','September','October','November','December');
+        $labels = array('January','February','March','April','May','June','July','August','September','October','November','December');
         $_SESSION['data'] = $data;
-//        $_SESSION['labels'] = $labels;
+        $_SESSION['labels'] = $labels;
         $data = [
             'title' => 'ezolar employee details',
         ];

@@ -72,12 +72,12 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
         </div>
 
 
-        <canvas id="myChart"></canvas>
+        <canvas id="salesPerMonthChart"></canvas>
 
 
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="text/javascript" src="\ezolar\public\js\statistics.js" data-labels="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>" data-data="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>"></script>
+<script type="text/javascript" src="\ezolar\public\js\statistics.js" data-labels="<?php echo htmlspecialchars(json_encode($_SESSION['labels'])); ?>" data-data="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>"></script>
 </body>
 </html>

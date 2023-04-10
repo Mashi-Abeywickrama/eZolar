@@ -11,8 +11,9 @@ class StatisticsModel
     }
 
     public function salesPerMonth(){
+        $year = date('Y');
         $this->db->query("SELECT COUNT(*) AS count, DATE_FORMAT(date, '%M') AS month
-                            FROM scheduleitem
+                            FROM scheduleitem WHERE YEAR(date) = $year
                             GROUP BY MONTH(date)");
         $row = $this->db->resultSet([]);
         return $row;
