@@ -113,6 +113,7 @@ left sub panel and the topic, left image and right image*/
 
 .common-main-container{
     display: grid;
+    width:85%;
     margin: 7.8vh;
     justify-items: center;
     margin-left: 250px;
