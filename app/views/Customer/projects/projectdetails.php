@@ -120,14 +120,56 @@
                 </div>
             </div>
             <div class="project-side-container">
-                <div class = "project-salesperson-container">
-
+                <div class = "project-salesperson-flip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-text-div">
+                                <p><b>John Doe</b>(Salesperson)</p>
+                            </div>
+                            <div class="flip-img-div">
+                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>John Doe</h1>
+                            <p>Architect & Engineer</p>
+                            <p>We love that guy</p>
+                        </div>
+                    </div>
                 </div>
-                <div class = "project-engineer-container">
-
+                <div class = "project-engineer-flip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-text-div">
+                                <p><b>John Doe</b>(Engineer)</p>
+                            </div>
+                            <div class="flip-img-div">
+                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>John Doe</h1>
+                            <p>Architect & Engineer</p>
+                            <p>We love that guy</p>
+                        </div>
+                    </div>
                 </div>
-                <div class = "project-contractor-container">
-
+                <div class = "project-contractor-flip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-text-div">
+                                <p><b>John Doe</b>(Contractor)</p>
+                            </div>
+                            <div class="flip-img-div">
+                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <h1>John Doe</h1>
+                            <p>Architect & Engineer</p>
+                            <p>We love that guy</p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
