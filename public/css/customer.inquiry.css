@@ -134,11 +134,14 @@
     color: #2C61A3;
 }
 .add-inquiry-btn{
+    width: 40%;
+    height: 85%;
     display: flex;
     align-self: center;
+    background-color: #F1F1F1;
     /* height: 40px;
     width: 200px; */
-    border:2px solid #2C61A3;
+    /* border:2px solid #2C61A3;     */
     border-radius: 5px;
     color: #2C61A3;
     justify-content: center;
@@ -170,7 +173,12 @@
     margin: 5px;
     font-size: 18px;
 }
-
+.search-inquiry-btn{
+    width: 58%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 a{
     text-decoration: none;
     color: #0B2F64;

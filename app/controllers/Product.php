@@ -36,6 +36,8 @@
       $data = [
         'title' => 'eZolar NewProduct',
       ];
+      $rows = $this->ProductModel->getAllProductIDs();
+      $_SESSION['rows'] = $rows;
 
       if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
         $this->view('Storekeeper/add-products', $data);
@@ -121,6 +123,16 @@
           $this->view('Admin/edit-products', $data);
         }
         // $this->view('Storekeeper/edit-products',$data);
+    }
+
+    public function removeProduct($productID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $this->ProductModel->deleteProduct($productID);
+
+      redirect('Product/');
     }
 
     }

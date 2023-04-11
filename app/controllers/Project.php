@@ -24,7 +24,39 @@
       $data = [
         'title' => 'eZolar Project',
       ];
-      $this->view('Customer/project', $data);
+      $this->view('Customer/projects/ongoingProject', $data);
+    }
+    public function cancelledProjects(){
+
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+
+      $customer_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
+      // print_r($customer_Id);die;
+      $rows  = $this->projectModel-> getCancelledProjects($customer_Id);
+      $_SESSION['rows'] = $rows;
+      $data = [
+        'title' => 'eZolar Project',
+      ];
+      $this->view('Customer/projects/cancelledProject', $data);
+    }
+    public function completedProjects(){
+
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+
+      $customer_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
+      // print_r($customer_Id);die;
+      $rows  = $this->projectModel-> getCompletedProjects($customer_Id);
+      $_SESSION['rows'] = $rows;
+      $data = [
+        'title' => 'eZolar Project',
+      ];
+      $this->view('Customer/projects/completedProject', $data);
     }
     public function requestProjectPage(){
       if(!isLoggedIn()){
@@ -34,7 +66,7 @@
       $data = [
         'title' => 'eZolar Request Project',
       ];
-      $this->view('Customer/requestproject', $data);
+      $this->view('Customer/projects/requestproject', $data);
 
     }
     public function requestProject(){
@@ -56,7 +88,7 @@
       $data = [
         'title' => 'eZolar Request Project',
       ];
-      $this->view('Customer/projectdetails', $data);
+      $this->view('Customer/projects/projectdetails', $data);
     }
 
          // salesperson functions
@@ -100,7 +132,8 @@
 
           public function COntractorAssignedProjects(){
 
-            $rows  = $this->projectModel->getContractorProjects();
+            $rows  = $this->projectModel->getContractorProjects($this->projectModel->getUserID([$_SESSION['user_email']]));
+            // print_r($rows);die;
             $_SESSION['rows'] = $rows;
             $data = [
                 'title' => 'eZolar COntractor Assigned Projects',

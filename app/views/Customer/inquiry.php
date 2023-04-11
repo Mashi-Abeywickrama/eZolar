@@ -59,13 +59,21 @@
                             Inquiries
                         </div>
                     </div>
-                    <div class = "common-main-topic-left">
+                    <div class = "common-main-topic-right">
                         <!-- <div>
                             <input type="text">
                         </div> -->
                         <div class="add-inquiry-btn">
                             <div class="add-inquiry-btn-text">
                                 <a href="/ezolar/inquiry/newInquiryPage"> New Inquiry</a> 
+                            </div>
+                        </div>
+                        <div class="search-inquiry-btn">
+                            <div class="add-inquiry-input">
+                                <input type="text" placeholder="Search.."/>
+                            </div>
+                            <div class = "search-inquiry-img">
+                                p
                             </div>
                         </div>
                     </div>

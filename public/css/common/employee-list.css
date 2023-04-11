@@ -19,6 +19,10 @@
     overflow-x: hidden;
 
 }
+.box8{
+    color: #ffffff;
+    background-color: #0b2f64;
+}
 
 /*.employee-list-container::-webkit-scrollbar {
     display: none;

@@ -1,7 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -56,9 +55,7 @@
                     Assigned Projects
                 </div>
             </div>
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>   
+            
         </div>
         <div class="body-list-container">
             <!-- <div class="project-box">

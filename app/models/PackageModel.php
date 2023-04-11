@@ -19,7 +19,7 @@
 
     public function getAllPackages(){
       
-      $this->db->query('SELECT * FROM package');
+      $this->db->query('SELECT * FROM package WHERE isDeleted=0');
       $row = $this->db->resultSet([]);
       return $row;
 
@@ -50,6 +50,11 @@
       $this->db->execute(['packID' => $data[0], 'productID' => $data[1], 'quantity' => $data[2]]);
     }
 
+    public function removeitem($data){
+      $this->db->query('DELETE FROM package_product WHERE Package_packageID = :packID AND Product_productID = :productID'); 
+      $this->db->execute(['packID' => $data[0], 'productID' => $data[1]]);
+    }
+
     public function checkitem($packID,$productID){
       $this->db->query('SELECT COUNT(*) as count FROM `package_product` WHERE `Package_packageID` = :packID AND `Product_productID` = :productID;');
       $result = $this->db->single(['packID' => $packID, 'productID' => $productID]);
@@ -60,5 +65,17 @@
         return FALSE;
       };
     }
+
+    public function getAllPackageIDs(){
+      $this->db->query('SELECT packageID FROM package');
+      $rows = $this->db->resultSet([]);
+      return $rows;
+    }
+
+    public function deletePackage($packID){
+      $this->db->query('UPDATE package SET isDeleted = 1 WHERE packageID = :packID'); 
+      $this->db->execute(['packID' => $packID]);
+    }
+
 
   }

@@ -1,8 +1,8 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -58,10 +58,7 @@
                     Report an Issue
                 </div>
             </div>
-            
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>    
+ 
         </div>
         <div class="right-content">
             <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
@@ -94,6 +91,11 @@
             </form>
         </div>
     </div>
+</div>
+<div class = "f">
+    <?php 
+          $this->view('Includes/footer', $data);
+    ?>
 </div>
     <script src="public\js\validation.js"></script>
 </body>

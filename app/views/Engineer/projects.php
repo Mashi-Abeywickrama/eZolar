@@ -61,23 +61,6 @@
             </div>   
         </div>
         <div class="project-list-container">
-            <!--<div class="project-card">
-                <div class="project-image-container">
-
-                </div>
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                    <div class="project-text-no">project No. 123456</div>
-                    <div class="project-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                    <div class="project-text-price">Price: Rs. 30,000</div>
-                    </div>
-                </div>
-                <div class="project-details-btn-container">
-                    <div class="project-details-btn">
-                        <div class="project-details-btn-text">More info</div>
-                    </div>
-                </div>
-            </div>-->
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
@@ -87,15 +70,16 @@
                 </div>
                 <div class="project-text-container">
                     <div class="project-text-container-inner">
-                    <div class="project-text-no">Project No.' .$row -> projectID.'</div>
+                    <div class="project-text-no">Project ID : ' .strtoupper($row -> projectID).'</div>
                     <div class="project-text-status"><b>Status : '.$row -> status.'</b></div>
                     <div class="project-text-location">Site Location : ' .$row -> siteAddress.'</div>
                     </div>
                 </div>
                 <div class="project-details-btn-container">
+                    <a href="/ezolar/EngineerProject/projectDetailsPage/'.$row -> projectID.'">
                     <div class="project-details-btn">
                         <div class="project-details-btn-text">More info</div>
-                    </div>
+                    </div></a>
                 </div>
             </div>';
             }

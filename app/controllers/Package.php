@@ -7,6 +7,7 @@
   class Package extends Controller {
     public function __construct(){ 
         $this->PackageModel = $this->model('PackageModel');
+        $this->ProductModel = $this->model('ProductModel');
     }
     
     public function index(){
@@ -32,6 +33,9 @@
 
         redirect('login');
       }
+      $rows  = $this->PackageModel-> getAllPackageIDs();
+      $_SESSION['rows'] = $rows;
+
       $data = [
         'title' => 'eZolar NewPackage',
       ];
@@ -131,12 +135,14 @@
       $_SESSION['row'] = $row;
       $rows = $this->PackageModel->getPackageContent($packID);
       $_SESSION['rows'] = $rows;
+      $rowss = $this->ProductModel->getAllProducts();
+      $_SESSION['rowss'] = $rowss;
       $data = [
         'title' => 'eZolar Edit Pacakge content',
       ];
 
       if ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
-        $this->view('Storekeeper/edit-package', $data);
+        $this->view('Storekeeper/edit-package-content', $data);
       }
       elseif ($this->PackageModel->getUserRole($_SESSION['user_email']) == "Admin"){
         $this->view('Admin/edit-package-content', $data);
@@ -159,5 +165,31 @@
 
       redirect('Package/editPackageContentPage/'.$packID);
     }
+
+    public function packageRemoveItem($packID,$productID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+        
+        $inputs = array($packID,$productID);
+
+      if ($this->PackageModel->checkitem($packID,$productID)){
+        $this->PackageModel->removeitem($inputs);
+      };
+
+      redirect('Package/editPackageContentPage/'.$packID);
+    }
+
+    public function removePackage($packID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $this->PackageModel->deletePackage($packID);
+
+      redirect('Package/');
+    }
+
 
   }

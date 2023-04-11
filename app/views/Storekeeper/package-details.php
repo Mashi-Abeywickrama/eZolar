@@ -119,7 +119,7 @@
             <div class="form-inline">
                 <div class="form-table-container">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text"> Product Name</span> <span class="form-table-header-text"> Price per item</span> <span class="form-table-header-text"> Quantity</span>
+                        <span class="form-table-header-text pack-content-col1"> Product Name</span> <span class="form-table-header-text pack-content-col2"> Price per item</span> <span class="form-table-header-text pack-content-col3"> Quantity</span>
                     </div>
                     <div class="form-table-body-container">
                                                 <?php
@@ -132,9 +132,9 @@
                                 $styleClass = 'form-table-row-container';
                             };
                             echo '<div class="'.$styleClass.'">
-                            <span class="form-table-row-text">'.$product -> productName.'</span> 
-                            <span class="form-table-row-text">'.$product -> cost.'</span> 
-                            <span class="form-table-row-text">'.$product -> productQuantity.'</span>
+                            <span class="form-table-row-text pack-content-col1">'.$product -> productName.'</span> 
+                            <span class="form-table-row-text pack-content-col2">'.$product -> cost.'</span> 
+                            <span class="form-table-row-text pack-content-col3">'.$product -> productQuantity.'</span>
                             </div>';
                             $counter = ($counter+1)%2;
                         }
@@ -148,7 +148,8 @@
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Info</button></a>
                 <a href="/ezolar/Package/editPackageContentPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Content</button></a>
-                <button class="form-submit-btn">Delete Package</button>
+                <a href="/ezolar/Package/removePackage/<?php $row = $_SESSION['row'];
+                    echo $row -> packageID;?>"><button class="form-submit-btn">Delete Package</button></a>
             </div>
         
             </div>
