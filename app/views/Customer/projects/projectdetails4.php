@@ -1,6 +1,5 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    //  require_once(__ROOT__.'\app\views\Includes\header.php');
      require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
@@ -68,15 +67,15 @@
                             <div class="project-progress-bar-bullet-text">Request Recieved</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet"></div>
+                            <div class="project-progress-bar-bullet-highlighted"></div>
                             <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet"></div>
+                            <div class="project-progress-bar-bullet-highlighted"></div>
                             <div class="project-progress-bar-bullet-text">Inspection</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet"></div>
+                            <div class="project-progress-bar-bullet-highlighted"></div>
                             <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
@@ -84,16 +83,16 @@
                             <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
                         </div>
                     </div>
-                    <div class="project-progress-bar"></div>
-                    <div class="project-progress-bar1"></div>
-                    <div class="project-progress-bar2"></div>
+                    <div class="project-progress-bar" style="background-color: #DE8500;"></div>
+                    <div class="project-progress-bar1" style="background-color: #DE8500;"></div>
+                    <div class="project-progress-bar2" style="background-color: #DE8500;"></div>
                     <div class="project-progress-bar3"></div>
                 </div>
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
-                        <span class="project-details-steps-text-colored"><img src="\ezolar\public\img\customer\projectStepTick2.png" class="project-details-steps-tick">Make Request</span>
-                        <span class="project-details-steps-text"><img src="\ezolar\public\img\customer\projectStepTick1.png" class="project-details-steps-tick">Await Request Processing</span>
-                        <span class="project-details-steps-text"><img src="\ezolar\public\img\customer\projectStepTick1.png" class="project-details-steps-tick">Request Response</span>
+                        <span class="project-details-steps-text-colored">Awaiting Payment</span>
+                        <span class="project-details-steps-text">Date Selection</span>
+                        <span class="project-details-steps-text">Contractor Confirmation</span>
                     </div>
                     <div class="project-details-info-container">
                         <b>Project No:</b> 123556 <br>

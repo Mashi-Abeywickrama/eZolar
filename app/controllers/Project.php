@@ -35,7 +35,7 @@
 
       $customer_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
       // print_r($customer_Id);die;
-      $rows  = $this->projectModel-> getAllProjects($customer_Id);
+      $rows  = $this->projectModel-> getCancelledProjects($customer_Id);
       $_SESSION['rows'] = $rows;
       $data = [
         'title' => 'eZolar Project',
@@ -51,7 +51,7 @@
 
       $customer_Id = $this->projectModel->getUserID([$_SESSION['user_email']]);
       // print_r($customer_Id);die;
-      $rows  = $this->projectModel-> getAllProjects($customer_Id);
+      $rows  = $this->projectModel-> getCompletedProjects($customer_Id);
       $_SESSION['rows'] = $rows;
       $data = [
         'title' => 'eZolar Project',

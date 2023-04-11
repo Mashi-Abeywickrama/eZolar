@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\customer.project.css">
-    <title>My Projects</title>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.transaction.css">
+    <title>My transactions</title>
 </head>
 <body>
 <div class="body-container">
@@ -52,57 +52,31 @@
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
                     <a href=”#” “text-decoration: none”>
-                        <img src="\ezolar\public\img\customer\projects.png" alt="project">
+                        <img src="\ezolar\public\img\customer\Cash.png" alt="transaction">
                     </a>
                 </div>
                 <div class="common-main-txt">
-                    My Projects
+                    Transactions
                 </div>
             </div>
            
         </div>
-        <div class="project-type">
-            <div class = "project-sub-topic" style="background: #ad1515; border: 3px solid #0B2F64;">
-            <a href="/ezolar/project">Ongoing Projects</a>
-            </div>
-            <div class = "project-sub-topic">
-            <a href="/ezolar/project/completedProjects">Completed Projects</a>
-            </div>
-            <div class = "project-sub-topic">
-            <a href="/ezolar/project/cancelledProjects">Cancelled Projects</a>
-            </div>
 
-        </div>
         <div class="body-list-container">
-            <!-- <div class="project-box">
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                        <div class="project-text-no">project No. 123456</div>
-                        <div class="project-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                        <div class="project-text-price">Price: Rs. 30,000</div>
-                    </div>
-                    <div class="project-details-btn-container">
-                        <div class="project-details-btn">
-                            <div class="project-details-btn-text">More info</div>
-                        </div>
-                    </div>
-                </div>  
-            </div> -->
-
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
-                echo '<div class="project-box">
-                        <span class="project-text-container">
-                            <div class="project-text-container-inner">
-                                <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
-                                <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                echo '<div class="transaction-box">
+                        <span class="transaction-text-container">
+                            <div class="transaction-text-container-inner">
+                                <div class="transaction-text-no">Transaction No: ' .  $row -> recieptID . '</div>
+                                <div class="transaction-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                <div class="transaction-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>
-                        <span class="project-details-btn-container">
-                            <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF">More info</a></span>
+                        <span class="transaction-details-btn-container">
+                            <div class="transaction-details-btn">
+                                <span class="transaction-details-btn-text"><a href="' .URLROOT. '/transaction/transactiondetails" style = "color: #FFFFFF">More info</a></span>
                             </div>
                         </span>
                         
@@ -110,11 +84,6 @@
             }
             ?>
             
-        </div>
-        <div class="add-project-btn">
-            <div class="add-project-btn-text">
-              <a href="/ezolar/project/requestProjectPage"> New Project</a> 
-            </div>
         </div>
     </div>
 </div>

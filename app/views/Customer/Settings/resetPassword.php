@@ -43,9 +43,9 @@
                 <a href="<?=URLROOT?>/inquiry"><div class="box3">
                     Inquiries
                 </div></a>
-                <div class="box4">
+                <a href="<?=URLROOT?>/transaction"><div class="box4">
                     Transactions
-                </div>
+                </div></a>
             </div>
             <div class="rest-bottom">
             <a href="<?=URLROOT?>/user/profile"><div class="box5">

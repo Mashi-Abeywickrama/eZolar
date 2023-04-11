@@ -20,7 +20,27 @@
     public function getAllProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status <> "Cancelled" AND status <> "Completed"');
+      // $this->db->bind(':customerID', $id);
+
+      // print_r($this->db->resultSet(['customerID' => $id]));die;
+      $row = $this->db->resultSet(['customerID' => $id]);
+      return $row;
+    }
+    public function getCancelledProjects($id){
+      // print_r($id);die;
+      
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "Cancelled"');
+      // $this->db->bind(':customerID', $id);
+
+      // print_r($this->db->resultSet(['customerID' => $id]));die;
+      $row = $this->db->resultSet(['customerID' => $id]);
+      return $row;
+    }
+    public function getCompletedProjects($id){
+      // print_r($id);die;
+      
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "Completed"');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
