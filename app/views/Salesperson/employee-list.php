@@ -1,8 +1,7 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-// require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Customer\navbar.php');
-// require_once(__ROOT__.'\app\views\Includes\footer.php');
+// require_once(__ROOT__.'/app/views/Includes/header.php');
+require_once(__ROOT__.'/app/views/Customer/navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +10,8 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\salesperson\employee-list.css">
+    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\common\employee-list.css">
     <title>My Projects</title>
 </head>
 <body>
@@ -28,11 +27,14 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 </div></a>
             <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
                     Inquiries
-            </div></a>
-            <a href="<?=URLROOT?>/inquiry"><div class="box3">
+                </div>
+            </a>
+
+            <div class="sidebar-link-container">
                 Inspection Schedule
-            </div></a>
-            <div class="box4">
+            </div>
+
+            <div class="sidebar-link-container">
                 Delivery Schedule
             </div>
             
@@ -40,6 +42,11 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             Engineers & Contractors
             </div></a>
 
+            <a href="/ezolar/Employee/EngineersAndContractors">
+                <div class="sidebar-link-container-selected">
+                    Engineers & Contractors
+                </div>
+            </a>
         </div>
         <div class="rest-bottom">
             <a href="<?=URLROOT?>/user/profile"><div class="box5">
@@ -51,32 +58,33 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div>
         </div>
     </div>
-    <div class="common-main-container">
-        <div class="dashboard-common-heading-and-background-container">
-            <div class="dashboard-common-heading-container">
-                <div class="dashboard-common-heading-back-btn">
-                    <a href="EngineersAndContractors" “text-decoration: none”>
-                        <img src="\ezolar\public\img\admin\back.png">
-                    </a>
-                </div>
-                <div class="dashboard-common-heading-text">
-                    <b>Engineers</b>
-                </div>
-                <div class="dashboard-common-heading-image">
-<!--                    <a href=”” “text-decoration: none”>-->
-                        <img src="\ezolar\public\img\salesperson\employees.png" alt="Products-icon">
-<!--                    </a>-->
-                </div>
- 
-            </div>  
+</div>
+<div class="common-main-container">
+    <div class="dashboard-common-heading-and-background-container">
+        <div class="dashboard-common-heading-container">
+            <div class="dashboard-common-heading-back-btn">
+                <a href="/ezolar/Employee/EngineersAndContractors" “text-decoration: none”>
+                    <img src="\ezolar\public\img\admin\back.png" alt="back-icon">
+                </a>
+            </div>
+            <div class="dashboard-common-heading-text">
+                <b><?php echo $_SESSION['row']; unset($_SESSION['row']); ?></b>
+            </div>
+            <div class="dashboard-common-heading-image">
+                <a href=”” “text-decoration: none”>
+                    <img src="\ezolar\public\img\admin\employees.png" alt="employees-icon">
+                </a>
+            </div>
 
-            <!-- TODO -> add peofile -->
-            <!-- <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>   -->
+        </div>
+
+        <!-- TODO -> add peofile -->
+        <!-- <div class="common-main-right-img">
+            <img src="\ezolar\public\img\profile.png" alt="profile">
+        </div>   -->
 
 
-            <div class="employee-list-container">
+        <div class="employee-list-container">
 
             <?php
             $results = $_SESSION['rows'];
@@ -93,9 +101,11 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                     </div>
                 </div>
                 <div class="employee-details-btn-container">
-                    <div class="employee-details-btn">
-                        <div class="employee-details-btn-text">More info</div>
-                    </div>
+                    <a href="/ezolar/Employee/EmployeeDetails/'.$row -> empID.'">
+                        <div class="employee-details-btn">
+                            <div class="employee-details-btn-text">More info</div>
+                        </div>
+                    </a>
                 </div>
             </div>';
             }
@@ -103,8 +113,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 
         </div>
-                
-        </div>
+
     </div>
     </div>
 <div class="f">
@@ -113,4 +122,5 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 </div>
 </body>
+
 </html>

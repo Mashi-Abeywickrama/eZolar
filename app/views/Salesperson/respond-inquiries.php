@@ -1,8 +1,8 @@
 <?php
 //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -104,53 +104,68 @@ foreach($results as $row){
                         <input class="form-item-input" name="" id="" type="text" value="' . $row -> topic . '" readonly>
                     </div>
                 </div>
-                <div class="form-inline">
-                    <div class="form-item-container">
-                        <div class="form-item-text">
-                            Message
-                        </div>
-                        <textarea class="form-item-input" name="" id="" rows="5" cols="50"  readonly>' . $row -> message . '</textarea>
-                    </div>
-                </div>
             </form>
 
         </div>
-        <div class="respond-form-background">
-            <form class="form-container" action="/ezolar/Inquiry/respondInquiry/' . $row -> inquiryID . '" method="POST">
-                <div class="form-inline">
-                    <div class="form-item-container">
-                        <div class="form-item-text">
-                            Response
-                        </div>
-                        <textarea class="form-item-input" name="response" id="response" rows="5" cols="50"></textarea>
-                    </div>
-                </div>
-    
-                <div class="form-inline-button">
-                    <div class="cancel-btn">
-                        <button class="form-cancel-btn" type="reset" value="reset">Cancel</button>
-                    </div>
-                    <div class="send-btn">
-                        <button type="submit" class="form-send-btn">Send</button>
-                    </div>
-                </div>
-    
-            </form>
+                ';
+}
+?>
+        <div id='message-container' class="message-container">
+
+<!--            --><?php
+//            $results = $_SESSION['rowsNew'];
+//            foreach($results as $row) {
+//                if ($row -> sender == 0){
+//                    echo "<div class='sender-container'>
+//                        <p id='sender' class='sending-message'>
+//                        " . $row -> message . "
+//                        </p>
+//                    </div>";
+//                }else{
+//                    echo "<div class='receiver-container'>
+//                        <p id='receiver' class='incoming-message'>
+//                        " . $row -> message . "
+//                        </p>
+//                    </div>";
+//                }
+//            }
+//            ?>
+
         </div>
+        <form id="message-form-data" class="message-form-data">
+            <div class="model-footer">
+                <textarea id="insert-message" class="insert-message" name="message"></textarea>
+                <button id="send-message" class="send-message-btn" type="submit">Send</button>
+            </div>
+        </form>
         </div>
-
-        ';
-        }
-        ?>
-
-        
-
-
 
     </div>
 </div>
-
+<script type="text/javascript" src="\ezolar\public\js\chat.js"></script>
 </body>
+
+
+
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function (){-->
+<!--        $("#send").on("click",function ()){-->
+<!--            $.ajax({-->
+<!--                url:"ChatSystem/insertMessage",-->
+<!--                method:"POST",-->
+<!--                data:{-->
+<!--                    message:$("#message").value()-->
+<!--                },-->
+<!--                dataType:"text",-->
+<!--                success:function (data){-->
+<!--                    $("#message").value("");-->
+<!--                }-->
+<!--            })-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
 </html>
+
 
 

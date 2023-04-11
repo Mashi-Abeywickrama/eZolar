@@ -55,7 +55,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 <div class="common-main-container">
     <div class="dashboard-common-main-topic">
         <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
+            <a href="ezolar" “text-decoration: none”>
                 <img src="\ezolar\public\img\admin\employees.png" alt="employee-icon">
             </a>
         </div>
@@ -79,7 +79,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div>
         </a>
 
-        <a href="/ezolar/Employee/contractors">
+        <a href="/ezolar/Employee/getEmployees/contractor">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Contractors

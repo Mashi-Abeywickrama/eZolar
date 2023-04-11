@@ -1,8 +1,8 @@
 <?php
 //      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,14 +60,16 @@
                 </div>
             </a>
 
-            <div class="dashboard-container-content">
-                <div class="dashboard-container-txt">
-                        Reports
+            <a href="/ezolar/Statistics/salesPerMonth">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt">
+                            Reports
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\reports.png" alt="reports">
+                    </div>
                 </div>
-                <div class="dashboard-container-img">
-                        <img src="\ezolar\public\img\admin\reports.png" alt="reports">
-                </div>
-            </div>
+            </a>
 
             <a href="/ezolar/AdminViewProfile">
                 <div class="dashboard-container-content">

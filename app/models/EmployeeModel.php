@@ -34,6 +34,20 @@
         $this->db->query('INSERT INTO employee_telno(`Employee_empID`,`telno`) VALUES (:userid,:contact)');
 
         if ($this->db->execute(['userid' => $userid->userID, 'contact' => $data[4]])){
+            $userRole = $data[6];
+            if ($userRole == 'Salesperson'){
+                $this->db->query('INSERT INTO salesperson(`Employee_empID`) VALUES (:userid)');
+                $this->db->execute(['userid' => $userid->userID]);
+            }else if($userRole == 'Engineer'){
+                $this->db->query('INSERT INTO engineer(`engineerID`) VALUES (:userid)');
+                $this->db->execute(['userid' => $userid->userID]);
+            }else if ($userRole == "Storekeeper"){
+                $this->db->query('INSERT INTO storekeeper(`Employee_empID`) VALUES (:userid)');
+                $this->db->execute(['userid' => $userid->userID]);
+            }else if ($userRole == 'Contractor'){
+                $this->db->query('INSERT INTO contractor(`contractorID`,`name`,`nic`,`profilePhoto`,`bio`) VALUES (:userid,:name,:nic,:profilePhoto,:bio)');
+                $this->db->execute(['userid' => $userid->userID, 'name' => $data[2], 'nic' => $data[5], 'profilePhoto' => '', 'bio' => '']);
+            }
             header('Location:/ezolar/employee/newEmployee');
             return true;
         }else{
