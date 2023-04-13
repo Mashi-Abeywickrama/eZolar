@@ -26,5 +26,21 @@
       ];
       $this->view('Customer/transactions', $data);
     }
+    public function transactionDetails($id){
+        // print_r($id);die();
+        if(!isLoggedIn()){
+  
+          redirect('login');
+        }
+        $data = [
+          'title' => 'eZolar Transactions',
+        ];
+        $rows = $this->transactionModel->getAllPayments($id);
+        $_SESSION['rows'] = $rows;
+        $this->view('Customer/viewinquiry', $data);
+        // print_r($_SESSION['rows']);die;
+  
+  
+      }
   }
   ?>

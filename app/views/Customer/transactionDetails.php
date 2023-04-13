@@ -76,7 +76,7 @@
                         </span>
                         <span class="transaction-details-btn-container">
                             <div class="transaction-details-btn">
-                                <span class="transaction-details-btn-text"><a href="'.URLROOT.'/transaction/transactionDetails/'.$row -> receiptID.'" style ="color: #FFFFFF ">More info</a></span>
+                                <span class="transaction-details-btn-text"><a href="' .URLROOT. '/transaction/transactiondetails" style = "color: #FFFFFF">More info</a></span>
                             </div>
                         </span>
                         
