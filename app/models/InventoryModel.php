@@ -67,20 +67,4 @@
       $this->db->query('UPDATE product SET quantity = :quantity WHERE productID = :productID;');
       $this->db->execute(['productID' => $productID, 'quantity' => $quantity]);
     }
-
-    public function raiseReorderFlag($productID){
-      $this->db->query('UPDATE product SET reorderFlag = 1 WHERE productID = :productID;');
-      $this->db->execute(['productID' => $productID]);
-    }
-
-    public function lowerReorderFlag($productID){
-      $this->db->query('UPDATE product SET reorderFlag = 0 WHERE productID = :productID;');
-      $this->db->execute(['productID' => $productID]);
-    }
-
-    public function getSKemails(){
-      $this->db->query('SELECT email FROM storekeeper INNER JOIN user ON userID = Employee_empID');
-      $results = $this->db->resultSet([]);
-      return $results;
-    }
   }

@@ -50,7 +50,6 @@
 
       $insDatesStr = "";
       $delDatesStr = "";
-      $unconfirmed = [];
       if (count($insDates)<1){
         $insDatesStr = "Not Scheduled";
       };
@@ -59,12 +58,7 @@
       };
 
       foreach ($insDates as $item){
-        if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
-          $insDatesStr .= substr($item->date,0,10)." , ";
-        } else {
-          $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
-          $unconfirmed[] = $item;
-        }
+        $insDatesStr .= substr($item->date,0,10)." , ";
       };
       $insDatesStr = substr_replace($insDatesStr, "", -2,2);
 
@@ -73,16 +67,7 @@
       };
       $delDatesStr = substr_replace($delDatesStr, "", -2,2);
 
-      $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
-      $today = new DateTime();
-
-      if ($firstInspDate<=$today){
-        $inspFlag = TRUE;
-      } else {
-        $inspFlag = FALSE;
-      }
-
-      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag);
+      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr);
 
 
       $data = [
@@ -289,7 +274,7 @@
             $itemExists = FALSE;
             for($i=0; $i < count($_SESSION['PackMod']['Extras']); $i++){
               if($_SESSION['PackMod']['Extras'][$i]->description == $description){
-                $_SESSION['PackMod']['Extras'][$i]->price = $price;
+                $_SESSION['PackMod']['Extras'][$i]->price = $quantity;
                 $itemExists = TRUE;
                 break;
               }
@@ -386,18 +371,5 @@
     public function resetCurrentModifiedPack($projectID){
       unset($_SESSION['PackMod']);
       redirect('EngineerProject/projectModifyPackPage/'.$projectID);
-    }
-
-
-    public function confirmPackage($projectID){
-      if(!isLoggedIn()){
-
-        redirect('login');
-      }
-      if($this->engineerProjectModel->checkModifiedPackage($projectID)){
-        $this->engineerProjectModel->advanceProject($projectID,'D0');
-        redirect('EngineerProject/projectDetailsPage/'.$projectID);
-      }
-
     }
   }

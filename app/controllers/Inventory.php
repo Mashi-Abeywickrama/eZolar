@@ -132,7 +132,8 @@
           $this->InventoryModel->addStockContent($stockInfo,$item);
           $this->InventoryModel->updateInventory($item[0] -> productID,$item[1],$type);
         }
-        $this->checkreorderlevels();
+
+
 
         unset($_SESSION['stockID'], $_SESSION['stockContent'], $_SESSION['stockDetails']);
 
