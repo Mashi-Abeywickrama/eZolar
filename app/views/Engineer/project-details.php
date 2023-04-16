@@ -61,15 +61,21 @@
             </div>
             </div>
             <div class="project-details-container">
-                <div class="project-details-basic-container">
-                    <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
-                    <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
-                    <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                <div class="project-details-inline-container">
+                    <div class="project-details-basic-container">
+                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
+                        <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
+                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                    </div>
+                    <div class="project-details-customer-container">
+                        <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>
+                        <p><b>Contact Number </b> <br> <?php echo str_pad($_SESSION['row']->mobile,10,"0",STR_PAD_LEFT);?></p>
+                    </div>
                 </div>
 
                 <div class="project-details-schedule-container">
-                    <p><b>Inspection Date : </b></p>
-                    <p><b>Delivery Date : </b></p>
+                    <p><b>Inspection Date : </b><?php echo $_SESSION['rows']['InspectDates'];?></p>
+                    <p><b>Delivery Date : </b><?php echo $_SESSION['rows']['DeliverDates'];?></p>
                 </div>
 
                 <div class="project-details-pack-container">
@@ -80,7 +86,7 @@
                         echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">Assign Package</div></a>';
                         $packAssignedFlag = False;
                     } else {
-                        echo '<a href="/ezolar/EngineerProject/projectPackageDetailsPage/'.$_SESSION['row']->Package_packageID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                        echo '<a href="/ezolar/EngineerProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
                     }
                     ?>
                 </div>
@@ -88,8 +94,11 @@
                 <div class="project-details-btns-container">
                     <?php 
                     if ($packAssignedFlag)
-                    {echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>';} ?>
-                    <a href=""><div class="project-details-btns">Modify Package</div></a>
+                    {
+                        echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>
+                        <a href="/ezolar/EngineerProject/projectModifyPackPage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Modify Package</div></a>
+                    ';} ?>
+                    
                     <a href=""><div class="project-details-btns">Request Reshedule</div></a>
                 </div>
         </div>

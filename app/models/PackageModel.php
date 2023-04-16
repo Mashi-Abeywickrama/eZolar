@@ -66,6 +66,11 @@
       };
     }
 
+    public function updateitem($data){
+      $this->db->query('UPDATE package_product SET `productQuantity` = :quantity WHERE `Package_packageID` = :packID AND `Product_productID` = :productID;'); 
+      $this->db->execute(['packID' => $data[0], 'productID' => $data[1], 'quantity' => $data[2]]);
+    }
+
     public function getAllPackageIDs(){
       $this->db->query('SELECT packageID FROM package');
       $rows = $this->db->resultSet([]);
