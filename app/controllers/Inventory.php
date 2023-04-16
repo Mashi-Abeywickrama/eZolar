@@ -118,7 +118,22 @@
 
       if (array_key_exists('stockID',$_SESSION) && array_key_exists('stockContent',$_SESSION) && array_key_exists('stockDetails',$_SESSION)){
         $stockInfo = [$_SESSION['stockID'],$_POST['arrival-date'],$_POST['stock-type'], $skID];
-        $this->InventoryModel->addStock($stockInfo,$_SESSION['stockContent']);
+        $this->InventoryModel->addStock($stockInfo);
+
+        if ($stockInfo[2]=="Arrival"){
+          $type = "add";
+        } else if ($stockInfo[2]=="Withdrawal"){
+          $type = "rem";
+        } else {
+          return;
+        }
+
+        foreach($_SESSION['stockContent'] as $item){
+          $this->InventoryModel->addStockContent($stockInfo,$item);
+          $this->InventoryModel->updateInventory($item[0] -> productID,$item[1],$type);
+        }
+
+
 
         unset($_SESSION['stockID'], $_SESSION['stockContent'], $_SESSION['stockDetails']);
 

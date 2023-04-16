@@ -161,6 +161,9 @@
 
       if (!$this->PackageModel->checkitem($packID,$productID)){
         $this->PackageModel->additem($inputs);
+      }
+      else{
+        $this->PackageModel->updateitem($inputs);
       };
 
       redirect('Package/editPackageContentPage/'.$packID);
