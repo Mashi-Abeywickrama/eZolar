@@ -81,26 +81,55 @@
                 <div class="project-details-pack-container">
                     <p class="project-details-pack-text"><b>Package : </b> <?php echo strtoupper($_SESSION['row']->Package_packageID)?></p>
                     <?php
-                    $packAssignedFlag = True;
-                    if ($_SESSION['row']->Package_packageID == 'Not Assigned'){
-                        echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">Assign Package</div></a>';
-                        $packAssignedFlag = False;
-                    } else {
-                        echo '<a href="/ezolar/EngineerProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                    if ($_SESSION['row']->status != 'B2'){
+                        $packAssignedFlag = True;
+                        if ($_SESSION['row']->Package_packageID == 'Not Assigned'){
+                            echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">Assign Package</div></a>';
+                            $packAssignedFlag = False;
+                        } else {
+                            echo '<a href="/ezolar/EngineerProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                        }
                     }
                     ?>
                 </div>
 
-                <div class="project-details-btns-container">
                     <?php 
-                    if ($packAssignedFlag)
-                    {
-                        echo '<a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>
-                        <a href="/ezolar/EngineerProject/projectModifyPackPage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Modify Package</div></a>
-                    ';} ?>
+                    $InspectionFlag = FALSE;
+                    if(array_key_exists('$inspectionFlag',$_SESSION['rows'])){
+                        $InspectionFlag = $_SESSION['rows']['inspectionFlag']; 
+                    }
+                    if(($_SESSION['row']->status == 'C0') && ($InspectionFlag)){
+                        echo ' <div class="project-details-confirm-buttons-container">
+                            <p>Your inspection on '.substr($_SESSION['rows']['InspectDates'],0,10).' should be complete soon.</p>
+                            <div class="project-details-btns-container" style="margin-top:5px;">
+                                <a href="/ezolar/EngineerProject/completeInspection/'.$_SESSION['row']->projectID.'/'.substr($_SESSION['rows']['InspectDates'],0,10).'"><div class="project-details-btns">Mark as Complete</div></a>
+                                <a href=""><div class="project-details-btns btn-grey">Reshedule</div></a>
+                            </div>
+                        </div> ';
+                    } else if (($_SESSION['row']->status == 'C0')||($_SESSION['row']->status == 'C1')){
+                        if ($packAssignedFlag)
+                        {
+                            echo '<div class="project-details-btns-container"><a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>
+                            <a href="/ezolar/EngineerProject/projectModifyPackPage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Modify Package</div></a>';
+                            if ($_SESSION['row']->status == 'C1'){
+                                echo '<a href="/ezolar/EngineerProject/confirmPackage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Confirm Package</div></a>';
+                            }
+                            echo '</div>';
+                        }
+                        
+                    } else if ($_SESSION['row']->status == 'B2'){
+                        echo ' <div class="project-details-confirm-buttons-container">
+                            <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
+                            <div class="project-details-btns-container" style="margin-top:5px;">
+                                <a href="/ezolar/EngineerProject/acceptInspection/'.$_SESSION['row']->projectID.'/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns">Accept</div></a>
+                                <a href="/ezolar/EngineerProject/rejectInspection/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns btn-grey">Reject</div></a>
+                            </div>
+                        </div> ';
+
+                    } ?>
                     
-                    <a href=""><div class="project-details-btns">Request Reshedule</div></a>
-                </div>
+                    
+                
         </div>
         
     </div>

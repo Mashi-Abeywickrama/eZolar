@@ -101,7 +101,7 @@
                     </div>
                     <form action="/ezolar/EngineerProject/modifyPackageAddItem/<?php echo $_SESSION['PackMod']['Info']->projectID?>" class="form-item-adder-container" style="width:auto;" method="POST">
                             <div class="form-item-adder-content-container" style="width:60%;">
-                                Product ID:
+                                Product ID: <span class="err-box" id="IA-err"></span>
                                 <select class="form-item-input" name="item-id" id="item-id" style="font-family: 'Space Mono';" onchange="resetError()">
                                 <option value="NULL" selected disabled> </option>
                                     <?php
@@ -152,15 +152,15 @@
                     </div>
                     <form action="/ezolar/EngineerProject/modifyPackageAddExtra/<?php echo $_SESSION['PackMod']['Info']->projectID?>" class="form-item-adder-container" style="width:auto;" method="POST">
                             <div class="form-item-adder-content-container" style="width:60%;">
-                                Service Name:
-                                <input class="form-item-input" name="extra-desc" id="extra-desc" type="text" placeholder="" onkeyup="resetError()">
+                                Service Name: <span class="err-box" id="extra-err"></span>
+                                <input class="form-item-input" name="extra-desc" id="extra-desc" type="text" placeholder="" onkeyup="resetExError()">
                             </div>
                             <div class="form-item-adder-content-container">
                                 Price:
-                                <input class="form-item-input" name="extra-price" id="extra-price" type="text" placeholder="" onkeyup="resetError()">
+                                <input class="form-item-input" name="extra-price" id="extra-price" type="text" placeholder="" onkeyup="resetExError()">
                             </div>
                             <div class="form-item-adder-content-container">
-                                <button class="form-item-adder-btn" type="Submit" id="add-item-btn" onclick="return validateItemAdder()">Add item</button>
+                                <button class="form-item-adder-btn" type="Submit" id="add-extra-btn" onclick="return validateExtra()">Add item</button>
                             </div>
                         </div>
                     </form>
@@ -175,5 +175,6 @@
             </div>
         </div>
     </div>
+    <script src="\ezolar\public\js\modpack_validation.js"></script>
 </body>
 </html>
