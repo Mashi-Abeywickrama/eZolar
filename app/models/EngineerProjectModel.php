@@ -31,9 +31,41 @@
     }
 
     public function getAssignedDates($prjID,$type){
-      $this->db->query('SELECT `date` from `scheduleitem` WHERE Project_projectID = :projectID AND `type` = :SItype');
+      $this->db->query('SELECT `scheduleID`,`date` from `scheduleitem` WHERE Project_projectID = :projectID AND `type` = :SItype');
       $rows = $this->db->resultSet(['projectID' => $prjID, 'SItype' => $type]);
       return $rows;
+    }
+
+    public function checkSchduleConfirmed($schdID){
+      $this->db->query('SELECT `isConfirmed` from `scheduleitem` WHERE scheduleID  = :scheduleID;');
+      $row = $this->db->single(['scheduleID' => $schdID]);
+      return ($row->isConfirmed);
+    }
+
+    public function getScheduleitem($prjID,$date){
+      $this->db->query('SELECT * from `scheduleitem` WHERE Project_projectID  = :prjID AND `date` LIKE :datestr;');
+      $row = $this->db->single(['prjID' => $prjID,'datestr'=>$date.'%']);
+      return $row;
+    }
+
+    public function confirmSchedule($schdID){
+      $this->db->query('UPDATE `scheduleitem` SET `isConfirmed` = 1 WHERE scheduleID  = :scheduleID;');
+      $this->db->execute(['scheduleID' => $schdID]);
+    }
+
+    public function completeSchedule($schdID){
+      $this->db->query('UPDATE `scheduleitem` SET `isCompleted` = 1 WHERE scheduleID  = :scheduleID;');
+      $this->db->execute(['scheduleID' => $schdID]);
+    }
+
+    public function declineSchedule($schdID,$eng_Id){
+      $this->db->query('DELETE FROM scheduleitem_assignedemp WHERE ScheduleItem_scheduleID  = :schdID AND UserID = :engID;');
+      $this->db->execute(['scheduleID' => $schdID,'engID'=>$eng_Id]);
+    }
+
+    public function advanceProject($prjID,$status){
+      $this->db->query('UPDATE `project` SET `status` = :status WHERE projectID  = :projectID;');
+      $this->db->execute(['projectID'=>$prjID,'status'=> $status]);
     }
 
     //PackMod Main

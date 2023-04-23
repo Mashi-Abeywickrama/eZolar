@@ -50,6 +50,7 @@
 
       $insDatesStr = "";
       $delDatesStr = "";
+      $unconfirmed = [];
       if (count($insDates)<1){
         $insDatesStr = "Not Scheduled";
       };
@@ -58,7 +59,12 @@
       };
 
       foreach ($insDates as $item){
-        $insDatesStr .= substr($item->date,0,10)." , ";
+        if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
+          $insDatesStr .= substr($item->date,0,10)." , ";
+        } else {
+          $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
+          $unconfirmed[] = $item;
+        }
       };
       $insDatesStr = substr_replace($insDatesStr, "", -2,2);
 
@@ -67,7 +73,16 @@
       };
       $delDatesStr = substr_replace($delDatesStr, "", -2,2);
 
-      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr);
+      $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
+      $today = new DateTime();
+
+      if ($firstInspDate<=$today){
+        $inspFlag = TRUE;
+      } else {
+        $inspFlag = FALSE;
+      }
+
+      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag);
 
 
       $data = [
@@ -75,6 +90,48 @@
       ];
       $this->view('Engineer/project-details', $data);
 
+    }
+
+    public function acceptInspection($projectID,$scheduleID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
+      $project = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID);
+      
+      $this->engineerProjectModel->confirmSchedule($scheduleID);
+      if ($project->status == 'B2'){
+        $this->engineerProjectModel->advanceProject($projectID,'C0');
+      }
+      redirect('EngineerProject/projectDetailsPage'.$projectID);
+    }
+
+    public function rejectInspection($scheduleID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
+      $this->engineerProjectModel->declineSchedule($scheduleID,$eng_Id);
+      //setup reassign
+      redirect('EngineerProject');
+    }
+
+
+    public function completeInspection($projectID,$date){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
+      $project = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID);
+      $scheduleID = $this->engineerProjectModel->getScheduleitem($projectID,$date)->scheduleID;
+      $this->engineerProjectModel->completeSchedule($scheduleID);
+      if ($project->status == 'C0'){
+        $this->engineerProjectModel->advanceProject($projectID,'C1');
+      }
+      redirect('EngineerProject/projectDetailsPage'.$projectID);
     }
 
     public function assignPackagePage($projectID){
@@ -232,7 +289,7 @@
             $itemExists = FALSE;
             for($i=0; $i < count($_SESSION['PackMod']['Extras']); $i++){
               if($_SESSION['PackMod']['Extras'][$i]->description == $description){
-                $_SESSION['PackMod']['Extras'][$i]->price = $quantity;
+                $_SESSION['PackMod']['Extras'][$i]->price = $price;
                 $itemExists = TRUE;
                 break;
               }
@@ -329,5 +386,18 @@
     public function resetCurrentModifiedPack($projectID){
       unset($_SESSION['PackMod']);
       redirect('EngineerProject/projectModifyPackPage/'.$projectID);
+    }
+
+
+    public function confirmPackage($projectID){
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+      if($this->engineerProjectModel->checkModifiedPackage($projectID)){
+        $this->engineerProjectModel->advanceProject($projectID,'D0');
+        redirect('EngineerProject/projectDetailsPage/'.$projectID);
+      }
+
     }
   }
