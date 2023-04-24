@@ -23,6 +23,7 @@
     justify-content: center;
     align-items: center;
     border-color: #0B2F64;
+    border-radius: 5px;
 }
 .project-sub-topic:hover{
     cursor: pointer;
@@ -184,12 +185,12 @@
     margin-top: 2%;
     /* margin-top: -50px; */
 }
-.add-project-btn:hover{
+.add-project-btn:hover,.make-payment-btn:hover, .add-schedule-btn:hover, .make-inquiry-btn:hover, .cancel-order-btn:hover, .confirm-order-btn:hover, .view-pack-btn:hover{
     cursor: pointer;
     background: #0B2F64;
     transition-duration: 200ms;
 }
-.add-project-btn-text{
+.add-project-btn-text,.make-payment-btn-text, .add-schedule-btn-text, .make-inquiry-btn-text, .cancel-order-btn-text, .confirm-order-btn-text, .view-pack-btn-text{
     align-self: center;
 }
 
@@ -213,7 +214,7 @@ a{
     text-decoration: none;
     color: #0B2F64;
 }
-.add-project-btn a{
+.add-project-btn a, .make-payment-btn a, .add-schedule-btn a, .make-inquiry-btn a, .cancel-order-btn a, .confirm-order-btn a, .view-pack-btn a{
     text-decoration: none;
     color: #FFFFFF;
 }
@@ -337,4 +338,170 @@ a{
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    align-items: center;
+}
+.make-payment-btn, .add-schedule-btn,.make-inquiry-btn, .cancel-order-btn, .confirm-order-btn, .view-pack-btn{
+    align-self: center;
+    display: flex;
+    height: 40px;
+    width: 200px;
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF !important;
+    justify-content: center;
+    margin-top: 2%;
+    /* margin-top: -50px; */
+}
+
+
+
+/* request new project */
+.form-acc-detail-container{
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    gap: 1rem;
+    margin-top: 1rem;
+    /* padding-top: 5%; */
+    flex-direction: row;
+    align-items: center;
+}
+.form-container-p{
+    background-color: #FCFEFE;
+    display: flex;
+    width: 75%;
+    border-radius: 10px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+.acc-detail-box{
+    background-color: #FCFEFE;
+    display: flex;
+    width: 30%;
+    height: 50px;
+    border-radius: 10px;
+    /* padding: 2rem; */
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+}
+.new-p-form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.p-in{
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+    color: #636364;
+    font-size: 12px;
+    width: 75%;
+    /* height: 50%; */
+    margin-bottom: 0.7rem;
+}
+.fileToUpload{
+    width: 76.5%;
+    margin-bottom: 0.3rem;
+}
+.p{
+    display: flex;
+    width: 75%;
+    height: 150px;
+    border: 2px dashed #0B2F64;
+    align-items: center;
+    justify-content: center;
+}
+.img-slip{
+    object-fit: cover;
+    height: 75%;
+    width: 30%;
+}
+.cancel-btn, .submit-btn{
+    background-color: #2C61A3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    opacity: 0.9;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+.err-group{
+    display: flex;
+    width: 71%;
+}
+.star{
+    font-size: 0.7rem;
+    color: #e32;
+
+}
+.err{
+    margin-bottom: 0.2rem;
+    width: 80%;
+    display: flex;
+}
+.err-box{
+    font-size: 0.7rem;
+    color: #DE8500;
+    margin-left: 1%;
+}
+
+.group{
+    display: flex;
+    width: 75%;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.budget-cal-container{
+    background-color: #FCFEFE;
+    border-radius: 10px;
+    margin-top: 1rem;
+    height: 123px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.budget-cal-text{
+    width: 95%;
+    font-weight: bold;
+}
+.budget-btn-container{
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+}
+.budget-cal-btn{
+    font-size: 18px;
+    display: flex;
+    width: 17%;
+    height: 45px;
+    background-color: #2C61A3;
+    color: #FCFEFE;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+}
+.budget-cal-btn :hover{
+    cursor: pointer;
+    background-color: #0b2f64;
+}
+.budget-cal-btn-img-c{
+    width: 20%;
+    display: flex;
+}
+.budget-cal-btn-img{
+    width: 70%;
 }

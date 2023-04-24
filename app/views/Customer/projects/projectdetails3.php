@@ -1,10 +1,12 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Customer\navbar.php');
+//  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+//  require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__ . '\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,43 +16,89 @@
     <link rel="stylesheet" href="\ezolar\public\css\customer.project.css">
     <title>My Projects</title>
 </head>
+
 <body>
-<div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-            Packages
-        </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
+
+
+    <?php
+    require_once(__ROOT__ . '\app\views\popupList\scheduleDatesUpdate.php');
+    require_once(__ROOT__ . '\app\views\popupList\payment.php');
+    require_once(__ROOT__ . '\app\views\popupList\packagepopup.php');
+
+    // calling popup for date selection
+    if (isset($_GET['add-schedule-btn'])) {
+        print_r("Shit");
+        echo '
+            <script>
+                document.getElementById(' . "'id04'" . ').style.display=' . "'block'" . ';
+            </script>
+            
+            ';
+    }
+    // calling popup for uploading payment reciept
+    if (isset($_GET['make-payment-btn'])) {
+        print_r("Shit");
+        echo '
+            <script>
+                document.getElementById(' . "'id03'" . ').style.display=' . "'block'" . ';
+
+            </script>
+            
+            ';
+    }
+
+    ?>
+
+    <div class="body-container">
+        <div class="left-panel">
+            <a href="<?= URLROOT ?>/user/dashboard">
+                <div class="box1">
+                    Customer Dashboard
+                </div>
+            </a>
+            <div class="rest">
+                <div class="rest-top">
+                    <a href="<?= URLROOT ?>#">
+                        <div class="box7">
+                            Packages
+                        </div>
+                    </a>
+                    <a href="<?= URLROOT ?>/project">
+                        <div class="box2">
+                            My Projects
+                        </div>
+                    </a>
+                    <a href="<?= URLROOT ?>/inquiry">
+                        <div class="box3">
+                            Inquiries
+                        </div>
+                    </a>
+                    <a href="<?= URLROOT ?>/transaction">
+                        <div class="box4">
+                            Transactions
+                        </div>
+                    </a>
+                </div>
+                <div class="rest-bottom">
+                    <a href="<?= URLROOT ?>/user/profile">
+                        <div class="box5">
+                            Profile
+                        </div>
+                    </a>
+                    <a href="<?= URLROOT ?>/customersettings">
+                        <div class="box6">
+                            Settings
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="common-main-container">
-        
+        <div class="common-main-container">
+
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href=”” “text-decoration: none”>
+                    <a href="../" “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>
@@ -58,130 +106,327 @@
                     <b>Ongoing Project Details</b>
                 </div>
             </div>
-        <div class="project-details-main-container">
-            <div class="project-details-container">
-                <div class="project-progress-bar-wrapper">
-                    <div class="project-progress-bar-container">
-                        <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet-highlighted"></div>
-                            <div class="project-progress-bar-bullet-text">Request Recieved</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet-highlighted"></div>
-                            <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet-highlighted"></div>
-                            <div class="project-progress-bar-bullet-text">Inspection</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet"></div>
-                            <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                            <div class="project-progress-bar-bullet"></div>
-                            <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
-                        </div>
-                    </div>
-                    <div class="project-progress-bar" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar1" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar2"></div>
-                    <div class="project-progress-bar3"></div>
-                </div>
-                <div class="project-details-inline">
-                    <div class="project-details-steps-container">
-                        <span class="project-details-steps-text-colored">Awaiting Inspection</span>
-                        <span class="project-details-steps-text">Package Confirmation</span>
-                    </div>
-                    <div class="project-details-info-container">
-                        <b>Project No:</b> 123556 <br>
-                        <b>Site Location:</b> 158, Puhulyaya Road, Ambalantota <br>
-                        <b>Package:</b> Pending <br>
-                        <b>Contractor:</b> Pending <br>
-                        <b>Status:</b> Ongoing <br>
-                        <b>Scheduled Dates:</b> None<br>
-                    </div>
-                </div>
-                <div class="project-details-btn-container">
-                    <div class="add-project-btn">
-                        <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Make Payment</a> 
-                        </div>
-                    </div>
-                    <div class="add-project-btn">
-                        <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Schedule</a> 
-                        </div>
-                    </div>
-                    <div class="add-project-btn">
-                        <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Send Inquiry</a> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-side-container">
-                <div class = "project-salesperson-flip">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-text-div">
-                                <p><b>John Doe</b>(Salesperson)</p>
+            <div class="project-details-main-container">
+                <div class="project-details-container">
+                    <div class="project-progress-bar-wrapper">
+                        <div class="project-progress-bar-container">
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c1-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/1?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-1" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Request</div>
                             </div>
-                            <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c2-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/2?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-2" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c3-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/3?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-3" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Inspection</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c4-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/4?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-4" class="project-progress-bar-bullet"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c5-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/5?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-5" class="project-progress-bar-bullet"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
                             </div>
                         </div>
-                        <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
-                        </div>
-                    </div>
-                </div>
-                <div class = "project-engineer-flip">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-text-div">
-                                <p><b>John Doe</b>(Engineer)</p>
-                            </div>
-                            <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
-                        </div>
-                    </div>
-                </div>
-                <div class = "project-contractor-flip">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-text-div">
-                                <p><b>John Doe</b>(Contractor)</p>
-                            </div>
-                            <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
-                            </div>
-                        </div>
-                        <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
-                        </div>
-                    </div>
-                </div>
+                        <div class="project-progress-bar" style="background-color: #DE8500;"></div>
+                        <div class="project-progress-bar1" style="background-color: #DE8500;"></div>
+                        <div class="project-progress-bar2" id="pro-bar3"></div>
+                        <div class="project-progress-bar3" id="pro-bar4"></div>
 
+                    </div>
+                    <div class="project-details-inline">
+                        <div class="project-details-steps-container">
+                            <span id="request-received" class="project-details-steps-text">Awaiting Inspection</span>
+                            <span id="salesperson-assignment" class="project-details-steps-text">Package
+                                Confirmation</span>
+                            <?php
+                            if ($data['schedule'][0]->isConfirmed != 2) {
+                                echo '';
+                            } else {
+                                echo ' <p> Dates Not Available. Please Schedule Again.</p>';
+                            }
+                            ?>
+                            
+                        </div>
+                        <div class="project-details-info-container">
+                            <b>Project No:</b>
+                            <?php echo $data['project'][0]->projectID ?> <br>
+                            <b>Site Location:</b>
+                            <?php echo $data['project'][0]->siteAddress ?> <br>
+                            <b>Package:</b>
+                            <?php
+                            if (($data['project'][0]->Package_packageID) == NULL) {
+                                echo 'Pending ';
+                            } else {
+                                echo $data['project'][0]->Package_packageID;
+                            }
+
+                            ?> <br>
+                            <b>Salesperson:</b>
+                            <?php
+                            if (($data['project'][0]->Salesperson_Employee_empID) == NULL) {
+                                echo 'Pending ';
+                            } else {
+                                echo $data['salesperson'][0]->name;
+                            }
+
+                            ?>
+                            <br>
+                            <b>Contractor ID:</b>
+                            <?php
+                            if (empty($data['contractor'])) {
+                                echo 'Not Assigned ';
+                            } else {
+                                echo $data['contractor'][0]->name;
+                            }
+
+                            ?> <br>
+                            <b>Scheduled Dates:</b>
+                            <?php
+                            if ($data['schedule'][0]->isConfirmed == 1) {
+                                echo $data['schedule'][0]->date;
+                            } else {
+                                echo ' None';
+                            }
+
+                            ?>
+                            <br>
+
+                            <?php
+                           
+                                echo '<b>Engineer:</b> '
+                                    . $data['engineer'][0]->name . '<br>';
+                            
+
+                            ?>
+
+                        </div>
+                    </div>
+                    <div class="project-details-btn-container" >
+                        <div class="view-pack-btn" id="view-package" onclick="document.getElementById('id05').style.display='block'">
+                            <div class="view-pack-btn-text">
+                                View Package
+                            </div>
+                        </div>
+                        <div class="cancel-order-btn" id="cancel-project">
+                            <div class="cancel-order-btn-text">
+                                <a href="<?=URLROOT?>/project/cancelProduct?project_id=<?=$_GET['project_id']?>">Cancel Project</a>
+                            </div>
+                        </div>
+                        <div class="confirm-order-btn" id="confirm-order-btn"
+                            onclick="document.getElementById('id03').style.display='block'">
+                            <div class="confirm-order-btn-text">
+                                Confirm Order
+                            </div>
+                        </div>
+                        <div class="make-inquiry-btn">
+                            <div class="make-inquiry-btn-text">
+                            <a href="/ezolar/project/">Send Inquiry</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-side-container">
+                    <div class="project-salesperson-flip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-text-div">
+                                    <p><b>John Doe</b>(Salesperson)</p>
+                                </div>
+                                <div class="flip-img-div">
+                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>John Doe</h1>
+                                <p>Architect & Engineer</p>
+                                <p>We love that guy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-engineer-flip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-text-div">
+                                    <p><b>John Doe</b>(Engineer)</p>
+                                </div>
+                                <div class="flip-img-div">
+                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>John Doe</h1>
+                                <p>Architect & Engineer</p>
+                                <p>We love that guy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-contractor-flip">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="flip-text-div">
+                                    <p><b>John Doe</b>(Contractor)</p>
+                                </div>
+                                <div class="flip-img-div">
+                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <h1>John Doe</h1>
+                                <p>Architect & Engineer</p>
+                                <p>We love that guy</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
-        
     </div>
-</div>
-<div class = "f">
-    <?php 
+    <?php
+
+    if (($data['project'][0]->status) == "C0") { ?>
+        <script>
+
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+            document.getElementById('view-package').style.display = "none";
+            document.getElementById('cancel-project').style.display = "none";
+            document.getElementById('confirm-order-btn').style.display = "none";
+
+
+           
+            document.getElementById('c4-link').removeAttribute("href");
+            document.getElementById('c4-link').style.cursor = "default";
+            document.getElementById('c5-link').removeAttribute("href");
+            document.getElementById('c5-link').style.cursor = "default";
+
+
+        </script>
+    <?php } elseif (($data['project'][0]->status) == "C1") { ?>
+        <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+
+           
+            document.getElementById('c4-link').removeAttribute("href");
+            document.getElementById('c4-link').style.cursor = "default";
+            document.getElementById('c5-link').removeAttribute("href");
+            document.getElementById('c5-link').style.cursor = "default";
+
+
+        </script>
+        <?php
+        if ($data['schedule'][0]->isConfirmed == 1) { ?>
+            <script>
+
+            </script>
+        <?php }
+
+        ?>
+
+
+    <?php } elseif (($data['project'][0]->status) == "C2") { ?>
+        <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+         
+            // document.getElementById("req-received").style.display =none;
+
+
+            document.getElementById('c4-link').removeAttribute("href");
+            document.getElementById('c4-link').style.cursor = "default";
+            document.getElementById('c5-link').removeAttribute("href");
+            document.getElementById('c5-link').style.cursor = "default";
+
+
+
+        </script>
+
+    <?php
+
+    } elseif (($data['project'][0]->status) == "F") { ?>
+        <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+         
+            // document.getElementById("req-received").style.display =none;
+
+
+            document.getElementById('c4-link').removeAttribute("href");
+            document.getElementById('c4-link').style.cursor = "default";
+            document.getElementById('c5-link').removeAttribute("href");
+            document.getElementById('c5-link').style.cursor = "default";
+
+            document.getElementById('cancel-project').style.display = "none";
+            document.getElementById('confirm-order-btn').style.display = "none";
+            document.getElementById('add-schedule-btn').style.display = "none";
+
+
+
+
+        </script>
+
+    <?php
+
+    }
+    if (($data['project'][0]->status) == "D0" || ($data['project'][0]->status) == "d1" || ($data['project'][0]->status) == "d2") { ?>
+        <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+
+            // document.getElementById("req-received").style.display =none;
+
+
+            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
+
+
+
+
+
+
+        </script>
+
+    <?php } ?>
+
+    <div class="f">
+        <?php
         $this->view('Includes/footer', $data);
-    ?>
-</div>
+        ?>
+    </div>
 </body>
+
 </html>

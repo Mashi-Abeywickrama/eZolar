@@ -13,9 +13,11 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.transaction.css">
+
     <title>My transactions</title>
 </head>
 <body>
+
 <div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
@@ -75,9 +77,10 @@
                             </div>
                         </span>
                         <span class="transaction-details-btn-container">
-                            <div class="transaction-details-btn">
-                                <span class="transaction-details-btn-text"><a href="'.URLROOT.'/transaction/transactionDetails/'.$row -> receiptID.'" style ="color: #FFFFFF ">More info</a></span>
-                            </div>
+                            <a href="'.URLROOT.'/transaction/transactionDetails/'.$row -> receiptID.'" style ="color: #FFFFFF "><div class="transaction-details-btn">
+                                <span class="transaction-details-btn-text">More info</span>
+                            </div></a>
+                            
                         </span>
                         
                     </div>';

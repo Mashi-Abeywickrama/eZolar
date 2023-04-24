@@ -1,11 +1,17 @@
+<?php
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\ezolar\public\css\style.css">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.project.css">
     <title>Document</title>
-    HIII
 </head>
 <body>
 <div class="body-container">
@@ -24,9 +30,9 @@
                 <a href="<?=URLROOT?>/inquiry"><div class="box3">
                     Inquiries
                 </div></a>
-                <div class="box4">
+                <a href="<?=URLROOT?>/transaction"><div class="box4">
                     Transactions
-                </div>
+                </div></a>
             </div>
             <div class="rest-bottom">
             <a href="<?=URLROOT?>/user/profile"><div class="box5">
@@ -38,6 +44,108 @@
             </div>
         </div>
     </div>
+    <?php
+        require_once(__ROOT__.'\app\views\popupList\newprojectPopup.php');
+        if (isset($_POST['sub'])) {
+            echo '
+            <script>
+                document.getElementById('."'id02'".').style.display='."'block'".';
+            </script>
+            
+            ';
+        }
+    ?>
+    <div class="common-main-container">
+        <div class="dashboard-common-heading-container">
+            <div class="dashboard-common-heading-back-btn">
+                <a href="<?=URLROOT?>/project" “text-decoration: none”>
+                    <img src="\ezolar\public\img\admin\back.png">
+                </a>
+            </div>
+            <div class="dashboard-common-heading-text">
+                <b>New Project</b>
+            </div>
+
+        </div>
+        <div class="budget-cal-container">
+            <div class="budget-cal-text">  
+            "Discover the potential savings of a solar panel system for your home with our free budget estimation tool.
+             Simply input your monthly power consumption to receive an instant estimate of the cost of a solar panel system that fits your needs.
+             No Commitment Required! Click the button below!"
+            </div>
+            <div class="budget-btn-container">
+                <div class="budget-cal-btn">
+                    <div class="budget-cal-btn-txt">
+                        Calculate Budget
+                    </div>
+                    <div class="budget-cal-btn-img-c">
+                        <img class="budget-cal-btn-img" src="\ezolar\public\img\Cal.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-acc-detail-container">
+            <div class="form-container-p">
+                <form name="Reset Form" class="new-p-form" action="requestProject" method="POST" enctype="multipart/form-data">
+                    <div class="err">Site Location:
+                        <div class = "err-group">
+                            <span class="star">*</span>
+                            <span class="err-box" id="location-err"></span>
+                        </div>
+                    </div>
+                    <input class="p-in" name="location" id="location" type="text" placeholder="no.123,someplace" required>
+                    <div class="err">Contact number:
+                        <div class = "err group">
+                            <span class="star">*</span>
+                            <span class="err-box" id="pwd-err"></span>
+                        </div>
+                    </div>
+                    <input class="p-in" name="mobile" id="mobile" type="text" placeholder="insert Contact number" required>
+
+                    <div class="err">Upload payment reciept:
+                        <div class = "err-group">
+                            <span class="star">*</span>
+                            <span class="err-box" id="img-err"></span>
+                        </div>
+                        
+                    </div>
+                    <input type="file" class="fileToUpload"  id="file-input" name="fileToUpload" onchange="loadFile(this)" required>
+                    <div class="p"><img class="img-slip" scr="" id="output" width="200"/></div>
+                        <script>
+                            function loadFile(input) {
+                                if(input.files && input.files[0] ) {
+                                    var reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        document.getElementById("output").src = e.target.result;
+                                    };
+                                    reader.readAsDataURL(input.files[0]);
+                                }
+                            }
+                        </script>
+                    <div class = "group" >
+                        <button class="cancel-btn" type="cancel" name="cancel">Cancel</button>
+                        <button class="submit-btn" type="submit" name="sub" onclick="document.getElementById('id02').style.display='block'" > Submit </button>
+                    </div>
+                </form>
+            </div>
+            <div class = "acc-detail-box">
+                <div clas>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
+<div class = "f">
+    <?php 
+          $this->view('Includes/footer', $data);
+    ?>
 </div>
 </body>
 </html>

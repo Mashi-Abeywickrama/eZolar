@@ -67,6 +67,8 @@ require '../vendor/autoload.php';
             }
       }
       if(isset($_POST['OTPBtn'])){
+        print_r($_POST['otp']);
+        print_r($_SESSION['token']);die;
         if($_POST['otp'] == $_SESSION['token']){
           header('Location:/ezolar/login/resetpassword');
         }

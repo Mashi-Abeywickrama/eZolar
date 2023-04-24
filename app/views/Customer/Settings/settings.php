@@ -79,14 +79,14 @@
                     <img src="\ezolar\public\img\setting\Lock.png" alt="Change Password">
                 </div>
             </div></a>
-            <div class="dashboard-settings-container-content">
+            <!-- <div class="dashboard-settings-container-content">
                <div class="dashboard-container-txt">
                     Appearence
                </div>
                <div class="dashboard-container-img">
                     <img src="\ezolar\public\img\setting\Appearence.png" alt="Appearence">
                </div>
-            </div>
+            </div> -->
             <div class="dashboard-settings-container-content">
                     <div class="dashboard-container-txt">
                         Delete Account

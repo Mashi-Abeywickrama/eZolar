@@ -35,10 +35,10 @@
         $data = [
           'title' => 'eZolar Transactions',
         ];
-        $rows = $this->transactionModel->getAllPayments($id);
+        $rows = $this->transactionModel->viewMore($id);
         $_SESSION['rows'] = $rows;
-        $this->view('Customer/viewinquiry', $data);
-        // print_r($_SESSION['rows']);die;
+        $this->view('Customer/transactionDetails', $data);
+        print_r($_SESSION['rows']);die;
   
   
       }

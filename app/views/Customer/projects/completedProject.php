@@ -65,8 +65,8 @@
             <div class = "project-sub-topic" >
             <a href="/ezolar/project">Ongoing Projects</a>
             </div>
-            <div class = "project-sub-topic" style="background: #ad1515; border: 3px solid #0B2F64;">
-            <a href="/ezolar/project/completedProjects">Completed Projects</a>
+            <div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF;">
+            <a href="/ezolar/project/completedProjects" style="color: #FFFFFF;">Completed Projects</a>
             </div>
             <div class = "project-sub-topic">
             <a href="/ezolar/project/cancelledProjects">Cancelled Projects</a>
@@ -76,8 +76,8 @@
         <div class="body-list-container">
 
             <?php
-            $results = $_SESSION['rows'];
-            foreach($results as $row){
+
+            foreach ($data['rows'] as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
@@ -88,7 +88,7 @@
                         </span>
                         <span class="project-details-btn-container">
                             <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF">More info</a></span>
+                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF";>More info</a></span>
                             </div>
                         </span>
                         

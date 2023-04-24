@@ -68,9 +68,8 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 <b>Edit My Profile</b>
             </div>
             <div class="dashboard-common-heading-image">
-                <a “text-decoration: none”>
                     <img src="\ezolar\public\img\setting\Edit.png" alt="edit-icon">
-                </a>
+
             </div>
 
         </div>

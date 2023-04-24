@@ -51,9 +51,8 @@
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
-                    <a href=”#” “text-decoration: none”>
+
                         <img src="\ezolar\public\img\customer\projects.png" alt="project">
-                    </a>
                 </div>
                 <div class="common-main-txt">
                     My Projects
@@ -62,8 +61,8 @@
            
         </div>
         <div class="project-type">
-            <div class = "project-sub-topic" style="background: #ad1515; border: 3px solid #0B2F64;">
-            <a href="/ezolar/project">Ongoing Projects</a>
+            <div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
+            <a href="/ezolar/project" style="color: #FFFFFF;">Ongoing Projects</a>
             </div>
             <div class = "project-sub-topic">
             <a href="/ezolar/project/completedProjects">Completed Projects</a>
@@ -101,8 +100,19 @@
                             </div>
                         </span>
                         <span class="project-details-btn-container">
-                            <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF">More info</a></span>
+                            <div class="project-details-btn">';
+
+                            if (($row -> status) == 'B0' || ($row -> status) == 'B1') {
+                               echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/2?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
+                            }
+                            else if (($row -> status) == 'C0' || ($row -> status) == 'C1' ||($row -> status) == 'C2' ) {
+                               echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/3?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
+                            }
+                            else {
+                                echo '<span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/1?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span>';
+                            }
+
+                            echo '
                             </div>
                         </span>
                         

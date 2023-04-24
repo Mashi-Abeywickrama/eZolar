@@ -15,12 +15,6 @@
     <title>My Projects</title>
 </head>
 <body>
-
-    <?php
-        require_once(__ROOT__.'\app\views\popupList\scheduleDates.php');
-        require_once(__ROOT__.'\app\views\popupList\payment.php');
-    ?>
-
 <div class="body-container">
     <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
@@ -85,14 +79,14 @@
                             <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
-                            <a href="<?=URLROOT?>/project/projectdetails/5"><div class="project-progress-bar-bullet"></div></a>
+                            <a href="<?=URLROOT?>/project/projectdetails/5"><div class="project-progress-bar-bullet-highlighted"></div></a>
                             <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
                         </div>
                     </div>
                     <div class="project-progress-bar" style="background-color: #DE8500;"></div>
                     <div class="project-progress-bar1" style="background-color: #DE8500;"></div>
                     <div class="project-progress-bar2" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar3"></div>
+                    <div class="project-progress-bar3" style="background-color: #DE8500;"></div>
                 </div>
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
@@ -110,21 +104,21 @@
                     </div>
                 </div>
                 <div class="project-details-btn-container">
-                    <div class="make-payment-btn" id="make-payment-btn" onclick="document.getElementById('id03').style.display='block'">
-                        <div class="make-payment-btn-text">
-                        Upload Reciept 
-                        </div>
-                    </div>
-                    <div class="add-schedule-btn" name="add-schedule-btn" id= "add-schedule-btn" onclick="document.getElementById('id04').style.display='block'">
-                        <div class="add-schedule-btn-text">
-                        Schedule 
-                        </div>
-                    </div>
-                    <a href="/ezolar/project/"><div class="add-project-btn">
+                    <div class="add-project-btn">
                         <div class="add-project-btn-text">
-                        Send Inquiry 
+                        <a href="/ezolar/project/requestProjectPage">Make Payment</a> 
                         </div>
-                    </div></a>
+                    </div>
+                    <div class="add-project-btn">
+                        <div class="add-project-btn-text">
+                        <a href="/ezolar/project/requestProjectPage">Schedule</a> 
+                        </div>
+                    </div>
+                    <div class="add-project-btn">
+                        <div class="add-project-btn-text">
+                        <a href="/ezolar/project/requestProjectPage">Send Inquiry</a> 
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="project-side-container">

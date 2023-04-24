@@ -6,7 +6,7 @@
 .transaction-box{
     display: flex;
     justify-content: space-evenly;
-    /* height: 120px; */
+    height: 28%;
     width: 90%;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -32,16 +32,11 @@
     /* justify-content: space-between; */
 }
 .transaction-details-btn-container{
+    width: 45%;
     display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    height: 42%;
-    /* height: 42px; */
-    width: auto;
-    min-width: 112px;
-    margin-bottom: 40px;
-    /* margin-left: 5px; */
-    /* overflow: auto;  */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: center;
 }
 .transaction-details-btn{
     display: flex;
@@ -54,7 +49,8 @@
     color: #FFFFFF;
     justify-content: center;
 } 
-.transaction-details-btn:hover{
+
+.transaction-details-btn:hover, .transaction-download-btn:hover , .transaction-details-download-btn:hover{
     cursor: pointer;
     background: #0B2F64;
     transition-duration: 200ms;
@@ -63,26 +59,89 @@
 .transaction-details-btn-text{
     align-self: center;
 }
+.transaction-download-btn{
+    gap: 0.5rem;
+    padding-left: 6%;
+    display: flex;
+    /* height: 40px; */
+    height: 4vh;
+    width: 8vw;
+    /* width: 110px; */
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF;
+    align-items: center;
+    flex-direction: row;
+}
+.download-img{
+    width: 45%;
+    padding: 2px;
+}
 
 .transaction-text-no{
     margin: 5px;
     font-size: 16px;
 }
 
-.transaction-text-name{
-    margin: 5px;
-    font-size: 22px;
-    font-style: bold;
-}
 
 
-.transaction-details-main-container{
-    width: 100%;
-    height: 100%;
-    justify-items: center;
+/* transaction details page */
+.transaction-detail-box{
     display: flex;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    justify-content: space-evenly;
+    /* height: 120px; */
+    gap: 0.2rem;
+    width: 90%;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: auto;
+    flex-direction: column;
+}
+.transaction-d-text{
+    font-size: 20px;
+    width: 70%;
+    display: flex;
+    margin: 5px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.transaction-d-text2{
+    width: 70%;
+    display: flex;
+    margin: 5px;
+    font-size: 16px;
+    flex-direction: row;
     justify-content: space-between;
+}
+.transaction-detail-box-inner-boarder{
+    display: flex;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 5px solid #2C61A3;
+    flex-direction: column;
+    align-items: center;
+}
+hr{
+    width: 85%;
+    border: 2px solid #0B2F64;
+    background-color: #0B2F64;
+}
+.transaction-details-download-btn{
+    gap: 0.5rem;
+    padding-left: 2%;
+    display: flex;
+    margin-left: 794px;
+    height: 4vh;
+    width: 8vw;
+    /* width: 110px; */
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF;
+    align-items: center;
+    flex-direction: row;
 }
 .transaction-details-container{
     background-color: #ffffff;
@@ -98,18 +157,5 @@ a{
     color: #0B2F64;
 }
 
-.transaction-details-info-container{
-    width: 50%;
-    padding: 10px;
-    background: #d9d9d9;
-    border-radius: 10px;
-    margin-right:20px;
-    line-height: 1.8;
-}
 
-.transaction-details-btn-container{
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
+

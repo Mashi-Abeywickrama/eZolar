@@ -223,7 +223,7 @@ body {
 
 /* Style for popup begin from here */
 button {
-    background-color: #04AA6D;
+    background-color: #2C61A3;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -244,7 +244,7 @@ button:hover {
 
 .okbtn,
 .deletebtn {
-    width: 45%;
+    width: 40%;
     border-radius: 10px;
 }
 
@@ -349,4 +349,10 @@ hr {
 
 a {
     cursor: pointer;
+}
+
+.package-table{
+    width: 80%;
+    display: flex;
+
 }
