@@ -23,20 +23,28 @@ class ChatSystemModel
 
     // view messages chat function for salesperson
     //TODO -> check on how salesperson interact with inquiry and change salesperson ID to check other inquiry messages
-    public function viewMessages($inquiryID,$salespersonID){
-        $this->db->query('SELECT * FROM inquiry INNER JOIN inquiry_message WHERE inquiryID = inquiry_inquiryID AND Salesperson_Employee_empID=:salespersonID AND inquiryID = :inquiryID');
-        $row = $this->db->resultSet(['salespersonID' => $salespersonID, 'inquiryID' => $inquiryID]);
-        return ($row);
+    public function viewMessages($inquiryID,$userID,$role){
+        if ($role == "Salesperson"){
+            $this->db->query('SELECT * FROM inquiry INNER JOIN inquiry_message ON inquiryID = inquiry_inquiryID WHERE Salesperson_Employee_empID = :userID AND inquiryID = :inquiryID');
+            $row = $this->db->resultSet(['userID' => $userID, 'inquiryID' => $inquiryID]);
+            return ($row);
+
+        } elseif ($role == "Customer"){
+            $this->db->query('SELECT * FROM inquiry INNER JOIN inquiry_message ON inquiryID = inquiry_inquiryID WHERE customerID = :userID AND inquiryID = :inquiryID');
+            $row = $this->db->resultSet(['userID' => $userID, 'inquiryID' => $inquiryID]);
+            return ($row);
+        }
+
     }
 
-    public function messageCount($inquiryID){
-        $this->db->query('SELECT COUNT(messageID) FROM inquiry_message WHERE inquiry_inquiryID = :inquiryID');
-        $count = $this->db->execute(['inquiryID' => $inquiryID]);
-        return $count;
-    }
+//    public function messageCount($inquiryID){
+//        $this->db->query('SELECT MAX(messageID) FROM inquiry_message WHERE inquiry_inquiryID = :inquiryID');
+//        $count = $this->db->execute(['inquiryID' => $inquiryID]);
+//        return $count;
+//    }
 
     public function sendMessage($data){
-        $this->db->query('SELECT COUNT(messageID) as countMessages FROM inquiry_message WHERE inquiry_inquiryID = :inquiryID');
+        $this->db->query('SELECT MAX(messageID) as countMessages FROM inquiry_message WHERE inquiry_inquiryID = :inquiryID');
         $output = $this->db->single(['inquiryID' => $data[0]]);
         $count = $output->countMessages;
         $messageID = intval($count) + 1;
