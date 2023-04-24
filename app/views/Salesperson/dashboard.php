@@ -49,7 +49,7 @@
             </div>
         </a>
 
-        <a href="/ezolar/Schedules/Insepection">
+        <a href="/ezolar/SalespersonSchedules/InspectionSchedule">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Inspection Schedule
@@ -60,7 +60,7 @@
             </div>
         </a>
 
-        <a href="/ezolar/Schedules/Delivery">
+        <a href="/ezolar/SalespersonSchedules/DeliverySchedule">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Delivery Schedule

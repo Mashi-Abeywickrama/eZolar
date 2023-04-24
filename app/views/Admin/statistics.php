@@ -12,7 +12,7 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\common\employee-list.css">
+    <link rel="stylesheet" href="\ezolar\public\css\admin\statistics.css">
     <title>My Projects</title>
 </head>
 <body>
@@ -53,6 +53,7 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     </div>
 </div>
 <div class="common-main-container">
+<!--    --><?php //print_r($_SESSION) ;?>
     <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
@@ -71,13 +72,43 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
 
         </div>
 
+        <div class="wrapper">
+            <div class="tabs_wrap">
+                <ul>
+                    <li data-tabs="sales" class="active">Sales</li>
+                    <li data-tabs="packages">Packages</li>
+                    <li data-tabs="schedules">Schedules</li>
+                </ul>
+            </div>
+        </div>
 
-        <canvas id="salesPerMonthChart"></canvas>
-
+        <div id="sales" class="sales">
+            <div class="item">
+                <canvas id="salesPerMonthChart"></canvas>
+            </div>
+        </div>
+        <div id="packages" class="packages">
+            <div class="item">
+                <canvas id="packagesSoldChart"></canvas>
+            </div>
+        </div>
+        <div id="schedules" class="schedules">
+            <div class="item">
+                <canvas id="SchedulesPerMonthChart"></canvas>
+            </div>
+        </div>
 
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script type="text/javascript" src="\ezolar\public\js\statistics.js" data-labels="<?php echo htmlspecialchars(json_encode($_SESSION['labels'])); ?>" data-data="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>"></script>
+<script type="text/javascript" src="\ezolar\public\js\tabMenu.js"></script>
+<script type="text/javascript" src="\ezolar\public\js\statistics.js"
+        data-labels="<?php echo htmlspecialchars(json_encode($_SESSION['labels'])); ?>"
+        data-data="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>"
+        data-packages="<?php echo htmlspecialchars(json_encode($_SESSION['packages-sold'])); ?>"
+        data-inspection="<?php echo htmlspecialchars(json_encode($_SESSION['inspection'])); ?>"
+        data-delivery="<?php echo htmlspecialchars(json_encode($_SESSION['delivery'])); ?>">
+<?php //unset($_SESSION['labels'],$_SESSION['data'],$_SESSION['packages-sold'],$_SESSION['inspection'],$_SESSION['delivery'])?>
+</script>
 </body>
 </html>

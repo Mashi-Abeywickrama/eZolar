@@ -36,7 +36,7 @@
     }
 
     public function viewMore($id){
-      $this->db->query('SELECT * FROM inquiry WHERE  inquiryID = :inquiryID');
+      $this->db->query('SELECT * FROM inquiry INNER JOIN employee ON employee.empID = inquiry.Salesperson_Employee_empID WHERE inquiryID = :inquiryID');
 
       // print_r($this->db->resultSet());die;
       $row = $this->db->resultSet(['inquiryID' => $id]);
@@ -45,11 +45,17 @@
     }
 
         // * * * * salesperson functions * * * *
-     // TODO -> CHECK IS ALL INQUIRIES SHOWS TO ALL THE SALESPERSONS
 
-    public function getSalespersonInquiries(){
-    $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID ORDER BY inquiryID');
-    $row = $this->db->resultSet([]);
+      public function getUserID($email){
+          $this->db->query('SELECT UserID FROM user where email = :email');
+          $row = $this->db->single(['email' => $email[0]]);
+          return ($row -> UserID);
+      }
+     // INQUIRIES SHOWS TO ASSIGNED SALESPERSON
+
+    public function getSalespersonInquiries($userID){
+    $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID WHERE Salesperson_Employee_empID=:userID  ORDER BY inquiryID');
+    $row = $this->db->resultSet(['userID' => $userID]);
     return $row;
   }
 

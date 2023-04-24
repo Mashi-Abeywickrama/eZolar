@@ -63,17 +63,20 @@
       ];
       $rows = $this->inquiryModel->viewMore($id);
       $_SESSION['rows'] = $rows;
-      $this->view('Customer/viewinquiry', $data);
+      $this->view('Customer/respond-inquiry', $data);
       // print_r($_SESSION['rows']);die;
 
 
     }
           // * * * * salesperson functions * * * *
+
     public function getSalespersonInquiries(){
         if(!isLoggedIn()){
             redirect('login');
         }
-        $rows  = $this->inquiryModel->getSalespersonInquiries();
+
+        $salesperson_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
+        $rows  = $this->inquiryModel->getSalespersonInquiries($salesperson_Id);
         $_SESSION['rows'] = $rows;
         $data = [
             'title' => 'eZolar View Inquiries',

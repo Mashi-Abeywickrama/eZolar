@@ -187,7 +187,12 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
             'title' => 'ezolar employee details',
         ];
 
-        $this->view('Admin/employee-details', $data);
+        if ($this->employeeModel->getUserRole($_SESSION['user_email']) == "Admin"){
+            $this->view('Admin/employee-details', $data);
+        }
+        elseif (($this->employeeModel->getUserRole($_SESSION['user_email']) == "Salesperson")){
+            $this->view('Salesperson/employee-details', $data);
+        }
 
     }
 
