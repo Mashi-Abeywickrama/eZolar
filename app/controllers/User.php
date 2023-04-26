@@ -36,7 +36,7 @@ class User extends Controller {
           $this->view('Engineer/dashboard', $title);
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
             $this->view('Salesperson/dashboard', $title);
-        } else{
+        }else{
           $this->view('Customer/dashboard', $title);
         }
       }
@@ -161,14 +161,15 @@ class User extends Controller {
         $this->view('Storekeeper/editprofile', $title);
       }elseif ($role == "Customer"){
         $this->view('Customer/Settings/editprofile', $title);
-      }if ($role == "Contractor"){
+      }elseif ($role == "Contractor"){
         $this->view('Contractor/editprofile', $title);
-      }
+      }elseif ($role == "Salesperson"){
+              $this->view('Salesperson/editProfile',$title);
+          }
     }
-
+    
     public function updateprofile(){
       
-
       $title = "edit profile";
       //get user role and the user id from the session
       $role = $this->userModel->getUserRole($_SESSION['user_email']);

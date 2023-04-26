@@ -69,7 +69,6 @@
 
     }
           // * * * * salesperson functions * * * *
-
     public function getSalespersonInquiries(){
         if(!isLoggedIn()){
             redirect('login');
