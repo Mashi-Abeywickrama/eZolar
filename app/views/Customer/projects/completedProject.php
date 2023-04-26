@@ -62,15 +62,15 @@
            
         </div>
         <div class="project-type">
-            <div class = "project-sub-topic" >
-            <a href="/ezolar/project">Ongoing Projects</a>
-            </div>
-            <div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF;">
-            <a href="/ezolar/project/completedProjects" style="color: #FFFFFF;">Completed Projects</a>
-            </div>
-            <div class = "project-sub-topic">
-            <a href="/ezolar/project/cancelledProjects">Cancelled Projects</a>
-            </div>
+            <a class="sub-topic" href="/ezolar/project"><div class = "project-sub-topic" >
+            Ongoing Projects
+            </div></a>
+            <a class="sub-topic"  href="/ezolar/project/completedProjects" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF;">
+            Completed Projects
+            </div></a>
+            <a class="sub-topic"  href="/ezolar/project/cancelledProjects"><div class = "project-sub-topic">
+            Cancelled Projects
+            </div></a>
 
         </div>
         <div class="body-list-container">

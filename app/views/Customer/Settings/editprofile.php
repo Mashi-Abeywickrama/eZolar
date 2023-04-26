@@ -67,10 +67,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <div class="dashboard-common-heading-text">
                 <b>Edit My Profile</b>
             </div>
-            <div class="dashboard-common-heading-image">
-                    <img src="\ezolar\public\img\setting\Edit.png" alt="edit-icon">
 
-            </div>
 
         </div>
 

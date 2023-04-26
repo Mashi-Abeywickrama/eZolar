@@ -245,23 +245,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                     </div>
                 </div>
                 <div class="project-side-container">
-                    <div class="project-salesperson-flip">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-text-div">
-                                    <p><b>John Doe</b>(Salesperson)</p>
-                                </div>
-                                <div class="flip-img-div">
-                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
-                                </div>
-                            </div>
-                            <div class="flip-card-back">
-                                <h1>John Doe</h1>
-                                <p>Architect & Engineer</p>
-                                <p>We love that guy</p>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="project-engineer-flip">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -279,22 +263,61 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                             </div>
                         </div>
                     </div>
-                    <div class="project-contractor-flip">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-text-div">
-                                    <p><b>John Doe</b>(Contractor)</p>
+                    <div class = "project-payment-details-box">
+                        <div class="acc-details-topic">
+                            Account Details
+                        </div>
+                        <div class="details-wrapper">
+                            <div class="details-box">
+                                <div class="t">
+                                    Account Number:
                                 </div>
-                                <div class="flip-img-div">
-                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                <div class="d">
+                                    072-2-001-2-008235
                                 </div>
                             </div>
-                            <div class="flip-card-back">
-                                <h1>John Doe</h1>
-                                <p>Architect & Engineer</p>
-                                <p>We love that guy</p>
+                            <div class="details-box">
+                                <div class="t">
+                                    Benificiary Name:
+                                </div>
+                                <div class="d">
+                                    Team eZolar
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Bank Name:
+                                </div>
+                                <div class="d">
+                                    People's Bank
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Branch Name:
+                                </div>
+                                <div class="d">
+                                    Ambalantota
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Purpose:
+                                </div>
+                                <div class="d">
+                                    Inspection payment
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Amount:
+                                </div>
+                                <div class="d">
+                                    Rs. 10000.00
+                                </div>
                             </div>
                         </div>
+                        
                     </div>
 
                 </div>
@@ -339,14 +362,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
 
 
         </script>
-        <?php
-        if ($data['schedule'][0]->isConfirmed == 1) { ?>
-            <script>
-
-            </script>
-        <?php }
-
-        ?>
+       
 
 
     <?php } elseif (($data['project'][0]->status) == "C2") { ?>
@@ -376,6 +392,8 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
             document.getElementById("request-received").style.fontWeight = "900";
             document.getElementById("salesperson-assignment").style.color = "#DE8500";
             document.getElementById("salesperson-assignment").style.fontWeight = "900";
+
+            
          
             // document.getElementById("req-received").style.display =none;
 
@@ -397,7 +415,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
     <?php
 
     }
-    if (($data['project'][0]->status) == "D0" || ($data['project'][0]->status) == "d1" || ($data['project'][0]->status) == "d2") { ?>
+    else if (($data['project'][0]->status) == "D0" || ($data['project'][0]->status) == "D1" ) { ?>
         <script>
             document.getElementById("request-received").style.color = "#DE8500";
             document.getElementById("request-received").style.fontWeight = "900";
@@ -406,21 +424,47 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
 
             // document.getElementById("req-received").style.display =none;
 
+          
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
 
-            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
-            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+            document.getElementById('c5-link').removeAttribute("href");
+            document.getElementById('c5-link').style.cursor = "default";
 
-            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
-            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
-
-
-
+            document.getElementById('cancel-project').style.display = "none";
+            document.getElementById('confirm-order-btn').style.display = "none";
+            document.getElementById('add-schedule-btn').style.display = "none";
 
 
 
         </script>
 
-    <?php } ?>
+<?php } elseif (($data['project'][0]->status) == "E0") { ?>
+    <script>
+        document.getElementById("request-received").style.color = "#DE8500";
+        document.getElementById("request-received").style.fontWeight = "900";
+        document.getElementById("salesperson-assignment").style.color = "#DE8500";
+        document.getElementById("salesperson-assignment").style.fontWeight = "900";
+
+        document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+        document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+
+        document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+        document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+
+        document.getElementById('cancel-project').style.display = "none";
+        document.getElementById('confirm-order-btn').style.display = "none";
+        document.getElementById('add-schedule-btn').style.display = "none";
+
+
+
+    </script>
+
+    
+
+<?php
+
+    } ?>
 
     <div class="f">
         <?php

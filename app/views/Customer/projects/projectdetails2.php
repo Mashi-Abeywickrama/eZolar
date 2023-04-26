@@ -338,7 +338,7 @@
         </script>
     <?php } 
 
-} if (($data['project'][0]->status) == "C0" || ($data['project'][0]->status) == "C1" || ($data['project'][0]->status) == "C2") { ?>
+} if (($data['project'][0]->status) == "C0" || ($data['project'][0]->status) == "C1"  || ($data['project'][0]->status) == "F") { ?>
          <script>
             document.getElementById("request-received").style.color = "#DE8500";
             document.getElementById("request-received").style.fontWeight = "900";
@@ -357,6 +357,69 @@
 
             document.getElementById('c4-link').removeAttribute("href"); 
             document.getElementById('c4-link').style.cursor="default";
+            document.getElementById('c5-link').removeAttribute("href"); 
+            document.getElementById('c5-link').style.cursor="default";
+
+
+            
+
+
+        </script>
+
+<?php } if (($data['project'][0]->status) == "D0" || ($data['project'][0]->status) == "D1") { ?>
+         <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+            document.getElementById("payment-verify").style.color = "#DE8500";
+            document.getElementById("payment-verify").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+            document.getElementById('add-schedule-btn').style.display = "none";
+
+            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+
+            
+            document.getElementById('c5-link').removeAttribute("href"); 
+            document.getElementById('c5-link').style.cursor="default";
+
+
+            
+
+
+        </script>
+
+<?php } if (($data['project'][0]->status) == "E0" ) { ?>
+         <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+            document.getElementById("payment-verify").style.color = "#DE8500";
+            document.getElementById("payment-verify").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+            document.getElementById('add-schedule-btn').style.display = "none";
+
+            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+
+            
             document.getElementById('c5-link').removeAttribute("href"); 
             document.getElementById('c5-link').style.cursor="default";
 

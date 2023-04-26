@@ -124,10 +124,16 @@
   }
 
   public function getSchedule($projectID){
-      $this->db->query('SELECT * FROM scheduleitem WHERE Project_projectID = :projectID');
-      $row = $this->db->resultSet(['projectID' => $projectID]);
+      $this->db->query('SELECT * FROM scheduleitem WHERE Project_projectID = :projectID AND type = :type');
+      $row = $this->db->resultSet(['projectID' => $projectID,'type' => 'Inspection']);
       return $row;
   }
+
+  public function getdSchedule($projectID){
+    $this->db->query('SELECT * FROM scheduleitem WHERE Project_projectID = :projectID AND type = :type');
+    $row = $this->db->resultSet(['projectID' => $projectID,'type' => 'Delivery']);
+    return $row;
+}
 
   public function getSalesPersonDetails($projectID){
       $this->db->query('SELECT * FROM project 
@@ -147,13 +153,14 @@
     return $row;
 }
 
+
 public function getEngineer($projectID){
-    $this->db->query('SELECT * FROM projectengineer 
-    INNER JOIN employee ON employee.empID = projectengineer.Engineer_empID  
-    INNER JOIN employee_telno ON projectengineer.Engineer_empID = employee_telno.Employee_empID  
-    WHERE projectengineer.Project_projectID = :projectID');
-    $row = $this->db->resultSet(['projectID' => $projectID]);
-    return $row;
+  $this->db->query('SELECT * FROM projectengineer 
+  INNER JOIN employee ON employee.empID = projectengineer.Engineer_empID  
+  INNER JOIN employee_telno ON projectengineer.Engineer_empID = employee_telno.Employee_empID  
+  WHERE projectengineer.Project_projectID = :projectID');
+  $row = $this->db->resultSet(['projectID' => $projectID]);
+  return $row;
 }
 
 public function getInspectionPayment($projectID){
@@ -200,6 +207,40 @@ public function addNewScheduleItem($projectID,$date1,$date2,$date3)
 
 }
 
+public function addNewDeliveryScheduleItem($projectID,$date1,$date2,$date3)
+{
+  $type = "Delivery";
+  $this->db->query('INSERT INTO scheduleitem(`Project_projectID`,`type`) VALUES (:projectID,:type)');
+  $result1 = $this->db->execute(['projectID' => $projectID,'type' => $type]);
+
+  $this->db->query('SELECT * FROM scheduleitem  
+  WHERE Project_projectID = :projectID
+  AND type = "Delivery"
+  ');
+  $row = $this->db->resultSet(['projectID' => $projectID]);
+  
+  $schedule_id = $row[0]->scheduleID;
+
+  $this->db->query('INSERT INTO scheduleitem_requestdates(`Scheduleitem_scheduleID`,`requested_date`) VALUES (:schedule_id,:dates)');
+  $result2 = $this->db->execute(['schedule_id' => $schedule_id,'dates' => $date1]);
+
+  $this->db->query('INSERT INTO scheduleitem_requestdates(`Scheduleitem_scheduleID`,`requested_date`) VALUES (:schedule_id,:dates)');
+  $result3 = $this->db->execute(['schedule_id' => $schedule_id,'dates' => $date2]);
+
+  $this->db->query('INSERT INTO scheduleitem_requestdates(`Scheduleitem_scheduleID`,`requested_date`) VALUES (:schedule_id,:dates)');
+  $result4 = $this->db->execute(['schedule_id' => $schedule_id,'dates' => $date3]); 
+
+
+
+  if($result1 && $result2 && $result3 && $result4 ){
+    return true;
+  }
+  else {
+    return false;
+  }
+
+}
+
 public function cancelProduct($projectID){
   $this->db->query('UPDATE project SET status = :status WHERE projectID = :projectID');
   $result = $this->db->execute(['status' => "F",'projectID' => $projectID]);
@@ -227,6 +268,15 @@ public function confirmOrder($projectID,$filename){
     return false;
   }
 
+}
+
+public function getDeliveryPayment($projectID){
+  $this->db->query('SELECT * FROM paymentreceipt  
+  WHERE Project_projectID = :projectID
+  AND receiptPurpose = "Order Confirmation"
+  ');
+  $row = $this->db->resultSet(['projectID' => $projectID]);
+  return $row;
 }
 
 public function UpdateScheduleItem($projectID,$date1,$date2,$date3)

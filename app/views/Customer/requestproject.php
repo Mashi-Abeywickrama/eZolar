@@ -130,13 +130,61 @@
                 </form>
             </div>
             <div class = "acc-detail-box">
-                <div clas>
-
-                </div>
-                <div>
-
-                </div>
-            </div>
+                        <div class="acc-details-topic">
+                            Account Details
+                        </div>
+                        <div class="details-wrapper">
+                            <div class="details-box">
+                                <div class="t">
+                                    Account Number:
+                                </div>
+                                <div class="d">
+                                    072-2-001-2-008235
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Benificiary Name:
+                                </div>
+                                <div class="d">
+                                    Team eZolar
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Bank Name:
+                                </div>
+                                <div class="d">
+                                    People's Bank
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Branch Name:
+                                </div>
+                                <div class="d">
+                                    Ambalantota
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Purpose:
+                                </div>
+                                <div class="d">
+                                    Inspection payment
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Amount:
+                                </div>
+                                <div class="d">
+                                    Rs. 10000.00
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
         </div>
         
     </div>

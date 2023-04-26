@@ -1,9 +1,10 @@
 <?php
-require_once(__ROOT__.'/app/views/Customer/navbar.php');
+require_once(__ROOT__ . '/app/views/Customer/navbar.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,61 +15,72 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\respond-inquiries.css">
     <title>My newInquiry</title>
 </head>
+
 <body>
-<div class = "body-container-main">
-    <div class="body-container">
-        <div class="left-panel">
-            <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-                    Customer Dashboard
-                </div></a>
-            <div class="rest">
-                <div class="rest-top">
-                    <a href="<?=URLROOT?>#"><div class="box7">
-                            Packages
-                        </div></a>
-                    <a href="<?=URLROOT?>/project"><div class="box2">
-                            My Projects
-                        </div></a>
-                    <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                            Inquiries
-                        </div></a>
-                    <div class="box4">
-                        Transactions
+    <div class="body-container-main">
+        <div class="body-container">
+            <div class="left-panel">
+                <a href="<?= URLROOT ?>/user/dashboard">
+                    <div class="box1">
+                        Customer Dashboard
+                    </div>
+                </a>
+                <div class="rest">
+                    <div class="rest-top">
+                        <a href="<?= URLROOT ?>#">
+                            <div class="box7">
+                                Packages
+                            </div>
+                        </a>
+                        <a href="<?= URLROOT ?>/project">
+                            <div class="box2">
+                                My Projects
+                            </div>
+                        </a>
+                        <a href="<?= URLROOT ?>/inquiry">
+                            <div class="box3">
+                                Inquiries
+                            </div>
+                        </a>
+                        <a href="<?= URLROOT ?>/transaction">
+                            <div class="box4">
+                                Transactions
+                            </div>
+                        </a>
+                    </div>
+                    <div class="rest-bottom">
+                        <a href="<?= URLROOT ?>/user/profile">
+                            <div class="box5">
+                                Profile
+                            </div>
+                        </a>
+                        <a href="<?= URLROOT ?>/customersettings">
+                            <div class="box6">
+                                Settings
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="rest-bottom">
-                    <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                            Profile
-                        </div></a>
-                    <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                            Settings
-                        </div></a>
-                </div>
             </div>
-        </div>
-        <!-- Remaining... -->
-        <div class="common-main-container">
-            <div class="dashboard-common-heading-and-background-container">
+            <!-- Remaining... -->
+            <div class="common-main-container">
+
                 <div class="dashboard-common-heading-container">
                     <div class="dashboard-common-heading-back-btn">
-                        <a href="/ezolar/Inquiry/getSalespersonInquiries" “text-decoration: none”>
-                            <img src="\ezolar\public\img\admin\back.png" alt="back-icon">
+                        <a href="<?= URLROOT ?>/inquiry" “text-decoration: none”>
+                            <img src="\ezolar\public\img\admin\back.png">
                         </a>
                     </div>
                     <div class="dashboard-common-heading-text">
                         <b>Respond to Inquiry</b>
                     </div>
-                    <div class="dashboard-common-heading-image">
-                        <a href=”” “text-decoration: none”>
-                            <img src="\ezolar\public\img\salesperson\inquiries.png" alt="inquiry-icon">
-                        </a>
-                    </div>
+
 
                 </div>
 
                 <?php
                 $results = $_SESSION['rows'];
-                foreach($results as $row){
+                foreach ($results as $row) {
                     echo '
 
 <div class="forms">
@@ -80,13 +92,13 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
                         <div class="form-item-text">
                             Assigned Salesperson :
                         </div>
-                        <input class="form-item-input" name="" id="" type="text" value="' . $row -> name . '" readonly>
+                        <input class="form-item-input" name="" id="" type="text" value="' . $row->name . '" readonly>
                     </div>
                     <div class="form-item-container-half">
                         <div class="form-item-text">
                             Project ID :
                         </div>
-                        <input class="form-item-input" name="" id="" type="text" value="' . $row -> Project_projectID . '" readonly>
+                        <input class="form-item-input" name="" id="" type="text" value="' . $row->Project_projectID . '" readonly>
                     </div>
                 </div>
                 <div class="form-inline">
@@ -94,7 +106,7 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
                         <div class="form-item-text">
                             Topic :
                         </div>
-                        <input class="form-item-input" name="" id="" type="text" value="' . $row -> topic . '" readonly>
+                        <input class="form-item-input" name="" id="" type="text" value="' . $row->topic . '" readonly>
                     </div>
                 </div>
             </form>
@@ -105,7 +117,8 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
                 ?>
                 <div id='message-container' class="message-container">
 
-                    <!--            --><?php
+                    <!--            -->
+                    <?php
                     //            $results = $_SESSION['rowsNew'];
                     //            foreach($results as $row) {
                     //                if ($row -> sender == 0){
@@ -137,10 +150,12 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
     </div>
     <!-- add footer to the page -->
     <script type="text/javascript" src="\ezolar\public\js\chat.js"></script>
+    </div>
     <div class="f">
         <?php
-        require_once(__ROOT__.'\app\views\Includes\footer.php');
+        require_once(__ROOT__ . '\app\views\Includes\footer.php');
         ?>
     </div>
 </body>
+
 </html>

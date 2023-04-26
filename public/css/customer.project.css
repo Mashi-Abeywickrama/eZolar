@@ -17,13 +17,19 @@
 .project-sub-topic{
     font-size: 1.3rem;
     color: #0B2F64;
-    width: 33%;
+    width: 100%;
     display: flex;
     height: 100%;
     justify-content: center;
     align-items: center;
     border-color: #0B2F64;
     border-radius: 5px;
+}
+.sub-topic{
+    text-decoration: none;
+    color: #0B2F64;
+    width: 33%;
+    height: 100%;
 }
 .project-sub-topic:hover{
     cursor: pointer;
@@ -80,6 +86,60 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.project-payment-details-box{
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    height: 65.5%;
+    background-color: #2C61A3;
+    perspective: 1000px;
+    border: 1px solid #f1f1f1;
+    flex-direction: column;
+    align-items: center;
+
+}
+.acc-details-topic{
+    height: 10%;
+    color: #ffffff;
+    background-color: #2C61A3;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.details-wrapper{
+    width: 95%;
+    height: 87%;
+    color: #2C61A3;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.details-box{
+    width: 95%;
+    height: 13%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.t{
+    margin-left: 0.7rem;
+    font-weight: bold;
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: flex-start;
+}
+.d{
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: flex-end;
 }
 .project-salesperson-flip, .project-engineer-flip, .project-contractor-flip{
     width: 100%;
@@ -378,10 +438,10 @@ a{
     align-items: center;
 }
 .acc-detail-box{
-    background-color: #FCFEFE;
+    background-color: #2C61A3;
     display: flex;
     width: 30%;
-    height: 50px;
+    height: 100%;
     border-radius: 10px;
     /* padding: 2rem; */
     gap: 1rem;

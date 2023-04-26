@@ -1,4 +1,4 @@
-<?php
+  <?php
   class InquiryModel {
     private $db;
 
@@ -9,14 +9,22 @@
     public function addInquiry($data){
       // $userid  =($this->db->single());
       
-      $this->db->query('INSERT INTO inquiry(`customerID`,`topic`, `type`,`message`) VALUES (:customerID,:topic,:type,:message) ');
+      $this->db->query('INSERT INTO inquiry(`customerID`,`topic`, `type`) VALUES (:customerID,:topic,:type) ');
 
       // $this->db->execute();
-      if($this->db->execute(['customerID' => $data[0], 'topic' => $data[1],'type' => $data[2],'message' => $data[3]])){
-        header('Location:/ezolar/inquiry');
+      if($this->db->execute(['customerID' => $data[0], 'topic' => $data[1],'type' => $data[2]])){
+        $this->db->query('SELECT last_insert_id() AS inqid');
+        // print_r($inq_id);die();
+        $res = $this->db->single([]);
+        $inq_id = $res -> inqid;
+       
+        $this->db->query('INSERT INTO inquiry_message(`Inquiry_inquiryID`,`messageID`, `sender`,`message`) VALUES (:Inquiry_inquiryID,:messageID,:sender,:message) ');
+        if($this->db->execute(['Inquiry_inquiryID' => $inq_id, 'messageID' => 1,'sender' => 1,'message' => $data[3]])){
+            return true;
+        }
         // print_r("working");
         // die();
-        return true;
+       
     } else {
         return false;
     }

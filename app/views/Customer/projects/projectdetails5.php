@@ -55,44 +55,58 @@
                     </a>
                 </div>
                 <div class="dashboard-common-heading-text">
-                    <b>Ongoing Project Details</b>
+                <b>Ongoing Project Details</b>
                 </div>
             </div>
-        <div class="project-details-main-container">
-            <div class="project-details-container">
-                <div class="project-progress-bar-wrapper">
-                <div class="project-progress-bar-container">
-                        <div class="project-progress-bar-bullet-container">
-                        <a href="<?=URLROOT?>/project/projectdetails/1"><div class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Request Recieved</div>
+            <div class="project-details-main-container">
+                <div class="project-details-container">
+                    <div class="project-progress-bar-wrapper">
+                        <div class="project-progress-bar-container">
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c1-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/1?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-1" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Request</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c2-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/2?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-2" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c3-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/3?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-3" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Inspection</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c4-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/4?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-4" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
+                            </div>
+                            <div class="project-progress-bar-bullet-container">
+                                <a id="c5-link"
+                                    href="<?= URLROOT ?>/project/projectdetails/5?project_id=<?= $_GET['project_id'] ?>">
+                                    <div id="circle-5" class="project-progress-bar-bullet-highlighted"></div>
+                                </a>
+                                <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
+                            </div>
                         </div>
-                        <div class="project-progress-bar-bullet-container">
-                        <a href="<?=URLROOT?>/project/projectdetails/2"><div class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                        <a href="<?=URLROOT?>/project/projectdetails/3"><div class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Inspection</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                        <a href="<?=URLROOT?>/project/projectdetails/4"><div class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
-                        </div>
-                        <div class="project-progress-bar-bullet-container">
-                            <a href="<?=URLROOT?>/project/projectdetails/5"><div class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
-                        </div>
-                    </div>
-                    <div class="project-progress-bar" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar1" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar2" style="background-color: #DE8500;"></div>
-                    <div class="project-progress-bar3" style="background-color: #DE8500;"></div>
+                    <div class="project-progress-bar" style="background-color: #DE8500;"  id="pro-bar1"></div>
+                    <div class="project-progress-bar1" style="background-color: #DE8500;"  id="pro-bar2"></div>
+                    <div class="project-progress-bar2" style="background-color: #DE8500;"  id="pro-bar3"></div>
+                    <div class="project-progress-bar3"  style="background-color: #DE8500;"   id="pro-bar4"></div>
                 </div>
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
-                        <span class="project-details-steps-text-colored">Awaiting Payment</span>
-                        <span class="project-details-steps-text">Date Selection</span>
-                        <span class="project-details-steps-text">Contractor Confirmation</span>
+                        <span class="project-details-steps-text-colored">Awaiting Installation</span>
+
                     </div>
                     <div class="project-details-info-container">
                         <b>Project No:</b> 123556 <br>
@@ -104,16 +118,7 @@
                     </div>
                 </div>
                 <div class="project-details-btn-container">
-                    <div class="add-project-btn">
-                        <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Make Payment</a> 
-                        </div>
-                    </div>
-                    <div class="add-project-btn">
-                        <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Schedule</a> 
-                        </div>
-                    </div>
+                    
                     <div class="add-project-btn">
                         <div class="add-project-btn-text">
                         <a href="/ezolar/project/requestProjectPage">Send Inquiry</a> 

@@ -161,10 +161,12 @@ class Project extends Controller
     $contractor = $this->projectModel->getContractorDetails($_GET['project_id']);
     $salesperson = $this->projectModel->getSalesPersonDetails($_GET['project_id']);
     $inspectionpayment = $this->projectModel->getInspectionPayment($_GET['project_id']);
+    $deliverypayment = $this->projectModel->getDeliveryPayment($_GET['project_id']);
     $schedule = $this->projectModel->getSchedule($_GET['project_id']);
     $engineer = $this->projectModel->getEngineer($_GET['project_id']);
     $product = $this->projectModel->getproduct($_GET['project_id']);
-
+    $dschedule = $this->projectModel->getdSchedule($_GET['project_id']);
+    
     // print_r($product );die();
     // print_r($salesperson );die();
     $data = [
@@ -175,17 +177,31 @@ class Project extends Controller
       'inspectionpayment' => $inspectionpayment,
       'schedule' => $schedule,
       'engineer' => $engineer,
-      'product' => $product
+      'product' => $product,
+      'dschedule' => $dschedule,
+      'deliverypayment' => $deliverypayment
     ];
     if ($id == 1) {
       $this->view('Customer/projects/projectdetails', $data);
     } else if ($id == 2) {
+      if ($project[0]->status == "A0" || $project[0]->status == "A1" || $project[0]->status == "A2") {
+        redirect('project/projectdetails/1?project_id=' . $_GET['project_id']);
+      }
       $this->view('Customer/projects/projectdetails2', $data);
     } else if ($id == 3) {
+      if ($project[0]->status == "A0" || $project[0]->status == "A1" || $project[0]->status == "A2"|| $project[0]->status == "B0" || $project[0]->status == "B1" || $project[0]->status == "B2"){
+        redirect('project/projectdetails/1?project_id=' . $_GET['project_id']);
+      }
       $this->view('Customer/projects/projectdetails3', $data);
     } else if ($id == 4) {
+      if ($project[0]->status == "A0" || $project[0]->status == "A1" || $project[0]->status == "A2"|| $project[0]->status == "B0" || $project[0]->status == "B1" || $project[0]->status == "B2" || $project[0]->status == "C0" || $project[0]->status == "C1" || $project[0]->status == "C2" || $project[0]->status == "F"){
+        redirect('project/projectdetails/1?project_id=' . $_GET['project_id']);
+      }
       $this->view('Customer/projects/projectdetails4', $data);
     } else if ($id == 5) {
+      if ($project[0]->status == "A0" || $project[0]->status == "A1" || $project[0]->status == "A2"|| $project[0]->status == "B0" || $project[0]->status == "B1" || $project[0]->status == "B2" || $project[0]->status == "C0" || $project[0]->status == "C1" || $project[0]->status == "C2" || $project[0]->status == "D0" || $project[0]->status == "D1" || $project[0]->status == "D2" || $project[0]->status == "F"){
+        redirect('project/projectdetails/1?project_id=' . $_GET['project_id']);
+      }
       $this->view('Customer/projects/projectdetails5', $data);
     }
 
@@ -203,6 +219,17 @@ class Project extends Controller
       // $dates= array( $_POST['d1'], $_POST['d2'], $_POST['d3']);
       // $data = base64_encode(serialize(array($_GET['project_id'],$dates,$dlink)));
       // redirect('AutoAssign/engAssign/'.$data);
+    }
+
+
+  }
+
+  public function scheduleDeliveryDate()
+  {
+    // print_r($_POST);die();
+    $res = $this->projectModel->addNewDeliveryScheduleItem($_GET['project_id'], $_POST['d1'], $_POST['d2'], $_POST['d3']);
+    if ($res) {
+      redirect('project/projectdetails/4?project_id=' . $_GET['project_id']);
     }
 
 

@@ -61,15 +61,15 @@
            
         </div>
         <div class="project-type">
-            <div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
-            <a href="/ezolar/project" style="color: #FFFFFF;">Ongoing Projects</a>
-            </div>
-            <div class = "project-sub-topic">
-            <a href="/ezolar/project/completedProjects">Completed Projects</a>
-            </div>
-            <div class = "project-sub-topic">
-            <a href="/ezolar/project/cancelledProjects">Cancelled Projects</a>
-            </div>
+            <a class="sub-topic" href="/ezolar/project" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
+            Ongoing Projects
+            </div></a>
+            <a class="sub-topic" href="/ezolar/project/completedProjects"><div class = "project-sub-topic">
+            Completed Projects
+            </div></a>
+            <a class="sub-topic" href="/ezolar/project/cancelledProjects"><div class = "project-sub-topic">
+            Cancelled Projects
+            </div></a>
 
         </div>
         <div class="body-list-container">
@@ -105,9 +105,16 @@
                             if (($row -> status) == 'B0' || ($row -> status) == 'B1') {
                                echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/2?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
                             }
-                            else if (($row -> status) == 'C0' || ($row -> status) == 'C1' ||($row -> status) == 'C2' ) {
+                            else if (($row -> status) == 'C0' || ($row -> status) == 'C1'  ) {
                                echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/3?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
                             }
+
+                            else if (($row -> status) == 'D0' || ($row -> status) == 'D1'  ) {
+                                echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/4?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
+                             }
+                             else if (($row -> status) == 'E0' || ($row -> status) == 'E1'  ) {
+                                echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/5?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
+                             }
                             else {
                                 echo '<span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/1?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span>';
                             }

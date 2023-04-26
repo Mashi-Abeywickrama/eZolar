@@ -49,7 +49,10 @@
         // $response = $_POST['response'];
         
         $inputs = array($customer_Id,$topic,$type,$message);
-        $this->inquiryModel->addInquiry($inputs);
+        $res = $this->inquiryModel->addInquiry($inputs);
+        if($res) {
+          redirect('inquiry');
+        }
 
     }
     public function viewInquiry($id){
