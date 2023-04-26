@@ -127,12 +127,9 @@
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Availability:
+                                Reorder Level: <span class="err-box" id="reorder-err"></span>
                             </div>
-                            <select class="form-item-input-dropdown" name="availability" id="availability">
-                                <option value="instock" selected>In-stock</option>
-                                <option value="nostock">Out of stock</option>
-                            </select>
+                            <input class="form-item-input" name="reorder-level" id="reorder-level" type="text" placeholder="Leave blank for default" onkeyup="validateReorder()">
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">

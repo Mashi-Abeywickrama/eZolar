@@ -58,9 +58,22 @@
         $cost = $_POST['price'];
         $manufacturer = $_POST['manufacturer'];
         $quantity = 0;
+        $reorderlimit = $_POST['reorder-level'];
+
+        if ($reorderlimit == ''){
+          if($_POST['product-type']=='panel'){
+            $reorderlimit = 25;
+          } else if ($_POST['product-type']=='battery') {
+            $reorderlimit = 10;
+          } else if ($_POST['product-type']=='inverter') {
+            $reorderlimit = 5;
+          } else {
+            $reorderlimit = 0;
+          }
+        }
         
         
-        $inputs = array($product_Id,$name,$cost,$manufacturer,$quantity);
+        $inputs = array($product_Id,$name,$cost,$manufacturer,$quantity,$reorderlimit);
         $this->ProductModel->addProduct($inputs);
         redirect('Product/');
 
@@ -95,10 +108,14 @@
         $name = $_POST['product-name'];
         $cost = $_POST['price'];
         $manufacturer = $_POST['manufacturer'];
-        $quantity = 0;
+        $reorderlimit = $_POST['reorder-level'];
+
+        if ($reorderlimit == ''){
+          $reorderlimit = NULL;
+        }
         
         
-        $inputs = array($productId,$name,$cost,$manufacturer);
+        $inputs = array($productId,$name,$cost,$manufacturer,$reorderlimit);
         $this->ProductModel->editProduct($inputs);
         $_SESSION['flagUpdate'] = 1;
         redirect('Product/productDetailspage/'.$productId);

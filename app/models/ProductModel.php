@@ -13,8 +13,8 @@
     }
     public function addProduct($data){
       
-      $this->db->query('INSERT INTO product(`productID`,`productName`, `cost`,`manufacturer`,`quantity`) VALUES (:productID,:productName,:cost,:manufacturer,:quantity)');
-      $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3], 'quantity' => $data[4]]);
+      $this->db->query('INSERT INTO product(`productID`,`productName`, `cost`,`manufacturer`,`quantity`,`reorderLimit`) VALUES (:productID,:productName,:cost,:manufacturer,:quantity,:reorder)');
+      $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3], 'quantity' => $data[4],'reorder'=> $data[5]]);
 
     }
 
@@ -34,8 +34,8 @@
     }
 
     public function editProduct($data){
-      $this->db->query('UPDATE product SET `productName` = :productName, `cost` = :cost, `manufacturer` = :manufacturer WHERE `productID` = :productID'); 
-      $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3]]);
+      $this->db->query('UPDATE product SET `productName` = :productName, `cost` = :cost, `manufacturer` = :manufacturer, `reorderLimit` = :reorder WHERE `productID` = :productID'); 
+      $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3],'reorder'=> $data[4]]);
     }
 
     public function getAllProductIDs(){

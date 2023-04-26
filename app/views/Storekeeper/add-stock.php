@@ -101,13 +101,15 @@
                             <div class="form-item-text">
                                 Stock Type:
                             </div>
-                            <select class="form-item-input" name="stock-type" id="stock-type">
-                                <option value="" <?php echo $snFlag?> disabled></option>
+                            <select class="form-item-input" name="stock-type" id="stock-type" class="err-box" onchange="checkStockType()">
+                                <option value="NULL" <?php echo $snFlag?> disabled></option>
                                 <option value="Arrival" <?php echo $saFlag?>>Arrival</option>
                                 <option value="Withdrawal" <?php echo $swFlag?>>Withdrawal</option>
                             </select>
+                            <div id="type-error-box" class="err-box"></div>
                         </div>
                 </div>
+                <div id="table-error-box" class="err-box"></div>
                 <div class="form-table-container" style="width:auto;">
                         <div class="form-table-header-container">
                             <span class="form-table-header-text pack-content-col1">Product Name</span> <span class="form-table-header-text pack-content-col2">Price per item</span> <span class="form-table-header-text pack-content-col3">Quantity</span> <span class="form-table-header-text pack-content-col4"></span>
@@ -119,7 +121,7 @@
                             for($i = 0; $i < count($results);$i++){
                                 $product = $results[$i];
                                 if ($counter == 1){
-                                    $styleClass = 'form-table-row-container-alt';
+                                    $styleClass = 'form-table-row-container alt-row-colors';
                                 }else{
                                     $styleClass = 'form-table-row-container';
                                 };
@@ -133,10 +135,11 @@
                             }
                             ?>
                         </div>
+                        <div id="item-adder-error-box" class="err-box"></div>
                         <div class="form-item-adder-container">
                             <div class="form-item-adder-content-container">
                                 Product ID:
-                                <select class="form-item-input" name="item-id" id="item-id" style="font-family: 'Space Mono';">
+                                <select class="form-item-input" name="item-id" id="item-id" style="font-family: 'Space Mono';" onchange="resetError()">
                                 <option value="NULL" selected disabled> </option>
                                     <?php
                                     $results = $_SESSION['rowss'];
@@ -148,22 +151,22 @@
                             </div>
                             <div class="form-item-adder-content-container">
                                 Quantity
-                                <input class="form-item-input" name="item-quantity" id="item-quantity" type="text" placeholder="Eg:- 5" onkeyup="">
+                                <input class="form-item-input" name="item-quantity" id="item-quantity" type="text" placeholder="Eg:- 5" onkeyup="resetError()">
                             </div>
                             <div class="form-item-adder-content-container">
-                                <button class="form-item-adder-btn" type="Submit" formaction="/ezolar/Inventory/addStocksItem">Add item</button>
+                                <button class="form-item-adder-btn" type="Submit" formaction="/ezolar/Inventory/addStocksItem" id="add-item-btn" onclick="return validateItemAdder()">Add item</button>
                             </div>
                         </div>
                         </div>
                     
                     <div class="form-button-container" style="width:100%; justify-content:center;">
-                        <button class="form-submit-btn" type="submit">Submit</button>
+                        <button class="form-submit-btn" type="submit" id="Submit-btn" onclick="return validateStock()">Submit</button>
                         <a href="/ezolar/Inventory/clearStockContent"><button class="form-submit-btn" type ="button">Clear</button></a>
                     </div>
                     </form>
             </div> 
         </div>
     </div>
-    <script src="\ezolar\public\js\product_validation.js"></script>
+    <script src="\ezolar\public\js\stock_validation.js"></script>
 </body>
 </html>

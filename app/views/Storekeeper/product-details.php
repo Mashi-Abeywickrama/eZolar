@@ -68,7 +68,7 @@
             </div>  
             <div class="form-background">
                 <div class="product-image-container">
-                    <img src="\ezolar\public\img\storekeeper\placeholder-image.png" alt="" class="product-image">
+                    <img src="\ezolar\public\img\storekeeper\product-imgs\<?php echo $_SESSION['row']->productImg ?>" alt="" class="product-image">
                 </div>
                 <div class="form-container">
                     <div class="save-box"> <?php
@@ -123,16 +123,11 @@
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Availability:
+                                Reorder Level:
                             </div>
                             <div class="form-item-input-disabled"><?php
                             $row = $_SESSION['row'];
-                            if ($row -> productID > 0){
-                                echo 'In-Stock';
-                            }
-                            else{
-                                echo 'Out of Stock';
-                            };?></div>
+                            echo $row->reorderLimit?></div>
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">

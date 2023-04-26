@@ -3,6 +3,7 @@ var pnameErr = document.getElementById("pname-err");
 var manufErr = document.getElementById("manuf-err");
 var priceErr = document.getElementById("price-err");
 var pidField = document.getElementById("product-id");
+var reordErr = document.getElementById("reorder-err");
 
 
 function validateProductID(IDs){
@@ -67,9 +68,22 @@ function validatePrice(){
     }
 }
 
+function validateReorder(){
+    var price = document.getElementById('reorder-level').value;
+    if(isNaN(price)){
+        reordErr.innerHTML='Reorder should be numeric';
+        return false;
+    }
+    else{
+        reordErr.innerHTML = "";
+        return true;
+    }
+}
+
+
 
 function validateForm(){
-    if(!validateProductID() || !validateProductName() || !validateManufacturer() || !validatePrice()){
+    if(!validateProductID() || !validateProductName() || !validateManufacturer() || !validatePrice() || !validateReorder()){
         document.querySelector(".form-submit-btn").disabled = true;
         return false;
     }

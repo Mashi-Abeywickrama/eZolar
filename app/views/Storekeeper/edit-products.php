@@ -52,7 +52,9 @@
         <div class="dashboard-common-heading-and-background-container">
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href=”” “text-decoration: none”>
+                    <a href="/ezolar/Product/productDetailspage/<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> productID;?>" “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>
@@ -121,13 +123,10 @@
                             echo $row -> cost;?>" required onkeyup="validatePrice()">
                         </div>
                         <div class="form-item-container-half">
-                            <div class="form-item-text">
-                                Availability:
+                        <div class="form-item-text">
+                                Reorder Level: <span class="err-box" id="reorder-err"></span>
                             </div>
-                            <select class="form-item-input-dropdown" name="availability" id="availability">
-                                <option value="instock" selected>In-stock</option>
-                                <option value="nostock">Out of stock</option>
-                            </select>
+                            <input class="form-item-input" name="reorder-level" id="reorder-level" type="text" value="<?php echo $_SESSION['row']->reorderLimit;?>" required onkeyup="validateReorder()">
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">

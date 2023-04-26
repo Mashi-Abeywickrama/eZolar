@@ -102,6 +102,12 @@ p{
     font-size:20px;
 }
 
+.project-details-inline-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-details-basic-container{
     margin-top: 10px;
     padding: 10px;
@@ -109,9 +115,26 @@ p{
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 100%;
+    width: 65%;
     min-height: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
 }
+
+.project-details-customer-container{
+    margin-top: 10px;
+    padding: 10px;
+    padding-inline: 20px;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 34%;
+    height: inherit;
+    min-height: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+}
+
 
 .project-details-schedule-container{
     margin-top: 10px;
@@ -122,6 +145,8 @@ p{
     border-radius: 10px;
     width: 100%;
     min-height: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
 }
 
 .project-details-basic-status-text{
@@ -140,6 +165,8 @@ p{
     border-radius: 10px;
     width: 100%;
     min-height: 120px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
 }
 
 .project-details-pack-text{
@@ -187,5 +214,53 @@ p{
     cursor: pointer;
     background: #0B2F64;
     transition-duration: 200ms;
+}
+
+.project-details-confirm-buttons-container{
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-inline: 20px;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 100%;
+    min-height: 100px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; 
+    text-align: center;
+}
+
+.btn-grey{
+    background: #757575;
+}
+
+.contents-col1{
+    width :30%;
+}
+.contents-col2{
+    width :18%;
+}
+.contents-col3{
+    width :12%;
+}
+.contents-col4{
+    width :18%;
+}
+.contents-col5{
+    width :5%;
+}
+
+
+
+
+.extras-col1{
+    width :70%;
+}
+.extras-col2{
+    width :20%;
+}
+.extras-col3{
+    width :5%;
 }
 
