@@ -3,7 +3,7 @@
 //    require_once(__ROOT__.'/app/views/Includes/header.php');
 //    require_once(__ROOT__.'/app/views/Includes/navbar.php');
 //    require_once(__ROOT__.'/app/views/Includes/footer.php');
-require_once(__ROOT__.'/app/views/Customer/navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -20,37 +20,37 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
 <div>
 
 <div class="body-container">
-    <div class="left-panel">
+<div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-                Salesperson Dashboard
-            </div></a>
+            Salesperson Dashboard
+        </div></a>
         <div class="rest">
             <div class="rest-top">
-                <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
-                        Assigned Projects
-                    </div></a>
-                <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
-                        Inquiries
-                    </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                        Inspection Schedule
-                    </div></a>
-                <div class="box4">
-                    Delivery Schedule
-                </div>
+            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
+                    Assigned Projects
+                </div></a>
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
+                    Inquiries
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
+                Inspection Schedule
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
+                Delivery Schedule
+            </div></a>
+            
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
+            Engineers & Contractors
+            </div></a>
 
-                <a href="/ezolar/Employee/EngineersAndContractors"><div class="box8">
-                        Engineers & Contractors
-                    </div></a>
-
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                        Profile
-                    </div></a>
-                <a href="<?=URLROOT?>/"><div class="box6">
-                        Settings
-                    </div></a>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>

@@ -82,7 +82,7 @@
             </div>
         </a>
 
-        <a href="/ezolar/AdminViewProfile">
+        <a href="<?=URLROOT?>/user/profile">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Profile

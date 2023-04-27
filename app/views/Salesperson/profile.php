@@ -1,9 +1,7 @@
 <?php
-// define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-//require_once(__ROOT__.'/app/views/Includes/header.php');
-//require_once(__ROOT__.'/app/views/Includes/navbar.php');
-//require_once(__ROOT__.'/app/views/Includes/footer.php');
+// require_once(__ROOT__.'\app\views\Includes\header.php');
 require_once(__ROOT__.'\app\views\Customer\navbar.php');
+// require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 ?>
 <!DOCTYPE html>
@@ -14,13 +12,14 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\common\profile.css">
+    <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <title>My Projects</title>
+    <title>My Profile</title>
 </head>
 <body>
-
+<div class = "body-container-main">    
 <div class="body-container">
-<div class="left-panel">
+    <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Salesperson Dashboard
         </div></a>
@@ -39,13 +38,13 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 Delivery Schedule
             </div></a>
             
-            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8" style="color: #ffffff;background-color: #0b2f64;">
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
 
         </div>
         <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5" style="color: #0b2f64;background-color: #ffffff;">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
                 Profile
             </div></a>
             <a href="<?=URLROOT?>/"><div class="box6">
@@ -54,30 +53,22 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div>
         </div>
     </div>
-<div class="common-main-container">
-    <div class="dashboard-common-heading-and-background-container">
-        <div class="dashboard-common-heading-container">
-            <div class="dashboard-common-heading-back-btn">
-                <a href="/ezolar/Employee/EngineersAndContractors">
-                    <img src="\ezolar\public\img\admin\back.png">
-                </a>
+    <div class="common-main-container">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
+                    <a href=”” “text-decoration: none”>
+                        <img src="\ezolar\public\img\customer\Person.png" alt="profile">
+                    </a>
+                </div>
+                <div class="common-main-txt">
+                    My Profile
+                </div>
             </div>
-            <div class="dashboard-common-heading-text">
-                <b>View Employee Profile</b>
-            </div>
-            <div class="dashboard-common-heading-image">
-                <!--                <a href=”” “text-decoration: none”>-->
-                <img src="\ezolar\public\img\admin\edit.png" alt="edit-icon">
-                <!--                </a>-->
-            </div>
-
         </div>
 
-
-
-
-
         <?php
+        $mail = $_SESSION['user_email'];
         $results = $_SESSION['rows'];
         foreach($results as $row){
             echo '
@@ -85,14 +76,14 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         <div class="profile-container-image">
             <div class="profile-container-content">
 
-                    <img class="profile-img" src="\ezolar\public\img\admin\default-profile.png" alt="profile">
+                    <img class="profile-img" src="/ezolar/public/img/user-pics/'.$row->profilePhoto.'" alt="profile">
 <br>
                 <div class="profile-container-txt">
                     <div class="profile-container-txt-name">
                         ' . $row -> name . '
-                    </div>    <br>
+                    </div>
                     <div class="profile-container-txt-type">
-                        ' . $row -> type . '
+                        ' . $row -> bio . '
                     </div>
                 </div>
             </div>
@@ -108,33 +99,47 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                             <div class="form-item-text">
                                 Email :
                             </div>
-                            <input class="form-item-input" name="name" id="name" type="text" value="' . $row -> email . '" readonly>
+                            <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $mail . '" readonly>
                         </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 Contact Number :
                             </div>
-                            <input class="form-item-input" name="nic" id="nic" type="text" value="' . $row -> telno . '" readonly>
+                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> telno . '" readonly>
                         </div>
-
                         <div class="form-item-container">
-                            <div class="form-item-text">
-                                NIC :
+                            <div class="form-item-container-half">
+                                <div class="form-item-text">
+                                    NIC Number :
+                                </div>
+                                <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> nic . '" readonly>
                             </div>
-                            <input class="form-item-input" name="nic" id="nic" type="text" value="' . $row -> nic . '" readonly>
+                            <div class="form-item-container-half">
+                                <div class="form-item-text">
+                                    Gender :
+                                </div>
+                                <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> gender . '" readonly>
+                            </div>
                         </div>
-
                         <div class="form-item-container">
                             <div class="form-item-text">
                                 Bio :
                             </div>
-                            <textarea class="form-item-input" name="bio" id="bio" rows="5" cols="50" readonly>' . $row -> bio . '</textarea>
+                            <input class="form-item-input" name="nic" id="nic" type="text" placeholder="' . $row -> bio . '" readonly>
                         </div>
 
                     </div>
 
-                </form>             
+                </form>
+                
+                    <a href="'.URLROOT.'/user/editprofile">
+                        <div class="edit-profile-btn">
+                            <div class="edit-profile-btn-text">
+                                Edit Profile
+                            </div>
+                        </div>
+                    </a>
             </div>
         </div>
     </div>
@@ -144,18 +149,11 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
     </div>
 </div>
-</div>
-<div class="f">
+<div class = "f">
     <?php
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+        include_once(__ROOT__.'\app\views\Includes\footer.php');
     ?>
+</div>
 </div>
 </body>
 </html>
-
-<!--<a href="ezolar/Employee/editEmployeeView/'.$row -> empID.'">-->
-<!--    <button class="edit-profile-btn">Edit Profile</button>-->
-<!--</a>-->
-
-
-

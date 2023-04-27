@@ -62,9 +62,11 @@
      // INQUIRIES SHOWS TO ASSIGNED SALESPERSON
 
     public function getSalespersonInquiries($userID){
-    $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID WHERE Salesperson_Employee_empID=:userID  ORDER BY inquiryID');
-    $row = $this->db->resultSet(['userID' => $userID]);
-    return $row;
+      $this->db->query('SELECT *,MAX(inquiry_message.time) as date FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID 
+      INNER JOIN inquiry_message ON inquiry.inquiryID = inquiry_message.Inquiry_inquiryID 
+      WHERE Salesperson_Employee_empID=:userID GROUP by inquiry.inquiryID ORDER BY date DESC');
+      $row = $this->db->resultSet(['userID' => $userID]);
+      return $row;
   }
 
   public function viewInquiries($inquiryID){
@@ -77,6 +79,14 @@
        $row = $this->db->resultSet(['response' => $data[0],'inquiryID'=>$inquiryID]);
        return $row;
       }
+
+  public function getSalespersonNewInquiries($userID){
+    $this->db->query('SELECT *
+    FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID WHERE inquiry.Salesperson_Employee_empID = :userID
+    AND NOT EXISTS (SELECT inquiry_message.inquiry_inquiryID FROM inquiry_message WHERE inquiry.inquiryID = inquiry_message.Inquiry_inquiryID)');
+    $row = $this->db->resultSet(['userID' => $userID]);
+    return $row;
+  }    
 
 
   }

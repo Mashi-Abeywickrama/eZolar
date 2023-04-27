@@ -81,11 +81,13 @@
         $salesperson_Id = $this->inquiryModel->getUserID([$_SESSION['user_email']]);
         $rows  = $this->inquiryModel->getSalespersonInquiries($salesperson_Id);
         $_SESSION['rows'] = $rows;
+        $rowsNew = $this->inquiryModel->getSalespersonNewInquiries($salesperson_Id);
+        $_SESSION['rowsNew'] = $rowsNew;
         $data = [
             'title' => 'eZolar View Inquiries',
         ];
         $this->view('Salesperson/inquiries', $data);
-    
+        // redirect('Salesperson/inquiries');
         }
 
     public function viewSalespersonInquiry($inquiryID){

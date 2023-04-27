@@ -52,12 +52,14 @@
         <div class="dashboard-common-heading-and-background-container">
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href=”” “text-decoration: none”>
+                    <a href="/ezolar/Package/packageDetailspage/<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> packageID;?>" “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>
                 <div class="dashboard-common-heading-text">
-                    <b>Add a new Package</b>
+                    <b>Edit a Package</b>
                 </div>
                 <div class="dashboard-common-heading-image">
                     <a href=”” “text-decoration: none”>
@@ -72,22 +74,9 @@
                             <div class="form-item-text">
                                 Package ID:<span style="color:red;">*</span> <span class="err-box" id="pckid-err"></span>
                             </div>
-                            <div class="form-idgen-inline">
-                                <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" style="width:88%;" required onkeyup="validatePackageID(<?php
-                                            $a = array();
-                                            if  (count($_SESSION['rows'])>0){
-                                                for ($x = 0; $x < count((array)$_SESSION['rows']); $x++) {
-                                                    array_push($a,$_SESSION['rows'][$x]->packageID);
-                                                }
-                                            }
-                                            //ignore the errors
-                                            $finalArray = "['" . implode ( "', '", $a ) . "']";
-                                            echo $finalArray
-                                            ?>)">
-                                        <div class="form-idgen-btn" title="Auto Generate ID" onclick="generatePackageID(<?php echo $finalArray?>)">   
-                                            <img src="\ezolar\public\img\storekeeper\idgen.png" class="form-idgen-img">
-                                        </div>
-                                </div>
+                            <input class="form-item-input" name="pack-id" id="pack-id" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> packageID;?>" disabled onkeyup="validatePackageID()">
                         </div>
                     </div>
                     <div class="form-inline">
@@ -95,7 +84,9 @@
                             <div class="form-item-text">
                                 Package Name:<span style="color:red;">*</span> <span class="err-box" id="pckname-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-name" id="pack-name" type="text" placeholder="Enter Package Name" required onkeyup="validatePackageName()">
+                            <input class="form-item-input" name="pack-name" id="pack-name" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> name;?>" required onkeyup="validatePackageName()">
                         </div>
                     </div>
                     <div class="form-inline">
@@ -103,12 +94,9 @@
                             <div class="form-item-text">
                                 Package Type: <span class="err-box" id="pck-type-err"></span>
                             </div>
-                            <select class="form-item-input" name="pack-type" id="pack-type">
-                                    <option value="" selected disabled>Select Package Types</option>
-                                    <option value="Residential">Residential</option>
-                                    <option value="Commercial">Commercial</option>
-                                    <option value="Industrial">Industrial</option>
-                            </select>
+                            <input class="form-item-input" name="pack-type" id="pack-type" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> type;?>" onkeyup="validateType()">
                         </div>
                     </div>
                     <div class="form-item-text">
@@ -119,13 +107,19 @@
                             <div class="form-item-text">
                                 Lower Limit:
                             </div>
-                            <input class="form-item-input" name="price-range-lower" id="price-range-lower" type="text" placeholder="Eg:- 200,000" onkeyup="validateBudget()">
+                            <input class="form-item-input" name="price-range-lower" id="price-range-lower" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            $budget = explode(" - ",$row -> budgetRange);
+                            echo $budget[0];?>" onkeyup="validateBudget()">
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
                                 Upper Limit:
                             </div>
-                            <input class="form-item-input" name="price-range-upper" id="price-range-upper" type="text" placeholder="Eg:- 200,000" onkeyup="validateBudget()">
+                            <input class="form-item-input" name="price-range-upper" id="price-range-upper" type="text" value="<?php
+                            $row = $_SESSION['row'];
+                            $budget = explode(" - ",$row -> budgetRange);
+                            echo $budget[1];?>" onkeyup="validateBudget()">
                         </div>
                     </div>
                     <!--<div class="form-inline">
@@ -151,7 +145,7 @@
                         </div>
                     </div>-->
                     <div class="form-inline" style="justify-content:center;">
-                        <button class="form-submit-btn" type="submit" onclick="return validateForm()">Continue</button>
+                        <button class="form-submit-btn" type="submit" onclick="return validateForm()">Save</button>
                     </div>
                 </form>
             </div>
