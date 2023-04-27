@@ -1,13 +1,11 @@
 .inquiry-list-container{
     margin-top: 20px;
-    height: 55vh;
     /* min-height: 400px; */
     /* max-height: 500vh; */
     width: 80%;
     /* min-width: 500px; */
     /* max-width: 1000px; */
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: Scroll;
 }
 
 /*.inquiry-list-container::-webkit-scrollbar {
@@ -19,7 +17,17 @@
     background-color: #0b2f64;
 }
 
-.inquiry-box{
+.new-inquiry-list-container{
+    padding-top: 15px;
+}
+
+.inquiry-list-topic{
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+
+.inquiry-box, .inquiry-box-new{
     display: flex;
     justify-content: space-evenly;
     /* height: 120px; */
@@ -29,6 +37,14 @@
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: auto;
+}
+
+.inquiry-box:hover{
+    border: #DE8500 solid;
+}
+
+.inquiry-box-new{
+    border: #DE8500 solid;
 }
 
 .inquiry-text-container{

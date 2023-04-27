@@ -1,7 +1,7 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 // require_once(__ROOT__.'/app/views/Includes/header.php');
-require_once(__ROOT__.'/app/views/Customer/navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +10,14 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\common\employee-list.css">
     <title>My Projects</title>
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-    <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+<div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Salesperson Dashboard
         </div></a>
         <div class="rest">
@@ -25,28 +25,20 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
             <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
                     Inquiries
-                </div>
-            </a>
-
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
-            </div>
-
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
+            </div></a>
             
-            <a href="/ezolar/Employee/EngineersAndContractors"><div class="box8">
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
 
-            <a href="/ezolar/Employee/EngineersAndContractors">
-                <div class="sidebar-link-container-selected">
-                    Engineers & Contractors
-                </div>
-            </a>
         </div>
         <div class="rest-bottom">
             <a href="<?=URLROOT?>/user/profile"><div class="box5">
@@ -58,7 +50,7 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
             </div>
         </div>
     </div>
-</div>
+
 <div class="common-main-container">
     <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
@@ -116,6 +108,7 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
 
     </div>
     </div>
+        </div>
 <div class="f">
 <?php
 require_once(__ROOT__.'\app\views\Includes\footer.php');

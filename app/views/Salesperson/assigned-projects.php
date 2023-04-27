@@ -20,7 +20,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 <div class="body-container">
     <div class="left-panel">
-    <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Salesperson Dashboard
         </div></a>
         <div class="rest">
@@ -28,17 +28,17 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
                     Inquiries
             </div></a>
-            <a href="<?=URLROOT?>/inquiry"><div class="box3">
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
             </div></a>
-            <div class="box4">
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
+            </div></a>
             
-            <a href="/ezolar/Employee/EngineersAndContractors"><div class="box8">
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
 
@@ -71,10 +71,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <div class="project-list-container">
 
         <div class="assigned-project-list-container">
-            <div class="project-list-topic">
-                My Projects
-            </div>
-
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
@@ -91,35 +87,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                                 <a href="/ezolar/Project/getProjectDetails/'.$row -> projectID.'">
                                     <div class="project-details-btn">
                                         <div class="project-details-btn-text">More Info</div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>';
-            }
-            ?>
-        </div>
-
-        <div class="new-project-list-container">
-            <div class="project-list-topic">
-                New Projects
-            </div>
-
-            <?php
-            $results = $_SESSION['rows'];
-            foreach($results as $row){
-                if ($row -> Salesperson_Employee_empID == NULL)
-                echo '<div class="project-box-new">
-                            <div class="project-text-container">
-                                <div class="project-text-container-inner">
-                                    <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                    <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
-                                    <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
-                                </div>
-                            </div>
-                            <div class="project-details-btn-container">
-                                <a href="/ezolar/Project/salespersonAssignedProject/'.$row -> projectID.'">
-                                    <div class="project-details-btn-new">
-                                        <div class="project-details-btn-text">Take Project</div>
                                     </div>
                                 </a>
                             </div>

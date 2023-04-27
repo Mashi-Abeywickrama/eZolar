@@ -3,7 +3,7 @@
 //    require_once(__ROOT__.'/app/views/Includes/header.php');
 //    require_once(__ROOT__.'/app/views/Includes/navbar.php');
 //    require_once(__ROOT__.'/app/views/Includes/footer.php');
-require_once(__ROOT__.'/app/views/Customer/navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -20,37 +20,37 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
 <body>
 
 <div class="body-container">
-    <div class="left-panel">
+<div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-                Salesperson Dashboard
-            </div></a>
+            Salesperson Dashboard
+        </div></a>
         <div class="rest">
             <div class="rest-top">
-                <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
-                        Assigned Projects
-                    </div></a>
-                <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
-                        Inquiries
-                    </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                        Inspection Schedule
-                    </div></a>
-                <div class="box4">
-                    Delivery Schedule
-                </div>
+            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
+                    Assigned Projects
+                </div></a>
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
+                    Inquiries
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
+                Inspection Schedule
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
+                Delivery Schedule
+            </div></a>
+            
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
+            Engineers & Contractors
+            </div></a>
 
-                <a href="/ezolar/Employee/EngineersAndContractors"><div class="box8">
-                        Engineers & Contractors
-                    </div></a>
-
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                        Profile
-                    </div></a>
-                <a href="<?=URLROOT?>/"><div class="box6">
-                        Settings
-                    </div></a>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>
@@ -72,13 +72,41 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
     </div>
     <div class="inquiry-list-container">
 
-        <div class="toggle-btn">
-            <label class="switch">
-                <input type="checkbox" id="togBtn" onclick="return check_toggle_status()">
-                <div class="slider"></div>
-            </label>
+        <div class="new-inquiry-list-container">
+            <div class="inquiry-list-topic">
+                New Inquiries
+            </div>
+
+            <?php
+            
+            $results = $_SESSION['rowsNew'];
+            foreach($results as $rowNew){
+
+                echo '<div class="inquiry-box-new">
+                        <div class="inquiry-text-container">
+
+                            <div class="inquiry-text-container-inner">
+                                <div class="inquiry-text-no">Type:' .  $rowNew -> type . '</div>
+                                <div class="inquiry-text-name"><b>Topic :' . $rowNew -> topic . '</b></div>
+                            </div>
+                        </div>
+                        <div class="inquiry-details-btn-container" >
+                    
+                            <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$rowNew -> inquiryID.'">
+                                <div class="inquiry-details-btn">
+                                    <div class="inquiry-details-btn-text">Respond</div>
+                                </div>
+                            </a>
+                        </div>
+                        </div>';
+            }
+            ?>
         </div>
 
+        <div class="new-inquiry-list-container">
+            <div class="inquiry-list-topic">
+                Ongoing Inquiries
+            </div>
         <?php
         $results = $_SESSION['rows'];
         foreach($results as $row){
@@ -104,15 +132,17 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
                     </div>';
         }
         ?>
+        </div>
 
     </div>
 
 </div>
 </div>
-<div class="f">
-    <?php
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
-    ?>
+<?php unset($_SESSION['rows'],$_SESSION['rowsNew'])?>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
 </div>
 </body>
 <script type="text/javascript" src="\ezolar\public\js\inquiry.js"></script>

@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -15,42 +13,39 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\products-advanced.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>My Projects</title>
 </head>
 <body>
 
-<div class="sidebar">
-        <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
-        </div>
-        <div class="sidebar-link-container-group">
-            <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Admin Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container-selected">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
-            </div>
+            <a href="<?=URLROOT?>/Package"><div class="box2">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3" style="color: #ffffff;background-color: #0b2f64;">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            
 
-            <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div>
-                <div class="sidebar-link-container">
-                    Settings
-                </div>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>
@@ -73,7 +68,7 @@
             </div>  
             <div class="form-background">
                 <div class="product-image-container">
-                    <img src="\ezolar\public\img\storekeeper\placeholder-image.png" alt="" class="product-image">
+                    <img src="\ezolar\public\img\storekeeper\product-imgs\<?php echo $_SESSION['row']->productImg ?>" alt="" class="product-image">
                 </div>
                 <div class="form-container">
                     <div class="save-box"> <?php
@@ -128,26 +123,28 @@
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Availability:
+                                Reorder Level:
                             </div>
                             <div class="form-item-input-disabled"><?php
                             $row = $_SESSION['row'];
-                            if ($row -> productID > 0){
-                                echo 'In-Stock';
-                            }
-                            else{
-                                echo 'Out of Stock';
-                            };?></div>
+                            echo $row->reorderLimit?></div>
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">
                         <a href="/ezolar/Product/editProductPage/<?php $row = $_SESSION['row'];
                             echo $row -> productID;?>"><button class="form-submit-btn">Edit Product</button></a>
-                        <button class="form-submit-btn">Delete Product</button>
+                        <a href="/ezolar/Product/removeProduct/<?php $row = $_SESSION['row'];
+                            echo $row -> productID;?>"><button class="form-submit-btn">Delete Product</button></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
 </html>

@@ -160,8 +160,8 @@ class User extends Controller {
       }elseif ($role == "Contractor"){
         $this->view('Contractor/editprofile', $title);
       }elseif ($role == "Salesperson"){
-              $this->view('Salesperson/editProfile',$title);
-          }
+        $this->view('Salesperson/editprofile',$title);
+      }
     }
     
     public function updateprofile(){
@@ -239,8 +239,9 @@ class User extends Controller {
             $this->view('Storekeeper/editprofile', $title);
           }elseif ($role == "Customer"){
             $this->view('Customer/Settings/editprofile', $title);
-
-          }if ($role == "Contractor"){
+          }elseif ($role == "Salesperson"){
+            $this->view('Salesperson/editprofile', $title);
+          }elseif ($role == "Contractor"){
             $this->view('Contractor/editprofile', $title);
           }
         }

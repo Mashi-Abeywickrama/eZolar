@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,42 +12,39 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\products-advanced.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>My Projects</title>
 </head>
 <body>
 
-<div class="sidebar">
-        <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
-        </div>
-        <div class="sidebar-link-container-group">
-            <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Admin Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container-selected">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
-            </div>
+            <a href="<?=URLROOT?>/Package"><div class="box2">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3" style="color: #ffffff;background-color: #0b2f64;">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            
 
-            <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div>
-                <div class="sidebar-link-container">
-                    Settings
-                </div>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>
@@ -77,7 +72,22 @@
                             <div class="form-item-text">
                                 Product ID:<span style="color:red;">*</span> <span class="err-box" id="pid-err"></span>
                             </div>
-                            <input class="form-item-input" name="product-id" id="product-id" type="text" placeholder="Enter Product ID" required onkeyup="validateProductID()">
+                            <div class="form-idgen-inline">
+                                <input class="form-item-input" name="product-id" id="product-id" type="text" placeholder="Enter Product ID" style="width:88%;" required onkeyup="validateProductID(<?php
+                                        $a = array();
+                                        if  (count($_SESSION['rows'])>0){
+                                            for ($x = 0; $x < count((array)$_SESSION['rows']); $x++) {
+                                                array_push($a,$_SESSION['rows'][$x]->productID);
+                                            }
+                                        }
+                                        //ignore the errors
+                                        $finalArray = "['" . implode ( "', '", $a ) . "']";
+                                        echo $finalArray
+                                        ?>)" >
+                                <div class="form-idgen-btn" title="Auto Generate ID" onclick="generateProductID(<?php echo $finalArray?>)">   
+                                    <img src="\ezolar\public\img\storekeeper\idgen.png" class="form-idgen-img">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-inline">
@@ -117,12 +127,9 @@
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">
-                                Availability:
+                                Reorder Level: <span class="err-box" id="reorder-err"></span>
                             </div>
-                            <select class="form-item-input-dropdown" name="availability" id="availability">
-                                <option value="instock" selected>In-stock</option>
-                                <option value="nostock">Out of stock</option>
-                            </select>
+                            <input class="form-item-input" name="reorder-level" id="reorder-level" type="text" placeholder="Leave blank for default" onkeyup="validateReorder()">
                         </div>
                     </div>
                     <div class="form-inline" style="justify-content:center;">
@@ -133,5 +140,11 @@
         </div>
     </div>
     <script src="\ezolar\public\js\product_validation.js"></script>
+    </div>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 // require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'/app/views/Customer/navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +19,7 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
 
 <div class="body-container">
     <div class="left-panel">
-    <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
             Salesperson Dashboard
         </div></a>
         <div class="rest">
@@ -27,17 +27,17 @@ require_once(__ROOT__.'/app/views/Customer/navbar.php');
             <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <a href="/ezolar/Inquiry/viewSalesperson"><div class="box2">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
                     Inquiries
             </div></a>
-            <a href="<?=URLROOT?>/inquiry"><div class="box3">
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
             </div></a>
-            <div class="box4">
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
+            </div></a>
             
-            <a href="/ezolar/Employee/EngineersAndContractors"><div class="box8">
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
 

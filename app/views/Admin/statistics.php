@@ -1,8 +1,6 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'/app/views/Includes/header.php');
-require_once(__ROOT__.'/app/views/Includes/navbar.php');
-require_once(__ROOT__.'/app/views/Includes/footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,42 +14,38 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
     <title>My Projects</title>
 </head>
 <body>
-<div class="sidebar">
-    <div class="sidebar-heading">
-        <b>Admin Dashboard</b>
-    </div>
-    <div class="sidebar-link-container-group">
-        <div class="sidebar-link-container-top">
-            <a href="/ezolar/Employee"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Admin Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
-            <a href=/ezolar/Package>
-                <div class="sidebar-link-container">
+            <a href="<?=URLROOT?>/Package"><div class="box2">
                     Packages
-                </div>
-            </a>
-            <a href=/ezolar/Product>
-                <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3">
                     Products
-                </div>
-            </a>
-            <a href="/ezolar/Statistics/">
-                <div class="sidebar-link-container-selected">
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
                     Reports
-                </div>
-            </a>
-        </div>
+            </div></a>
+            
 
-        <div class="sidebar-link-container-bottom">
-            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div>
-                <div class="sidebar-link-container">
-                    Settings
-                </div>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
+            </div>
         </div>
     </div>
-</div>
 <div class="common-main-container">
 <!--    --><?php //print_r($_SESSION) ;?>
     <div class="dashboard-common-heading-and-background-container">
@@ -108,7 +102,13 @@ require_once(__ROOT__.'/app/views/Includes/footer.php');
         data-packages="<?php echo htmlspecialchars(json_encode($_SESSION['packages-sold'])); ?>"
         data-inspection="<?php echo htmlspecialchars(json_encode($_SESSION['inspection'])); ?>"
         data-delivery="<?php echo htmlspecialchars(json_encode($_SESSION['delivery'])); ?>">
-<?php //unset($_SESSION['labels'],$_SESSION['data'],$_SESSION['packages-sold'],$_SESSION['inspection'],$_SESSION['delivery'])?>
+<?php unset($_SESSION['labels'],$_SESSION['data'],$_SESSION['packages-sold'],$_SESSION['inspection'],$_SESSION['delivery'])?>
 </script>
+</div>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
 </html>
