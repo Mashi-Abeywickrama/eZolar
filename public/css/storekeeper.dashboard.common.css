@@ -109,18 +109,17 @@ left sub panel and the topic, left image and right image*/
 
 
 .common-main-container{
-    display: grid;
-    margin: 7.8vh;
+    width: 100%;
+    display: flex;
+    margin: 0 2.5vh 0;
+    flex-direction: column;
     justify-items: center;
-    margin-left: 250px;
 }
 
 .dashboard-common-main-topic{
-    align-self: center;
     display: flex;
-    margin-left: 10px;
-    margin-top: 30px;
-    width: 80%;
+    width: 100%;
+    justify-content: normal;
 
 }
 .common-main-left-img{
@@ -164,9 +163,36 @@ left sub panel and the topic, left image and right image*/
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 20px;
+    padding: 0;
 }
 .dashboard-common-heading-back-btn{
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px;
+}
+
+
+.inventory-table-container{
+    background: #F9F9F9;
+    min-height: 180px;
+    min-width: 350px;
+    max-height: 60%;
+    overflow: hidden;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inventory-table-body-contaier{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: inherit;
+}
+
+.main-btn-container{
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    margin-bottom: 10px;
 }

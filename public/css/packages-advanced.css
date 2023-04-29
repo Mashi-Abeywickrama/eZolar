@@ -1,9 +1,6 @@
 .dashboard-common-heading-and-background-container{
-    width: 80%;
-    max-width: 1000px;
+    width: 100%;
     min-width: 800px;
-    overflow: auto;
-    margin-top: 10px;
 }
 
 .form-background{
@@ -108,7 +105,7 @@
     text-decoration: none;
     color: #FFFFFF;
     border: none ;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 20px;
     margin-inline: 5px;
 }
@@ -195,7 +192,7 @@
 }
 
 .form-table-subtotal-container{
-    width: 80%;
+    width: 100%;
     display: flex;
     padding: 5px;
     padding-inline: 10px;
@@ -350,4 +347,24 @@
 
 .form-item-remover-icon{
     height: 80%;
+}
+
+.package-table-container{
+    background: #F9F9F9;
+    min-height: 180px;
+    min-width: 350px;
+    max-height: 60%;
+    overflow: hidden;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.package-btn-container{
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    margin-bottom: 10px;
 }

@@ -1,8 +1,5 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -13,15 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<div class="body-container"> 
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Storekeeper Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Storekeeper Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -117,7 +115,7 @@
                 </div>
             </div>
             <div class="form-inline">
-                <div class="form-table-container">
+                <div class="package-table-container">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text pack-content-col1"> Product Name</span> <span class="form-table-header-text pack-content-col2"> Price per item</span> <span class="form-table-header-text pack-content-col3"> Quantity</span>
                     </div>
@@ -143,7 +141,7 @@
                     
                 </div>
             </div>
-            <div class="form-button-container" style="justify-content:center;">
+            <div class="package-btn-container" style="justify-content:center;">
                 <a href="/ezolar/Package/editPackageInfoPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Info</button></a>
                 <a href="/ezolar/Package/editPackageContentPage/<?php $row = $_SESSION['row'];
@@ -155,5 +153,11 @@
             </div>
         </div>
     </div>
+</div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

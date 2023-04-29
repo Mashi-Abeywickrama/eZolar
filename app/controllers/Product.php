@@ -36,7 +36,7 @@
       $data = [
         'title' => 'eZolar NewProduct',
       ];
-      $rows = $this->ProductModel->getAllProductIDs();
+      $rows = $this->ProductModel->getAllProducts();
       $_SESSION['rows'] = $rows;
 
       if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){

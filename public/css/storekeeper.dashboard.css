@@ -1,9 +1,8 @@
 .dashboard-container{
     align-self: center;
-    margin-left: 8%;
     /* margin-right: 10%; */
-    margin-top: 75px;
-    width: 85%;
+    margin-top: 30px;
+    width: 100%;
     padding: 4px 18px;
     padding-bottom: 2%;
 }
@@ -11,6 +10,7 @@
 .dashboard-container-main{
     align-self: center;
     display: flex;
+    margin-left: 2.5%;
 }
 .dashboard-container-nav{
     margin-top: 50px;
@@ -34,18 +34,16 @@
 }
 
 .dashboard-container-content{
-    align-self: center;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    width: 30%;
-    height: 85px;
-    margin-bottom: 5%;
+    width: 40%;
+    height: 100px;
+    margin-bottom: 3%;
     margin-left: 2.5%;
     margin-right: 2.5%;
     display: inline-flex;
     min-width: 375px;
-    max-width: 500px;
 }
 
 .dashboard-container-content:hover{

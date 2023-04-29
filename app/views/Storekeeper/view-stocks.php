@@ -1,8 +1,5 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,16 +9,17 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\products.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<div class="body-container"> 
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Storekeeper Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Storekeeper Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -50,7 +48,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
         </div>
     </div>
     <div class="common-main-container">
-        <div class="dashboard-common-heading-container" style="width:80%;">
+        <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
                 <a href="/ezolar/Inventory" “text-decoration: none”>
                     <img src="\ezolar\public\img\storekeeper\Back.png">
@@ -65,11 +63,11 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                 </a>
             </div>
         </div>  
-        <div class="form-table-container">
+        <div class="inventory-table-container">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text inventory-col1">Stock ID</span>  <span class="form-table-header-text inventory-col2">Arrival Date</span><span class="form-table-header-text inventory-col3">Type</span> <span class="form-table-header-text inventory-col4">Details</span>
                     </div>
-                    <div class="form-table-body-container">
+                    <div class="inventory-table-body-container">
                                                 <?php
                         $results = $_SESSION['rows'];
                         $counter = 0;
@@ -91,9 +89,15 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                     </div>
                     
                 </div>
-                <div class="form-button-container" style="justify-content:center;">
+                <div class="main-btn-container" style="justify-content:center;">
                 <a href="/ezolar/Inventory/addStocksPage"><button class="form-submit-btn">Add Stock</button></a>
             </div>
     </div>
+    </div>
+</div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
 </body>
 </html>
