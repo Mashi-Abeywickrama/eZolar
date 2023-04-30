@@ -63,7 +63,7 @@
             foreach($results as $row){
                 echo '<div class="product-card">
                 <div class="product-image-container">
-
+                    <img class="product-image" src="\\ezolar\\public\\img\\storekeeper\\product-imgs\\'.$row->productImg.'" alt="product-image">
                 </div>
                 <div class="product-text-container">
                     <div class="product-text-container-inner">

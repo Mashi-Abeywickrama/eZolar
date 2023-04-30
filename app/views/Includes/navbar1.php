@@ -16,7 +16,7 @@
     -->
         <div class="nav-left">
             <div class="home"><a class="links" "home" href="<?=URLROOT?>/index">Home</a></div>
-            <div class="packages"><a class="links" "link-packages" href="packages.php">Packages</a></div>
+            <div class="packages"><a class="links" "link-packages" href="<?=URLROOT?>/index/packages">Packages</a></div>
             <div class="abt"><a class="links" "about" href="<?=URLROOT?>/index/about">About Us</a></div>
             <div class="contact"><a class="links" "link-contact" href="<?=URLROOT?>/index/contact">Contact</a></div>
         </div>

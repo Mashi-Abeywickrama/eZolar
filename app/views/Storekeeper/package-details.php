@@ -16,6 +16,7 @@
     <title>My Projects</title>
 </head>
 <body>
+<?php require_once(__ROOT__.'\app\views\popupList\confirmationPopup.php');?>
 <div class="body-container"> 
     <div class="left-panel">
         <div class="sidebar-heading">
@@ -65,8 +66,8 @@
                 </div>
             </div>  
             <div class="form-background-details">
-                <div class="product-image-container">
-                    <img src="\ezolar\public\img\storekeeper\placeholder-image.png" alt="" class="product-image">
+                <div class="package-image-container">
+                    <img src="\ezolar\public\img\storekeeper\package-imgs\<?php echo $_SESSION['row'] -> type;?>.png" alt="package-image" class="package-image">
                 </div>
                 <div class="form-container">
                     <div class="save-box"> <?php
@@ -146,8 +147,7 @@
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Info</button></a>
                 <a href="/ezolar/Package/editPackageContentPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Content</button></a>
-                <a href="/ezolar/Package/removePackage/<?php $row = $_SESSION['row'];
-                    echo $row -> packageID;?>"><button class="form-submit-btn">Delete Package</button></a>
+                <a id="del-btn"><button class="form-submit-btn">Delete Package</button></a>
             </div>
         
             </div>
@@ -159,5 +159,19 @@
       $this->view('Includes/footer', $data);
     ?>
 </div>
+<script>
+    var del_btn = document.getElementById('del-btn');
+    var text_box = document.getElementById('text');
+    var yes_btn = document.getElementById('yes-btn');
+    var no_btn = document.getElementById('no-btn');
+
+    del_btn.addEventListener('click', function()
+    {
+        text_box.innerHTML = "This will Delete the package \"<?php echo $row -> name;?>\" <br> Do you wish to proceed?";
+        yes_btn.setAttribute("href", "/ezolar/Package/removePackage/<?php echo $row -> packageID;?>");
+        document.getElementById("confirm-pop").style.display="block";
+    });
+    
+</script>
 </body>
 </html>

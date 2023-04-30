@@ -27,7 +27,13 @@
     height: 110px;
     width: 110px;
     margin-left: 15px;
-    background: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.package-image{
+    max-height: 95%; 
+    max-width: 95%;
+    object-fit: contain;
 }
 
 .package-text-container{

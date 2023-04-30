@@ -80,7 +80,7 @@
             foreach($results as $row){
                 echo '<div class="package-card">
                 <div class="package-image-container">
-
+                    <img class="package-image" src="\\ezolar\\public\\img\\storekeeper\\package-imgs\\'.$row->type.'.png" alt="package-image">
                 </div>
                 <div class="package-text-container">
                     <div class="package-text-container-inner">
