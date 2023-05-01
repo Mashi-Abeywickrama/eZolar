@@ -62,7 +62,7 @@
             <div class="project-details-container">
                 <div class="project-details-inline-container">
                     <div class="project-details-basic-container">
-                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
+                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['statusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
                         <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
                     </div>
