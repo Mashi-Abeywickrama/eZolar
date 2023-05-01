@@ -1,6 +1,6 @@
 <?php
-//  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Customer\navbar.php');
+    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +10,13 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\salesperson\project-details.css">
+    <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
     <title>My Projects</title>
 </head>
 <body>
-
 <div class="body-container">
 <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
@@ -23,7 +24,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
+            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
                     Assigned Projects
                 </div></a>
             <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
@@ -51,116 +52,73 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div>
         </div>
     </div>
-
-<div class="common-main-container">
-<!--    <div class="dashboard-common-main-topic">-->
-<!--        <div class="common-main-left-img">-->
-<!--            <a href=”#” “text-decoration: none”>-->
-<!--                <img src="\ezolar\public\img\customer\projects.png" alt="project">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="common-main-txt">-->
-<!--            Assigned Projects-->
-<!--        </div>-->
-<!---->
-<!--        <div class="common-main-right-img">-->
-<!--            <img src="\ezolar\public\img\profile.png" alt="profile">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="dashboard-common-heading-container">-->
-<!--        <div class="dashboard-common-heading-back-btn">-->
-<!--            <a href=”” “text-decoration: none”>-->
-<!--                <img src="\ezolar\public\img\storekeeper\Back.png">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="dashboard-common-heading-text">-->
-<!--            <b>Project Details</b>-->
-<!--        </div>-->
-<!--    </div>-->
-    <div class="dashboard-common-heading-and-background-container">
-        <div class="dashboard-common-heading-container">
-            <div class="dashboard-common-heading-back-btn">
-                <a href="/ezolar/Project/SalespersonViewProjects" “text-decoration: none”>
-                    <img src="\ezolar\public\img\admin\back.png" alt="back-icon">
-                </a>
-            </div>
-            <div class="dashboard-common-heading-text">
-                <b>project Details</b>
-            </div>
-            <div class="dashboard-common-heading-image">
+    <div class="common-main-container">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-left-img">
                 <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\salesperson\assignedProjects.png" alt="assigned-projects-icon">
+                    <img src="\ezolar\public\img\engineer\Projects.png" alt="projects-icon">
                 </a>
             </div>
+            <div class="common-main-txt">
+                Assigned Project : <?php echo strtoupper($_SESSION['row']->projectID);?>
+            </div>
+            
+            </div>
+            <div class="project-details-container">
+                <div class="project-details-inline-container">
+                    <div class="project-details-basic-container">
+                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['StatusName']); ?></b></p>
+                        <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
+                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                    </div>
+                    <div class="project-details-customer-container">
+                        <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>
+                        <p><b>Contact Number </b> <br> <?php echo str_pad($_SESSION['row']->mobile,10,"0",STR_PAD_LEFT);?></p>
+                    </div>
+                </div>
 
+                <div class="project-details-schedule-container">
+                    <p><b>Inspection Date : </b><?php echo $_SESSION['rows']['InspectDates'];?></p>
+                    <p><b>Delivery Date : </b><?php echo $_SESSION['rows']['DeliverDates'];?></p>
+                </div>
+
+                <div class="project-details-pack-container">
+                    <p class="project-details-pack-text"><b>Package : </b> <?php echo strtoupper($_SESSION['row']->Package_packageID)?></p>
+                    <?php
+                    if ($_SESSION['row']->status != 'B2'){
+                        $packAssignedFlag = True;
+                        if ($_SESSION['row']->Package_packageID == 'Not Assigned'){
+                            $packAssignedFlag = False;
+                        } else {
+                            echo '<a href="/ezolar/SalespersonProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                        }
+                    }
+                    ?>
+                </div>
+
+                    <?php 
+                    if (($_SESSION['row']->status == 'A0')&& array_key_exists('receipt',$_SESSION['rows'])){
+                        echo '<div class="project-details-btns-container">
+                        <a href="/ezolar/SalespersonProject/verifyInspectionPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Inspection Payment</div></a>';
+                        echo '</div>';
+                    }
+                    else if (($_SESSION['row']->status == 'D0')&& array_key_exists('receipt',$_SESSION['rows'])){
+                        echo '<div class="project-details-btns-container">
+                        <a href="/ezolar/SalespersonProject/verifyFullPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Payment</div></a>';
+                        echo '</div>';
+                    } ?>
+                    
+                    
+                
         </div>
-        <div class="dashboard-main-container">
-        <div class="project-progress-bar-wrapper">
-            <div class="project-progress-bar-container">
-                <div class="project-progress-bar-bullet-container">
-                    <div class="project-progress-bar-bullet"></div>
-                    <div class="project-progress-bar-bullet-text">Request Recieved</div>
-                </div>
-                <div class="project-progress-bar-bullet-container">
-                    <div class="project-progress-bar-bullet"></div>
-                    <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
-                </div>
-                <div class="project-progress-bar-bullet-container">
-                    <div class="project-progress-bar-bullet"></div>
-                    <div class="project-progress-bar-bullet-text">Inspection</div>
-                </div>
-                <div class="project-progress-bar-bullet-container">
-                    <div class="project-progress-bar-bullet"></div>
-                    <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
-                </div>
-                <div class="project-progress-bar-bullet-container">
-                    <div class="project-progress-bar-bullet"></div>
-                    <div class="project-progress-bar-bullet-text">Delivery & Installation</div>
-                </div>
-            </div>
-            <div class="project-progress-bar"></div>
-        </div>
-        <div class="project-details-inline">
-            <div class="project-details-steps-container">
-                <span class="project-details-steps-text-colored"><img src="\ezolar\public\img\customer\projectStepTick2.png" class="project-details-steps-tick">Make Request</span>
-                <span class="project-details-steps-text"><img src="\ezolar\public\img\customer\projectStepTick1.png" class="project-details-steps-tick">Await Request Processing</span>
-                <span class="project-details-steps-text"><img src="\ezolar\public\img\customer\projectStepTick1.png" class="project-details-steps-tick">Request Response</span>
-            </div>
-            <div class="project-details-info-container">
-                <b>Project No:</b> 123556 <br>
-                <b>Site Location:</b> 158, Puhulyaya Road, Ambalantota <br>
-                <b>Package:</b> Pending <br>
-                <b>Contractor:</b> Pending <br>
-                <b>Status:</b> Ongoing <br>
-                <b>Scheduled Dates:</b> None<br>
-            </div>
-        </div>
-        <div class="project-details-btn-container">
-            <div class="add-project-btn">
-                <div class="add-project-btn-text">
-                    <a href="/ezolar/project/requestProjectPage">Make Payment</a>
-                </div>
-            </div>
-            <div class="add-project-btn">
-                <div class="add-project-btn-text">
-                    <a href="/ezolar/project/requestProjectPage">Schedule</a>
-                </div>
-            </div>
-            <div class="add-project-btn">
-                <div class="add-project-btn-text">
-                    <a href="/ezolar/project/requestProjectPage">Send Inquiry</a>
-                </div>
-            </div>
-        </div>
-        </div>
+        
+    </div>  
     </div>
-
-</div>
-</div>
 <div class="f">
-<?php
-require_once(__ROOT__.'\app\views\Includes\footer.php');
-?>
+    <?php 
+      $this->view('Includes/footer', $data);
+      unset($_SESSION['rows']['receipt']);
+    ?>
 </div>
 </body>
 </html>

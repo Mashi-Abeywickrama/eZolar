@@ -27,7 +27,7 @@
     </div>
     <div class="dashboard-container-nav" align="center">
 
-        <a href="/ezolar/Project/SalespersonViewProjects">
+        <a href="/ezolar/SalespersonProject">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt" >
                     Assigned Projects

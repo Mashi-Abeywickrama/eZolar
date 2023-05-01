@@ -25,7 +25,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
+            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
                     Assigned Projects
                 </div></a>
             <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
@@ -84,7 +84,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                                 </div>
                             </div>
                             <div class="project-details-btn-container">
-                                <a href="/ezolar/Project/getProjectDetails/'.$row -> projectID.'">
+                                <a href="/ezolar/SalespersonProject/projectDetailsPage/'.$row -> projectID.'">
                                     <div class="project-details-btn">
                                         <div class="project-details-btn-text">More Info</div>
                                     </div>
