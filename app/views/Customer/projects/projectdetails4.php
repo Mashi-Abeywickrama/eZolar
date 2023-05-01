@@ -23,41 +23,15 @@
     ?>
 
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-            Packages
-        </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         
             <div class="dashboard-common-heading-container">
                 <div class="dashboard-common-heading-back-btn">
-                    <a href=”” “text-decoration: none”>
+                    <a href="../" “text-decoration: none”>
                         <img src="\ezolar\public\img\storekeeper\Back.png">
                     </a>
                 </div>
@@ -93,7 +67,7 @@
                             <div class="project-progress-bar-bullet-container">
                                 <a id="c4-link"
                                     href="<?= URLROOT ?>/project/projectdetails/4?project_id=<?= $_GET['project_id'] ?>">
-                                    <div id="circle-4" class="project-progress-bar-bullet-highlighted"></div>
+                                    <div id="circle-4" class="project-progress-bar-bullet-highlighted" style="border: 3.5px solid #2C61A3"></div>
                                 </a>
                                 <div class="project-progress-bar-bullet-text">Payment & Scheduling</div>
                             </div>
@@ -206,29 +180,89 @@
                 </div>
             </div>
             <div class="project-side-container">
-                <div class = "project-payment-details-box">
-                    <div class="acc-details-topic">
-                        Account Details
-                    </div>
-                    
-                </div>
-                <div class = "project-contractor-flip">
+            <div class = "project-contractor-flip">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <div class="flip-text-div">
-                                <p><b>John Doe</b>(Contractor)</p>
+                                <p><b>Delivery & Installation</b>(Contractor)</p>
                             </div>
                             <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                <?php
+                                    if (empty($data['contractor'])) {
+                                        echo '<p> Not Assigned Yet </p>';
+                                    } else { ?>
+                                        <img class="flip-img" src="\ezolar\public\img\user-pics\<?php echo $data['contractor'][0]->profilePhoto ?>" alt="Avatar">
+                                    <?php }
+                                ?>
                             </div>
                         </div>
                         <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
+                            <?php if (empty($data['contractor'])) {
+                                echo '<p> Not Assigned Yet </p>';
+                            } else {
+                                echo '<h2>'.$data['contractor'][0]->name.'</h2>
+                                <p>'.$data['contractor'][0]->telno.'</p>
+                                <p>'.$data['contractor'][0]->email.'</p>';
+                            }?>
                         </div>
                     </div>
                 </div>
+                <div class = "project-payment-details-box">
+                        <div class="acc-details-topic">
+                            Account Details
+                        </div>
+                        <div class="details-wrapper">
+                            <div class="details-box">
+                                <div class="t">
+                                    Account Number:
+                                </div>
+                                <div class="d">
+                                    072-2-001-2-008235
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Benificiary Name:
+                                </div>
+                                <div class="d">
+                                    Team eZolar
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Bank Name:
+                                </div>
+                                <div class="d">
+                                    People's Bank
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Branch Name:
+                                </div>
+                                <div class="d">
+                                    Ambalantota
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Purpose:
+                                </div>
+                                <div class="d">
+                                    Delivery and Installation
+                                </div>
+                            </div>
+                            <div class="details-box">
+                                <div class="t">
+                                    Amount:
+                                </div>
+                                <div class="d">
+                                    Rs. 10000.00
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
 
             </div>
         </div>

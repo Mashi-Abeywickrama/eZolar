@@ -3,6 +3,7 @@
   require_once(__ROOT__.'/app/helpers/session_helper.php');
 class User extends Controller {
     public function __construct(){
+      $this->ContractorModel = $this->model('ContractorModel');
       $this->userModel = $this->model('UserModel');
       
     }
@@ -11,8 +12,14 @@ class User extends Controller {
       $data = [
         'title' => 'eZolar Home',
       ];
-     
+      if(!isLoggedIn()){
       $this->view('Includes/header', $data);
+        $this->view('Includes/navbar1', $data);
+        $this->view('home', $data);
+      }
+     
+      // $this->view('Includes/header', $data);
+      $this->view('Customer/navbar', $data);
       $this->view('Includes/navbar', $data);
       $this->view('home', $data);
     }
@@ -37,10 +44,57 @@ class User extends Controller {
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
             $this->view('Salesperson/dashboard', $title);
         }else{
+          $con_id = $this->ContractorModel->getUserID([$_SESSION['user_email']]);
+
+          $date = getdate();
+          $_SESSION['row'] = $date;
+    
+          $schedule_items = $this->ContractorModel->getScheduleItems($con_id,$date['mon'],$date['year']);
+          $_SESSION['rows'] = $schedule_items;
           $this->view('Customer/dashboard', $title);
         }
       }
 
+      
+
+    }
+
+    public function browse($year,$month){
+
+      if(!isLoggedIn()){
+
+        redirect('login');
+      }
+
+      $con_id = $this->ContractorModel->getUserID([$_SESSION['user_email']]);
+
+      $date['year'] = $year ;
+      $date['mon'] = $month ;
+      
+      $_SESSION['row'] = $date;
+
+      $schedule_items = $this->ContractorModel->getScheduleItems($con_id,$date['mon'],$date['year']);
+      $_SESSION['rows'] = $schedule_items;
+      if (isset($_GET['project_id'])) {
+        $project = $this->projectModel->getProjectDetailsCustomer($_GET['project_id']);
+        $salesperson = $this->projectModel->getSalesPersonDetails($_GET['project_id']);
+        $schedule = $this->projectModel->getdSchedule($_GET['project_id']);
+        // print_r($salesperson);die();
+        $engineer = $this->projectModel->getEngineer($_GET['project_id']);
+        $data = [
+          'title' => 'eZolar COntractor Assigned Projects',
+          'project' => $project,
+          'schedule' => $schedule,
+          'salesperson' => $salesperson,
+          'engineer' => $engineer
+  
+        ];
+      }else{
+      $data = [
+        'title' => 'eZolar My Schedule',
+      ];
+    }
+      $this->view('contractor/schedule', $data);
     }
     // public function customer_dashboard(){
     //   if(!isLoggedIn()){
@@ -151,6 +205,9 @@ class User extends Controller {
       $_SESSION['rows'] = $rows;
       
       $title = "edit profile";
+      $data = [
+      'title' => "edit profile",
+      'rows'=> $rows,];
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
       //redirect to the correct edit profile page according to the user
       if ($role == "Storekeeper"){
@@ -158,7 +215,7 @@ class User extends Controller {
       }elseif ($role == "Customer"){
         $this->view('Customer/Settings/editprofile', $title);
       }elseif ($role == "Contractor"){
-        $this->view('Contractor/editprofile', $title);
+        $this->view('Contractor/editprofile', $data);
       }elseif ($role == "Salesperson"){
         $this->view('Salesperson/editprofile',$title);
       }
@@ -249,8 +306,8 @@ class User extends Controller {
           echo "Mashi is idiot";
         };
     }
-
-    public function updatePassword(){
+// load the page for update password
+    public function updatePasswordpage(){
       if(!isLoggedIn()){
 
         redirect('login');
@@ -276,6 +333,13 @@ class User extends Controller {
         $this->view('Salesperson/editProfile',$title);
       }
     }
+
+//update password
+public function updatePassword(){
+  print_r($_POST);
+  die;
+
+}
     public function createUserSession($user){
       $_SESSION['user_id'] = $user->id;
       $_SESSION['user_email'] = $user->email;

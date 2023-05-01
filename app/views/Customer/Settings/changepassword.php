@@ -15,33 +15,9 @@
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
-
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
     <div class="common-main-container">
 
         <div class="dashboard-common-heading-container">
@@ -61,7 +37,7 @@
 
         </div>
         <div class="form-container-reset">
-            <!-- <form name="Reset Form" action="#" method="POST"> -->
+            <form class="update-p-form" name="Reset Form" action="/ezolar/user/updatePassword" method="POST">
             <div class="err">Current Password
                     <div class = "err-group">
                         <span class="star">*</span>

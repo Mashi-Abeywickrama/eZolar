@@ -117,10 +117,14 @@
           $this->db->execute(['userid' => $id,'email' => $data['email']]);
           $this->db->query('UPDATE employee_telno SET telno = :mobile WHERE Employee_empID = :userid');
           $this->db->execute(['userid' => $id,'mobile' => $data['mobile']]);
+          $this->db->query('UPDATE contractor SET name = :name, bio = :bio, profilePhoto = :fileToUpload WHERE contractorID= :userid');
+          $this->db->execute(['userid' => $id,'name' => $data['name'], 'bio' =>$data['bio'],':fileToUpload'=>$img]);
           return true;  
         }
+      }
 
 
-
+      public function updatePassword($data,$id){
+        $this->db->query('UPDATE user SET password = :name userID = :userid');
       }
   }

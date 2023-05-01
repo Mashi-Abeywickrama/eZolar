@@ -20,7 +20,7 @@
     public function getAllProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status <> "F" AND status <> "G"');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status <> "F" AND status <> "E0"');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
@@ -40,7 +40,7 @@
     public function getCompletedProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "G"');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "E0"');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
@@ -139,6 +139,7 @@
       $this->db->query('SELECT * FROM project 
       INNER JOIN employee ON employee.empID = project.Salesperson_Employee_empID  
       INNER JOIN employee_telno ON employee.empID = employee_telno.Employee_empID  
+      INNER JOIN user ON employee.empID = user.userID
       WHERE project.projectID = :projectID');
       $row = $this->db->resultSet(['projectID' => $projectID]);
       return $row;
@@ -148,6 +149,7 @@
     $this->db->query('SELECT * FROM projectcontractor 
     INNER JOIN contractor ON contractor.contractorID = projectcontractor.Contractor_contractorID  
     INNER JOIN employee_telno ON contractor.contractorID = employee_telno.Employee_empID  
+    INNER JOIN user ON contractor.contractorID = user.userID
     WHERE projectcontractor.Project_projectID = :projectID');
     $row = $this->db->resultSet(['projectID' => $projectID]);
     return $row;
@@ -157,7 +159,8 @@
 public function getEngineer($projectID){
   $this->db->query('SELECT * FROM projectengineer 
   INNER JOIN employee ON employee.empID = projectengineer.Engineer_empID  
-  INNER JOIN employee_telno ON projectengineer.Engineer_empID = employee_telno.Employee_empID  
+  INNER JOIN employee_telno ON projectengineer.Engineer_empID = employee_telno.Employee_empID
+  INNER JOIN user ON projectengineer.Engineer_empID = user.userID
   WHERE projectengineer.Project_projectID = :projectID');
   $row = $this->db->resultSet(['projectID' => $projectID]);
   return $row;
@@ -326,13 +329,52 @@ public function getproduct($projectID){
   
   $packageID = $row[0]->Package_packageID;
 
-  $this->db->query('SELECT * FROM package_product 
-  INNER JOIN product ON product.productID = package_product.Product_productID  
-  WHERE package_product.Package_packageID = :packageID');
-  $row = $this->db->resultSet(['packageID' => $packageID]);
+  $this->db->query('SELECT count(productID) AS pcount FROM modifiedpackage_product 
+  WHERE projectID = :projectID
+  ');
+  $res = $this->db->resultSet(['projectID' => $projectID]);
+  // print_r($res[0]->pcount);die();
+
+  if ($res[0]->pcount > 0) {
+    $this->db->query('SELECT * FROM modifiedpackage_product 
+    INNER JOIN product ON product.productID = modifiedpackage_product.projectID  
+    WHERE modifiedpackage_product.projectID = :projectID');
+    $row = $this->db->resultSet(['projectID' => $projectID]);
+    return $row;
+  
+  } else {
+    $this->db->query('SELECT * FROM package_product 
+    INNER JOIN product ON product.productID = package_product.Product_productID  
+    WHERE package_product.Package_packageID = :packageID');
+    $row = $this->db->resultSet(['packageID' => $packageID]);
+    return $row;
+  
+  }
+  
+
+
+
+
+
+}
+
+public function getProjectDetailsCustomer($projectID){
+  $this->db->query('SELECT * FROM project
+  INNER JOIN customer ON customer.customerID = project.customerID 
+  WHERE project.projectID = :projectID');
+  $row = $this->db->resultSet(['projectID' => $projectID]);
   return $row;
+}
 
-
+public function markAsComplete($projectID){
+  $this->db->query('UPDATE scheduleitem SET isCompleted = :status WHERE Project_projectID = :projectID');
+  $result = $this->db->execute(['status' => "1",'projectID' => $projectID]);
+  if($result){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
   }

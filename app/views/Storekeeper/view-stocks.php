@@ -18,7 +18,7 @@
     <title>My Projects</title>
 </head>
 <body>
-
+<div>
     <div class="sidebar">
         <div class="sidebar-heading">
             <b>Storekeeper Dashboard</b>
@@ -94,6 +94,9 @@
                 <div class="form-button-container" style="justify-content:center;">
                 <a href="/ezolar/Inventory/addStocksPage"><button class="form-submit-btn">Add Stock</button></a>
             </div>
+    </div>
+    <div class="f">
+    <?= require_once(__ROOT__.'/app/views/Includes/footer.php'); ?>
     </div>
 </body>
 </html>

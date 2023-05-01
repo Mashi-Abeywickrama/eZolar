@@ -27,7 +27,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
 
     // calling popup for date selection
     if (isset($_GET['add-schedule-btn'])) {
-        print_r("Shit");
+        // print_r("Shit");
         echo '
             <script>
                 document.getElementById(' . "'id04'" . ').style.display=' . "'block'" . ';
@@ -36,8 +36,18 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
             ';
     }
     // calling popup for uploading payment reciept
+    if (isset($_GET['view-pack-btn'])) {
+        // print_r("Shit");
+        echo '
+            <script>
+                document.getElementById(' . "'id05'" . ').style.display=' . "'block'" . ';
+
+            </script>
+            
+            ';
+    }
     if (isset($_GET['make-payment-btn'])) {
-        print_r("Shit");
+        // print_r("Shit");
         echo '
             <script>
                 document.getElementById(' . "'id03'" . ').style.display=' . "'block'" . ';
@@ -50,49 +60,9 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
     ?>
 
     <div class="body-container">
-        <div class="left-panel">
-            <a href="<?= URLROOT ?>/user/dashboard">
-                <div class="box1">
-                    Customer Dashboard
-                </div>
-            </a>
-            <div class="rest">
-                <div class="rest-top">
-                    <a href="<?= URLROOT ?>#">
-                        <div class="box7">
-                            Packages
-                        </div>
-                    </a>
-                    <a href="<?= URLROOT ?>/project">
-                        <div class="box2">
-                            My Projects
-                        </div>
-                    </a>
-                    <a href="<?= URLROOT ?>/inquiry">
-                        <div class="box3">
-                            Inquiries
-                        </div>
-                    </a>
-                    <a href="<?= URLROOT ?>/transaction">
-                        <div class="box4">
-                            Transactions
-                        </div>
-                    </a>
-                </div>
-                <div class="rest-bottom">
-                    <a href="<?= URLROOT ?>/user/profile">
-                        <div class="box5">
-                            Profile
-                        </div>
-                    </a>
-                    <a href="<?= URLROOT ?>/customersettings">
-                        <div class="box6">
-                            Settings
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php
+            require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+        ?>
 
         <div class="common-main-container">
 
@@ -127,7 +97,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                             <div class="project-progress-bar-bullet-container">
                                 <a id="c3-link"
                                     href="<?= URLROOT ?>/project/projectdetails/3?project_id=<?= $_GET['project_id'] ?>">
-                                    <div id="circle-3" class="project-progress-bar-bullet-highlighted"></div>
+                                    <div id="circle-3" class="project-progress-bar-bullet-highlighted" style="border: 3.5px solid #2C61A3"></div>
                                 </a>
                                 <div class="project-progress-bar-bullet-text">Inspection</div>
                             </div>
@@ -246,23 +216,33 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                 </div>
                 <div class="project-side-container">
                     
-                    <div class="project-engineer-flip">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <div class="flip-text-div">
-                                    <p><b>John Doe</b>(Engineer)</p>
-                                </div>
-                                <div class="flip-img-div">
-                                    <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
-                                </div>
+                <div class = "project-engineer-flip">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="flip-text-div">
+                                <p><b>Inspection</b>(Engineer)</p>
                             </div>
-                            <div class="flip-card-back">
-                                <h1>John Doe</h1>
-                                <p>Architect & Engineer</p>
-                                <p>We love that guy</p>
+                            <div class="flip-img-div">
+                                <?php
+                                    if (empty($data['engineer'])) {
+                                        echo '<p> Not Assigned Yet </p>';
+                                    } else { ?>
+                                        <img class="flip-img" src="\ezolar\public\img\user-pics\<?php echo $data['engineer'][0]->profilePhoto ?>" alt="Avatar">
+                                    <?php }
+                                ?>
                             </div>
                         </div>
+                        <div class="flip-card-back">
+                            <?php if (empty($data['engineer'])) {
+                                echo '<p> Not Assigned Yet </p>';
+                            } else {
+                                echo '<h2>'.$data['engineer'][0]->name.'</h2>
+                                <p>'.$data['engineer'][0]->telno.'</p>
+                                <p>'.$data['engineer'][0]->email.'</p>';
+                            }?>
+                        </div>
                     </div>
+                </div>
                     <div class = "project-payment-details-box">
                         <div class="acc-details-topic">
                             Account Details

@@ -1,6 +1,5 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    //  require_once(__ROOT__.'\app\views\Includes\header.php');
      require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
@@ -18,7 +17,7 @@
 <body>
 <div class="body-container">
     <?php
-        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
     ?>
 
     <div class="common-main-container">
@@ -33,25 +32,23 @@
                     My Projects
                 </div>
             </div>
-           
+            
         </div>
         <div class="project-type">
-            <a class="sub-topic" href="/ezolar/project"><div class = "project-sub-topic" >
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/projectrequests"><div class = "project-sub-topic" >
+            Project Requests
+            </div></a>
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/ongoingprojects"><div class = "project-sub-topic">
             Ongoing Projects
             </div></a>
-            <a class="sub-topic"  href="/ezolar/project/completedProjects" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF;">
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/completedprojects" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
             Completed Projects
-            </div></a>
-            <a class="sub-topic"  href="/ezolar/project/cancelledProjects"><div class = "project-sub-topic">
-            Cancelled Projects
             </div></a>
 
         </div>
         <div class="body-list-container">
-
-            <?php
-
-            foreach ($data['rows'] as $row){
+        <?php
+            foreach($data['project'][0] as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
@@ -62,42 +59,21 @@
                         </span>
                         <span class="project-details-btn-container">
                             <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/5?project_id=' .  $row -> projectID . '" style = "color: #FFFFFF";>More info</a></span>
+                                <span class="project-details-btn-text">More info</span>
                             </div>
                         </span>
                         
                     </div>';
             }
-            ?>
+        ?>
             
-        </div>
-        <div class="add-project-btn">
-            <div class="add-project-btn-text">
-              <a href="/ezolar/project/requestProjectPage"> New Project</a> 
-            </div>
         </div>
     </div>
 </div>
-<div class = "f">
+<div class="f">
     <?php 
           $this->view('Includes/footer', $data);
     ?>
 </div>
 </body>
-<script>
-    const boxes = document.querySelectorAll('.project-sub-topic');
-
-    for (let i = 0; i < boxes.length; i++) {
-        boxes[i].addEventListener('click', function() {
-          // remove border from all boxes
-            for (let j = 0; j < boxes.length; j++) {
-              boxes[j].classList.remove('selected');
-            } 
-            // add border to clicked box
-            this.classList.add('selected');
-        });
-    }
-
-</script>
-
 </html>

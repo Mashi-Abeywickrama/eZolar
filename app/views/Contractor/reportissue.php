@@ -15,41 +15,27 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.newinquiry.css">
     <title>My newInquiry</title>
+    <style>
+        .box4{
+            color: #ffffff;
+            background-color: #0b2f64;
+        }
+        .box3{
+            color: #0b2f64;
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Contractor Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>/contractor/assignedProjects"><div class="box2">
-                    Assigned Projects
-                </div></a>
-                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box3">
-                    Report an Issue
-                </div></a>
-                <a href="<?=URLROOT?>/"><div class="box4">
-                    My Schedule
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
+    ?>
     <!-- Remaining... -->
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
-<!-- need to     embed the link of my profile in the image -->
                     <a href=”” “text-decoration: none”>
                         <img src="\ezolar\public\img\customer\Issue.png" alt="inquiry">
                     </a>

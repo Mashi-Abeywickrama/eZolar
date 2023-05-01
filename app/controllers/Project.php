@@ -305,15 +305,57 @@ class Project extends Controller
   }
 
   public function COntractorAssignedProjects()
+  
   {
+    
+    if (isset($_GET['project_id'])) {
+      $product = $this->projectModel->getproduct($_GET['project_id']);
+    }
+    if (isset($_GET['projectid'])) {
+      $project = $this->projectModel->getProjectDetailsCustomer($_GET['projectid']);
+      $salesperson = $this->projectModel->getSalesPersonDetails($_GET['projectid']);
+      $schedule = $this->projectModel->getdSchedule($_GET['projectid']);
+      // print_r($salesperson);die();
+      $engineer = $this->projectModel->getEngineer($_GET['projectid']);
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+        'project' => $project,
+        'schedule' => $schedule,
+        'salesperson' => $salesperson,
+        'engineer' => $engineer
+
+      ];
+    }
+    
 
     $rows = $this->projectModel->getContractorProjects($this->projectModel->getUserID([$_SESSION['user_email']]));
     // print_r($rows);die;
     $_SESSION['rows'] = $rows;
+    
+    if (isset($_GET['project_id'])) {
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+        'product' => $product
+      ];
+    }
+    if(!isset($_GET['project_id']) && !isset($_GET['projectid'])){
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+      ];
+    }
+    $this->view('Contractor/acceptedProjects', $data);
+  }
+
+  public function markascomplete()
+  {
+    if (!isLoggedIn()) {
+      redirect('login');
+    }
+    $this->projectModel->markAsComplete($_GET['projectid']);
     $data = [
-      'title' => 'eZolar COntractor Assigned Projects',
+      'title' => 'eZolar Salesperson Assigned Projects',
     ];
-    $this->view('Contractor/assignedProjects', $data);
+    redirect('Project/COntractorAssignedProjects');
   }
 
 }

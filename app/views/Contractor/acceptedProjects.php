@@ -1,8 +1,8 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    //  require_once(__ROOT__.'\app\views\Includes\header.php');
      require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,42 +16,49 @@
     <title>My Projects</title>
 </head>
 <body>
+<?php
+
+require_once(__ROOT__ . '\app\views\popupList\packagepopup.php');
+require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
+// calling popup for VIEW package
+
+?>
 <div class="body-container">
     <?php
-        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
     ?>
-
+    
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
-                    <a href=”#” “text-decoration: none”>
+
                         <img src="\ezolar\public\img\customer\projects.png" alt="project">
-                    </a>
+
                 </div>
                 <div class="common-main-txt">
-                    My Projects
+                    Assigned Projects
                 </div>
             </div>
-           
+            
         </div>
         <div class="project-type">
-            <a class="sub-topic" href="/ezolar/project"><div class = "project-sub-topic" >
-            Ongoing Projects
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/projectrequests"><div class = "project-sub-topic">
+            Project Requests
             </div></a>
-            <a class="sub-topic"  href="/ezolar/project/completedProjects" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF;">
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/ongoingprojects"style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
+            Accepted Projects
+            </div></a>
+            <a class="sub-topic" href="<?=URLROOT?>/contractor/completedprojects"><div class = "project-sub-topic">
             Completed Projects
-            </div></a>
-            <a class="sub-topic"  href="/ezolar/project/cancelledProjects"><div class = "project-sub-topic">
-            Cancelled Projects
             </div></a>
 
         </div>
         <div class="body-list-container">
 
             <?php
-
-            foreach ($data['rows'] as $row){
+            $results = $_SESSION['rows'];
+            foreach($results as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
@@ -60,44 +67,32 @@
                                 <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>
-                        <span class="project-details-btn-container">
-                            <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/5?project_id=' .  $row -> projectID . '" style = "color: #FFFFFF";>More info</a></span>
+                        <span class="project-details-btn-container">'; ?>
+                            <div class="project-details-btn" onclick="location.href='?project_id=<?php echo  $row -> projectID?>'">
+                                   <span class="project-details-btn-text">Package</span>
                             </div>
-                        </span>
+                            <div class="project-details-btn"> 
+                                    <span class="project-details-btn-text"  onclick="location.href='?projectid=<?php echo  $row -> projectID?>'";>Other info</span>
+                            </div>
+                            <?php echo ' </span>
                         
                     </div>';
             }
             ?>
             
         </div>
-        <div class="add-project-btn">
-            <div class="add-project-btn-text">
-              <a href="/ezolar/project/requestProjectPage"> New Project</a> 
-            </div>
-        </div>
     </div>
 </div>
-<div class = "f">
+<div class="f">
     <?php 
           $this->view('Includes/footer', $data);
+          if (isset($_GET['project_id'])) {
+            echo "<script> document.getElementById('id05').style.display='block'; </script>";
+          }
+          if (isset($_GET['projectid'])) {
+            echo "<script> document.getElementById('projectD').style.display='block'; </script>";
+          }
     ?>
 </div>
 </body>
-<script>
-    const boxes = document.querySelectorAll('.project-sub-topic');
-
-    for (let i = 0; i < boxes.length; i++) {
-        boxes[i].addEventListener('click', function() {
-          // remove border from all boxes
-            for (let j = 0; j < boxes.length; j++) {
-              boxes[j].classList.remove('selected');
-            } 
-            // add border to clicked box
-            this.classList.add('selected');
-        });
-    }
-
-</script>
-
 </html>
