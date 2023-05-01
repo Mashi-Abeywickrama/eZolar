@@ -35,8 +35,11 @@ class Statistics extends Controller
         $data = [
             'title' => 'ezolar sales statistics',
         ];
-
-        $this->view('Admin/statistics', $data,$data1);
+        if ($this->StatisticsModel->getUserRole($_SESSION['user_email']) == "Admin"){
+            $this->view('Admin/statistics', $data,$data1);
+        } else if ($this->StatisticsModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+            $this->view('Storekeeper/statistics', $data,$data1);
+        }
     }
 
     public function packageSales(){
@@ -49,8 +52,11 @@ class Statistics extends Controller
         $data = [
             'title' => 'ezolar package sale statistics',
         ];
-
-        $this->view('Admin/statistics', $data);
-    }
+        if ($this->StatisticsModel->getUserRole($_SESSION['user_email']) == "Admin"){
+            $this->view('Admin/statistics', $data);
+        } else if ($this->StatisticsModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
+            $this->view('Storekeeper/statistics', $data);
+        }
+    }   
 
 }

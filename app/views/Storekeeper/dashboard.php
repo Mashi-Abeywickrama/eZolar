@@ -47,16 +47,16 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Products.png" alt="profile">
                 </div>
-            </a>
-
-            <div class="dashboard-container-content">
+                </a>
+            
+            <a href="/ezolar/Statistics/salesPerMonth" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Reports & Stats
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Reports.png" alt="profile">
                 </div>
-            </div>
+            </a>
 
             <a href="/ezolar/User/profile" class="dashboard-container-content">
                 <div class="dashboard-container-txt">

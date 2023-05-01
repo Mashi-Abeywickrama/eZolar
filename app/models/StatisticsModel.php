@@ -45,5 +45,11 @@ class StatisticsModel
         return $row;
     }
 
+    public function getUserRole($email){
+        $this->db->query('SELECT type FROM user where email = :email');
+        $row = $this->db->single(['email' => $email]);
+        return ($row->type);
+      }
+
 
 }
