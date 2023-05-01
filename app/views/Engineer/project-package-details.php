@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -13,16 +11,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
-
-<div class="sidebar">
+<div class="body-container">
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Engineer Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Engineer Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -48,7 +47,7 @@
         </div>
     </div>
     <div class="common-main-container">
-    <div class="dashboard-common-heading-container" style="width:80%;">
+    <div class="dashboard-common-heading-container" style="width:100%;">
             <div class="dashboard-common-heading-back-btn">
                 <a href="/ezolar/EngineerProject/projectDetailsPage/<?php echo $_SESSION['PackMod']['Info']->projectID?>" “text-decoration: none”>
                     <img src="\ezolar\public\img\storekeeper\Back.png">
@@ -68,7 +67,7 @@
                 </a>
             </div>
         </div>  
-        <div class="form-table-container">
+        <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text inventory-col1">Product Name</span>  <span class="form-table-header-text inventory-col2">Price per item</span><span class="form-table-header-text inventory-col3">Quantity</span> <span class="form-table-header-text inventory-col4">Price</span>
                     </div>
@@ -99,7 +98,7 @@
                         <div class="form-table-total-text"><b><?php echo $contentTotalPrice; ?></b></div>
                     </div>
                 </div>
-                <div class="form-table-container">
+                <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text extras-col1">Service</span>  <span class="form-table-header-text extras-col2">Price</span>
                     </div>
@@ -139,5 +138,11 @@
             <?php unset($_SESSION['PackMod']) ?>
         </div>
     </div>
+    </div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

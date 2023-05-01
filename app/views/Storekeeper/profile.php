@@ -1,7 +1,5 @@
 <?php
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -11,16 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.Profile.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <title>My Profile</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<div class="body-container"> 
+    <div class="left-panel">
             <div class="sidebar-heading">
-                <b>Storekeeper Dashboard</b>
+            <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Storekeeper Dashboard</b></a>
             </div>
             <div class="sidebar-link-container-group">
                 <div class="sidebar-link-container-top">
@@ -136,6 +135,12 @@
         ?>
 
 
+</div>
+</div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
 </div>
 </body>
 </html>

@@ -248,7 +248,6 @@ function clearErrorMessage(){
     lnameErr.innerHTML = "";
     nicErr.innerHTML = "";
     emailErr.innerHTML = "";
-    fullnameErr.innerHTML = "";
 }
 
 

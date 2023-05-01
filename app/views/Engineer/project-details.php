@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
     <title>My Projects</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<div class="body-container">
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Engineer Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Engineer Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -63,7 +62,7 @@
             <div class="project-details-container">
                 <div class="project-details-inline-container">
                     <div class="project-details-basic-container">
-                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
+                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['statusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
                         <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
                     </div>
@@ -130,6 +129,12 @@
                 
         </div>
         
+    </div>  
     </div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

@@ -71,4 +71,22 @@ class Index extends Controller {
       $this->view('Includes/footer1', $data);
     }
     }
+
+    public function packages(){
+      $data = [
+        'title' => 'eZolar Packages',
+      ];
+      if(!isLoggedIn()){
+        $this->view('Includes/header', $data);
+        $this->view('Includes/navbar1', $data);
+        $this->view('packages', $data);
+        $this->view('Includes/footer1', $data);
+      } else {
+
+      $this->view('Includes/header', $data);
+      $this->view('Includes/navbar', $data);
+      $this->view('packages', $data);
+      $this->view('Includes/footer1', $data);
+    }
+    }
   }

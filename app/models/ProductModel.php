@@ -38,16 +38,16 @@
       $this->db->execute(['productID' => $data[0], 'productName' => $data[1], 'cost' => $data[2], 'manufacturer' => $data[3],'reorder'=> $data[4]]);
     }
 
-    public function getAllProductIDs(){
-      $this->db->query('SELECT productID FROM product');
-      $rows = $this->db->resultSet([]);
-      return $rows;
-    }
-
     public function deleteProduct($productID){
-      $this->db->query('UPDATE product SET isDeleted = 1 WHERE productID = :productID'); 
+      $this->db->query('UPDATE product SET `isDeleted` = 1 WHERE `productID` = :productID'); 
       $this->db->execute(['productID' => $productID]);
     }
+
+    public function changeimage($productID,$filemane){
+      $this->db->query('UPDATE product SET `productImg` = :imgfile WHERE `productID` = :productID'); 
+      $this->db->execute(['productID' => $productID,'imgfile'=> $filemane]);
+    }
+
 
 
   }

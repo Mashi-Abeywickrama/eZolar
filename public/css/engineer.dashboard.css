@@ -1,9 +1,8 @@
 .dashboard-container{
     align-self: center;
-    margin-left: 8%;
     /* margin-right: 10%; */
-    margin-top: 75px;
-    width: 85%;
+    margin-top: 20px;
+    width: 100%;
     padding: 4px 18px;
     padding-bottom: 2%;
 }
@@ -17,6 +16,8 @@
 .dashboard-container-main{
     align-self: center;
     display: flex;
+    margin-left: 5%;
+    margin-bottom: 10px;
 }
 .main-txt{
     color: #0B2F64;

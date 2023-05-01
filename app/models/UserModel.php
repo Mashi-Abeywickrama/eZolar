@@ -43,6 +43,7 @@
       }
 
       public function getProfile($id,$role){
+        
         if ($role == "Customer") {
           $this->db->query('SELECT * FROM customer where customerID = :customerID');
           //$this->db->query('SELECT nic FROM employee WHERE empID=:empID');

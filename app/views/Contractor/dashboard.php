@@ -22,6 +22,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
     }
     $JSarrayString = substr_replace($JSarrayString, "]", -1)
 
+>>>>>>> main
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,9 +1,6 @@
 .dashboard-common-heading-and-background-container{
-    width: 80%;
-    max-width: 1000px;
+    width: 100%;
     min-width: 800px;
-    overflow: auto;
-    margin-top: 10px;
 }
 
 .form-background{
@@ -91,30 +88,56 @@
     text-decoration: none;
     color: #FFFFFF;
     border: none ;
-    border-radius: 20px;
+    border-radius: 5px;
     margin-top: 20px;
     margin-inline: 5px;
 }
 .form-submit-btn:hover{
+    color: #FFFFFF;
     background: #0B2F64;
     transition-duration: 200ms;
 }
 
 .product-image-container{
-    margin-top: 30px;
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 10px;
     min-width: 50px;
     max-width: 200px;
     width: 30%;
-    height: 200px;
     overflow: hidden;
+    box-sizing: border-box;
+    padding: 5px;
 }
 
 .product-image{
-    width:100%;
-    height: 100%;
+    width:95%;
+    height: 95%;
     object-fit: contain;
 }
+
+.product-image-btn{
+    display: flex;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 50px;
+    background: #2C61A3;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none ;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+.product-image-btn:hover{
+    color: #FFFFFF;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}
+
 
 .err{
     display: flex;

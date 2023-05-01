@@ -112,9 +112,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         foreach($results as $row){
 
             echo '<div class="inquiry-box">
-
                         <div class="inquiry-text-container">
-
                             <div class="inquiry-text-container-inner">
                                 <div class="inquiry-text-no">Type:' .  $row -> type . '</div>
                                 <div class="inquiry-text-name"><b>Topic :' . $row -> topic . '</b></div>

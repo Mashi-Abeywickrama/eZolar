@@ -106,7 +106,6 @@
 
   public function SalespersonViewProjects(){
 //      $this->db->query('SELECT * FROM project WHERE Salesperson_Employee_empID IS NULL');
-  
       $this->db->query('SELECT * FROM project');
       $row = $this->db->resultSet([]);
       return $row;

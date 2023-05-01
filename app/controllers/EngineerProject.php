@@ -9,6 +9,16 @@
         $this->PackageModel = $this->model('PackageModel');
         $this->ProductModel = $this->model('ProductModel');
     }
+
+    private function getProjectStatusName($status){
+      $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
+      'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','F'=>'Project Cancelled','G'=>'Project Completed');
+      if (array_key_exists($status,$names)){
+        return $names[$status];
+      } else {
+        return "Invalid Status";
+      }
+    }
     
     public function index(){
 
@@ -20,6 +30,10 @@
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
       $rows  = $this->engineerProjectModel-> getAssignedProjects($eng_Id);
       $_SESSION['rows'] = $rows;
+
+      for ($x=0;$x<count($_SESSION['rows']);$x++){
+        $_SESSION['rows'][$x]->status = $this->getProjectStatusName($_SESSION['rows'][$x]->status);
+      }
       $data = [
         'title' => 'eZolar Assigned Projects',
       ];
@@ -82,7 +96,9 @@
         $inspFlag = FALSE;
       }
 
-      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag);
+      
+
+      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag, "statusName"=>$this->getProjectStatusName($row->status));
 
 
       $data = [
