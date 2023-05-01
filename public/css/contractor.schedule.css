@@ -1,0 +1,120 @@
+.box3{
+    color: #ffffff;
+    background-color: #0b2f64;
+}
+a{
+    text-decoration: none;
+    color: #0B2F64;
+}
+
+.body-list-container {
+    margin-top: 20px;
+    height: 78vh;
+    align-self: center;
+    width: 80%;
+}
+
+.calendar-table{
+    margin-top: 13px;
+    background: #ffffff;
+    width: 100%;
+    height: 86%;
+}
+
+.calendar-th{
+    background: #2C61A3;
+    color: #ffffff;
+    font-weight: bold;
+    align-content: center;
+    width: calc(100%/7);
+    border-radius: 5px;
+}
+
+.calendar-td{
+    border-style: groove;
+    border: 1px groove;
+    border-radius: 5px;
+    padding-right: 2px;
+    padding-top: 5px;
+    height: 90px;
+    width: calc(100%/7);
+    box-sizing: border-box;
+}
+
+.calendar-date-container{
+    height: 90%;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.calendar-event-list-container{
+    display: flex;
+    width: 97%;
+    margin-left: 5px;
+    flex-direction: column;
+}
+.calendar-event-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-event-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(201, 0, 0);
+    width: 95%;
+    border-radius: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 5px;
+    color: white;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.clandar-header-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar-header-text{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.calendar-month-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-month-btn{
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    height: 20px;
+    width: 30px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-month-btn-img{
+    height: 15px;
+}
+
+.event-delivery{
+    background-color: #DE8500;
+}
+

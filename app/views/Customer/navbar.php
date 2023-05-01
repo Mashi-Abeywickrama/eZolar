@@ -24,7 +24,7 @@
                     </p>
                 </div>
                 <div class="cimg">
-                    <a href ="<?=URLROOT?>/user/profile"><img class = "myimg" src="\ezolar\public\img\user-pics\<?php echo $_SESSION['user_pic'] ?>" alt="Notifi">
+                    <a href ="<?=URLROOT?>/user/profile"><img class = "myimg" src="\ezolar\public\img\user-pics\<?php echo $_SESSION['user_pic'] ?>" alt="Profile Image">
                 </div>
             </div>
             <div class="cbtn">

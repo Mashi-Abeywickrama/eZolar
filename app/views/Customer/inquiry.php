@@ -17,35 +17,9 @@
 <body>
     <div class = "body-container-main">
         <div class="body-container">
-            <div class="left-panel">
-                <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-                    Customer Dashboard
-                </div></a>
-                <div class="rest">
-                    <div class="rest-top">
-                    <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-                    <a href="<?=URLROOT?>/project"><div class="box2">
-                            My Projects
-                        </div></a>
-                        <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                            Inquiries
-                        </div></a>
-                        <div class="box4">
-                            Transactions
-                        </div>
-                    </div>
-                    <div class="rest-bottom">
-                    <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                            Profile
-                        </div></a>
-                        <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                            Settings
-                        </div></a>
-                    </div>
-                </div>
-            </div>
+        <?php
+            require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+        ?>
 
             <div class="common-main-container">
                 <div class="dashboard-common-main-topic">
@@ -59,13 +33,21 @@
                             Inquiries
                         </div>
                     </div>
-                    <div class = "common-main-topic-left">
+                    <div class = "common-main-topic-right">
                         <!-- <div>
                             <input type="text">
                         </div> -->
                         <div class="add-inquiry-btn">
                             <div class="add-inquiry-btn-text">
                                 <a href="/ezolar/inquiry/newInquiryPage"> New Inquiry</a> 
+                            </div>
+                        </div>
+                        <div class="search-inquiry-btn">
+                            <div class="add-inquiry-input">
+                                <input type="text" placeholder="Search.."/>
+                            </div>
+                            <div class = "search-inquiry-img">
+                                p
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,8 @@
 <?php
 //      define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'/app/views/Includes/header.php');
+    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+    require_once(__ROOT__.'/app/views/Includes/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +49,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </a>
 
-        <a href="/ezolar/Schedules/Insepection">
+        <a href="/ezolar/SalespersonSchedules/InspectionSchedule">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Inspection Schedule
@@ -60,7 +60,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </a>
 
-        <a href="/ezolar/Schedules/Delivery">
+        <a href="/ezolar/SalespersonSchedules/DeliverySchedule">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Delivery Schedule
@@ -82,7 +82,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </a>
 
-        <a href="/ezolar/AdminViewProfile">
+        <a href="<?=URLROOT?>/user/profile">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Profile

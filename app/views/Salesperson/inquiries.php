@@ -1,8 +1,9 @@
 <?php
 //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+//    require_once(__ROOT__.'/app/views/Includes/header.php');
+//    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+//    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,41 +19,41 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 </head>
 <body>
 
-<div class="sidebar">
-    <div class="sidebar-heading">
-        <b>Salesperson Dashboard</b>
-    </div>
-    <div class="sidebar-link-container-group">
-        <div class="sidebar-link-container-top">
-            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
+<div class="body-container">
+<div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Salesperson Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <div class="sidebar-link-container-selected">
-                Inquiries
-            </div>
-            <div class="sidebar-link-container">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
+                    Inquiries
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
-            </div>
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
-            <a href="/ezolar/Employee/EngineersAndContractors">
-                <div class="sidebar-link-container">
-                    Engineers & Contractors
-                </div>
-            </a>
-        </div>
+            </div></a>
+            
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
+            Engineers & Contractors
+            </div></a>
 
-        <div class="sidebar-link-container-bottom">
-            <a href=""><div class="sidebar-link-container">
-                    Profile
-                </div></a>
-            <div class="sidebar-link-container">
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
                 Settings
+            </div></a>
             </div>
         </div>
     </div>
-</div>
 
 <div class="common-main-container">
     <div class="dashboard-common-main-topic">
@@ -71,17 +72,54 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     </div>
     <div class="inquiry-list-container">
 
+        <div class="new-inquiry-list-container">
+            <div class="inquiry-list-topic">
+                New Inquiries
+            </div>
+
+            <?php
+            
+            $results = $_SESSION['rowsNew'];
+            foreach($results as $rowNew){
+
+                echo '<div class="inquiry-box-new">
+                        <div class="inquiry-text-container">
+
+                            <div class="inquiry-text-container-inner">
+                                <div class="inquiry-text-no">Type:' .  $rowNew -> type . '</div>
+                                <div class="inquiry-text-name"><b>Topic :' . $rowNew -> topic . '</b></div>
+                            </div>
+                        </div>
+                        <div class="inquiry-details-btn-container" >
+                    
+                            <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$rowNew -> inquiryID.'">
+                                <div class="inquiry-details-btn">
+                                    <div class="inquiry-details-btn-text">Respond</div>
+                                </div>
+                            </a>
+                        </div>
+                        </div>';
+            }
+            ?>
+        </div>
+
+        <div class="new-inquiry-list-container">
+            <div class="inquiry-list-topic">
+                Ongoing Inquiries
+            </div>
         <?php
         $results = $_SESSION['rows'];
         foreach($results as $row){
+
             echo '<div class="inquiry-box">
                         <div class="inquiry-text-container">
                             <div class="inquiry-text-container-inner">
-                                <div class="inquiry-text-no">Type:' .  $row -> name . '</div>
+                                <div class="inquiry-text-no">Type:' .  $row -> type . '</div>
                                 <div class="inquiry-text-name"><b>Topic :' . $row -> topic . '</b></div>
                             </div>
                         </div>
-                        <div class="inquiry-details-btn-container">
+                        <div class="inquiry-details-btn-container" >
+                    
                             <a href="/ezolar/Inquiry/viewSalespersonInquiry/'.$row -> inquiryID.'">
                                 <div class="inquiry-details-btn">
                                     <div class="inquiry-details-btn-text">Respond</div>
@@ -92,10 +130,19 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
                     </div>';
         }
         ?>
+        </div>
 
     </div>
 
 </div>
+</div>
+<?php unset($_SESSION['rows'],$_SESSION['rowsNew'])?>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
+<script type="text/javascript" src="\ezolar\public\js\inquiry.js"></script>
 </html>
 

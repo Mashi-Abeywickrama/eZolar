@@ -1,15 +1,7 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-<<<<<<< HEAD
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
-=======
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
->>>>>>> fb36ba373d5a40e182a5bd15f0d07026d8220531
 ?>
 
 <!DOCTYPE html>
@@ -21,42 +13,39 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>Add Package</title>
 </head>
 <body>
 
-<div class="sidebar">
-        <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
-        </div>
-        <div class="sidebar-link-container-group">
-            <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Admin Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container-selected">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
-            </div>
+            <a href="<?=URLROOT?>/Package"><div class="box2" style="color: #ffffff;background-color: #0b2f64;">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            
 
-            <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div>
-                <div class="sidebar-link-container">
-                    Settings
-                </div>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>
@@ -84,7 +73,22 @@
                             <div class="form-item-text">
                                 Package ID:<span style="color:red;">*</span> <span class="err-box" id="pckid-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" required onkeyup="validatePackageID()">
+                            <div class="form-idgen-inline">
+                                <input class="form-item-input" name="pack-id" id="pack-id" type="text" placeholder="Enter Package ID" style="width:88%;" required onkeyup="validatePackageID(<?php
+                                            $a = array();
+                                            if  (count($_SESSION['rows'])>0){
+                                                for ($x = 0; $x < count((array)$_SESSION['rows']); $x++) {
+                                                    array_push($a,$_SESSION['rows'][$x]->packageID);
+                                                }
+                                            }
+                                            //ignore the errors
+                                            $finalArray = "['" . implode ( "', '", $a ) . "']";
+                                            echo $finalArray
+                                            ?>)">
+                                        <div class="form-idgen-btn" title="Auto Generate ID" onclick="generatePackageID(<?php echo $finalArray?>)">   
+                                            <img src="\ezolar\public\img\storekeeper\idgen.png" class="form-idgen-img">
+                                        </div>
+                                </div>
                         </div>
                     </div>
                     <div class="form-inline">
@@ -100,7 +104,12 @@
                             <div class="form-item-text">
                                 Package Type: <span class="err-box" id="pck-type-err"></span>
                             </div>
-                            <input class="form-item-input" name="pack-type" id="pack-type" type="text" placeholder="Eg:- Residential" onkeyup="validateType()">
+                            <select class="form-item-input" name="pack-type" id="pack-type">
+                                    <option value="" selected disabled>Select Package Types</option>
+                                    <option value="Residential">Residential</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Industrial">Industrial</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-item-text">
@@ -150,5 +159,11 @@
         </div>
     </div>
     <script src="\ezolar\public\js\package_validation.js"></script>
+    </div>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
 </html>

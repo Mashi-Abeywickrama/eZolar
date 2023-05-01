@@ -19,32 +19,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 <body>
 <div class = "body-container-main">    
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Contractor Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>/contractor/assignedProjects"><div class="box2">
-                    Assigned Projects
-                </div></a>
-                <a href="<?=URLROOT?>/"><div class="box3">
-                    My Schedule
-                </div></a>
-                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
-                    Report an Issue
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
+    ?>
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
@@ -57,9 +34,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                     My Profile
                 </div>
             </div>
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>
+            
         </div>
 
         <?php
@@ -71,7 +46,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         <div class="profile-container-image">
             <div class="profile-container-content">
 
-                    <img class="profile-img" src="\ezolar\public\img\profile.png" alt="profile">
+                    <img class="profile-img" src="/ezolar/public/img/user-pics/'.$row->profilePhoto.'" alt="profile">
 <br>
                 <div class="profile-container-txt">
                     <div class="profile-container-txt-name">
@@ -95,7 +70,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                                 Email :
                             </div>
                             <input class="form-item-input" name="name" id="name" type="text" placeholder="' . $mail . '" readonly>
-                        </div><br>
+                        </div>
 
                         <div class="form-item-container">
                             <div class="form-item-text">

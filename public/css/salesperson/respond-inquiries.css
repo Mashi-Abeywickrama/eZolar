@@ -6,22 +6,27 @@
     margin-top: 10px;
 }
 
-.forms{
+/* .box2{
+    color: #ffffff;
+    background-color: #0b2f64;
+} */
+
+/* .forms{
     overflow-y: scroll ;
-}
+} */
 .form-background{
     display: inline-flex;
-    background: #D9D9D9;
-    width: 70%;
-    max-width: 900px;
+    background: #FFFFFF;
+    width: 100%;
+    /* max-width: 900px; */
     min-width: 700px;
-    height: 55%;
-    min-height: 300px;
+    height: 24%;
+    /* min-height: 200px; */
     justify-content: center;
-    overflow-y: scroll;
-    overflow-x: auto;
+    /* overflow-y: scroll;
+    overflow-x: auto; */
     border-radius: 10px;
-    /* margin-top: -50px; */
+    margin-top: 1rem;
 }
 
 .respond-form-background{
@@ -78,6 +83,7 @@
     min-height: 25px;
     border-color: #0B2F64;
     border-width: 1.5px;
+    background-color: #D9D9D9;
 }
 .form-item-input:hover{
     border-color: #2C61A3;
@@ -159,4 +165,67 @@
     background: #0B2F64;
     transition-duration: 200ms;
     color: #FFFFFF;
+}
+
+/*CSS for chat system*/
+
+.message-container{
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* border: #0000cc 2px solid; */
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: #FFFFFF;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.sender-container{
+    text-align: right;
+}
+
+.receiver-container{
+    text-align: left;
+}
+
+.sending-message{
+    background-color: lightblue;
+    word-wrap: break-word;
+    display: inline-block;
+    padding: 5px;
+    border-radius:5px;
+    max-width: 70%;
+}
+.incoming-message{
+    background-color: yellow;
+    word-wrap: break-word;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.insert-message {
+    height: 40px;
+    width: 84%;
+    border-radius: 10px;
+}
+
+.send-message-btn{
+    background-color: #2C61A3;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 20px;
+    width: 15%;
+    font-style: normal;
+    height: 40px;
+}
+.model-footer{
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

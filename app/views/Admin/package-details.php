@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -15,42 +13,39 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
-    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <title>My Projects</title>
 </head>
 <body>
 
-<div class="sidebar">
-        <div class="sidebar-heading">
-            <b>Admin Dashboard</b>
-        </div>
-        <div class="sidebar-link-container-group">
-            <div class="sidebar-link-container-top">
-                <a href="/ezolar/Employee"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Admin Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
-                <a href=/ezolar/Package>
-                    <div class="sidebar-link-container-selected">
-                        Packages
-                    </div>
-                </a>
-                <a href=/ezolar/Product>
-                    <div class="sidebar-link-container">
-                        Products
-                    </div>
-                </a>
-                <div class="sidebar-link-container">
-                    Reports 
-                </div>
-            </div>
+            <a href="<?=URLROOT?>/Package"><div class="box2" style="color: #ffffff;background-color: #0b2f64;">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            
 
-            <div class="sidebar-link-container-bottom">
-                <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div>
-                <div class="sidebar-link-container">
-                    Settings
-                </div>
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
+                Settings
+            </div></a>
             </div>
         </div>
     </div>
@@ -124,7 +119,7 @@
             <div class="form-inline">
                 <div class="form-table-container">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text"> Product Name</span> <span class="form-table-header-text"> Price per item</span> <span class="form-table-header-text"> Quantity</span>
+                        <span class="form-table-header-text pack-content-col1"> Product Name</span> <span class="form-table-header-text pack-content-col2"> Price per item</span> <span class="form-table-header-text pack-content-col3"> Quantity</span>
                     </div>
                     <div class="form-table-body-container">
                                                 <?php
@@ -137,9 +132,9 @@
                                 $styleClass = 'form-table-row-container';
                             };
                             echo '<div class="'.$styleClass.'">
-                            <span class="form-table-row-text">'.$product -> productName.'</span> 
-                            <span class="form-table-row-text">'.$product -> cost.'</span> 
-                            <span class="form-table-row-text">'.$product -> productQuantity.'</span>
+                            <span class="form-table-row-text pack-content-col1">'.$product -> productName.'</span> 
+                            <span class="form-table-row-text pack-content-col2">'.$product -> cost.'</span> 
+                            <span class="form-table-row-text pack-content-col3">'.$product -> productQuantity.'</span>
                             </div>';
                             $counter = ($counter+1)%2;
                         }
@@ -153,11 +148,18 @@
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Info</button></a>
                 <a href="/ezolar/Package/editPackageContentPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Content</button></a>
-                <button class="form-submit-btn">Delete Package</button>
+                <a href="/ezolar/Package/removePackage/<?php $row = $_SESSION['row'];
+                    echo $row -> packageID;?>"><button class="form-submit-btn">Delete Package</button></a>
             </div>
         
             </div>
         </div>
     </div>
+    </div>
+<div class = "f">
+<?php
+$this->view('Includes/footer', $data);
+?>
+</div>
 </body>
 </html>

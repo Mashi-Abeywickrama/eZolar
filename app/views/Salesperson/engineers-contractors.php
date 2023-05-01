@@ -1,8 +1,7 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+// require_once(__ROOT__.'\app\views\Includes\header.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -18,45 +17,45 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 </head>
 <body>
 
-<div class="sidebar">
-    <div class="sidebar-heading">
-        <b>Salesperson Dashboard</b>
-    </div>
-    <div class="sidebar-link-container-group">
-        <div class="sidebar-link-container-top">
-            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
+<div class="body-container">
+    <div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Salesperson Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <a href="/ezolar/Inquiry/viewSalesperson">
-                <div class="sidebar-link-container">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
                     Inquiries
-                </div>
-            </a>
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
-            </div>
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
-            <div class="sidebar-link-container-selected">
-                Engineers & Contractors
-            </div>
-        </div>
+            </div></a>
+            
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
+            Engineers & Contractors
+            </div></a>
 
-        <div class="sidebar-link-container-bottom">
-            <a href="/ezolar/AdminViewProfile"><div class="sidebar-link-container">
-                    Profile
-                </div></a>
-            <div class="sidebar-link-container">
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
                 Settings
+            </div></a>
             </div>
         </div>
     </div>
-</div>
 <div class="common-main-container">
     <div class="dashboard-common-main-topic">
         <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
+            <a href="ezolar" “text-decoration: none”>
                 <img src="\ezolar\public\img\admin\employees.png" alt="employee-icon">
             </a>
         </div>
@@ -79,7 +78,7 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
             </div>
         </a>
 
-        <a href="/ezolar/Employee/contractors">
+        <a href="/ezolar/Employee/getEmployees/contractor">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Contractors
@@ -89,6 +88,12 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 
     </div>
+</div>
+</div>
+<div class="f">
+    <?php
+        require_once(__ROOT__.'\app\views\Includes\footer.php');
+    ?>
 </div>
 </body>
 </html>

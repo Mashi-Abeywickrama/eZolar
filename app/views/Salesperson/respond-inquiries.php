@@ -1,8 +1,9 @@
 <?php
 //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-require_once(__ROOT__.'\app\views\Includes\header.php');
-require_once(__ROOT__.'\app\views\Includes\navbar.php');
-require_once(__ROOT__.'\app\views\Includes\footer.php');
+//    require_once(__ROOT__.'/app/views/Includes/header.php');
+//    require_once(__ROOT__.'/app/views/Includes/navbar.php');
+//    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,43 +17,43 @@ require_once(__ROOT__.'\app\views\Includes\footer.php');
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\respond-inquiries.css">
     <title>My Projects</title>
 </head>
-<body>
+<div>
 
-<div class="sidebar">
-    <div class="sidebar-heading">
-        <b>Salesperson Dashboard</b>
-    </div>
-    <div class="sidebar-link-container-group">
-        <div class="sidebar-link-container-top">
-            <a href="/ezolar/Project/SalespersonAssignedProjects"><div class="sidebar-link-container">
+<div class="body-container">
+<div class="left-panel">
+        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
+            Salesperson Dashboard
+        </div></a>
+        <div class="rest">
+            <div class="rest-top">
+            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
                     Assigned Projects
                 </div></a>
-            <div class="sidebar-link-container-selected">
-                Inquiries
-            </div>
-            <div class="sidebar-link-container">
+            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
+                    Inquiries
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
                 Inspection Schedule
-            </div>
-            <div class="sidebar-link-container">
+            </div></a>
+            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
                 Delivery Schedule
-            </div>
-            <a href="/ezolar/Employee/EngineersAndContractors">
-                <div class="sidebar-link-container">
-                    Engineers & Contractors
-                </div>
-            </a>
-        </div>
+            </div></a>
+            
+            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
+            Engineers & Contractors
+            </div></a>
 
-        <div class="sidebar-link-container-bottom">
-            <a href=""><div class="sidebar-link-container">
-                    Profile
-                </div></a>
-            <div class="sidebar-link-container">
+        </div>
+        <div class="rest-bottom">
+            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+                Profile
+            </div></a>
+            <a href="<?=URLROOT?>/"><div class="box6">
                 Settings
+            </div></a>
             </div>
         </div>
     </div>
-</div>
 
 <div class="common-main-container">
     <div class="dashboard-common-heading-and-background-container">
@@ -104,53 +105,74 @@ foreach($results as $row){
                         <input class="form-item-input" name="" id="" type="text" value="' . $row -> topic . '" readonly>
                     </div>
                 </div>
-                <div class="form-inline">
-                    <div class="form-item-container">
-                        <div class="form-item-text">
-                            Message
-                        </div>
-                        <textarea class="form-item-input" name="" id="" rows="5" cols="50"  readonly>' . $row -> message . '</textarea>
-                    </div>
-                </div>
             </form>
 
         </div>
-        <div class="respond-form-background">
-            <form class="form-container" action="/ezolar/Inquiry/respondInquiry/' . $row -> inquiryID . '" method="POST">
-                <div class="form-inline">
-                    <div class="form-item-container">
-                        <div class="form-item-text">
-                            Response
-                        </div>
-                        <textarea class="form-item-input" name="response" id="response" rows="5" cols="50"></textarea>
-                    </div>
-                </div>
-    
-                <div class="form-inline-button">
-                    <div class="cancel-btn">
-                        <button class="form-cancel-btn" type="reset" value="reset">Cancel</button>
-                    </div>
-                    <div class="send-btn">
-                        <button type="submit" class="form-send-btn">Send</button>
-                    </div>
-                </div>
-    
-            </form>
+                ';
+}
+?>
+        <div id='message-container' class="message-container">
+
+<!--            --><?php
+//            $results = $_SESSION['rowsNew'];
+//            foreach($results as $row) {
+//                if ($row -> sender == 0){
+//                    echo "<div class='sender-container'>
+//                        <p id='sender' class='sending-message'>
+//                        " . $row -> message . "
+//                        </p>
+//                    </div>";
+//                }else{
+//                    echo "<div class='receiver-container'>
+//                        <p id='receiver' class='incoming-message'>
+//                        " . $row -> message . "
+//                        </p>
+//                    </div>";
+//                }
+//            }
+//            ?>
+
         </div>
+        <form id="message-form-data" class="message-form-data">
+            <div class="model-footer">
+                <textarea id="insert-message" class="insert-message" name="message"></textarea>
+                <button id="send-message" class="send-message-btn" type="submit">Send</button>
+            </div>
+        </form>
         </div>
-
-        ';
-        }
-        ?>
-
-        
-
-
 
     </div>
 </div>
-
+</div>
+<script type="text/javascript" src="\ezolar\public\js\chat.js"></script>
+<div class="f">
+    <?php
+    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    ?>
+</div>
 </body>
+
+
+
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function (){-->
+<!--        $("#send").on("click",function ()){-->
+<!--            $.ajax({-->
+<!--                url:"ChatSystem/insertMessage",-->
+<!--                method:"POST",-->
+<!--                data:{-->
+<!--                    message:$("#message").value()-->
+<!--                },-->
+<!--                dataType:"text",-->
+<!--                success:function (data){-->
+<!--                    $("#message").value("");-->
+<!--                }-->
+<!--            })-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
 </html>
+
 
 

@@ -1,4 +1,4 @@
-<?php
+  <?php
   class InquiryModel {
     private $db;
 
@@ -9,14 +9,22 @@
     public function addInquiry($data){
       // $userid  =($this->db->single());
       
-      $this->db->query('INSERT INTO inquiry(`customerID`,`topic`, `type`,`message`) VALUES (:customerID,:topic,:type,:message) ');
+      $this->db->query('INSERT INTO inquiry(`customerID`,`topic`, `type`) VALUES (:customerID,:topic,:type) ');
 
       // $this->db->execute();
-      if($this->db->execute(['customerID' => $data[0], 'topic' => $data[1],'type' => $data[2],'message' => $data[3]])){
-        header('Location:/ezolar/inquiry');
+      if($this->db->execute(['customerID' => $data[0], 'topic' => $data[1],'type' => $data[2]])){
+        $this->db->query('SELECT last_insert_id() AS inqid');
+        // print_r($inq_id);die();
+        $res = $this->db->single([]);
+        $inq_id = $res -> inqid;
+       
+        $this->db->query('INSERT INTO inquiry_message(`Inquiry_inquiryID`,`messageID`, `sender`,`message`) VALUES (:Inquiry_inquiryID,:messageID,:sender,:message) ');
+        if($this->db->execute(['Inquiry_inquiryID' => $inq_id, 'messageID' => 1,'sender' => 1,'message' => $data[3]])){
+            return true;
+        }
         // print_r("working");
         // die();
-        return true;
+       
     } else {
         return false;
     }
@@ -36,7 +44,7 @@
     }
 
     public function viewMore($id){
-      $this->db->query('SELECT * FROM inquiry WHERE  inquiryID = :inquiryID');
+      $this->db->query('SELECT * FROM inquiry INNER JOIN employee ON employee.empID = inquiry.Salesperson_Employee_empID WHERE inquiryID = :inquiryID');
 
       // print_r($this->db->resultSet());die;
       $row = $this->db->resultSet(['inquiryID' => $id]);
@@ -45,12 +53,20 @@
     }
 
         // * * * * salesperson functions * * * *
-     // TODO -> CHECK IS ALL INQUIRIES SHOWS TO ALL THE SALESPERSONS
 
-    public function getSalespersonInquiries(){
-    $this->db->query('SELECT * FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID ORDER BY inquiryID');
-    $row = $this->db->resultSet([]);
-    return $row;
+      public function getUserID($email){
+          $this->db->query('SELECT UserID FROM user where email = :email');
+          $row = $this->db->single(['email' => $email[0]]);
+          return ($row -> UserID);
+      }
+     // INQUIRIES SHOWS TO ASSIGNED SALESPERSON
+
+    public function getSalespersonInquiries($userID){
+      $this->db->query('SELECT *,MAX(inquiry_message.time) as date FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID 
+      INNER JOIN inquiry_message ON inquiry.inquiryID = inquiry_message.Inquiry_inquiryID 
+      WHERE Salesperson_Employee_empID=:userID GROUP by inquiry.inquiryID ORDER BY date DESC');
+      $row = $this->db->resultSet(['userID' => $userID]);
+      return $row;
   }
 
   public function viewInquiries($inquiryID){
@@ -63,6 +79,14 @@
        $row = $this->db->resultSet(['response' => $data[0],'inquiryID'=>$inquiryID]);
        return $row;
       }
+
+  public function getSalespersonNewInquiries($userID){
+    $this->db->query('SELECT *
+    FROM inquiry INNER JOIN customer ON customer.customerID = inquiry.customerID WHERE inquiry.Salesperson_Employee_empID = :userID
+    AND NOT EXISTS (SELECT inquiry_message.inquiry_inquiryID FROM inquiry_message WHERE inquiry.inquiryID = inquiry_message.Inquiry_inquiryID)');
+    $row = $this->db->resultSet(['userID' => $userID]);
+    return $row;
+  }    
 
 
   }

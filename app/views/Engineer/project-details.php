@@ -110,9 +110,7 @@
                         {
                             echo '<div class="project-details-btns-container"><a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>
                             <a href="/ezolar/EngineerProject/projectModifyPackPage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Modify Package</div></a>';
-                            if ($_SESSION['row']->status == 'C1'){
-                                echo '<a href="/ezolar/EngineerProject/confirmPackage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Confirm Package</div></a>';
-                            }
+                            echo '<a href="/ezolar/EngineerProject/confirmPackage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Confirm Package</div></a>';
                             echo '</div>';
                         }
                         
