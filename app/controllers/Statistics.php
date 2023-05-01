@@ -23,11 +23,13 @@ class Statistics extends Controller
         }
 
         $data = $this->StatisticsModel->salesPerMonth();
+        $previousData = $this->StatisticsModel->salesPerMonthPreviousYear();
         $data1 = $this->StatisticsModel->packageSales();
         $inspection = $this->StatisticsModel->inspectionPerMonth();
         $delivery = $this->StatisticsModel->deliveriesPerMonth();
         $labels = array('January','February','March','April','May','June','July','August','September','October','November','December');
         $_SESSION['data'] = $data;
+        $_SESSION['previous-data'] = $previousData;
         $_SESSION['labels'] = $labels;
         $_SESSION['packages-sold'] = $data1;
         $_SESSION['inspection'] = $inspection;

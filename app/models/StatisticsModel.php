@@ -13,7 +13,17 @@ class StatisticsModel
     public function salesPerMonth(){
         $year = date('Y');
         $this->db->query("SELECT COUNT(*) AS count, DATE_FORMAT(date, '%M') AS month
-                            FROM scheduleitem WHERE YEAR(date) = $year
+                            FROM scheduleitem WHERE YEAR(date) = $year AND type='Delivery'
+                            GROUP BY MONTH(date)");
+        $row = $this->db->resultSet([]);
+        return $row;
+    }
+
+    public function salesPerMonthPreviousYear(){
+        $year = date('Y');
+        $previous_year = $year -1;
+        $this->db->query("SELECT COUNT(*) AS count, DATE_FORMAT(date, '%M') AS month
+                            FROM scheduleitem WHERE YEAR(date) = $previous_year AND type='Delivery'
                             GROUP BY MONTH(date)");
         $row = $this->db->resultSet([]);
         return $row;
