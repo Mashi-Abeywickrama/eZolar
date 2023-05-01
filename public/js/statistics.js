@@ -2,6 +2,7 @@ var salesChart = document.getElementById('salesPerMonthChart').getContext('2d');
 var packageChart = document.getElementById('packagesSoldChart').getContext('2d');
 var scheduleChart = document.getElementById('SchedulesPerMonthChart').getContext('2d');
 var salesData = JSON.parse(document.currentScript.getAttribute('data-data'));
+var PreviousSalesData = JSON.parse(document.currentScript.getAttribute('data-previous'));
 var packageData = JSON.parse(document.currentScript.getAttribute('data-packages'));
 var inspectionData = JSON.parse(document.currentScript.getAttribute('data-inspection'));
 var deliveryData = JSON.parse(document.currentScript.getAttribute('data-delivery'));
@@ -13,8 +14,6 @@ var data = [];
 console.log("sales : " + salesData);
 for (var i = 0; i < 12; i++) {
     var month = (new Date(2000, i)).toLocaleString('default', { month: 'long' });
-    // var month = labels[i]
-    // var monthLabel = labels[i].toLocaleString('default', { month: 'short' });
     console.log(labels)
     var sales = 0;
 
@@ -29,17 +28,87 @@ for (var i = 0; i < 12; i++) {
     data.push(sales);
 }
 
-var salesPerMonth = new Chart(salesChart, {
-    type: 'bar',
+var labelsPrev = [];
+var dataPrev = [];
+console.log("sales : " + PreviousSalesData);
+for (var i = 0; i < 12; i++) {
+    var month = (new Date(2000, i)).toLocaleString('default', { month: 'long' });
+    // var month = labels[i]
+    // var monthLabel = labels[i].toLocaleString('default', { month: 'short' });
+    console.log(labels)
+    var sales = 0;
+
+    for (var j = 0; j < PreviousSalesData.length; j++) {
+        if (PreviousSalesData[j].month === month) {
+            sales = PreviousSalesData[j].count;
+            break;
+        }
+    }
+
+    labelsPrev.push(month);
+    dataPrev.push(sales);
+}
+
+
+// var salesPerMonth = new Chart(salesChart, {
+//     type: 'bar',
+//     data: {
+//         labels: labels,
+//         datasets: [{
+//             label: 'Sales per Month',
+//             data: data,
+//             backgroundColor: 'rgba(54, 162, 235, 0.5)',
+//             borderColor: 'rgba(54, 162, 235, 1)',
+//             borderWidth: 1
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 display: true,
+//                 beginAtZero: true,
+//                 suggestedMin:0,
+//                 suggestedMax:10
+//             }
+//         },
+//         plugins: {
+//             subtitle: {
+//                 display: true,
+//                 text: 'Sales Per Month',
+//                 font: {
+//                     size: 22 // Change font size here
+//                 },
+//                 color: '#DE8500',
+//                 padding: {
+//                     top: 10,
+//                     bottom: 30
+//                 }
+//             }
+//         }
+
+//     }
+// }
+
+var salesPerMonth = new Chart(salesChart,  {
+    type: 'line',
     data: {
         labels: labels,
         datasets: [{
-            label: 'Sales per Month',
+            label: 'Current Year',
             data: data,
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+            // backgroundColor: 'rgba(54, 162, 235, 0.5)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
-        }]
+        },
+            {
+                label: 'Previous Year',
+                data: dataPrev,
+                // backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }
+        ],
+
     },
     options: {
         scales: {
@@ -64,9 +133,10 @@ var salesPerMonth = new Chart(salesChart, {
                 }
             }
         }
-
     }
-});
+}
+
+);
 
 
 // Pie Chart for packages sold

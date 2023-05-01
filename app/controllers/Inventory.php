@@ -149,7 +149,7 @@
       redirect('Inventory/addStocksPage');
     }
 
-    public function checkreorderlevels(){
+    private function checkreorderlevels(){
       $productList = $this->ProductModel->getAllProducts();
       $alert = FALSE;
       $restockList = [];
@@ -213,6 +213,12 @@
       } catch (Exception $e) {
           echo "Mailer Error: " . $mail->ErrorInfo;
       }
+    }
+
+    public function checkreorderlevelspublic($returnLink){
+      $this->checkreorderlevels();
+      $returnLink = base64_decode($returnLink);
+      redirect($returnLink);
     }
 
     }

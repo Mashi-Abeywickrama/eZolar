@@ -1,6 +1,7 @@
 <?php
 //     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+    // require_once(__ROOT__.'\app\views\Customer\navbar.php');
+    require_once(__ROOT__.'/app/views/Customer/navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +48,6 @@
         </div>
     </div>
 <div class="common-main-container">
-<!--    --><?php //print_r($_SESSION) ;?>
     <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
@@ -99,10 +99,11 @@
 <script type="text/javascript" src="\ezolar\public\js\statistics.js"
         data-labels="<?php echo htmlspecialchars(json_encode($_SESSION['labels'])); ?>"
         data-data="<?php echo htmlspecialchars(json_encode($_SESSION['data'])); ?>"
+        data-previous="<?php echo htmlspecialchars(json_encode($_SESSION['previous-data'])); ?>"
         data-packages="<?php echo htmlspecialchars(json_encode($_SESSION['packages-sold'])); ?>"
         data-inspection="<?php echo htmlspecialchars(json_encode($_SESSION['inspection'])); ?>"
         data-delivery="<?php echo htmlspecialchars(json_encode($_SESSION['delivery'])); ?>">
-<?php unset($_SESSION['labels'],$_SESSION['data'],$_SESSION['packages-sold'],$_SESSION['inspection'],$_SESSION['delivery'])?>
+<?php unset($_SESSION['labels'],$_SESSION['data'],$_SESSION['previous-data'],$_SESSION['packages-sold'],$_SESSION['inspection'],$_SESSION['delivery'])?>
 </script>
 </div>
 <div class = "f">
