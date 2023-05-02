@@ -32,7 +32,7 @@
                 <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container">
                     Packages
                 </div></a>
-                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/Statistics/salesPerMonth"><div class="sidebar-link-container">
                     Reports & Stats
                 </div></a>
             </div>
