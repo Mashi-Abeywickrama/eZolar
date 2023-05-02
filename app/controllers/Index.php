@@ -15,8 +15,9 @@ class Index extends Controller {
       }
      
       // $this->view('Includes/header', $data);
-      $this->view('Customer/navbar', $data);
-      $this->view('Contractor/projectDetails', $data);
+      $this->view('Includes/header', $data);
+        $this->view('Includes/navbar1', $data);
+        $this->view('home', $data);
       // $this->view('home', $data);
     }
     public function home(){
