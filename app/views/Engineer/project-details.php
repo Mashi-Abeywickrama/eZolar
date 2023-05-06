@@ -64,7 +64,7 @@
                     <div class="project-details-basic-container">
                         <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['statusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
-                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                        <p><b>Assigned Salesperson : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
                     </div>
                     <div class="project-details-customer-container">
                         <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>

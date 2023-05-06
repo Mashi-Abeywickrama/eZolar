@@ -29,11 +29,34 @@
 
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
       $rows  = $this->engineerProjectModel-> getAssignedProjects($eng_Id);
-      $_SESSION['rows'] = $rows;
-
-      for ($x=0;$x<count($_SESSION['rows']);$x++){
-        $_SESSION['rows'][$x]->status = $this->getProjectStatusName($_SESSION['rows'][$x]->status);
+      $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
+      foreach ($rows as $project){
+        if (($project->status == "C0")||($project->status == "C0")){
+          $_SESSION['rows']['priority'][] = $project;
+        } else if (($project->status == "F")||($project->status == "G")){
+          $_SESSION['rows']['finished'][] = $project;
+        } else {
+          $_SESSION['rows']['ongoing'][] = $project;
+        }
       }
+
+      $rows = $this->engineerProjectModel-> getNewAssignedProjects($eng_Id);
+      foreach ($_SESSION['rows'] as $key => $sub_arrays){
+        foreach ($sub_arrays as $index=>$project){
+          foreach($rows as $newindex=>$newproject){
+            if ($project->projectID == $newproject->projectID){
+              unset($rows[$newindex]);
+            }
+          }
+        }
+      }
+      $_SESSION['rows']['priority'] = array_merge($rows,$_SESSION['rows']['priority']);
+      foreach ($_SESSION['rows'] as $key => $sub_arrays){
+        foreach ($sub_arrays as $index=>$project){
+          $_SESSION['rows'][$key][$index]->status = $this->getProjectStatusName($project->status);
+        }
+      }
+
       $data = [
         'title' => 'eZolar Assigned Projects',
       ];
@@ -49,6 +72,8 @@
       $row = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$prjID);
       if ($row->Salesperson_Employee_empID == ''){
         $row->Salesperson_Employee_empID = 'Not Assigned';
+      } else {
+        $row->Salesperson_Employee_empID = $this->engineerProjectModel->getSPname($row->Salesperson_Employee_empID);
       }
       if($this->engineerProjectModel->checkModifiedPackage($prjID)){
         $row->Package_packageID .= ' (Modified)';
