@@ -24,27 +24,25 @@
                 <p>The following is the approximate cost of solar panels only. Final cost will depend on site conditions.</p>
             
                 <div class="result">
-                    <div class="investment-div">
-                        <label for="investment">Investment Required:</label>
-                        <div class="line" id="investment">
-
+                        <div class="investment-div">
+                            <label for="investment">Investment Required:</label>
+                            <div class="line" id="investment">
+                            </div>
+                        </div>
+                        <div class="investment-div">
+                            <label for="power">Solar Power:</label>
+                            <div class="line" id="line">
+                                
+                            </div>
                         </div>
                     </div>
-                    <div class="investment-div">
-                        <label for="power">Solar Power:</label>
-                        <div class="line">
-20
-                        </div>
-                    </div>
-                </div>
-            
-
-            <script>
-              function checkInvestment(amount){
-                  console.log(amount);
-                  document.getElementById('investment').value ="LKR "+amount*2112;
-              }
-            </script>
+                    <script>
+                    function checkInvestment(amount){
+                        console.log(amount);
+                        document.getElementById('investment').innerText ="LKR "+amount*2112;
+                        document.getElementById('line').innerText =(amount * (5/600)).toFixed(2) + "kWh";
+                    }
+                    </script>
 
         </div>
     </form>

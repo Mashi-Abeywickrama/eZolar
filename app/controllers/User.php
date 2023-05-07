@@ -4,6 +4,7 @@
 class User extends Controller {
     public function __construct(){
       $this->ContractorModel = $this->model('ContractorModel');
+      $this->projectModel = $this->model('ProjectModel');
       $this->userModel = $this->model('UserModel');
       
     }
@@ -44,14 +45,27 @@ class User extends Controller {
         }elseif ($this->userModel->getUserRole($_SESSION['user_email']) == "Salesperson"){
             $this->view('Salesperson/dashboard', $title);
         }else{
-          $con_id = $this->ContractorModel->getUserID([$_SESSION['user_email']]);
+          $cus_id = $this->projectModel->getUserID([$_SESSION['user_email']]);
 
           $date = getdate();
           $_SESSION['row'] = $date;
     
-          $schedule_items = $this->ContractorModel->getScheduleItems($con_id,$date['mon'],$date['year']);
+          $schedule_items = $this->projectModel->getScheduleItems($cus_id,$date['mon'],$date['year']);
+
           $_SESSION['rows'] = $schedule_items;
-          $this->view('Customer/dashboard', $title);
+
+          $completed = count($this->projectModel->getCompletedProjects($cus_id));
+          $ongoing = count($this->projectModel->getAllProjects($cus_id));
+          $cancelled = count($this->projectModel->getCancelledProjects($cus_id));
+          // print_r($ongoing);die;
+          $data = [
+            'title' => $title,
+            "ongoing" => $ongoing,
+            'completed' => $completed,
+            'cancelled' => $cancelled,
+          ];
+          // print_r($data);die;
+          $this->view('Customer/dashboard', $data);
         }
       }
 
@@ -66,19 +80,23 @@ class User extends Controller {
         redirect('login');
       }
 
-      $con_id = $this->ContractorModel->getUserID([$_SESSION['user_email']]);
+      $cus_id = $this->projectModel->getUserID([$_SESSION['user_email']]);
 
       $date['year'] = $year ;
       $date['mon'] = $month ;
       
       $_SESSION['row'] = $date;
 
-      $schedule_items = $this->ContractorModel->getScheduleItems($con_id,$date['mon'],$date['year']);
+      $schedule_items = $this->projectModel->getScheduleItems($cus_id,$date['mon'],$date['year']);
       $_SESSION['rows'] = $schedule_items;
+      $completed = count($this->projectModel->getCompletedProjects($cus_id));
+          $ongoing = count($this->projectModel->getAllProjects($cus_id));
+          $cancelled = count($this->projectModel->getCancelledProjects($cus_id));
       if (isset($_GET['project_id'])) {
         $project = $this->projectModel->getProjectDetailsCustomer($_GET['project_id']);
         $salesperson = $this->projectModel->getSalesPersonDetails($_GET['project_id']);
         $schedule = $this->projectModel->getdSchedule($_GET['project_id']);
+        
         // print_r($salesperson);die();
         $engineer = $this->projectModel->getEngineer($_GET['project_id']);
         $data = [
@@ -86,15 +104,19 @@ class User extends Controller {
           'project' => $project,
           'schedule' => $schedule,
           'salesperson' => $salesperson,
-          'engineer' => $engineer
+          'engineer' => $engineer,
+         
   
         ];
       }else{
       $data = [
+         "ongoing" => $ongoing,
+            'completed' => $completed,
+            'cancelled' => $cancelled,
         'title' => 'eZolar My Schedule',
       ];
     }
-      $this->view('contractor/schedule', $data);
+      $this->view('Customer/dashboard', $data);
     }
     // public function customer_dashboard(){
     //   if(!isLoggedIn()){

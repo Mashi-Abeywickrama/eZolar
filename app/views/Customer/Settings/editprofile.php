@@ -55,16 +55,16 @@ foreach($results as $row){
         <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">
                 <div class="form-item-container">
-                    <div class="form-item-text">
+                    <div class="form-item-text" id ="name-label">
                         Name :
                     </div>
-                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '">
+                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '" required>
                 </div>
                 <div class="form-item-container">
-                    <div class="form-item-text">
+                    <div class="form-item-text" id="email-label">
                         Email :
                     </div>
-                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '">
+                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '" required>
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -76,7 +76,7 @@ foreach($results as $row){
                     <div class="form-item-text">
                         Contact Number :
                     </div>
-                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '">
+                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '" required>
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -109,7 +109,7 @@ foreach($results as $row){
                     <button class="form-cancel-btn" type="reset" value="reset" onclick="clearErrorMessage()">Cancel</button>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" name="sub" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
+                    <button type="submit" name="sub" id="submitbtn" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
                 </div>
             </div>
             

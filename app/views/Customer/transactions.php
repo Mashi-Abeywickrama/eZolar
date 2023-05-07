@@ -46,7 +46,7 @@
                         <span class="transaction-text-container">
                             <div class="transaction-text-container-inner">
                                 <div class="transaction-text-no">Project ID: ' .  $row -> Project_projectID . '</div>
-                                <div class="transaction-text-name"><b>Transaction No : ' . $row -> receiptID . '</b></div>
+                                <div class="transaction-text-name">Transaction Purpose : ' . $row -> receiptPurpose . '</div>
                                 <div class="transaction-text-no">Verification: ' .  $row -> isVerified . '</div>
                             </div>
                         </span>

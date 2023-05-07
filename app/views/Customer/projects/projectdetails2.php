@@ -96,17 +96,35 @@
                 </div>
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
-                    <span id="request-received" class="project-details-steps-text">Date Selection</span>
+                        <span id="request-received" class="project-details-steps-text">Inspection Dates Requested</span>
+                        <span class="project-details-steps-text-new" > We recieved your booking.</span>
                         <span id="salesperson-assignment" class="project-details-steps-text">Date Confirmation</span>
-                        <?php
-                             if ($data['schedule'][0]->isConfirmed != 2) {
-                                echo  '';
-                            } else {
-                                echo ' <p> Dates Not Available. Please Schedule Again.</p>';
-                            }
-                         ?>
-                        <span id="payment-verify" class="project-details-steps-text">Engineer Assignment
-                        <span class="project-details-steps-text" ></span>
+                        <span class="project-details-steps-text-new" >
+                            <?php
+                                 if ($data['schedule'][0]->isConfirmed == 1) {
+                                    echo  "Inspection on: " .$data['schedule'][0]->date . "";
+                                }elseif ($data['schedule'][0]->isConfirmed == 2){
+                                    echo "Dates not available. Please reschedule dates";
+                                } 
+                                else {
+                                    echo ' <p> Please wait till we confirm the dates</p>';
+                                }
+                            ?>
+                        </span>
+                        <span id="payment-verify" class="project-details-steps-text">Engineer for the Project</span>
+                        <span class="project-details-steps-text-new" >
+                            <?php
+                                if(($data['project'][0]->status) == "B0"){
+                                    echo" Please wait.. We will assign an engineer soon";
+                                }
+                                elseif ($data['schedule'][0]->isConfirmed != 1 || $data['engineer'][0]->name == NULL) {
+                                    echo ' <p> Pending confirmation</p>';
+                                }
+                                else if($data['schedule'][0]->isConfirmed == 1 & $data['engineer'][0]->name != NULL) {
+                                    echo 'Your Engineer is: '. $data['engineer'][0]->name . '';
+                                }
+                            ?>
+                        </span>
                     </div>
                     <div class="project-details-info-container">
                         <b>Project No:</b> <?php echo $data['project'][0]->projectID ?> <br>
@@ -425,8 +443,8 @@
             document.getElementById('circle-5').style.backgroundColor = "#DE8500";
 
             
-            document.getElementById('c5-link').removeAttribute("href"); 
-            document.getElementById('c5-link').style.cursor="default";
+            // document.getElementById('c5-link').removeAttribute("href"); 
+            // document.getElementById('c5-link').style.cursor="default";
 
 
             
@@ -434,7 +452,39 @@
 
         </script>
 
-<?php } ?>
+<?php } if (($data['project'][0]->status) == "Z0" ) { ?>
+         <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+            document.getElementById("payment-verify").style.color = "#DE8500";
+            document.getElementById("payment-verify").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+            document.getElementById('add-schedule-btn').style.display = "none";
+
+            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+
+            
+            // document.getElementById('c5-link').removeAttribute("href"); 
+            // document.getElementById('c5-link').style.cursor="default";
+
+
+            
+
+
+        </script>
+    <?php } ?>
 
 <div class = "f">
     <?php 

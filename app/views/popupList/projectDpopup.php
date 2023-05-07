@@ -85,7 +85,7 @@
             </a>
             <?php } ?>
                 
-                <a href='/ezolar/project/COntractorAssignedProjects' class="btn-a">
+                <a href='/ezolar/project/COntractorAssignedProjects' class="btn-a" style="color:white" >
                     Ok
             </a>    
             </div>          

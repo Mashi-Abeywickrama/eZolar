@@ -88,7 +88,11 @@
     margin: 5px;
     font-size: 16px;
 }
-
+.transaction-text-name{
+    font-weight: bolder;
+    font-size: large;
+    color: #DE8500;
+}
 
 
 /* transaction details page */
@@ -163,5 +167,9 @@ a{
     color: #0B2F64;
 }
 
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+  }
 
 

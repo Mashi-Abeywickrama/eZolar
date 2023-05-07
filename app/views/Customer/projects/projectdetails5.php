@@ -80,7 +80,24 @@
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
                         <span class="project-details-steps-text-colored">Awaiting Installation</span>
-
+                        <span class="project-details-steps-text-new">
+                        <?php
+                            if ($data['dschedule'][0]->isCompleted == 1) {
+                                echo 'Project completion date: ' .$data['dschedule'][0]->date. '';
+                            }
+                        ?>
+                        </span>
+                        <span class="project-details-steps-text-new" id="extra">
+                            Our contractor will contact you soon..
+                        </span>
+                        <?php if(($data['project'][0]->status) == "Z0"){?>
+                            <script>
+                                document.getElementById("extra").style.color = "green";
+                                document.getElementById("extra").style.fontSize = "20px";
+                                document.getElementById("extra").innerHTML = "Project Completed";
+                            </script>
+                        <?php }
+                        ?>
                     </div>
                     <div class="project-details-info-container">
                         <b>Project No:</b> 123556 <br>

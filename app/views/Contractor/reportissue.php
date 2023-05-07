@@ -47,10 +47,10 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
  
         </div>
         <div class="right-content">
-            <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
+            <form name="Inquiry Form" action="/ezolar/Contractor/newIssue" method="POST">
                 <div class="topic-container">
                     Topic:<span class="star">*</span><span class="err-box" id="topic-err"></span></br>
-                    <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
+                    <input class="topic-box" name="topic-box" id="topic-box" type="text" required onkeyup="validateTopic()">
                 </div>
                 <div class="type-id-container">
                     <div class="type-container">
@@ -62,17 +62,25 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                         </select> 
                     </div>
                     <div class="id-container">
-                            Project ID:</br>
-                        <input class="id-box" name="id-box" id="id-box" type="text">
+                            Project ID:<span class="star">*</span><span class="err-box" id="select-err"></span></br>
+                            <select class="form-item-input-dropdown" name="project-id" id="project-id" onclick="ValidateSelect()" required>
+                                <option value="NULL"> </option>
+                                <?php
+                                $results = $_SESSION['rows'];
+                                foreach($results as $row){
+                                    echo '<option value="'.$row -> projectID.'">'.$row -> projectID.'</option>';
+                                }
+                                ?>
+                            </select>
                     </div>
                 </div>
                 <div class="msg-container">
                     Message:<span class="star">*</span><span class="err-box" id="msg-err"></span></br>
-                    <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
+                    <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required onkeyup="validateMessage()"></textarea>
                 </div>
                 <div class="inquiry-btns">
                 <!-- <button class="clearbtn">Clear</button> -->
-                    <button class="sendbtn" type="submit" id="inq-submit">Send</button>
+                    <button class="sendbtn" type="submit" id="inq-submit" onclick="validateForm()">Send</button>
                 </div>
             </form>
         </div>
@@ -83,6 +91,53 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
           $this->view('Includes/footer', $data);
     ?>
 </div>
-    <script src="public\js\validation.js"></script>
+    <script>
+        function validateTopic(){
+            var topic = document.getElementById('topic-box').value;
+            if(topic.length<1){
+                document.getElementById("topic-err").innerHTML='Topic cannot be blank';
+                return false;
+            }
+            else{
+                document.getElementById("topic-err").innerHTML='';
+                return true;
+            }
+        }   
+
+        function validateMessage(){
+            var message = document.getElementById('msg-box').value;
+            if(message.length<1){
+                document.getElementById("msg-err").innerHTML='Message cannot be blank';
+                return false;
+            }
+            else{
+                document.getElementById("msg-err").innerHTML = "";
+                return true;
+            }
+        }
+        function ValidateSelect() {
+            var ddlFruits = document.getElementById("project-id");
+            if (ddlFruits.value == "NULL") {
+                document.getElementById("select-err").innerHTML='Select Project';
+                return false;
+            }
+            else{
+                document.getElementById("select-err").innerHTML='';
+                return true;
+            }
+        }
+
+        function validateForm(){
+            if(!validateTopic() || !validateMessage() || !ValidateSelect()){
+                document.getElementById("inq-submit").style.backgroundColor = "grey";
+                document.querySelector("inq-submit").disabled = true;
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
+
 </body>
 </html>

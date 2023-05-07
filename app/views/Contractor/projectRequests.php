@@ -38,7 +38,7 @@
             <a class="sub-topic" href="<?=URLROOT?>/Contractor/projectrequests" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
             Project Requests
             </div></a>
-            <a class="sub-topic" href="<?=URLROOT?>/Contractor/ongoingprojects"><div class = "project-sub-topic">
+            <a class="sub-topic" href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class = "project-sub-topic">
             Accepted Projects
             </div></a>
             <a class="sub-topic" href="<?=URLROOT?>/Contractor/completedprojects"><div class = "project-sub-topic">
@@ -48,7 +48,7 @@
         </div>
         <div class="body-list-container">
         <?php
-            $results = $_SESSION['rows'];
+            $results = $data['project'];
             foreach($results as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
@@ -59,9 +59,9 @@
                             </div>
                         </span>
                         <span class="project-details-btn-container">
-                            <div class="project-details-btn">
+                            <a href="./projectDetails/'.$row -> projectID .'" class="project-details-btn">
                                 <span class="project-details-btn-text">More info</span>
-                            </div>
+                            </a>
                         </span>
                         
                     </div>';

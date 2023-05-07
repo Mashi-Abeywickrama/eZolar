@@ -1,6 +1,6 @@
 <?php
-     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\views\Customer\navbar.php');
+    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +18,9 @@
 <body>
 <?php
 
-    require_once(__ROOT__ . '\views\popupList\packagepopup.php');
-    require_once(__ROOT__ . '\views\popupList\accept.php');
-    require_once(__ROOT__ . '\views\popupList\reject.php');
+    require_once(__ROOT__ . '\app\views\popupList\contractorPackage.php');
+    require_once(__ROOT__ . '\app\views\popupList\accept.php');
+    require_once(__ROOT__ . '\app\views\popupList\reject.php');
     // calling popup for VIEW package
     if (isset($_GET['pack'])) {
         // print_r("Shit");
@@ -53,7 +53,7 @@
 ?>
 <div class="body-container">
     <?php
-        require_once(__ROOT__.'\views\Contractor\navigationpanel.php');
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
     ?>
     <div class="common-main-container">
         <div class="dashboard-common-heading-container">
@@ -79,7 +79,7 @@
                             Delivery Location:
                         </div>
                         <div class="d">
-                            Somewhere in Dehiwala
+                            <?php echo $data['project'][0]->siteAddress?>
                         </div>
                     </div>
                     <div class="details-box">
@@ -87,7 +87,7 @@
                             Delivery Date:
                         </div>
                         <div class="d">
-                            29-04-2023
+                             <?php echo $data['schedule'][0]->date?>
                         </div>
                     </div>
                     <div class="details-box">
@@ -95,7 +95,7 @@
                             Assigned Salesperson:
                         </div>
                         <div class="d">
-                            Shinthujen
+                             <?php echo $data['salesperson'][0]->name?>
                         </div>
                     </div>
                     <div class="details-box">
@@ -103,7 +103,7 @@
                             Assigned Engineer:
                         </div>
                         <div class="d">
-                            Little Ghost
+                             <?php echo $data['engineer'][0]->name?>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                             Customer Name:
                         </div>
                         <div class="d">
-                            Mashi
+                            <?php echo $data['cus_details'][0]->name?>
                         </div>
                     </div>
                     <div class="details-box">
@@ -127,7 +127,7 @@
                             Contact Number:
                         </div>
                         <div class="d">
-                            0718712178
+                            <?php echo $data['cus_details'][0]->mobile?>
                         </div>
                     </div>
                     <div class="details-box">
@@ -135,7 +135,7 @@
                             NIC Number:
                         </div>
                         <div class="d">
-                            0718712178
+                            <?php echo $data['cus_details'][0]->nic?>
                         </div>
                     </div>
                 </div>
@@ -148,10 +148,10 @@
         </div>
 
         <div class="buttons">
-            <button class="btn-r" id="btn-r" onclick="document.getElementById('reject').style.display='block'">
+            <button class="btn-r" id="btn-r" onclick="document.getElementById('reject_action').action='../reject_project/<?php echo $data['schedule'][0]->scheduleID ?>/<?php echo $data['project'][0]->projectID ?>';document.getElementById('reject').style.display='block';">
                 Reject
             </button>
-            <button class="btn-a" id="btn-a" onclick="document.getElementById('acc').style.display='block'">
+            <button class="btn-a" id="btn-a" onclick="document.getElementById('accept_action').action='../accept_project/<?php echo $data['schedule'][0]->scheduleID ?>/<?php echo $data['project'][0]->projectID ?>';document.getElementById('acc').style.display='block'">
                 Accept
             </button >
         </div> 
@@ -162,7 +162,7 @@
 </div>
     <div class="f">
         <?php
-            require_once(__ROOT__.'\views\Includes\footer.php');
+            require_once(__ROOT__.'\app\views\Includes\footer.php');
         ?>
     </div>
 </body>

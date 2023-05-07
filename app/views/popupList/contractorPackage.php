@@ -7,7 +7,7 @@
 
 <body>
     <div id="id05" class="modal">
-        <span onclick="location.href=''" class="close" title="Close">×</span>
+        <span onclick="location.href='/ezolar/project/COntractorAssignedProjects'" class="close" title="Close">×</span>
         <form class="modal-content" id="del" action="" method="POST">
 
             <div class="container">
@@ -17,10 +17,9 @@
                         <th>Product ID</th>
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Unit Price</th>
                     </tr>
                     <?php 
-                    $totalCost = 0;
+                    
 
                     foreach ($data['product'] as $row) {
                         echo '
@@ -28,19 +27,15 @@
                             <td>'.$row ->Product_productID.'</td>
                             <td>'.$row ->productName.'</td>
                             <td>'.$row ->productQuantity.'</td>
-                            <td>'.$row ->cost.'</td>
                         </tr>';
-                        $product = ($row ->productQuantity)*($row ->cost);
-                        $totalCost = $totalCost + $product;
                         }
                     ?>
                     
                     
                     
                 </table>
-                <p>Total Cost: Rs.<?php echo $totalCost?></p>
                 <div class="clearfix">
-                    <button type="button" onclick="location.href=''" class="okbtn">OK</button>
+                    <button type="button" onclick="location.href='/ezolar/project/COntractorAssignedProjects'" class="okbtn">OK</button>
                 </div>
             </div>
         </form>
@@ -52,8 +47,7 @@
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
             if (event.target == modal) {
-                modal.style.display = "none";
-                location.href = '';
+                location.href = '/ezolar/project/COntractorAssignedProjects';
             }
         }
     </script>

@@ -125,15 +125,25 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                     <div class="project-details-inline">
                         <div class="project-details-steps-container">
                             <span id="request-received" class="project-details-steps-text">Awaiting Inspection</span>
-                            <span id="salesperson-assignment" class="project-details-steps-text">Package
-                                Confirmation</span>
-                            <?php
-                            if ($data['schedule'][0]->isConfirmed != 2) {
-                                echo '';
-                            } else {
-                                echo ' <p> Dates Not Available. Please Schedule Again.</p>';
-                            }
-                            ?>
+                            <span class="project-details-steps-text-new">
+                                <?php
+                                    if (($data['schedule'][0]->isCompleted) == 0) {
+                                        echo 'Please wait for the inspection';
+                                    } else {
+                                        echo ' Inspection completed';
+                                    }
+                                ?>
+                            </span>
+                            <span id="salesperson-assignment" class="project-details-steps-text">Package Confirmation</span>
+                            <span class="project-details-steps-text-new">
+                                <?php
+                                    if (($data['project'][0]->Package_packageID) == NULL) {
+                                        echo 'Engineer will confirm your package soon';
+                                    } else {
+                                        echo ' Click view package button below to view your solar package. ';
+                                    }
+                                ?>
+                            </span>
                             
                         </div>
                         <div class="project-details-info-container">
@@ -444,8 +454,27 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
 
 <?php
 
-    } ?>
-
+    } elseif (($data['project'][0]->status) == "Z0") { ?>
+        <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+    
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+    
+            document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+    
+            document.getElementById('cancel-project').style.display = "none";
+            document.getElementById('confirm-order-btn').style.display = "none";
+            document.getElementById('add-schedule-btn').style.display = "none";
+    
+    
+    
+        </script>
+    <?php } ?>
     <div class="f">
         <?php
         $this->view('Includes/footer', $data);

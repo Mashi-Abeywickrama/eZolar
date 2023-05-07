@@ -46,9 +46,9 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                 <div class="clandar-header-container">
                     <span class="calendar-header-text"><?php echo $calendar->getMonthName().' '.$calendar->getYear();
                     $nextMonth = $calendar->getNextMonth();
-                    $nextMonthLink = '/ezolar/ContractorSchedule/browse/'.$nextMonth[1].'/'.$nextMonth[0];
+                    $nextMonthLink = '/ezolar/user/browse/'.$nextMonth[1].'/'.$nextMonth[0];
                     $prevMonth = $calendar->getPrevMonth();
-                    $prevMonthLink = '/ezolar/ContractorSchedule/browse/'.$prevMonth[1].'/'.$prevMonth[0];
+                    $prevMonthLink = '/ezolar/user/browse/'.$prevMonth[1].'/'.$prevMonth[0];
                     ?></span>
                     <div class="calendar-month-btn-container">
                         <a href="<?php echo $prevMonthLink?>"><button class="calendar-month-btn"><img src="\ezolar\public\img\engineer\Back.png" alt="Back" class="calendar-month-btn-img"></button></a>
@@ -87,7 +87,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                             } else {
                                 className += ' event-pending';
                             }
-                            var new_event = "<a href=\"/ezolar/Contractor/projectDetailsPage/"+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[2] +" : "+ item[3].toUpperCase() +"</div></a>"; 
+                            var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[2] +" : "+ item[3].toUpperCase() +"</div></a>"; 
                             
                             event_list = event_list + new_event;
                             element.innerHTML = event_list;
@@ -114,7 +114,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                         <div class="investment-div">
                             <label for="power">Solar Power:</label>
                             <div class="line" id="line">
-                                20  
+                                
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                     Ongoing Projects
                 </div>
                 <div class="count">
-                    0
+                    <?= $data['ongoing']?>
                 </div>
             </div>
             <div class="completed">
@@ -142,7 +142,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                     Completed Projects
                 </div>
                 <div class="count">
-                    0
+                    <?= $data['completed']?>
                 </div>
             </div>
             <div class="cancelled">
@@ -150,7 +150,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                     Cancelled Projects
                 </div>
                 <div class="count">
-                    0
+                    <?= $data['cancelled']?>
                 </div>
             </div>
         </div>

@@ -1,0 +1,216 @@
+.box8{
+    color: #ffffff;
+    background-color: #0b2f64;
+}
+a{
+    text-decoration: none;
+    color: #0B2F64;
+}
+
+.avg-ratings {
+    width: 97%;
+    padding-bottom: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+p{
+    padding-left: 5rem;
+}
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+.row{
+    width: 90%;
+    margin-left: 3rem;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
+
+.sample-reviews{
+    margin-top: 2rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.review {
+    width: 98%;
+    margin: 1rem 1rem 0 1rem;
+}
+.review-h{
+    display: flex;
+    flex-direction: row;
+}
+.c-name{
+    font-weight: bolder;
+    min-width: 30%;
+}
+.your-feedback{
+    margin-top: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 97%;
+}
+form{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+.feedback-topic{
+    font-size: 20px;
+    font-weight: bold;
+}
+.u-comment{
+    width: 99.2%;
+    height: 30px;
+    border-radius: 5px;
+}
+.btn-div{
+    display: flex;
+    justify-content: center;
+}
+button{
+    background-color: #2C61A3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+fieldset {
+  border: 0;
+  background: #222;
+  border-radius: 1px;
+  padding: 1em 1.5em 0.9em;
+  margin: 1em auto;
+}
+
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  /* the hidden clearer */
+}
+.star-cb-group * {
+  font-size: 1rem;
+}
+.star-cb-group > input {
+  display: none;
+}
+.star-cb-group > input + label {
+  /* only enough room for the star */
+  display: inline-block;
+  overflow: hidden;
+  text-indent: 9999px;
+  width: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size:32px;
+}
+.star-cb-group > input + label:before {
+  display: inline-block;
+  text-indent: -9999px;
+  content: "☆";
+  color: #000000;
+}
+.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+  content: "★";
+  color: orange;
+  text-shadow: 0 0 1px #000000;
+}
+.star-cb-group > .star-cb-clear + label {
+  text-indent: -9999px;
+  width: .5em;
+  margin-left: -.5em;
+}
+.star-cb-group > .star-cb-clear + label:before {
+  width: .5em;
+}
+.star-cb-group:hover > input + label:before {
+  content: "☆";
+  color: #000000;
+  text-shadow: none;
+}
+.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+  content: "★";
+  color: orange;
+  text-shadow: 0 0 1px #000000;
+}
+

@@ -18,7 +18,7 @@
 <body>
 <?php
 
-require_once(__ROOT__ . '\app\views\popupList\packagepopup.php');
+require_once(__ROOT__ . '\app\views\popupList\contractorPackage.php');
 require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
 // calling popup for VIEW package
 
@@ -46,7 +46,7 @@ require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
             <a class="sub-topic" href="<?=URLROOT?>/contractor/projectrequests"><div class = "project-sub-topic">
             Project Requests
             </div></a>
-            <a class="sub-topic" href="<?=URLROOT?>/contractor/ongoingprojects"style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
+            <a class="sub-topic" href="<?=URLROOT?>/project/COntractorAssignedProjects"style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
             Accepted Projects
             </div></a>
             <a class="sub-topic" href="<?=URLROOT?>/contractor/completedprojects"><div class = "project-sub-topic">
@@ -59,6 +59,8 @@ require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
             <?php
             $results = $_SESSION['rows'];
             foreach($results as $row){
+                // print_r($row);die;
+                if($row->status!="Z0"){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
@@ -76,7 +78,7 @@ require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
                             </div>
                             <?php echo ' </span>
                         
-                    </div>';
+                    </div>';}
             }
             ?>
             

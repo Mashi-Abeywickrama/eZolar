@@ -365,7 +365,7 @@ a{
 .project-details-steps-container{
     display: grid;
     width: 35%;
-    line-height: 2.5;
+    line-height: 1.5;
     padding: 20px;
     font-size: 20px
 }
@@ -414,7 +414,15 @@ a{
     margin-top: 2%;
     /* margin-top: -50px; */
 }
-
+.project-details-steps-text-new{
+    font-size: 14px;
+    color: #2C61A3;
+    display: flex;
+    line-height: 1.1rem;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 
 /* request new project */

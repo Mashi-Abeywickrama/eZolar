@@ -9,7 +9,7 @@
 </html>
 <div id="reject" class="modal">
   <span onclick="location.href=''" class="close" title="Close">×</span>
-  <form class="modal-content" id="del" action="" method="POST">
+  <form class="modal-content" id="reject_action" action="" method="POST">
   
     <div class="container">
       <h1>Ooops!!</h1>

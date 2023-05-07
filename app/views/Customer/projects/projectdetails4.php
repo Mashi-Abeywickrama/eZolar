@@ -87,15 +87,47 @@
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
                         <span id="request-received" class="project-details-steps-text-colored">Awaiting Verification</span>
-                        <?php if (($data['deliverypayment'][0]->isVerified) == 0) { 
-                            echo '<span>Waiting For Verification</span>';
-                         } 
-                         else if (($data['deliverypayment'][0]->isVerified) == 2) {
-                            echo '<span>Payment Rejected. Upload Again</span>';
-                         } ?>
-                        
+                        <span class="project-details-steps-text-new">
+                            <?php
+                                if (($data['deliverypayment'][0]->isVerified) == 0) { 
+                                    echo 'Waiting For Verification';
+                                } 
+                                else if (($data['deliverypayment'][0]->isVerified) == 2) {
+                                    echo 'Payment rejected. Upload the recipt again';
+                                }
+                                else{
+                                    echo'Payment Accepted. <div id="extra">Please schedule dates for inspection.</div>';
+                                }
+                            ?>
+                        </span>
                         <span id="salesperson-assignment" class="project-details-steps-text">Date Selection</span>
+                        <span class="project-details-steps-text-new">
+                            <?php
+                                if (empty($data['dschedule'])){
+                                    echo'';
+                                }
+                                elseif ($data['dschedule'][0]->isConfirmed == 1) {
+                                    echo $data['dschedule'][0]->date;
+                                }
+                                elseif ($data['dschedule'][0]->isConfirmed == 2) {
+                                    echo 'Dates not available. Please reschedule';
+                                }
+                                else{
+                                    echo'We recieved your booking.';
+                                }
+                            ?>
+                        </span>
                         <span id="Contractor-assignment" class="project-details-steps-text">Contractor Confirmation</span>
+                        <span class="project-details-steps-text-new">
+                            <?php
+                                if (empty($data['contractor'])) {
+                                    echo 'Waiting for contractor confirmation ';
+                                }
+                                else{
+                                    echo 'Your project contractor is: ' .$data['contractor'][0]->name . '';
+                                }
+                            ?>
+                        </span>
                     </div>
                     <div class="project-details-info-container">
                             <b>Project No:</b>
@@ -356,6 +388,31 @@ if (($data['project'][0]->status) == "D0") {
 
         document.getElementById('make-payment-btn').style.display = "none";
         document.getElementById('add-schedule-btn').style.display = "none";
+        document.getElementById('extra').style.display = "none";
+
+        document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+        document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+
+
+
+    </script>
+
+    
+
+<?php
+
+    } elseif (($data['project'][0]->status) == "Z0") { ?>
+    <script>
+        document.getElementById("request-received").style.color = "#DE8500";
+        document.getElementById("request-received").style.fontWeight = "900";
+        document.getElementById("salesperson-assignment").style.color = "#DE8500";
+        document.getElementById("salesperson-assignment").style.fontWeight = "900";
+        document.getElementById("Contractor-assignment").style.color = "#DE8500";
+        document.getElementById("Contractor-assignment").style.fontWeight = "900";
+
+        document.getElementById('make-payment-btn').style.display = "none";
+        document.getElementById('add-schedule-btn').style.display = "none";
+        document.getElementById('extra').style.display = "none";
 
         document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
         document.getElementById('circle-5').style.backgroundColor = "#DE8500";

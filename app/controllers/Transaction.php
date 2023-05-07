@@ -8,6 +8,7 @@
     
         // $this->projectModel = new ProductModel();
         $this->transactionModel = $this->model('TransactionModel');
+        $this->projectModel = $this->model('projectModel');
     }
     
     public function index(){
@@ -27,20 +28,26 @@
       $this->view('Customer/transactions', $data);
     }
     public function transactionDetails($id){
-        // print_r($id);die();
-        if(!isLoggedIn()){
-  
-          redirect('login');
-        }
-        $data = [
-          'title' => 'eZolar Transactions',
-        ];
-        $rows = $this->transactionModel->viewMore($id);
-        $_SESSION['rows'] = $rows;
-        $this->view('Customer/transactionDetails', $data);
-        print_r($_SESSION['rows']);die;
-  
-  
+      // print_r($id);die();
+      if(!isLoggedIn()){
+
+        redirect('login');
       }
+      
+      $rows = $this->transactionModel->viewMore($id);
+      // print_r($rows);die;
+      $projectID = $rows[0]->Project_projectID;
+      $product = $this->projectModel->getproduct($projectID);
+      $data = [
+        'title' => 'eZolar Transactions',
+        'transcaction' => $rows,
+        'product' => $product,
+      ];
+      
+      $this->view('Customer/transactionDetails', $data);
+      // print_r($data);die;
+
+
+    }
   }
   ?>

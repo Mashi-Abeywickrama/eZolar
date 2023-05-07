@@ -15,6 +15,13 @@
     <title>My Projects</title>
 </head>
 <body>
+<?php
+
+require_once(__ROOT__ . '\app\views\popupList\contractorPackage.php');
+require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
+// calling popup for VIEW package
+
+?>
 <div class="body-container">
     <?php
         require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
@@ -24,9 +31,9 @@
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
-                    <a href=”#” “text-decoration: none”>
+
                         <img src="\ezolar\public\img\customer\projects.png" alt="project">
-                    </a>
+
                 </div>
                 <div class="common-main-txt">
                     My Projects
@@ -38,7 +45,7 @@
             <a class="sub-topic" href="<?=URLROOT?>/contractor/projectrequests"><div class = "project-sub-topic" >
             Project Requests
             </div></a>
-            <a class="sub-topic" href="<?=URLROOT?>/contractor/ongoingprojects"><div class = "project-sub-topic">
+            <a class="sub-topic" href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class = "project-sub-topic">
             Ongoing Projects
             </div></a>
             <a class="sub-topic" href="<?=URLROOT?>/contractor/completedprojects" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
@@ -48,24 +55,30 @@
         </div>
         <div class="body-list-container">
         <?php
-            foreach($data['project'][0] as $row){
+            $results = $_SESSION['rows'];
+            foreach($results as $row){
+                // print_r($row);die;
+                if($row->status=="Z0"){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
                                 <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                <div class="project-text-name"><b>Status : Completed</b></div>
                                 <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>
-                        <span class="project-details-btn-container">
-                            <div class="project-details-btn">
-                                <span class="project-details-btn-text">More info</span>
+                        <span class="project-details-btn-container">'; ?>
+                            <div class="project-details-btn" onclick="location.href='?project_id=<?php echo  $row -> projectID?>'">
+                                   <span class="project-details-btn-text">Package</span>
                             </div>
-                        </span>
+                            <div class="project-details-btn"> 
+                                    <span class="project-details-btn-text"  onclick="location.href='?projectid=<?php echo  $row -> projectID?>'";>Other info</span>
+                            </div>
+                            <?php echo ' </span>
                         
-                    </div>';
+                    </div>';}
             }
-        ?>
+            ?>
             
         </div>
     </div>
@@ -73,6 +86,12 @@
 <div class="f">
     <?php 
           $this->view('Includes/footer', $data);
+          if (isset($_GET['project_id'])) {
+            echo "<script> document.getElementById('id05').style.display='block'; </script>";
+          }
+          if (isset($_GET['projectid'])) {
+            echo "<script> document.getElementById('projectD').style.display='block'; </script>";
+          }
     ?>
 </div>
 </body>

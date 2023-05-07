@@ -80,7 +80,7 @@
                                 <?php
                                 $results = $_SESSION['rows'];
                                 foreach($results as $row){
-                                    echo '<option value="'.$row -> projectID.'">'.$row -> projectID.'</option>';
+                                    echo '<option value="'.$row ->Project_projectID.'">'.$row -> Project_projectID.'</option>';
                                 }
                                 ?>
                             </select>

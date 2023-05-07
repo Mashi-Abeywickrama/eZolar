@@ -9,14 +9,15 @@
 </html>
 <div id="acc" class="modal">
   <span onclick="location.href=''" class="close" title="Close">×</span>
-  <form class="modal-content" id="del" action="" method="POST">
+  <form class="modal-content" id="accept_action" action="" method="POST">
   
     <div class="container">
-      <h1>Congratulations!!</h1>
-      <p>Delivery and Installation has been Accepted</p>
+      <h1>Great!!</h1>
+      <p>Do you really want to accept this project?</p>
     
       <div class="clearfix">
-        <button type="button" onclick="location.href=''"class="okbtn">OK</button>
+        <button type="submit" class="deletebtn">Yes</button>
+        <button type="button" onclick="location.href=''"class="okbtn">No</button>
       </div>
     </div>
   </form>

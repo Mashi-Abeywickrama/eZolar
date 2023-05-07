@@ -21,9 +21,14 @@
                     Transactions
                 </div>
             </a>
-            <a href="<?= URLROOT ?>#">
+            <a href="<?= URLROOT ?>/report">
                 <div class="box7">
-                    Report
+                    Reports
+                </div>
+            </a>
+            <a href="<?= URLROOT ?>/reviews">
+                <div class="box8">
+                    Ratings and Reviews
                 </div>
             </a>
         </div>

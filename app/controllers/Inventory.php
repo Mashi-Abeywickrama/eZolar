@@ -178,8 +178,8 @@
       $mail->Host = "smtp.gmail.com";
       $mail->Port = 587;
       $mail->SMTPAuth = true;
-      $mail->Username = 'abeywickramaamashi@gmail.com';
-      $mail->Password = 'etyfpbypgsrbrknr';
+      $mail->Username = 'team.ezolar@gmail.com';
+      $mail->Password = 'blgrajvyohisnita';
       //From email address and name
       $mail->From = "ezolar.team@gmail.com";
       $mail->FromName = "Ezolar";
