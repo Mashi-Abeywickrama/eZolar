@@ -27,15 +27,15 @@
     }
 
     public function getStockDetails($sID){
-      $this->db->query('SELECT * FROM stock_product WHERE Stock_stockID	 = :stockID');
-      $row = $this->db->resultSet(['stockID' => $sID]);
+      $this->db->query('SELECT * FROM stock WHERE stockID	 = :stockID');
+      $row = $this->db->single(['stockID' => $sID]);
       return $row;
     }
 
     public function getStockContent($sID){
-      $this->db->query('SELECT * FROM stock_product INNER JOIN product ON stock_product.Product_productID = product.productID WHERE Stock_stockID	 = :stockID');
-      $row = $this->db->resultSet(['stockID' => $sID]);
-      return $row;
+      $this->db->query('SELECT *,stock_product.quantity as stockProductQuantity FROM stock_product INNER JOIN product ON stock_product.Product_productID = product.productID WHERE Stock_stockID	 = :stockID');
+      $rows = $this->db->resultSet(['stockID' => $sID]);
+      return $rows;
     }
 
     public function addStock($stockInfo){
@@ -82,5 +82,11 @@
       $this->db->query('SELECT email FROM storekeeper INNER JOIN user ON userID = Employee_empID');
       $results = $this->db->resultSet([]);
       return $results;
+    }
+
+    public function getSKname($SKID){
+      $this->db->query('SELECT `name` FROM employee WHERE empID = :empID ;');
+      $result = $this->db->single(['empID'=>$SKID]);
+      return $result->name;
     }
   }

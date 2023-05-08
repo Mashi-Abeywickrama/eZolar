@@ -114,7 +114,7 @@
                             echo '</div>';
                         }
                         
-                    } else if ($_SESSION['row']->status == 'B2'){
+                    } else if ($_SESSION['row']->status == 'B0'){
                         echo ' <div class="project-details-confirm-buttons-container">
                             <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
                             <div class="project-details-btns-container" style="margin-top:5px;">

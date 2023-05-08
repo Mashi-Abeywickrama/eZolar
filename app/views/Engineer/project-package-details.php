@@ -84,9 +84,9 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text inventory-col1">'.$item -> productName .'</span> 
-                            <span class="form-table-row-text inventory-col2">'.$item -> cost.'</span> 
+                            <span class="form-table-row-text inventory-col2">Rs.'.number_format($item -> cost,0,'.',',').'/=</span> 
                             <span class="form-table-row-text inventory-col3">'.$item -> productQuantity.'</span>
-                            <span class="form-table-row-text inventory-col4">'.strval((int)$item -> cost*$item->productQuantity).'</span>
+                            <span class="form-table-row-text inventory-col4">Rs.'.number_format((int)$item -> cost*$item->productQuantity,0,'.',',').'/=</span>
                             </div>';
                             $counter = ($counter+1)%2;
                             $contentTotalPrice += (int)$item -> cost*(int)$item->productQuantity;
@@ -95,7 +95,7 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Product Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $contentTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                 </div>
                 <div class="form-table-container" style="width:100%;">
@@ -115,7 +115,7 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text extras-col1">'.$item -> description .'</span> 
-                            <span class="form-table-row-text extras-col2">'.$item -> price.'</span>
+                            <span class="form-table-row-text extras-col2">Rs.'.number_format($results[$i] -> price,0,'.',',').'/=</span>
                             </div>';
                             $counter = ($counter+1)%2;
                             $extraTotalPrice += (int)$item -> price;
@@ -124,12 +124,12 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Service Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $extraTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($extraTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                 </div>
                 <div class="form-table-subtotal-container">
                         <div class="form-table-subtotal-text"><b>Total Cost</b></div>
-                        <div class="form-table-subtotal-text"><b><?php echo $contentTotalPrice+$extraTotalPrice; ?></b></div>
+                        <div class="form-table-subtotal-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice+$extraTotalPrice,0,'.',',').'/='; ?></b></div>
                 </div>
                 <div class="form-button-container" style="justify-content:center;">
                 <a href="/ezolar/EngineerProject/projectModifyPackPage/<?php echo $_SESSION['PackMod']['Info']->projectID; ?>"><button class="form-submit-btn">Modify Package</button></a>

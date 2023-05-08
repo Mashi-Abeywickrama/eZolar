@@ -128,7 +128,7 @@
                             </div>
                             <div class="form-item-input-disabled"><?php
                             $row = $_SESSION['row'];
-                            echo $row -> cost;?></div>
+                            echo number_format($row -> cost,0,'.',',');?></div>
                         </div>
                         <div class="form-item-container-half">
                             <div class="form-item-text">

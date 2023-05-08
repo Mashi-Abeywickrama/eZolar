@@ -78,6 +78,7 @@
 
 .form-submit-btn{
     display: inline-block;
+    font-size: medium;
     width: 50%;
     min-width: 100px;
     max-width: 250px;

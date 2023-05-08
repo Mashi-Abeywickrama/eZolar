@@ -79,9 +79,9 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text inventory-col1"> Stock #'.$stock -> stockID .'</span> 
-                            <span class="form-table-row-text inventory-col2">'.$stock -> arrivalDate.'</span> 
+                            <span class="form-table-row-text inventory-col2">'.substr($stock -> arrivalDate,0,10).'</span> 
                             <span class="form-table-row-text inventory-col3">'.$stock -> stockType.'</span> 
-                            <span class="form-table-row-text inventory-col4"><a href="">Details</a></span>
+                            <span class="form-table-row-text inventory-col4"><a href="/ezolar/Inventory/viewStockDetails/'.$stock -> stockID .'">Details</a></span>
                             </div>';
                             $counter = ($counter+1)%2;
                         }

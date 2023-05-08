@@ -68,7 +68,7 @@
         </div>  
         <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text inventory-col1">Product Name</span>  <span class="form-table-header-text inventory-col2">Price per item</span><span class="form-table-header-text inventory-col3">Quantity</span> <span class="form-table-header-text inventory-col4">Price</span>
+                        <span class="form-table-header-text contents-col1">Product Name</span>  <span class="form-table-header-text contents-col2">Price per item</span><span class="form-table-header-text contents-col3">Quantity</span> <span class="form-table-header-text contents-col4">Price</span><span class="form-table-header-text contents-col5">    </span>
                     </div>
                     <div class="form-table-body-container">
                                                 <?php
@@ -83,9 +83,9 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text contents-col1">'.$item -> productName .'</span> 
-                            <span class="form-table-row-text contents-col2">'.$item -> cost.'</span> 
+                            <span class="form-table-row-text contents-col2">Rs.'.number_format($item -> cost,0,'.',',').'/=</span> 
                             <span class="form-table-row-text contents-col3">'.$item -> productQuantity.'</span>
-                            <span class="form-table-row-text contents-col4">'.strval((int)$item -> cost*$item->productQuantity).'</span>
+                            <span class="form-table-row-text contents-col4">Rs.'.number_format((int)$item -> cost*$item->productQuantity,0,'.',',').'/=</span>
                             <span class="form-table-row-text contents-col5"><a class="form-item-remover-container" href="/ezolar/EngineerProject/modifyPackageRemoveItem/'.$item -> productID.'"><img class="form-item-remover-icon" src="\ezolar\public\img\engineer\item-remove.png"></a></span>
                             </div>';
                             $counter = ($counter+1)%2;
@@ -95,7 +95,7 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Product Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $contentTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                     <form action="/ezolar/EngineerProject/modifyPackageAddItem/<?php echo $_SESSION['PackMod']['Info']->projectID?>" class="form-item-adder-container" style="width:auto;" method="POST">
                             <div class="form-item-adder-content-container" style="width:60%;">
@@ -123,7 +123,7 @@
                 
                 <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
-                        <span class="form-table-header-text extras-col1">Service</span>  <span class="form-table-header-text extras-col2">Price</span>
+                        <span class="form-table-header-text extras-col1">Service</span>  <span class="form-table-header-text extras-col2">Price</span><span class="form-table-header-text extras-col3">    </span>
                     </div>
                     <div class="form-table-body-container" style="height:100px;">
                                                 <?php
@@ -137,7 +137,7 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text extras-col1">'.$results[$i] -> description .'</span> 
-                            <span class="form-table-row-text extras-col2">'.$results[$i] -> price.'</span>
+                            <span class="form-table-row-text extras-col2">Rs.'.number_format($results[$i] -> price,0,'.',',').'/=</span>
                             <span class="form-table-row-text extras-col3"><a class="form-item-remover-container" href="/ezolar/EngineerProject/modifyPackageRemoveExtra/'.$i.'"><img class="form-item-remover-icon" src="\ezolar\public\img\engineer\item-remove.png"></a></span>
                             </div>';
                             $extraTotalPrice += (int)$results[$i]->price;
@@ -146,7 +146,7 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Service Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $extraTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($extraTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                     <form action="/ezolar/EngineerProject/modifyPackageAddExtra/<?php echo $_SESSION['PackMod']['Info']->projectID?>" class="form-item-adder-container" style="width:auto;" method="POST">
                             <div class="form-item-adder-content-container" style="width:60%;">
@@ -164,7 +164,7 @@
                     </form>
                     <div class="form-table-subtotal-container">
                         <div class="form-table-subtotal-text"><b>Total Cost</b></div>
-                        <div class="form-table-subtotal-text"><b><?php echo $contentTotalPrice+$extraTotalPrice; ?></b></div>
+                        <div class="form-table-subtotal-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice+$extraTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                     
                 <div class="form-button-container" style="justify-content:center; width:100%;">

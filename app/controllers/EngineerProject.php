@@ -12,7 +12,7 @@
 
     private function getProjectStatusName($status){
       $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
-      'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','F'=>'Project Cancelled','G'=>'Project Completed');
+      'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','X0'=>'Project Cancelled','Z0'=>'Project Completed');
       if (array_key_exists($status,$names)){
         return $names[$status];
       } else {
@@ -31,7 +31,7 @@
       $rows  = $this->engineerProjectModel-> getAssignedProjects($eng_Id);
       $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
       foreach ($rows as $project){
-        if (($project->status == "C0")||($project->status == "C0")){
+        if (($project->status == "C0")||($project->status == "B2")){
           $_SESSION['rows']['priority'][] = $project;
         } else if (($project->status == "F")||($project->status == "G")){
           $_SESSION['rows']['finished'][] = $project;
@@ -92,26 +92,26 @@
       $unconfirmed = [];
       if (count($insDates)<1){
         $insDatesStr = "Not Scheduled";
-      };
+      }else{
+        foreach ($insDates as $item){
+          if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
+            $insDatesStr .= substr($item->date,0,10)." , ";
+          } else {
+            $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
+            $unconfirmed[] = $item;
+          }
+        };
+        $insDatesStr = substr_replace($insDatesStr, "", -2,2);
+      }
+
       if (count($delDates)<1){
         $delDatesStr = "Not Scheduled";
-      };
-
-      foreach ($insDates as $item){
-        if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
-          $insDatesStr .= substr($item->date,0,10)." , ";
-        } else {
-          $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
-          $unconfirmed[] = $item;
-        }
-      };
-      $insDatesStr = substr_replace($insDatesStr, "", -2,2);
-
-      foreach ($delDates as $item){
-        $delDatesStr .= substr($item->date,0,10)." , ";
-      };
-      $delDatesStr = substr_replace($delDatesStr, "", -2,2);
-
+      }else {
+        foreach ($delDates as $item){
+          $delDatesStr .= substr($item->date,0,10)." , ";
+        };
+        $delDatesStr = substr_replace($delDatesStr, "", -2,2);
+      }
       $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
       $today = new DateTime();
 
@@ -142,9 +142,7 @@
       $project = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID);
       
       $this->engineerProjectModel->confirmSchedule($scheduleID);
-      if ($project->status == 'B2'){
-        $this->engineerProjectModel->advanceProject($projectID,'C0');
-      }
+      $this->engineerProjectModel->advanceProject($projectID,'C0');
       redirect('EngineerProject/projectDetailsPage'.$projectID);
     }
 
@@ -154,7 +152,7 @@
         redirect('login');
       }
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-      $this->engineerProjectModel->declineSchedule($scheduleID,$eng_Id);
+      $this->engineerProjectModel->declineSchedule($scheduleID);
       //setup reassign
       redirect('EngineerProject');
     }

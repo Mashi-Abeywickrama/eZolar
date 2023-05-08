@@ -69,7 +69,7 @@
                     <div class="product-text-container-inner">
                     <div class="product-text-no">Product No.' .$row -> productID.'</div>
                     <div class="product-text-name"><b>'.$row -> productName.'</b></div>
-                    <div class="product-text-price">Price: Rs.' .$row -> cost.'</div>
+                    <div class="product-text-price">Price: Rs.'.number_format($row -> cost,0,'.',',').'/=</div>
                     </div>
                 </div>
                 <div class="product-details-btn-container">

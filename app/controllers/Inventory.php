@@ -167,6 +167,27 @@
       }
     }
 
+    public function viewStockDetails($stockid){
+      if(!isLoggedIn()){
+        redirect('login');
+      }
+      $details = $this->InventoryModel->getStockDetails($stockid);
+      $details->Storekeeper_Employee_empID = $this->InventoryModel->getSKname($details->Storekeeper_Employee_empID);
+      $_SESSION['row'] = $details;
+
+      $content = $this->InventoryModel->getStockContent($stockid);
+      $_SESSION['rows'] = $content;
+
+      
+
+      $data = [
+        'title' => 'eZolar Stock Details',
+      ];
+
+      $this->view('Storekeeper/view-stock-details', $data);
+
+    }
+
     private function mailStorekeeper($restockList){
       $skEmails = $this->InventoryModel->getSKemails();
       //Create an instance; passing `true` enables exceptions

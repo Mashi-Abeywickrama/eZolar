@@ -20,7 +20,7 @@
     }
 
     public function getNewAssignedProjects($id){
-      $this->db->query('SELECT * FROM scheduleitem_assignedemp INNER JOIN scheduleitem ON ScheduleItem_scheduleID = scheduleID INNER JOIN project ON Project_projectID = projectID WHERE scheduleitem_assignedemp.UserID = :engID AND isConfirmed = 0');
+      $this->db->query('SELECT * FROM scheduleitem_assignedemp INNER JOIN scheduleitem ON ScheduleItem_scheduleID = scheduleID INNER JOIN project ON Project_projectID = projectID WHERE scheduleitem_assignedemp.UserID = :engID AND scheduleitem_assignedemp.status = 0');
       $rows = $this->db->resultSet(['engID' => $id]);
       return $rows;
     }
@@ -56,7 +56,7 @@
     }
 
     public function confirmSchedule($schdID){
-      $this->db->query('UPDATE `scheduleitem` SET `isConfirmed` = 1 WHERE scheduleID  = :scheduleID;');
+      $this->db->query('UPDATE `scheduleitem_assignedemp` SET `status` = 1 WHERE scheduleID  = :scheduleID;');
       $this->db->execute(['scheduleID' => $schdID]);
     }
 
@@ -65,9 +65,9 @@
       $this->db->execute(['scheduleID' => $schdID]);
     }
 
-    public function declineSchedule($schdID,$eng_Id){
-      $this->db->query('DELETE FROM scheduleitem_assignedemp WHERE ScheduleItem_scheduleID  = :schdID AND UserID = :engID;');
-      $this->db->execute(['scheduleID' => $schdID,'engID'=>$eng_Id]);
+    public function declineSchedule($schdID){
+      $this->db->query('UPDATE `scheduleitem_assignedemp` SET `status` = 2 WHERE scheduleID  = :scheduleID;');
+      $this->db->execute(['scheduleID' => $schdID]);
     }
 
     public function advanceProject($prjID,$status){

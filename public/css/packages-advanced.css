@@ -96,6 +96,7 @@
 
 .form-submit-btn{
     display: inline-block;
+    font-size: medium;
     width: 200px;
     min-width: 100px;
     padding: 10px;
@@ -144,7 +145,7 @@
     margin-inline: 10px;
     font-weight: bold;
     margin-top: 15px;
-    text-align: center;
+    /* text-align: center; */
 }
 .form-table-body-container{
     overflow-x: hidden;
@@ -156,7 +157,8 @@
     display: flex;
     justify-content: space-evenly;
     overflow: auto;
-    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .form-table-row-container-alt{
@@ -164,7 +166,8 @@
     display: flex;
     justify-content: space-evenly;
     overflow: auto;
-    margin-bottom: 10px;
+    padding: 5px;
+    box-sizing: border-box;
     background: #d9d9d9;
 }
 
@@ -176,7 +179,7 @@
     margin-inline: 10px;
     margin-top: 5px;
     margin-bottom:5px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .form-table-total-container{
