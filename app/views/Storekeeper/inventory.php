@@ -76,7 +76,7 @@
                                 echo '<div class="'.$styleClass.'">
                                 <span class="form-table-row-text inventory-col1">'.$product -> productName.'</span> 
                                 <span class="form-table-row-text inventory-col2">'.$product -> manufacturer.'</span> 
-                                <span class="form-table-row-text inventory-col3">'.$product -> cost.'</span> 
+                                <span class="form-table-row-text inventory-col3">Rs.'.number_format($product -> cost,0,'.',',').'/=</span> 
                                 <span class="form-table-row-text inventory-col4">'.$product -> quantity.'</span>
                                 </div>';
                                 $counter = ($counter+1)%2;

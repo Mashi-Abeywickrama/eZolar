@@ -64,7 +64,7 @@
                     <div class="project-details-basic-container">
                         <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['statusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
-                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                        <p><b>Assigned Salesperson : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
                     </div>
                     <div class="project-details-customer-container">
                         <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>
@@ -114,7 +114,7 @@
                             echo '</div>';
                         }
                         
-                    } else if ($_SESSION['row']->status == 'B2'){
+                    } else if ($_SESSION['row']->status == 'B0'){
                         echo ' <div class="project-details-confirm-buttons-container">
                             <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
                             <div class="project-details-btns-container" style="margin-top:5px;">

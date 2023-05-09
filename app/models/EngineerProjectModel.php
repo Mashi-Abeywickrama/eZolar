@@ -19,11 +19,18 @@
       return $row;
     }
 
+    public function getNewAssignedProjects($id){
+      $this->db->query('SELECT * FROM scheduleitem_assignedemp INNER JOIN scheduleitem ON ScheduleItem_scheduleID = scheduleID INNER JOIN project ON Project_projectID = projectID WHERE scheduleitem_assignedemp.UserID = :engID AND scheduleitem_assignedemp.status = 0');
+      $rows = $this->db->resultSet(['engID' => $id]);
+      return $rows;
+    }
+
     public function getAssignedProjectDetails($eng_Id, $prj_ID){
       $this->db->query('SELECT * FROM projectengineer INNER JOIN project ON projectengineer.Project_projectID = project.projectID INNER JOIN customer ON project.customerID = customer.customerID  WHERE  Engineer_empID = :engID AND Project_projectID = :prjID');
       $row = $this->db->single(['engID' => $eng_Id,'prjID' => $prj_ID]);
       return $row;
     }
+    
 
     public function projectAssignPack($prj_ID,$pck_ID){
       $this->db->query('UPDATE project SET Package_packageID = :packID WHERE projectID = :projID');
@@ -49,7 +56,7 @@
     }
 
     public function confirmSchedule($schdID){
-      $this->db->query('UPDATE `scheduleitem` SET `isConfirmed` = 1 WHERE scheduleID  = :scheduleID;');
+      $this->db->query('UPDATE `scheduleitem_assignedemp` SET `status` = 1 WHERE scheduleID  = :scheduleID;');
       $this->db->execute(['scheduleID' => $schdID]);
     }
 
@@ -58,9 +65,9 @@
       $this->db->execute(['scheduleID' => $schdID]);
     }
 
-    public function declineSchedule($schdID,$eng_Id){
-      $this->db->query('DELETE FROM scheduleitem_assignedemp WHERE ScheduleItem_scheduleID  = :schdID AND UserID = :engID;');
-      $this->db->execute(['scheduleID' => $schdID,'engID'=>$eng_Id]);
+    public function declineSchedule($schdID){
+      $this->db->query('UPDATE `scheduleitem_assignedemp` SET `status` = 2 WHERE scheduleID  = :scheduleID;');
+      $this->db->execute(['scheduleID' => $schdID]);
     }
 
     public function advanceProject($prjID,$status){
@@ -153,6 +160,12 @@
     public function PackModRemoveExtra($data){
       $this->db->query('DELETE FROM modifiedpackage_extra WHERE projectID = :projectID AND `description` = :descr;');
       $this->db->execute(['projectID' => $data[0],'descr'=>$data[1]]);
+    }
+
+    public function getSPname($SPID){
+      $this->db->query('SELECT `name` FROM `employee`  WHERE empID = :SPID;');
+      $row = $this->db->single(['SPID'=>$SPID]);
+      return $row->name;
     }
 
 
