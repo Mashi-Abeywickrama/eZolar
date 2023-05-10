@@ -69,7 +69,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
     <div class="dashboard-container">
         <a href="/ezolar/Employee/getEmployees/engineer">
-
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                     Engineers

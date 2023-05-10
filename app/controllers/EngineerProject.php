@@ -9,6 +9,16 @@
         $this->PackageModel = $this->model('PackageModel');
         $this->ProductModel = $this->model('ProductModel');
     }
+
+    private function getProjectStatusName($status){
+      $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
+      'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','X0'=>'Project Cancelled','Z0'=>'Project Completed');
+      if (array_key_exists($status,$names)){
+        return $names[$status];
+      } else {
+        return "Invalid Status";
+      }
+    }
     
     public function index(){
 
@@ -19,7 +29,34 @@
 
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
       $rows  = $this->engineerProjectModel-> getAssignedProjects($eng_Id);
-      $_SESSION['rows'] = $rows;
+      $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
+      foreach ($rows as $project){
+        if (($project->status == "C0")||($project->status == "B0")){
+          $_SESSION['rows']['priority'][] = $project;
+        } else if (($project->status == "Z0")||($project->status == "X0")){
+          $_SESSION['rows']['finished'][] = $project;
+        } else {
+          $_SESSION['rows']['ongoing'][] = $project;
+        }
+      }
+
+      $rows = $this->engineerProjectModel-> getNewAssignedProjects($eng_Id);
+      foreach ($_SESSION['rows'] as $key => $sub_arrays){
+        foreach ($sub_arrays as $index=>$project){
+          foreach($rows as $newindex=>$newproject){
+            if ($project->projectID == $newproject->projectID){
+              unset($rows[$newindex]);
+            }
+          }
+        }
+      }
+      $_SESSION['rows']['priority'] = array_merge($rows,$_SESSION['rows']['priority']);
+      foreach ($_SESSION['rows'] as $key => $sub_arrays){
+        foreach ($sub_arrays as $index=>$project){
+          $_SESSION['rows'][$key][$index]->status = $this->getProjectStatusName($project->status);
+        }
+      }
+
       $data = [
         'title' => 'eZolar Assigned Projects',
       ];
@@ -32,9 +69,11 @@
         redirect('login');
       }
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-      $row = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$prjID);
+      $row = $this->engineerProjectModel->getAssignedProjectDetails($prjID);
       if ($row->Salesperson_Employee_empID == ''){
         $row->Salesperson_Employee_empID = 'Not Assigned';
+      } else {
+        $row->Salesperson_Employee_empID = $this->engineerProjectModel->getSPname($row->Salesperson_Employee_empID);
       }
       if($this->engineerProjectModel->checkModifiedPackage($prjID)){
         $row->Package_packageID .= ' (Modified)';
@@ -51,38 +90,39 @@
       $insDatesStr = "";
       $delDatesStr = "";
       $unconfirmed = [];
+      $inspFlag = FALSE;
       if (count($insDates)<1){
         $insDatesStr = "Not Scheduled";
-      };
-      if (count($delDates)<1){
-        $delDatesStr = "Not Scheduled";
-      };
+      }else{
+        foreach ($insDates as $item){
+          if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID,$eng_Id)){
+            $insDatesStr .= substr($item->date,0,10)." , ";
+          } else {
+            $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
+            $unconfirmed[] = $item;
+          }
+        };
+        $insDatesStr = substr_replace($insDatesStr, "", -2,2);
+        $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
+        $today = new DateTime();
 
-      foreach ($insDates as $item){
-        if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
-          $insDatesStr .= substr($item->date,0,10)." , ";
-        } else {
-          $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
-          $unconfirmed[] = $item;
-        }
-      };
-      $insDatesStr = substr_replace($insDatesStr, "", -2,2);
-
-      foreach ($delDates as $item){
-        $delDatesStr .= substr($item->date,0,10)." , ";
-      };
-      $delDatesStr = substr_replace($delDatesStr, "", -2,2);
-
-      $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
-      $today = new DateTime();
-
-      if ($firstInspDate<=$today){
-        $inspFlag = TRUE;
-      } else {
-        $inspFlag = FALSE;
+        if ($firstInspDate<=$today)
+          $inspFlag = TRUE;
       }
 
-      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag);
+      if (count($delDates)<1){
+        $delDatesStr = "Not Scheduled";
+      }else {
+        foreach ($delDates as $item){
+          $delDatesStr .= substr($item->date,0,10)." , ";
+        };
+        $delDatesStr = substr_replace($delDatesStr, "", -2,2);
+      }
+      
+
+      
+
+      $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "unconfirmed"=>$unconfirmed, "inspectionFlag"=>$inspFlag, "statusName"=>$this->getProjectStatusName($row->status));
 
 
       $data = [
@@ -90,7 +130,7 @@
       ];
       $this->view('Engineer/project-details', $data);
 
-    }
+      }
 
     public function acceptInspection($projectID,$scheduleID){
       if(!isLoggedIn()){
@@ -101,9 +141,7 @@
       $project = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID);
       
       $this->engineerProjectModel->confirmSchedule($scheduleID);
-      if ($project->status == 'B2'){
-        $this->engineerProjectModel->advanceProject($projectID,'C0');
-      }
+      $this->engineerProjectModel->advanceProject($projectID,'C0');
       redirect('EngineerProject/projectDetailsPage'.$projectID);
     }
 
@@ -113,7 +151,7 @@
         redirect('login');
       }
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-      $this->engineerProjectModel->declineSchedule($scheduleID,$eng_Id);
+      $this->engineerProjectModel->declineSchedule($scheduleID);
       //setup reassign
       redirect('EngineerProject');
     }

@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-     require_once(__ROOT__.'\app\views\Includes\header.php');
-     require_once(__ROOT__.'\app\views\Includes\navbar.php');
-     require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +10,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
     <title>My Projects</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<div class="body-container">
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Engineer Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Engineer Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -63,9 +62,9 @@
             <div class="project-details-container">
                 <div class="project-details-inline-container">
                     <div class="project-details-basic-container">
-                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['row']->status); ?></b></p>
+                        <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['statusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
-                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                        <p><b>Assigned Salesperson : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
                     </div>
                     <div class="project-details-customer-container">
                         <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>
@@ -98,7 +97,16 @@
                     if(array_key_exists('$inspectionFlag',$_SESSION['rows'])){
                         $InspectionFlag = $_SESSION['rows']['inspectionFlag']; 
                     }
-                    if(($_SESSION['row']->status == 'C0') && ($InspectionFlag)){
+                    if (count($_SESSION['rows']['unconfirmed']) > 0){
+                        echo ' <div class="project-details-confirm-buttons-container">
+                            <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
+                            <div class="project-details-btns-container" style="margin-top:5px;">
+                                <a href="/ezolar/EngineerProject/acceptInspection/'.$_SESSION['row']->projectID.'/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns">Accept</div></a>
+                                <a href="/ezolar/EngineerProject/rejectInspection/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns btn-grey">Reject</div></a>
+                            </div>
+                        </div> ';
+
+                    } else if(($_SESSION['row']->status == 'C0') && ($InspectionFlag)){
                         echo ' <div class="project-details-confirm-buttons-container">
                             <p>Your inspection on '.substr($_SESSION['rows']['InspectDates'],0,10).' should be complete soon.</p>
                             <div class="project-details-btns-container" style="margin-top:5px;">
@@ -111,27 +119,22 @@
                         {
                             echo '<div class="project-details-btns-container"><a href="/ezolar/EngineerProject/assignPackagePage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Change Package</div></a>
                             <a href="/ezolar/EngineerProject/projectModifyPackPage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Modify Package</div></a>';
-                            if ($_SESSION['row']->status == 'C1'){
-                                echo '<a href="/ezolar/EngineerProject/confirmPackage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Confirm Package</div></a>';
-                            }
+                            echo '<a href="/ezolar/EngineerProject/confirmPackage/'.$_SESSION['row']->projectID.'"><div class="project-details-btns">Confirm Package</div></a>';
                             echo '</div>';
                         }
                         
-                    } else if ($_SESSION['row']->status == 'B2'){
-                        echo ' <div class="project-details-confirm-buttons-container">
-                            <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
-                            <div class="project-details-btns-container" style="margin-top:5px;">
-                                <a href="/ezolar/EngineerProject/acceptInspection/'.$_SESSION['row']->projectID.'/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns">Accept</div></a>
-                                <a href="/ezolar/EngineerProject/rejectInspection/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns btn-grey">Reject</div></a>
-                            </div>
-                        </div> ';
-
                     } ?>
                     
                     
                 
         </div>
         
+    </div>  
     </div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

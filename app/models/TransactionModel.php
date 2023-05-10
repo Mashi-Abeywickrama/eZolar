@@ -71,5 +71,31 @@
           $row[0]->receiptID = str_pad($row[0]->receiptID, 6, '0', STR_PAD_LEFT);
           return $row;
         }
+
+        // this function is to get confirmed order confirmation payments only
+        public function getCompletedPayment($projectID)
+        {
+              $this->db->query('SELECT * FROM paymentreceipt 
+              WHERE receiptPurpose = "Order Confirmation"
+              AND Project_projectID = :projectID 
+              AND isVerified = 1');
+        
+          // print_r($this->db->resultSet(['customerID' => $id]));die;
+          $row = $this->db->resultSet(['projectID' => $projectID]);
+          return $row;
+        }
+
+        // this function is to get confirmed inspection payments only
+        public function getCompletedInspectionPayment($projectID)
+        {
+              $this->db->query('SELECT * FROM paymentreceipt 
+              WHERE receiptPurpose = "Inspection"
+              AND Project_projectID = :projectID 
+              AND isVerified = 1');
+        
+          // print_r($this->db->resultSet(['customerID' => $id]));die;
+          $row = $this->db->resultSet(['projectID' => $projectID]);
+          return $row;
+        }
     }
 ?>

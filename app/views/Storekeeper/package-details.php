@@ -1,8 +1,5 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -13,15 +10,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
-
-    <div class="sidebar">
+<?php require_once(__ROOT__.'\app\views\popupList\confirmationPopup.php');?>
+<div class="body-container"> 
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Storekeeper Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Storekeeper Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -34,7 +33,7 @@
                 <a class="sidebar-anchor" href="/ezolar/Package"><div class="sidebar-link-container-selected">
                     Packages
                 </div></a>
-                <a class="sidebar-anchor" href=""><div class="sidebar-link-container">
+                <a class="sidebar-anchor" href="/ezolar/Statistics/salesPerMonth"><div class="sidebar-link-container">
                     Reports & Stats
                 </div></a>
             </div>
@@ -67,8 +66,8 @@
                 </div>
             </div>  
             <div class="form-background-details">
-                <div class="product-image-container">
-                    <img src="\ezolar\public\img\storekeeper\placeholder-image.png" alt="" class="product-image">
+                <div class="package-image-container">
+                    <img src="\ezolar\public\img\storekeeper\package-imgs\<?php echo $_SESSION['row'] -> type;?>.png" alt="package-image" class="package-image">
                 </div>
                 <div class="form-container">
                     <div class="save-box"> <?php
@@ -117,7 +116,7 @@
                 </div>
             </div>
             <div class="form-inline">
-                <div class="form-table-container">
+                <div class="package-table-container">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text pack-content-col1"> Product Name</span> <span class="form-table-header-text pack-content-col2"> Price per item</span> <span class="form-table-header-text pack-content-col3"> Quantity</span>
                     </div>
@@ -143,17 +142,36 @@
                     
                 </div>
             </div>
-            <div class="form-button-container" style="justify-content:center;">
+            <div class="package-btn-container" style="justify-content:center;">
                 <a href="/ezolar/Package/editPackageInfoPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Info</button></a>
                 <a href="/ezolar/Package/editPackageContentPage/<?php $row = $_SESSION['row'];
                     echo $row -> packageID;?>"><button class="form-submit-btn">Edit Package Content</button></a>
-                <a href="/ezolar/Package/removePackage/<?php $row = $_SESSION['row'];
-                    echo $row -> packageID;?>"><button class="form-submit-btn">Delete Package</button></a>
+                <a id="del-btn"><button class="form-submit-btn">Delete Package</button></a>
             </div>
         
             </div>
         </div>
     </div>
+</div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
+<script>
+    var del_btn = document.getElementById('del-btn');
+    var text_box = document.getElementById('text');
+    var yes_btn = document.getElementById('yes-btn');
+    var no_btn = document.getElementById('no-btn');
+
+    del_btn.addEventListener('click', function()
+    {
+        text_box.innerHTML = "This will Delete the package \"<?php echo $row -> name;?>\" <br> Do you wish to proceed?";
+        yes_btn.setAttribute("href", "/ezolar/Package/removePackage/<?php echo $row -> packageID;?>");
+        document.getElementById("confirm-pop").style.display="block";
+    });
+    
+</script>
 </body>
 </html>

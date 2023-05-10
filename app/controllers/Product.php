@@ -36,7 +36,7 @@
       $data = [
         'title' => 'eZolar NewProduct',
       ];
-      $rows = $this->ProductModel->getAllProductIDs();
+      $rows = $this->ProductModel->getAllProducts();
       $_SESSION['rows'] = $rows;
 
       if ($this->ProductModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
@@ -152,4 +152,59 @@
       redirect('Product/');
     }
 
+    public function uploadImage($productID){
+      $target_dir = "C:/xampp/htdocs/ezolar/public/img/storekeeper/product-imgs/";
+      $file_upload = false;
+      // Checking whether a file is uploaded
+      if ($_FILES["fileToUpload"]["error"] == UPLOAD_ERR_OK) {
+          $filename = basename($_FILES["fileToUpload"]["name"]);
+          $file_upload = true;
+      } else {
+          $filename = $_SESSION['user_pic'];
+      }
+      $target_file = $target_dir . $filename;
+      
+      
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      if($file_upload){
+              // Check if image file is a actual image or fake image
+              if (isset($_POST["submit"])) {
+                  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+                  if ($check !== false) {
+                      echo "File is an image - " . $check["mime"] . ".";
+                      $uploadOk = 1;
+                  } else {
+                      echo "File is not an image.";
+                      $uploadOk = 0;
+                  }
+              }
+              // Check file size
+              if ($_FILES["fileToUpload"]["size"] > 500000) {
+                  echo "Sorry, your file is too large.";
+                  $uploadOk = 0;
+              }
+              // Allow certain file formats
+              if (
+                  $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                  && $imageFileType != "gif"
+              ) {
+                  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                  $uploadOk = 0;
+              }
+              // Check if $uploadOk is set to 0 by an error
+              if ($uploadOk == 0) {
+                  echo "Sorry, your file was not uploaded.";
+                  // if everything is ok, try to upload file
+              } else {
+                  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                      echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                      $this->ProductModel->changeimage($productID,$filename);
+                  } else {
+                      echo "Sorry, there was an error uploading your file.";
+                  }
+              }
+      }
+      redirect('Product/productDetailspage/'.$productID);
     }
+}

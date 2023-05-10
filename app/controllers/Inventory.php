@@ -1,4 +1,8 @@
 <?php
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
+  use PHPMailer\PHPMailer\SMTP   ;
+  require '../vendor/autoload.php';
   define('__ROOT__', dirname(dirname(dirname(__FILE__))));
   require_once(__ROOT__.'\app\helpers\session_helper.php');
   if (!array_key_exists('flagUpdate',$_SESSION)){
@@ -163,6 +167,27 @@
       }
     }
 
+    public function viewStockDetails($stockid){
+      if(!isLoggedIn()){
+        redirect('login');
+      }
+      $details = $this->InventoryModel->getStockDetails($stockid);
+      $details->Storekeeper_Employee_empID = $this->InventoryModel->getSKname($details->Storekeeper_Employee_empID);
+      $_SESSION['row'] = $details;
+
+      $content = $this->InventoryModel->getStockContent($stockid);
+      $_SESSION['rows'] = $content;
+
+      
+
+      $data = [
+        'title' => 'eZolar Stock Details',
+      ];
+
+      $this->view('Storekeeper/view-stock-details', $data);
+
+    }
+
     private function mailStorekeeper($restockList){
       $skEmails = $this->InventoryModel->getSKemails();
       //Create an instance; passing `true` enables exceptions
@@ -174,8 +199,8 @@
       $mail->Host = "smtp.gmail.com";
       $mail->Port = 587;
       $mail->SMTPAuth = true;
-      $mail->Username = 'abeywickramaamashi@gmail.com';
-      $mail->Password = 'etyfpbypgsrbrknr';
+      $mail->Username = 'team.ezolar@gmail.com';
+      $mail->Password = 'blgrajvyohisnita';
       //From email address and name
       $mail->From = "ezolar.team@gmail.com";
       $mail->FromName = "Ezolar";
@@ -198,7 +223,7 @@
       //Send HTML or Plain Text email
       $mail->isHTML(true);
 
-      $mail->Subject = "Reset Password";
+      $mail->Subject = "Inventory Stocks needs attention.";
       $mail->Body = "<p>Th Following Items are below the set reorder levels for them. </p>".$restockStr;
       $mail->AltBody = "This is the plain text version of the email content";
 

@@ -45,6 +45,7 @@
 <script>
 
 $('.datepicker').datepicker({
+  dateFormat: "yy-mm-dd",
 	
 	beforeShowDay: function(date) {
         var d2=document.getElementById('d2').value;
@@ -71,6 +72,7 @@ $('.datepicker').datepicker({
 });
 
 $('.datepicker2').datepicker({
+   dateFormat: "yy-mm-dd",
 	
 	beforeShowDay: function(date) {
         var d1=document.getElementById('d1').value;
@@ -97,6 +99,7 @@ $('.datepicker2').datepicker({
 });
 
 $('.datepicker3').datepicker({
+  dateFormat: "yy-mm-dd",
 	
 	beforeShowDay: function(date) {
         var d1=document.getElementById('d1').value;

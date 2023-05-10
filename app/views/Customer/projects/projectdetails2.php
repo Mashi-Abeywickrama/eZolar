@@ -47,35 +47,9 @@
     ?>
 
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-            Packages
-        </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         
@@ -97,9 +71,9 @@
                         <a id="c1-link" href="<?=URLROOT?>/project/projectdetails/1?project_id=<?=$_GET['project_id']?>"><div id="circle-1" class="project-progress-bar-bullet-highlighted"></div></a>
                             <div class="project-progress-bar-bullet-text">Request</div>
                         </div>
-                        <div class="project-progress-bar-bullet-container">
-                        <a id="c2-link" href="<?=URLROOT?>/project/projectdetails/2?project_id=<?=$_GET['project_id']?>"><div id="circle-2"  class="project-progress-bar-bullet-highlighted"></div></a>
-                            <div class="project-progress-bar-bullet-text">Inspection Scheduling</div>
+                        <div class="project-progress-bar-bullet-container" >
+                        <a id="c2-link" href="<?=URLROOT?>/project/projectdetails/2?project_id=<?=$_GET['project_id']?>"><div id="circle-2"  class="project-progress-bar-bullet-highlighted" style="border: 3.5px solid #2C61A3"></div></a>
+                            <div class="project-progress-bar-bullet-text" >Inspection Scheduling</div>
                         </div>
                         <div class="project-progress-bar-bullet-container">
                         <a id="c3-link" href="<?=URLROOT?>/project/projectdetails/3?project_id=<?=$_GET['project_id']?>"><div id="circle-3" class="project-progress-bar-bullet"></div></a>
@@ -122,17 +96,35 @@
                 </div>
                 <div class="project-details-inline">
                     <div class="project-details-steps-container">
-                    <span id="request-received" class="project-details-steps-text">Date Selection</span>
+                        <span id="request-received" class="project-details-steps-text">Inspection Dates Requested</span>
+                        <span class="project-details-steps-text-new" > We recieved your booking.</span>
                         <span id="salesperson-assignment" class="project-details-steps-text">Date Confirmation</span>
-                        <?php
-                             if ($data['schedule'][0]->isConfirmed != 2) {
-                                echo  '';
-                            } else {
-                                echo ' <p> Dates Not Available. Please Schedule Again.</p>';
-                            }
-                         ?>
-                        <span id="payment-verify" class="project-details-steps-text">Engineer Assignment
-                        <span class="project-details-steps-text" ></span>
+                        <span class="project-details-steps-text-new" >
+                            <?php
+                                 if ($data['schedule'][0]->isConfirmed == 1) {
+                                    echo  "Inspection on: " .$data['schedule'][0]->date . "";
+                                }elseif ($data['schedule'][0]->isConfirmed == 2){
+                                    echo "Dates not available. Please reschedule dates";
+                                } 
+                                else {
+                                    echo ' <p> Please wait till we confirm the dates</p>';
+                                }
+                            ?>
+                        </span>
+                        <span id="payment-verify" class="project-details-steps-text">Engineer for the Project</span>
+                        <span class="project-details-steps-text-new" >
+                            <?php
+                                if(($data['project'][0]->status) == "B0"){
+                                    echo" Please wait.. We will assign an engineer soon";
+                                }
+                                elseif ($data['schedule'][0]->isConfirmed != 1 || $data['engineer'][0]->name == NULL) {
+                                    echo ' <p> Pending confirmation</p>';
+                                }
+                                else if($data['schedule'][0]->isConfirmed == 1 & $data['engineer'][0]->name != NULL) {
+                                    echo 'Your Engineer is: '. $data['engineer'][0]->name . '';
+                                }
+                            ?>
+                        </span>
                     </div>
                     <div class="project-details-info-container">
                         <b>Project No:</b> <?php echo $data['project'][0]->projectID ?> <br>
@@ -203,16 +195,27 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <div class="flip-text-div">
-                                <p><b>John Doe</b>(Salesperson)</p>
+                                <p><b>Salesperson</b></p>
                             </div>
                             <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                <?php
+                                    if (empty($data['salesperson'])) {
+                                        echo '<p> Not Assigned Yet </p>';
+                                    } else { ?>
+                                        <img class="flip-img" src="\ezolar\public\img\user-pics\<?php echo $data['salesperson'][0]->profilePhoto ?>" alt="Avatar">
+                                    <?php }
+                                ?>
                             </div>
                         </div>
                         <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
+                        <?php if (empty($data['salesperson'])) {
+                            echo '<p> Not Assigned Yet </p>';
+                        } else {
+                            echo '<h2>'.$data['salesperson'][0]->name.'</h2>
+                            <p>'.$data['salesperson'][0]->telno.'</p>
+                            <p>'.$data['salesperson'][0]->email.'</p>';
+                        }?>
+                            
                         </div>
                     </div>
                 </div>
@@ -220,16 +223,26 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <div class="flip-text-div">
-                                <p><b>John Doe</b>(Engineer)</p>
+                                <p><b>Engineer</b></p>
                             </div>
                             <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                <?php
+                                    if (empty($data['engineer'])) {
+                                        echo '<p> Not Assigned Yet </p>';
+                                    } else { ?>
+                                        <img class="flip-img" src="\ezolar\public\img\user-pics\<?php echo $data['engineer'][0]->profilePhoto ?>" alt="Avatar">
+                                    <?php }
+                                ?>
                             </div>
                         </div>
                         <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
+                            <?php if (empty($data['engineer'])) {
+                                echo '<p> Not Assigned Yet </p>';
+                            } else {
+                                echo '<h2>'.$data['engineer'][0]->name.'</h2>
+                                <p>'.$data['engineer'][0]->telno.'</p>
+                                <p>'.$data['engineer'][0]->email.'</p>';
+                            }?>
                         </div>
                     </div>
                 </div>
@@ -237,16 +250,26 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <div class="flip-text-div">
-                                <p><b>John Doe</b>(Contractor)</p>
+                                <p><b>Contractor</b></p>
                             </div>
                             <div class="flip-img-div">
-                                <img class="flip-img" src="\ezolar\public\img\user-pics\mee.jpeg" alt="Avatar">
+                                <?php
+                                    if (empty($data['contractor'])) {
+                                        echo '<p> Not Assigned Yet </p>';
+                                    } else { ?>
+                                        <img class="flip-img" src="\ezolar\public\img\user-pics\<?php echo $data['contractor'][0]->profilePhoto ?>" alt="Avatar">
+                                    <?php }
+                                ?>
                             </div>
                         </div>
                         <div class="flip-card-back">
-                            <h1>John Doe</h1>
-                            <p>Architect & Engineer</p>
-                            <p>We love that guy</p>
+                            <?php if (empty($data['contractor'])) {
+                                echo '<p> Not Assigned Yet </p>';
+                            } else {
+                                echo '<h2>'.$data['contractor'][0]->name.'</h2>
+                                <p>'.$data['contractor'][0]->telno.'</p>
+                                <p>'.$data['contractor'][0]->email.'</p>';
+                            }?>
                         </div>
                     </div>
                 </div>
@@ -420,8 +443,8 @@
             document.getElementById('circle-5').style.backgroundColor = "#DE8500";
 
             
-            document.getElementById('c5-link').removeAttribute("href"); 
-            document.getElementById('c5-link').style.cursor="default";
+            // document.getElementById('c5-link').removeAttribute("href"); 
+            // document.getElementById('c5-link').style.cursor="default";
 
 
             
@@ -429,7 +452,39 @@
 
         </script>
 
-<?php } ?>
+<?php } if (($data['project'][0]->status) == "Z0" ) { ?>
+         <script>
+            document.getElementById("request-received").style.color = "#DE8500";
+            document.getElementById("request-received").style.fontWeight = "900";
+            document.getElementById("salesperson-assignment").style.color = "#DE8500";
+            document.getElementById("salesperson-assignment").style.fontWeight = "900";
+            document.getElementById("payment-verify").style.color = "#DE8500";
+            document.getElementById("payment-verify").style.fontWeight = "900";
+            // document.getElementById("req-received").style.display =none;
+            document.getElementById('add-schedule-btn').style.display = "none";
+
+            document.getElementById('pro-bar1').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-2').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar2').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-3').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar3').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-4').style.backgroundColor = "#DE8500";
+
+            document.getElementById('pro-bar4').style.backgroundColor = "#DE8500";
+            document.getElementById('circle-5').style.backgroundColor = "#DE8500";
+
+            
+            // document.getElementById('c5-link').removeAttribute("href"); 
+            // document.getElementById('c5-link').style.cursor="default";
+
+
+            
+
+
+        </script>
+    <?php } ?>
 
 <div class = "f">
     <?php 

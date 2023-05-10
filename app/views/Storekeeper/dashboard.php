@@ -1,7 +1,5 @@
 <?php
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,60 +14,58 @@
     <title>eZolar Dashboard</title>
 </head>
 <body>
+<div class="body-container"> 
 <div class="dashboard-container">
         <div class="dashboard-container-main">
         <div class="main-txt">
                 <b>Storekeeper Dashboard</b>
         </div>
-        <div class="main-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>
         </div>
         <div class="dashboard-container-nav" align="center">
-                <a href="/ezolar/Inventory"><div class="dashboard-container-content">
+                <a href="/ezolar/Inventory" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Inventory
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Inventory.png" alt="profile">
                 </div>
-            </div></a>
+            </a>
             
-            <a href="/ezolar/Package"> <div class="dashboard-container-content">
+            <a href="/ezolar/Package" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Packages
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Packages.png" alt="profile">
                 </div>
-            </div></a>
+            </a>
 
-            <a href="/ezolar/Product"> <div class="dashboard-container-content">
+            <a href="/ezolar/Product" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Products
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Products.png" alt="profile">
                 </div>
-            </div></a>
-
-            <div class="dashboard-container-content">
+                </a>
+            
+            <a href="/ezolar/Statistics/salesPerMonth" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Reports & Stats
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Reports.png" alt="profile">
                 </div>
-            </div>
+            </a>
 
-            <a href="/ezolar/User/profile"><div class="dashboard-container-content">
+            <a href="/ezolar/User/profile" class="dashboard-container-content">
                 <div class="dashboard-container-txt">
                         Profile
                 </div>
                 <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\storekeeper\Profile.png" alt="profile">
                 </div>
-            </div></a>
+            </a>
             
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">
@@ -81,5 +77,11 @@
             </div>
         </div>
     </div>
+</div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

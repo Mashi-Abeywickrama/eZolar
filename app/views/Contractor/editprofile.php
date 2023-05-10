@@ -1,7 +1,5 @@
 <?php
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -16,36 +14,24 @@
     <title>My Profile</title>
 </head>
 <body>
+    <?php
+        require_once(__ROOT__.'\app\views\popupList\profilePopup.php');
+        if (isset($_POST['sub'])) {
+
+            echo '
+            <script>
+                document.getElementById('."'id01'".').style.display='."'block'".';
+            </script>
+            
+            ';
+        }
+    ?>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Contractor Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>/contractor/assignedProjects"><div class="box2">
-                    Assigned Projects
-                </div></a>
-                <a href="<?=URLROOT?>/"><div class="box3">
-                    My Schedule
-                </div></a>
-                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
-                    Report an Issue
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
+    ?>
 
 <div class="common-main-container">
-    <div class="dashboard-common-heading-and-background-container">
         <div class="dashboard-common-heading-container">
             <div class="dashboard-common-heading-back-btn">
                 <a href="<?=URLROOT?>/user/profile" “text-decoration: none”>
@@ -55,21 +41,15 @@
             <div class="dashboard-common-heading-text">
                 <b>Edit My Profile</b>
             </div>
-            <div class="dashboard-common-heading-image">
-                <a “text-decoration: none”>
-                    <img src="\ezolar\public\img\setting\Edit.png" alt="edit-icon">
-                </a>
-            </div>
+
 
         </div>
-    </div>
 
 <?php
-$results = $_SESSION['rows'];
-foreach($results as $row){
+
     echo '
-    
-    <div class="form-background">
+        
+    <div class="form-background-edit">
 
         <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">
@@ -77,7 +57,7 @@ foreach($results as $row){
                     <div class="form-item-text">
                         Name :
                     </div>
-                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '">
+                    <input class="form-item-input" name="name" id="name" type="text" value="' . $data['rows'][0]->name . '">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -85,23 +65,24 @@ foreach($results as $row){
                     </div>
                     <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '">
                 </div>
-                <div class="form-item-container">
-                    <div class="form-item-text">
-                        Bio :
-                    </div>
-                    <input class="form-item-input" name="bio" id="bio" type="text" value="' . $row ->bio . '">
-                </div>
+                
                 <div class="form-item-container">
                     <div class="form-item-text">
                         Contact Number :
                     </div>
-                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->telno . '">
+                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $data['rows'][0]->telno . '">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
                         NIC Number :
                     </div>
-                    <input class="form-item-input" name="nic" id="bio" type="nic" value="' . $row ->nic . '" readonly>
+                    <input class="form-item-input" name="nic" id="nic" type="nic" value="' . $data['rows'][0]->nic . '" readonly>
+                </div>
+                <div class="form-item-container">
+                    <div class="form-item-text">
+                        Bio :
+                    </div>
+                    <input class="form-item-input" name="bio" id="bio" type="text" value="' . $data['rows'][0]->bio . '">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -122,25 +103,26 @@ foreach($results as $row){
                     }
                 </script>
             <?php echo '</div>
-            </div>
 
             <div class="form-inline-button">
                 <div class="cancel-btn">
                     <button class="form-cancel-btn" type="reset" value="reset" onclick="clearErrorMessage()">Cancel</button>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" class="form-submit-btn" onclick="return validateEditProfile()">Submit</button>
+                    <button type="submit" name="sub" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
                 </div>
             </div>
+            
         </form>
     </div>
     ';
-}
+    
 ?>
 
-
-
 </div>
+</div>
+<div class = "f"> 
+    <?php require_once(__ROOT__.'\app\views\Includes\footer.php'); ?>
 </div>
 <script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
 </body>

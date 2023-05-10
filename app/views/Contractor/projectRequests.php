@@ -16,32 +16,9 @@
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Contractor Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class="box2">
-                    Assigned Projects
-                </div></a>
-                <a href="<?=URLROOT?>/"><div class="box3">
-                    My Schedule
-                </div></a>
-                <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
-                    Report an Issue
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-                <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+`   <?php
+        require_once(__ROOT__.'\app\views\Contractor\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
@@ -52,29 +29,26 @@
                     </a>
                 </div>
                 <div class="common-main-txt">
-                    Assigned Projects
+                    My Projects
                 </div>
             </div>
             
         </div>
-        <div class="body-list-container">
-            <!-- <div class="project-box">
-                <div class="project-text-container">
-                    <div class="project-text-container-inner">
-                        <div class="project-text-no">project No. 123456</div>
-                        <div class="project-text-name"><b>Pylon Tech Lithium Iron Battery 2.4 kWh</b></div>
-                        <div class="project-text-price">Price: Rs. 30,000</div>
-                    </div>
-                    <div class="project-details-btn-container">
-                        <div class="project-details-btn">
-                            <div class="project-details-btn-text">More info</div>
-                        </div>
-                    </div>
-                </div>  
-            </div> -->
+        <div class="project-type">
+            <a class="sub-topic" href="<?=URLROOT?>/Contractor/projectrequests" style="color: #FFFFFF;"><div class = "project-sub-topic" style="background: #0B2F64; border: 3px solid #0B2F64;color: #FFFFFF; ">
+            Project Requests
+            </div></a>
+            <a class="sub-topic" href="<?=URLROOT?>/project/COntractorAssignedProjects"><div class = "project-sub-topic">
+            Accepted Projects
+            </div></a>
+            <a class="sub-topic" href="<?=URLROOT?>/Contractor/completedprojects"><div class = "project-sub-topic">
+            Completed Projects
+            </div></a>
 
-            <?php
-            $results = $_SESSION['rows'];
+        </div>
+        <div class="body-list-container">
+        <?php
+            $results = $data['project'];
             foreach($results as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
@@ -85,20 +59,22 @@
                             </div>
                         </span>
                         <span class="project-details-btn-container">
-                            <div class="project-details-btn">
+                            <a href="./projectDetails/'.$row -> projectID .'" class="project-details-btn">
                                 <span class="project-details-btn-text">More info</span>
-                            </div>
+                            </a>
                         </span>
                         
                     </div>';
             }
-            ?>
+        ?>
             
         </div>
     </div>
 </div>
+<div class="f">
+    <?php 
+          $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
-<?php 
-      $this->view('Includes/footer', $data);
-?>
 </html>

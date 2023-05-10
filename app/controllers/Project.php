@@ -149,7 +149,9 @@ class Project extends Controller
     // print_r($_FILES);die();
     //
     $filename = $this->paymentRecieptUpload();
-    $this->projectModel->addNewRequest($customer_Id, $_POST, $filename);
+    $salesperson = $this->projectModel->getFreeSalesPerson();
+    // print_r($salesperson);die();
+    $this->projectModel->addNewRequest($customer_Id, $_POST, $filename,$salesperson);
   }
   public function projectdetails($id)
   {
@@ -157,6 +159,78 @@ class Project extends Controller
 
       redirect('login');
     }
+    $scheEng = $this->projectModel->getEngCount($_GET['project_id']);
+    
+    if (empty($scheEng)) {
+      $scheduleEngCheck = $this->projectModel->getScheduleDetails($_GET['project_id']);
+      
+    if ($scheduleEngCheck == -3) {
+      $schedule = $this->projectModel->getSchedule($_GET['project_id']);
+      $schedule = $schedule[0]->scheduleID;
+      
+      $scheduleDates = $this->projectModel->getScheduleDates($_GET['project_id']);
+      
+      $check = $this->projectModel->checkEngineer($scheduleDates[0]->requested_date);
+      
+      if ($check == -1) {
+        $check2 = $this->projectModel->checkEngineer($scheduleDates[1]->requested_date);
+        if ($check2 == -1) {
+          $check3 = $this->projectModel->checkEngineer($scheduleDates[2]->requested_date);
+          if ($check3 == -1) {
+            $results = $this->projectModel->rejectSchedule($schedule);
+          } else {
+            $results = $this->projectModel->addNewScheduleEng($schedule, $check3, $scheduleDates[2]->requested_date);
+          }
+          
+        }else{
+          $results = $this->projectModel->addNewScheduleEng($schedule, $check2, $scheduleDates[1]->requested_date);
+        }
+      }
+      else{
+        $results = $this->projectModel->addNewScheduleEng($schedule, $check, $scheduleDates[0]->requested_date);
+      }
+    }else if ($scheduleEngCheck > 0){
+        $results = $this->projectModel->addEng($_GET['project_id'],$scheduleEngCheck);
+
+    }
+    }
+
+    $scheContr = $this->projectModel->getConCount($_GET['project_id']);
+
+    if (empty($scheContr)) {
+      $scheduleConCheck = $this->projectModel->getDeliveryScheduleDetails($_GET['project_id']);
+      
+    if ($scheduleConCheck == -3) {
+      $schedule = $this->projectModel->getdSchedule($_GET['project_id']);
+      $schedule = $schedule[0]->scheduleID;
+      
+      $scheduleDates = $this->projectModel->getDeliveryScheduleDates($_GET['project_id']);
+      
+      $check = $this->projectModel->checkContractor($scheduleDates[0]->requested_date);
+      
+      if ($check == -1) {
+        $check2 = $this->projectModel->checkContractor($scheduleDates[1]->requested_date);
+        if ($check2 == -1) {
+          $check3 = $this->projectModel->checkContractor($scheduleDates[2]->requested_date);
+          if ($check3 == -1) {
+            $results = $this->projectModel->rejectSchedule($schedule);
+          } else {
+            $results = $this->projectModel->addNewScheduleCon($schedule, $check3, $scheduleDates[2]->requested_date);
+          }
+          
+        }else{
+          $results = $this->projectModel->addNewScheduleCon($schedule, $check2, $scheduleDates[1]->requested_date);
+        }
+      }
+      else{
+        $results = $this->projectModel->addNewScheduleCon($schedule, $check, $scheduleDates[0]->requested_date);
+      }
+    }else if ($scheduleConCheck > 0){
+        $results = $this->projectModel->addCon($_GET['project_id'],$scheduleConCheck);
+
+    }
+    }
+ 
     $project = $this->projectModel->getProjectDetails($_GET['project_id']);
     $contractor = $this->projectModel->getContractorDetails($_GET['project_id']);
     $salesperson = $this->projectModel->getSalesPersonDetails($_GET['project_id']);
@@ -212,8 +286,27 @@ class Project extends Controller
   public function scheduleDate()
   {
     // print_r($_POST);die();
-    $res = $this->projectModel->addNewScheduleItem($_GET['project_id'], $_POST['d1'], $_POST['d2'], $_POST['d3']);
-    if ($res) {
+    $schedule = $this->projectModel->addNewScheduleItem($_GET['project_id'], $_POST['d1'], $_POST['d2'], $_POST['d3']);
+    $check = $this->projectModel->checkEngineer($_POST['d1']);
+    if ($check == -1) {
+       $check2 = $this->projectModel->checkEngineer($_POST['d2']);
+       if ($check2 == -1) {
+        $check3 = $this->projectModel->checkEngineer($_POST['d3']);
+        if ($check3 == -1) {
+          $results = $this->projectModel->rejectSchedule($schedule);
+        } else {
+          $results = $this->projectModel->addNewScheduleEng($schedule, $check3, $_POST['d3']);
+        }
+        
+      }else{
+         $results = $this->projectModel->addNewScheduleEng($schedule, $check2, $_POST['d2']);
+      }
+    }
+    else{
+      $results = $this->projectModel->addNewScheduleEng($schedule, $check, $_POST['d1']);
+    }
+    // print_r($check);die();
+    if ($results) {
       redirect('project/projectdetails/2?project_id=' . $_GET['project_id']);
       // $dlink = 'project/projectdetails/2?project_id=' . $_GET['project_id'];
       // $dates= array( $_POST['d1'], $_POST['d2'], $_POST['d3']);
@@ -227,10 +320,39 @@ class Project extends Controller
   public function scheduleDeliveryDate()
   {
     // print_r($_POST);die();
-    $res = $this->projectModel->addNewDeliveryScheduleItem($_GET['project_id'], $_POST['d1'], $_POST['d2'], $_POST['d3']);
-    if ($res) {
+    $schedule = $this->projectModel->addNewDeliveryScheduleItem($_GET['project_id'], $_POST['d1'], $_POST['d2'], $_POST['d3']);
+    // print_r($schedule);die();
+    // $schedule = 55;
+    if ($schedule) {
+      $check = $this->projectModel->checkContractor($_POST['d1']);
+    // print_r($check);die();
+    if ($check == -1) {
+       $check2 = $this->projectModel->checkContractor($_POST['d2']);
+       if ($check2 == -1) {
+        $check3 = $this->projectModel->checkContractor($_POST['d3']);
+        if ($check3 == -1) {
+          $results = $this->projectModel->rejectSchedule($schedule);
+        } else {
+          $results = $this->projectModel->addNewScheduleCon($schedule, $check3, $_POST['d3']);
+        }
+        
+      }else{
+         $results = $this->projectModel->addNewScheduleCon($schedule, $check2, $_POST['d2']);
+      }
+    }
+    else{
+      // print_r($schedule . $check . $_POST['d1']);die();
+      $results = $this->projectModel->addNewScheduleCon($schedule, $check, $_POST['d1']);
+    }
+    if ($results) {
       redirect('project/projectdetails/4?project_id=' . $_GET['project_id']);
     }
+    else {
+      print_r($results);
+    }
+    }
+    
+    
 
 
   }
@@ -305,15 +427,57 @@ class Project extends Controller
   }
 
   public function COntractorAssignedProjects()
+  
   {
+    
+    if (isset($_GET['project_id'])) {
+      $product = $this->projectModel->getproduct($_GET['project_id']);
+    }
+    if (isset($_GET['projectid'])) {
+      $project = $this->projectModel->getProjectDetailsCustomer($_GET['projectid']);
+      $salesperson = $this->projectModel->getSalesPersonDetails($_GET['projectid']);
+      $schedule = $this->projectModel->getdSchedule($_GET['projectid']);
+      // print_r($salesperson);die();
+      $engineer = $this->projectModel->getEngineer($_GET['projectid']);
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+        'project' => $project,
+        'schedule' => $schedule,
+        'salesperson' => $salesperson,
+        'engineer' => $engineer
+
+      ];
+    }
+    
 
     $rows = $this->projectModel->getContractorProjects($this->projectModel->getUserID([$_SESSION['user_email']]));
     // print_r($rows);die;
     $_SESSION['rows'] = $rows;
+    
+    if (isset($_GET['project_id'])) {
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+        'product' => $product
+      ];
+    }
+    if(!isset($_GET['project_id']) && !isset($_GET['projectid'])){
+      $data = [
+        'title' => 'eZolar COntractor Assigned Projects',
+      ];
+    }
+    $this->view('Contractor/acceptedProjects', $data);
+  }
+
+  public function markascomplete()
+  {
+    if (!isLoggedIn()) {
+      redirect('login');
+    }
+    $this->projectModel->markAsComplete($_GET['projectid']);
     $data = [
-      'title' => 'eZolar COntractor Assigned Projects',
+      'title' => 'eZolar Salesperson Assigned Projects',
     ];
-    $this->view('Contractor/assignedProjects', $data);
+    redirect('Project/COntractorAssignedProjects');
   }
 
 }

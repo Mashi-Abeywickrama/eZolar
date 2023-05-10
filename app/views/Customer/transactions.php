@@ -19,35 +19,9 @@
 <body>
 
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
@@ -72,7 +46,7 @@
                         <span class="transaction-text-container">
                             <div class="transaction-text-container-inner">
                                 <div class="transaction-text-no">Project ID: ' .  $row -> Project_projectID . '</div>
-                                <div class="transaction-text-name"><b>Transaction No : ' . $row -> receiptID . '</b></div>
+                                <div class="transaction-text-name">Transaction Purpose : ' . $row -> receiptPurpose . '</div>
                                 <div class="transaction-text-no">Verification: ' .  $row -> isVerified . '</div>
                             </div>
                         </span>

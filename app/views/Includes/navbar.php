@@ -17,19 +17,19 @@
     -->
         <div class="nav-left">
             <div class="home"><a class="links" "home" href="<?=URLROOT?>/user/home">Home</a></div>
-            <div class="packages"><a class="links" "link-packages" href="packages.php">Packages</a></div>
+            <div class="packages"><a class="links" "link-packages" href="<?=URLROOT?>/index/packages">Packages</a></div>
             <div class="abt"><a class="links" "about" href="<?=URLROOT?>/index/about">About Us</a></div>
             <div class="contact"><a class="links" "link-contact" href="<?=URLROOT?>/index/contact">Contact</a></div>
             <div class="dash"><a class="links" "link-dash" href="<?=URLROOT?>/user/dashboard">Dashboard</a></div>
         </div>
-        <div class="nav-right">
+        <!-- <div class="nav-right">
             <div class="noti">
                 <img src="\ezolar\public\img\Notifications.png" alt="Notifi">
             </div>
             <div class="btn2">
                 <a href="/ezolar/user/logout"><button class="nav-btn2">Log Out</button></a>
             </div>
-        </div>
+        </div> -->
 
 	</div>
 

@@ -17,35 +17,9 @@
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
@@ -88,7 +62,7 @@
                         </span>
                         <span class="project-details-btn-container">
                             <div class="project-details-btn">
-                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails" style = "color: #FFFFFF";>More info</a></span>
+                                <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/5?project_id=' .  $row -> projectID . '" style = "color: #FFFFFF";>More info</a></span>
                             </div>
                         </span>
                         

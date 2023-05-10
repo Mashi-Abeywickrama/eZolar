@@ -8,24 +8,30 @@ class Index extends Controller {
       $data = [
         'title' => 'eZolar Home',
       ];
-     
+      if(!isLoggedIn()){
       $this->view('Includes/header', $data);
-      // $this->view('Includes/footer', $data);
-      $this->view('Includes/navbar1', $data);
-      // $this->view('Customer/viewinquiry', $data);
-      $this->view('home', $data);
+        $this->view('Includes/navbar1', $data);
+        $this->view('home', $data);
+      }
+     
+      // $this->view('Includes/header', $data);
+      // $this->view('Includes/header', $data);
+      //   $this->view('Includes/navbar1', $data);
+        $this->view('Customer/ratings', $data);
+      // $this->view('home', $data);
     }
     public function home(){
       $data = [
         'title' => 'eZolar Home',
       ];
       if(!isLoggedIn()){
-
+      $this->view('Includes/header', $data);
         $this->view('Includes/navbar1', $data);
         $this->view('home', $data);
       }
      
-      $this->view('Includes/header', $data);
+      // $this->view('Includes/header', $data);
+      $this->view('Customer/navbar', $data);
       $this->view('Includes/navbar', $data);
       $this->view('home', $data);
     }
@@ -35,15 +41,14 @@ class Index extends Controller {
       $data = [
         'title' => 'eZolar about',
       ];
-      $this->view('Includes/header', $data);
       if(!isLoggedIn()){
-
+        $this->view('Includes/header', $data);
         $this->view('Includes/navbar1', $data);
         $this->view('about', $data);
         $this->view('Includes/footer1', $data);
 
       } else {
-
+        $this->view('Customer/navbar', $data);
         $this->view('Includes/navbar', $data);
         $this->view('about', $data);
         $this->view('Includes/footer1', $data);
@@ -61,9 +66,27 @@ class Index extends Controller {
         $this->view('Includes/footer1', $data);
       } else {
 
-      $this->view('Includes/header', $data);
+        $this->view('Customer/navbar', $data);
       $this->view('Includes/navbar', $data);
       $this->view('contact', $data);
+      $this->view('Includes/footer1', $data);
+    }
+    }
+
+    public function packages(){
+      $data = [
+        'title' => 'eZolar Packages',
+      ];
+      if(!isLoggedIn()){
+        $this->view('Includes/header', $data);
+        $this->view('Includes/navbar1', $data);
+        $this->view('packages', $data);
+        $this->view('Includes/footer1', $data);
+      } else {
+
+      $this->view('Includes/header', $data);
+      $this->view('Includes/navbar', $data);
+      $this->view('packages', $data);
       $this->view('Includes/footer1', $data);
     }
     }

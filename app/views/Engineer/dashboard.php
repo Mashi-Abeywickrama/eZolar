@@ -1,8 +1,5 @@
 <?php
-     //define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'/app/views/Includes/header.php');
-    require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    require_once(__ROOT__.'/app/views/Includes/footer.php');
+     require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +14,11 @@
     <title>eZolar Dashboard</title>
 </head>
 <body>
-<div class="dashboard-container">
+<div class="body-container">
 <div class="dashboard-container">
         <div class="dashboard-container-main">
            <div class="main-txt">
                 Engineer Dashboard
-           </div>
-           <div class="main-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
            </div>
         </div>
         <div class="dashboard-container-content">
@@ -69,5 +63,10 @@
         </div>
     </div>
     </div>
+    <div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

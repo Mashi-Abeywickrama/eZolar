@@ -1,8 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Includes\header.php');
-    require_once(__ROOT__.'\app\views\Includes\navbar.php');
-    require_once(__ROOT__.'\app\views\Includes\footer.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 
@@ -13,16 +11,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.projects.css">
     <link rel="stylesheet" href="\ezolar\public\css\packages-advanced.css">
     <title>My Projects</title>
 </head>
 <body>
-
-<div class="sidebar">
+<div class="body-container">
+    <div class="left-panel">
         <div class="sidebar-heading">
-            <b>Engineer Dashboard</b>
+        <a class="sidebar-anchor" href="/ezolar/user/dashboard"><b>Engineer Dashboard</b></a>
         </div>
         <div class="sidebar-link-container-group">
             <div class="sidebar-link-container-top">
@@ -48,7 +47,7 @@
         </div>
     </div>
     <div class="common-main-container">
-    <div class="dashboard-common-heading-container" style="width:80%;">
+    <div class="dashboard-common-heading-container" style="width:100%;">
             <div class="dashboard-common-heading-back-btn">
                 <a href="/ezolar/EngineerProject/projectDetailsPage/<?php echo $_SESSION['PackMod']['Info']->projectID?>" “text-decoration: none”>
                     <img src="\ezolar\public\img\storekeeper\Back.png">
@@ -68,7 +67,7 @@
                 </a>
             </div>
         </div>  
-        <div class="form-table-container">
+        <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text inventory-col1">Product Name</span>  <span class="form-table-header-text inventory-col2">Price per item</span><span class="form-table-header-text inventory-col3">Quantity</span> <span class="form-table-header-text inventory-col4">Price</span>
                     </div>
@@ -85,9 +84,9 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text inventory-col1">'.$item -> productName .'</span> 
-                            <span class="form-table-row-text inventory-col2">'.$item -> cost.'</span> 
+                            <span class="form-table-row-text inventory-col2">Rs.'.number_format($item -> cost,0,'.',',').'/=</span> 
                             <span class="form-table-row-text inventory-col3">'.$item -> productQuantity.'</span>
-                            <span class="form-table-row-text inventory-col4">'.strval((int)$item -> cost*$item->productQuantity).'</span>
+                            <span class="form-table-row-text inventory-col4">Rs.'.number_format((int)$item -> cost*$item->productQuantity,0,'.',',').'/=</span>
                             </div>';
                             $counter = ($counter+1)%2;
                             $contentTotalPrice += (int)$item -> cost*(int)$item->productQuantity;
@@ -96,10 +95,10 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Product Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $contentTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                 </div>
-                <div class="form-table-container">
+                <div class="form-table-container" style="width:100%;">
                     <div class="form-table-header-container">
                         <span class="form-table-header-text extras-col1">Service</span>  <span class="form-table-header-text extras-col2">Price</span>
                     </div>
@@ -116,7 +115,7 @@
                             };
                             echo '<div class="'.$styleClass.'">
                             <span class="form-table-row-text extras-col1">'.$item -> description .'</span> 
-                            <span class="form-table-row-text extras-col2">'.$item -> price.'</span>
+                            <span class="form-table-row-text extras-col2">Rs.'.number_format($results[$i] -> price,0,'.',',').'/=</span>
                             </div>';
                             $counter = ($counter+1)%2;
                             $extraTotalPrice += (int)$item -> price;
@@ -125,12 +124,12 @@
                     </div>
                     <div class="form-table-total-container">
                         <div class="form-table-total-text"><b>Total Service Cost</b></div>
-                        <div class="form-table-total-text"><b><?php echo $extraTotalPrice; ?></b></div>
+                        <div class="form-table-total-text"><b><?php echo 'Rs.'.number_format($extraTotalPrice,0,'.',',').'/='; ?></b></div>
                     </div>
                 </div>
                 <div class="form-table-subtotal-container">
                         <div class="form-table-subtotal-text"><b>Total Cost</b></div>
-                        <div class="form-table-subtotal-text"><b><?php echo $contentTotalPrice+$extraTotalPrice; ?></b></div>
+                        <div class="form-table-subtotal-text"><b><?php echo 'Rs.'.number_format($contentTotalPrice+$extraTotalPrice,0,'.',',').'/='; ?></b></div>
                 </div>
                 <div class="form-button-container" style="justify-content:center;">
                 <a href="/ezolar/EngineerProject/projectModifyPackPage/<?php echo $_SESSION['PackMod']['Info']->projectID; ?>"><button class="form-submit-btn">Modify Package</button></a>
@@ -139,5 +138,11 @@
             <?php unset($_SESSION['PackMod']) ?>
         </div>
     </div>
+    </div>
+<div class="f">
+    <?php 
+      $this->view('Includes/footer', $data);
+    ?>
+</div>
 </body>
 </html>

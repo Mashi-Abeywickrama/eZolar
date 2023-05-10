@@ -17,7 +17,7 @@
       return ($row->type);
     }
     public function getAssignedProjects($id){
-      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status <> "F" AND status <> "G"');
+      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status <> "F" AND status <> "Z0"');
       $row = $this->db->resultSet(['SPID' => $id]);
       return $row;
     }
@@ -27,7 +27,7 @@
       return $row;
     }
     public function getCompletedProjects($id){
-      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status = "G"');
+      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status = "Z0"');
       $row = $this->db->resultSet(['SPID' => $id]);
       return $row;
     }
@@ -56,7 +56,7 @@
 
     public function getAllPaymentReceipts($projectID){
       $this->db->query('SELECT * from `paymentreceipt` WHERE Project_projectID = :projectID;');
-      $rows = $this->db->resultSet(['projectID' => $prjID]);
+      $rows = $this->db->resultSet(['projectID' => $projectID]);
       return $rows;
     }
 

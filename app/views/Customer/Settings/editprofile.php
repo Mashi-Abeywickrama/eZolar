@@ -27,35 +27,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         }
     ?>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
 <div class="common-main-container">
         <div class="dashboard-common-heading-container">
@@ -81,16 +55,16 @@ foreach($results as $row){
         <form class="form-container" action="/ezolar/user/updateprofile" method="POST" enctype="multipart/form-data">
             <div class="form-inline">
                 <div class="form-item-container">
-                    <div class="form-item-text">
+                    <div class="form-item-text" id ="name-label">
                         Name :
                     </div>
-                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '">
+                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '" required>
                 </div>
                 <div class="form-item-container">
-                    <div class="form-item-text">
+                    <div class="form-item-text" id="email-label">
                         Email :
                     </div>
-                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '">
+                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '" required>
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -102,7 +76,7 @@ foreach($results as $row){
                     <div class="form-item-text">
                         Contact Number :
                     </div>
-                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '">
+                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '" required>
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -135,7 +109,7 @@ foreach($results as $row){
                     <button class="form-cancel-btn" type="reset" value="reset" onclick="clearErrorMessage()">Cancel</button>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" name="sub" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
+                    <button type="submit" name="sub" id="submitbtn" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
                 </div>
             </div>
             

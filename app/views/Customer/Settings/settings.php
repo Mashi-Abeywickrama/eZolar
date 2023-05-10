@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.css">
+    <link rel="stylesheet" href="\ezolar\public\css\customer.settings.css">
     <link rel="stylesheet" href="\ezolar\public\css\style.css">
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
@@ -17,35 +17,9 @@
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+<?php
+        require_once(__ROOT__.'\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         <div class="dashboard-common-main-topic">
@@ -71,7 +45,7 @@
                     <img src="\ezolar\public\img\setting\Edit.png" alt="Edit">
                 </div>
             </div></a>
-            <a href="<?=URLROOT?>/user/updatePassword"><div class="dashboard-settings-container-content">
+            <a href="<?=URLROOT?>/user/updatePasswordpage"><div class="dashboard-settings-container-content">
                 <div class="dashboard-container-txt">
                     Change Password
                 </div>

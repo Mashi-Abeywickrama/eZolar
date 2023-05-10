@@ -1,0 +1,139 @@
+@font-face {
+    font-family: 'BoldFont';
+    src: url('\\ezolar\\public\\ttf\\bold.ttf');
+  }
+
+.body-container{
+    margin-top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-container{
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-self: center;
+}
+
+.category-btn{
+    display: flex;
+    width:30%;
+    min-width: 150px;
+    background-color: #f9f9f9;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    height: 40px;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    color: black;
+    transition: 200ms;
+    box-sizing: border-box;
+}
+
+.category-btn.select{
+    background-color: #2C61A3;
+    color: white;
+}
+
+.category-btn:hover{
+    transition: 01ms;
+    border: solid 2px #2C61A3;
+}
+
+.packages-wrapper{
+    width:80%;
+    margin-top: 20px;
+    justify-content: space-evenly;
+    visibility: visible;
+    display: flex;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.packages-wrapper.hide{
+    visibility: hidden;
+    max-height: 0;
+    margin-top: 0;
+}
+
+.packages-wrapper.select{
+    transition: 0.3s ease-in-out;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.pack-card{
+    height: 500px;
+    margin-bottom: 20px;
+    min-width: 420px;
+    width: 31%;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 25px;
+    padding-inline: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pack-title{
+    font-family: 'BoldFont';
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.pack-subtitle{
+    color: #000000;
+    font-family: 'Work Sans';
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.pack-decription{
+    font-size:15px;
+    font-weight: lighter;
+    text-align: justify;
+}
+
+.pack-details{
+    font-size:15px;
+}
+
+.pack-price-text{
+    font-family: 'BoldFont';
+    font-size: 20px;
+}
+
+.pack-price{
+    font-family: 'BoldFont';
+    font-size: 50px;
+}
+
+.pack-btn{
+    display: flex;
+    height: 40px;
+    width: 85%;
+    min-width: 250px;
+    background: #2C61A3;
+    border-radius: 5px;
+    color: #FFFFFF;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.pack-btn:hover{
+    cursor: pointer;
+    background: #0B2F64;
+    transition-duration: 200ms;
+}

@@ -15,37 +15,12 @@
 </head>
 <body>
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
     <?php
         require_once(__ROOT__.'\app\views\popupList\newprojectPopup.php');
+        require_once(__ROOT__.'\app\views\popupList\investment.php');
         if (isset($_POST['sub'])) {
             echo '
             <script>
@@ -73,7 +48,7 @@
              Simply input your monthly power consumption to receive an instant estimate of the cost of a solar panel system that fits your needs.
              No Commitment Required! Click the button below!"
             </div>
-            <div class="budget-btn-container">
+            <div class="budget-btn-container" onclick="document.getElementById('calc').style.display='block'" >
                 <div class="budget-cal-btn">
                     <div class="budget-cal-btn-txt">
                         Calculate Budget

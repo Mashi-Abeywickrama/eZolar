@@ -56,35 +56,9 @@
     </script>
     
 <div class="body-container">
-    <div class="left-panel">
-        <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Customer Dashboard
-        </div></a>
-        <div class="rest">
-            <div class="rest-top">
-            <a href="<?=URLROOT?>#"><div class="box7">
-                    Packages
-                </div></a>
-            <a href="<?=URLROOT?>/project"><div class="box2">
-                    My Projects
-                </div></a>
-                <a href="<?=URLROOT?>/inquiry"><div class="box3">
-                    Inquiries
-                </div></a>
-                <a href="<?=URLROOT?>/transaction"><div class="box4">
-                    Transactions
-                </div></a>
-            </div>
-            <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
-                    Profile
-                </div></a>
-                <a href="<?=URLROOT?>/customersettings"><div class="box6">
-                    Settings
-                </div></a>
-            </div>
-        </div>
-    </div>
+    <?php
+        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+    ?>
 
     <div class="common-main-container">
         <div class="dashboard-common-heading-container">
@@ -104,24 +78,49 @@
             <div class="transaction-detail-box" id = "transaction-detail-box">
                 <div class = "transaction-detail-box-inner-boarder">
                     <?php
-                    $results = $_SESSION['rows'];
+                    
                     echo '
                         <div class="transaction-d-text"><b>Invoice</b></div>
                         <hr></hr>
-                        <div class="transaction-d-text2"><b>Invoice ID : </b>' . $results[0] -> receiptID . '</div>
-                        <div class="transaction-d-text2"><b>Project ID: </b>' .  $results[0] -> Project_projectID . '</div>
-                        <div class="transaction-d-text2"><b>Verification: </b>' .  $results[0] -> isVerified . '</div>
-                        <div class="transaction-d-text2"><b>Verified By: </b>' .  $results[0] -> Salesperson_Employee_empID . '</div>
-                        <div class="transaction-d-text2"><b>Uploaded Time: </b>' .  $results[0] -> uploadedTime . '</div>
+                        <div class="transaction-d-text2"><b>Invoice ID : </b>' . $data['transcaction'][0] -> receiptID . '</div>
+                        <div class="transaction-d-text2"><b>Project ID: </b>' .  $data['transcaction'][0] -> Project_projectID . '</div>
+                        <div class="transaction-d-text2"><b>Verification: </b>' .  $data['transcaction'][0] -> isVerified . '</div>
+                        <div class="transaction-d-text2"><b>Verified By: </b>' .  $data['transcaction'][0] -> Salesperson_Employee_empID . '</div>
+                        <div class="transaction-d-text2"><b>Uploaded Time: </b>' .  $data['transcaction'][0] -> uploadedTime . '</div>
                     ';
 
-                    if (empty( $results[0] -> Package_packageID) == false ||  $results[0] -> receiptPurpose != "Inspection" ){
+                    if (empty( $data['transcaction'][0] -> Package_packageID) == false ||  $data['transcaction'][0] -> receiptPurpose == "Order Confirmation" ){
                         echo '
-                            <div class="transaction-d-text2"><b>Package : </b>' . $results[0] -> Package_packageID . '</div>
+                            <div class="transaction-d-text2"><b>Package : </b>' . $data['transcaction'][0] -> Package_packageID . '</div>
                             <div class="transaction-d-text2"><b>Package Info</b></div>
+                            
                             ';
-                    }
-                    echo'<div class="transaction-d-text2"><b>Description: </b>' .  $results[0] -> receiptPurpose . '</div>';
+                            ?>
+                        <table style="width:75%">
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                            </tr>
+                            <?php 
+
+                            $totalCost = 0;
+                            foreach ($data['product'] as $row) {
+                                echo '
+                                <tr>
+                                    <td>'.$row ->Product_productID.'</td>
+                                    <td>'.$row ->productName.'</td>
+                                    <td>'.$row ->productQuantity.'</td>
+                                </tr>';
+                                $product = ($row ->productQuantity)*($row ->cost);
+                                $totalCost = $totalCost + $product;
+                            }
+                            ?>    
+                        </table>
+                        <div class="transaction-d-text2"><b>Total Cost:</b>Rs.<?php echo $totalCost?></div>
+
+                    <?php }
+                    echo'<div class="transaction-d-text2"><b>Description: </b>' .  $data['transcaction'][0] -> receiptPurpose . '</div>';
                     ?>
                     <hr></hr>
                     <div class="transaction-d-text"><b>Thank You!</b></div>
