@@ -1,7 +1,5 @@
 <?php
-// require_once(__ROOT__.'\app\views\Includes\header.php');
 require_once(__ROOT__.'\app\views\Customer\navbar.php');
-// require_once(__ROOT__.'\app\views\Includes\footer.php');
 
 ?>
 <!DOCTYPE html>

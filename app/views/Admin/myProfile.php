@@ -1,6 +1,6 @@
 <?php
 // define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -92,3 +92,23 @@
       $this->db->query('UPDATE `project` SET `status` = :status WHERE projectID  = :projectID;');
       $this->db->execute(['projectID'=>$prjID,'status'=> $status]);
     }
+
+    public function getEngName($prjID){
+      $this->db->query('SELECT `name` FROM `employee` INNER JOIN scheduleitem_assignedemp ON UserID = empID INNER JOIN scheduleitem ON ScheduleItem_scheduleID = scheduleID WHERE Project_projectID = :prjID GROUP BY empID;');
+      $rows = $this->db->resultSet(['prjID' => $prjID]);
+      return $rows;
+    }
+
+    public function getContrName($prjID){
+      $this->db->query('SELECT `name` FROM `employee` INNER JOIN scheduleitem_assignedcontr ON contractorID = empID INNER JOIN scheduleitem ON ScheduleItem_scheduleID = scheduleID WHERE Project_projectID = :prjID GROUP BY empID;');
+      $rows = $this->db->resultSet(['prjID' => $prjID]);
+      return $rows;
+    }
+
+    public function getPaymentHistory($prjID){
+      $this->db->query('SELECT * FROM `paymentreceipt` WHERE Project_projectID = :prjID ORDER BY verifiedDate DESC;');
+      $rows = $this->db->resultSet(['prjID' => $prjID]);
+      return $rows;
+    }
+    
+  }

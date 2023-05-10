@@ -1,4 +1,5 @@
 <?php
+    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
@@ -53,20 +54,21 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         </div>
     </div>
     <div class="common-main-container">
-        <div class="dashboard-common-main-topic">
+        <div class="dashboard-common-main-topic" style ="margin-left: 0; margin-top: 0; justify-content:start; align-items:center;">
             <div class="common-main-left-img">
-                <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\engineer\Projects.png" alt="projects-icon">
+                <a href="<?=URLROOT?>/SalespersonProject/paymentHistory/<?php echo $_SESSION['row']->Project_projectID?>" style= “text-decoration: none”>
+                    <img src="\ezolar\public\img\storekeeper\Back.png" alt="Back Button">
                 </a>
             </div>
             <div class="common-main-txt">
-                Verify Receipt : <?php echo strtoupper($_SESSION['row']->receiptID);?>
+                Verify Receipt : <?php echo str_pad($_SESSION['row']->receiptID,6,"0",STR_PAD_LEFT);?>
             </div>    
             </div>
             <div class="receipt-details-container">
                 <p><b>Project ID : </b> <?php echo strtoupper($_SESSION['row']->Project_projectID) ?></p>
                 <p><b>Payment Purpose : </b> <?php echo $_SESSION['row']->receiptPurpose ?></p>
                 <p><b>Recieved Date:  </b> <?php echo substr($_SESSION['row']->uploadedTime,0,10) ?></p>
+                <p><b>Verified Date:  </b> <?php echo $_SESSION['row']->verifiedDate ?></p>
             </div>
             <div class="receipt-image-container">
                 <img src="\ezolar\public\img\payments\<?php echo $_SESSION['row']->scan ?>" alt="Receipt" class="receipt-iamge">
@@ -75,12 +77,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <div class="receipt-btn-container">
                 <a href="\ezolar\public\img\payments\<?php echo $_SESSION['row']->scan ?>" class="receipt-btn" download> Download Receipt</a>
             </div>
-
-            <div class="receipt-btn-container">
-                <a href="<?php echo $_SESSION['verifylink'] ?>1" class="receipt-btn"> Verify Payment</a>
-                <a href="<?php echo $_SESSION['verifylink'] ?>0" class="receipt-btn"> Reject Payment</a>
-            </div>
-
                     
                     
                 
@@ -91,7 +87,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 <div class="f">
     <?php 
       $this->view('Includes/footer', $data);
-      unset($_SESSION['verifylink']);
     ?>
 </div>
 </body>
