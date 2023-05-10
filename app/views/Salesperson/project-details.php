@@ -1,6 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,10 +53,10 @@
         </div>
     </div>
     <div class="common-main-container">
-        <div class="dashboard-common-main-topic">
+    <div class="dashboard-common-main-topic" style ="margin-left: 0; margin-top: 0; justify-content:start; align-items:center;">
             <div class="common-main-left-img">
-                <a href=”” “text-decoration: none”>
-                    <img src="\ezolar\public\img\engineer\Projects.png" alt="projects-icon">
+                <a href="<?=URLROOT?>/SalespersonProject" style= “text-decoration: none”>
+                    <img src="\ezolar\public\img\storekeeper\Back.png" alt="Back Button">
                 </a>
             </div>
             <div class="common-main-txt">
@@ -64,12 +64,14 @@
             </div>
             
             </div>
-            <div class="project-details-container">
+            <div class="project-details-container" style="width:100%">
                 <div class="project-details-inline-container">
                     <div class="project-details-basic-container">
                         <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['StatusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
-                        <p><b>Assigned Salesperson ID : </b> <?php echo $_SESSION['row']->Salesperson_Employee_empID ?> </p>
+                        <p><b>Assigned Engineer : </b> <?php echo $_SESSION['rows']['EngineerNames']?> </p>
+                        <p><b>Assigned Contractor : </b> <?php echo $_SESSION['rows']['ContractorNames']?> </p>
+
                     </div>
                     <div class="project-details-customer-container">
                         <p><b>Customer Name </b> <br> <span style="font-size:30px;"><?php echo $_SESSION['row']->name;?></span></p>
@@ -95,19 +97,18 @@
                     }
                     ?>
                 </div>
+                <div class="project-details-btns-container">
 
                     <?php 
                     if (($_SESSION['row']->status == 'A0')&& array_key_exists('receipt',$_SESSION['rows'])){
-                        echo '<div class="project-details-btns-container">
-                        <a href="/ezolar/SalespersonProject/verifyInspectionPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Inspection Payment</div></a>';
-                        echo '</div>';
+                        echo '<a href="/ezolar/SalespersonProject/verifyInspectionPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Inspection Payment</div></a>';
                     }
                     else if (($_SESSION['row']->status == 'D0')&& array_key_exists('receipt',$_SESSION['rows'])){
-                        echo '<div class="project-details-btns-container">
-                        <a href="/ezolar/SalespersonProject/verifyFullPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Payment</div></a>';
-                        echo '</div>';
+                        echo '<a href="/ezolar/SalespersonProject/verifyFullPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Payment</div></a>';
                     } ?>
-                    
+                
+                    <a href="/ezolar/SalespersonProject/paymentHistory/<?php echo $_SESSION['row']->projectID; ?>"><div class="project-details-btns">View Payment History</div></a>
+                </div>
                     
                 
         </div>

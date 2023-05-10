@@ -15,7 +15,7 @@ class SalespersonProject extends Controller
 
   private function getProjectStatusName($status){
     $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
-    'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','F'=>'Project Cancelled','G'=>'Project Completed');
+    'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','X0'=>'Project Cancelled','Z0'=>'Project Completed');
     if (array_key_exists($status,$names)){
       return $names[$status];
     } else {
@@ -33,7 +33,26 @@ class SalespersonProject extends Controller
 
     $SP_Id = $this->SalespersonProjectModel->getUserID([$_SESSION['user_email']]);
     $rows = $this->SalespersonProjectModel->getAssignedProjects($SP_Id);
-    $_SESSION['rows'] = $rows;
+    
+    $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
+    foreach ($rows as $project){
+      if (($project->status == "A0")||($project->status == "D0")){
+        $_SESSION['rows']['priority'][] = $project;
+      } else if (($project->status == "X0")||($project->status == "Z0")){
+        $_SESSION['rows']['finished'][] = $project;
+      } else {
+        $_SESSION['rows']['ongoing'][] = $project;
+      }
+    }
+    foreach ($_SESSION['rows'] as $key => $sub_arrays){
+      foreach ($sub_arrays as $index=>$project){
+        foreach($rows as $newindex=>$newproject){
+          if ($project->projectID == $newproject->projectID){
+            unset($rows[$newindex]);
+          }
+        }
+      }
+    }
     $data = [
       'title' => 'eZolar Project',
     ];
@@ -86,7 +105,30 @@ class SalespersonProject extends Controller
       $delDatesStr = substr_replace($delDatesStr, "", -2,2);
     }
 
-    $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "StatusName" => $this->getProjectStatusName($row->status) );
+    $EngNames = $this->SalespersonProjectModel->getEngName($row->projectID);
+    $EngNamesStr = "";
+    if (count($EngNames)<1){
+      $EngNamesStr = "Not Assigned";
+    }else {
+      foreach ($EngNames as $item){
+        $EngNamesStr .= substr($item->name,0,10)." , ";
+      };
+      $EngNamesStr = substr_replace($EngNamesStr, "", -2,2);
+    }
+
+    $ContrNames = $this->SalespersonProjectModel->getContrName($row->projectID);
+    $ContrNamesStr = "";
+    if (count($ContrNames)<1){
+      $ContrNamesStr = "Not Assigned";
+    }else {
+      foreach ($ContrNames as $item){
+        $ContrNamesStr .= substr($item->name,0,10)." , ";
+      };
+      $ContrNamesStr = substr_replace($ContrNamesStr, "", -2,2);
+    }
+
+
+    $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "StatusName" => $this->getProjectStatusName($row->status), "EngineerNames"=>$EngNamesStr, "ContractorNames"=>$ContrNamesStr);
 
     if ($this->SalespersonProjectModel->checkUnverifiedReceipt($prjID)){
       $receipt = $this->SalespersonProjectModel->getReceiptfromProject($prjID);
@@ -188,6 +230,40 @@ class SalespersonProject extends Controller
     
 
 
+  }
+
+  public function paymentHistory($projectID){
+    if(!isLoggedIn()){
+
+      redirect('login');
+    }
+    $_SESSION['projectID'] = $projectID;
+    $rows = $this->SalespersonProjectModel->getPaymentHistory($projectID);
+
+    foreach ($rows as $index=>$receipt){
+      if ($receipt->verifiedDate == ''){
+        $rows[$index]->verifiedDate = 'Not Veriefied';
+      }
+    }
+    $_SESSION['rows'] = $rows;
+    $data = [
+      'title' => 'eZolar Project\'s Payment History',
+    ];
+    $this->view('Salesperson/payment-history', $data);
+  }
+
+  public function viewReceipt($receiptID){
+    if(!isLoggedIn()){
+
+      redirect('login');
+    }
+    $receipt = $this->SalespersonProjectModel->getReceipt($receiptID);
+    if ($receipt->verifiedDate == '') $receipt->verifiedDate = 'Not Verified';
+    $_SESSION['row'] = $receipt;
+    $data = [
+      'title' => 'eZolar View Receipt',
+    ];
+    $this->view('Salesperson/view-receipt', $data);
   }
 }
 

@@ -1,9 +1,5 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    //require_once(__ROOT__.'/app/views/Includes/header.php');
-    //require_once(__ROOT__.'/app/views/Includes/navbar.php');
-    //require_once(__ROOT__.'/app/views/Includes/footer.php');
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
     require(__ROOT__.'/app/libraries/Calendar.php');
 
     $calendar = new Calendar();
@@ -128,7 +124,7 @@
                     // Not completed inspections
                     className += ' event-delivery';
                 }
-                var new_event = "<a href=\"/ezolar/EngineerProject/projectDetailsPage/"+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3] + "<br>" + item[5].toUpperCase() +"</div></a>";
+                var new_event = "<a href=\"/ezolar/SalespersonProject/projectDetailsPage/"+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3] + "<br>" + item[5].toUpperCase() +"</div></a>";
 
                 event_list = event_list + new_event;
                 element.innerHTML = event_list;

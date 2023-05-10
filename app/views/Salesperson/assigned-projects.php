@@ -69,28 +69,92 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
     </div>
     <div class="project-list-container">
-
-        <div class="assigned-project-list-container">
+        <div class="category-container">
+            <div class="category-btn" id="priority-btn">Priority Projects</div>
+            <div class="category-btn" id="ongoing-btn">Ongoing Projects</div>
+            <div class="category-btn" id="finished-btn">Finished Projects</div>
+        </div>
+        <div class="assigned-project-list-container" id="priority-projects">
             <?php
-            $results = $_SESSION['rows'];
-            foreach($results as $row){
-                if ($row -> Salesperson_Employee_empID != NULL)
-                echo '<div class="project-box">
-                            <div class="project-text-container">
-                                <div class="project-text-container-inner">
-                                    <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                    <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
-                                    <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
-                                </div>
-                            </div>
-                            <div class="project-details-btn-container">
-                                <a href="/ezolar/SalespersonProject/projectDetailsPage/'.$row -> projectID.'">
-                                    <div class="project-details-btn">
-                                        <div class="project-details-btn-text">More Info</div>
+            $results = $_SESSION['rows']['priority'];
+            if (count($results)<=0){
+                echo '<div class="no-projects-text">No Projects here</div>';
+            } else {
+                foreach($results as $row){
+                    if ($row -> Salesperson_Employee_empID != NULL)
+                    echo '<div class="project-box">
+                                <div class="project-text-container">
+                                    <div class="project-text-container-inner">
+                                        <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
+                                        <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                        <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                                     </div>
-                                </a>
-                            </div>
-                        </div>';
+                                </div>
+                                <div class="project-details-btn-container">
+                                    <a href="/ezolar/SalespersonProject/projectDetailsPage/'.$row -> projectID.'">
+                                        <div class="project-details-btn">
+                                            <div class="project-details-btn-text">More Info</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>';
+                }
+            }
+            ?>
+        </div>
+        <div class="assigned-project-list-container" id="ongoing-projects">
+            <?php
+            $results = $_SESSION['rows']['ongoing'];
+            if (count($results)<=0){
+                echo '<div class="no-projects-text">No Projects here</div>';
+            } else {
+                foreach($results as $row){
+                    if ($row -> Salesperson_Employee_empID != NULL)
+                    echo '<div class="project-box">
+                                <div class="project-text-container">
+                                    <div class="project-text-container-inner">
+                                        <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
+                                        <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                        <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                                    </div>
+                                </div>
+                                <div class="project-details-btn-container">
+                                    <a href="/ezolar/SalespersonProject/projectDetailsPage/'.$row -> projectID.'">
+                                        <div class="project-details-btn">
+                                            <div class="project-details-btn-text">More Info</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>';
+                }
+            }
+            ?>
+        </div>
+        <div class="assigned-project-list-container" id="finished-projects">
+            <?php
+            $results = $_SESSION['rows']['finished'];
+            if (count($results)<=0){
+                echo '<div class="no-projects-text">No Projects here</div>';
+            } else {
+                foreach($results as $row){
+                    if ($row -> Salesperson_Employee_empID != NULL)
+                    echo '<div class="project-box">
+                                <div class="project-text-container">
+                                    <div class="project-text-container-inner">
+                                        <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
+                                        <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                        <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                                    </div>
+                                </div>
+                                <div class="project-details-btn-container">
+                                    <a href="/ezolar/SalespersonProject/projectDetailsPage/'.$row -> projectID.'">
+                                        <div class="project-details-btn">
+                                            <div class="project-details-btn-text">More Info</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>';
+                }
             }
             ?>
         </div>
@@ -102,6 +166,51 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 $this->view('Includes/footer', $data);
 ?>
 </div>
+<script>
+    var priority_btn = document.getElementById("priority-btn");
+    var ongoing_btn = document.getElementById("ongoing-btn");
+    var finished_btn = document.getElementById("finished-btn");
+
+    var priority_projects = document.getElementById("priority-projects");
+    var ongoing_projects = document.getElementById("ongoing-projects");
+    var finished_projects = document.getElementById("finished-projects");
+    var all_projects = document.getElementsByClassName("assigned-project-list-container");
+    Array.from(all_projects).forEach(hideList);
+    priority_btn.classList.add('select');
+    priority_projects.classList.remove('hide');
+    priority_projects.classList.add('select');
+
+    function hideList(list){
+        list.classList.remove('select');
+        list.classList.add('hide');
+    }
+
+    function selectList(list){
+        Array.from(all_projects).forEach(hideList);
+        list.classList.remove('hide');
+        list.classList.add('select');
+    }
+
+
+    priority_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        ongoing_btn.classList.remove('select');
+        finished_btn.classList.remove('select');
+        selectList(priority_projects);
+    });
+    ongoing_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        priority_btn.classList.remove('select');
+        finished_btn.classList.remove('select');
+        selectList(ongoing_projects);
+    });
+    finished_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        priority_btn.classList.remove('select');
+        ongoing_btn.classList.remove('select');
+        selectList(finished_projects);
+    })
+</script>
 </body>
 
 </html>

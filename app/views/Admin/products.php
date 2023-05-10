@@ -1,6 +1,6 @@
 <?php
     //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="\ezolar\public\css\storekeeper.dashboard.common.css">
+    <link rel="stylesheet" href="\ezolar\public\css\admin\admin.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\products.css">
     <title>My Projects</title>
 </head>

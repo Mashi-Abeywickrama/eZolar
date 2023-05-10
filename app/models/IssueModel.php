@@ -30,5 +30,22 @@
       }
     }
 
+    public function getAllIssues(){
+      $this->db->query('SELECT * FROM issue INNER JOIN employee ON empID = userId;');
+      $results = $this->db->resultSet([]);
+      return $results;
+    }
+
+    public function getIssueDeatils($issueID){
+      $this->db->query('SELECT * FROM issue INNER JOIN employee ON empID = userId WHERE issueID = :IID;');
+      $results = $this->db->single(['IID'=>$issueID]);
+      return $results;
+    }
+
+    public function markIssueRead($issueID){
+      $this->db->query('UPDATE issue SET isRead=1 WHERE issueID =:IID');
+      $this->db->execute(['IID'=>$issueID]);
+    }
+
   }
 ?>
