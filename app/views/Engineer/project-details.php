@@ -97,7 +97,16 @@
                     if(array_key_exists('$inspectionFlag',$_SESSION['rows'])){
                         $InspectionFlag = $_SESSION['rows']['inspectionFlag']; 
                     }
-                    if(($_SESSION['row']->status == 'C0') && ($InspectionFlag)){
+                    if (count($_SESSION['rows']['unconfirmed']) > 0){
+                        echo ' <div class="project-details-confirm-buttons-container">
+                            <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
+                            <div class="project-details-btns-container" style="margin-top:5px;">
+                                <a href="/ezolar/EngineerProject/acceptInspection/'.$_SESSION['row']->projectID.'/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns">Accept</div></a>
+                                <a href="/ezolar/EngineerProject/rejectInspection/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns btn-grey">Reject</div></a>
+                            </div>
+                        </div> ';
+
+                    } else if(($_SESSION['row']->status == 'C0') && ($InspectionFlag)){
                         echo ' <div class="project-details-confirm-buttons-container">
                             <p>Your inspection on '.substr($_SESSION['rows']['InspectDates'],0,10).' should be complete soon.</p>
                             <div class="project-details-btns-container" style="margin-top:5px;">
@@ -114,15 +123,6 @@
                             echo '</div>';
                         }
                         
-                    } else if ($_SESSION['row']->status == 'B0'){
-                        echo ' <div class="project-details-confirm-buttons-container">
-                            <p>You have been assigned a new inspection on '.substr($_SESSION['rows']['unconfirmed'][0]->date,0,10).'. Do you Accept?</p>
-                            <div class="project-details-btns-container" style="margin-top:5px;">
-                                <a href="/ezolar/EngineerProject/acceptInspection/'.$_SESSION['row']->projectID.'/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns">Accept</div></a>
-                                <a href="/ezolar/EngineerProject/rejectInspection/'.$_SESSION['rows']['unconfirmed'][0]->scheduleID.'"><div class="project-details-btns btn-grey">Reject</div></a>
-                            </div>
-                        </div> ';
-
                     } ?>
                     
                     
