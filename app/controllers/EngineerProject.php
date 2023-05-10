@@ -31,9 +31,9 @@
       $rows  = $this->engineerProjectModel-> getAssignedProjects($eng_Id);
       $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
       foreach ($rows as $project){
-        if (($project->status == "C0")||($project->status == "B2")){
+        if (($project->status == "C0")||($project->status == "B0")){
           $_SESSION['rows']['priority'][] = $project;
-        } else if (($project->status == "F")||($project->status == "G")){
+        } else if (($project->status == "Z0")||($project->status == "X0")){
           $_SESSION['rows']['finished'][] = $project;
         } else {
           $_SESSION['rows']['ongoing'][] = $project;
@@ -69,7 +69,7 @@
         redirect('login');
       }
       $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-      $row = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$prjID);
+      $row = $this->engineerProjectModel->getAssignedProjectDetails($prjID);
       if ($row->Salesperson_Employee_empID == ''){
         $row->Salesperson_Employee_empID = 'Not Assigned';
       } else {
@@ -90,11 +90,12 @@
       $insDatesStr = "";
       $delDatesStr = "";
       $unconfirmed = [];
+      $inspFlag = FALSE;
       if (count($insDates)<1){
         $insDatesStr = "Not Scheduled";
       }else{
         foreach ($insDates as $item){
-          if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID)){
+          if ((int)$this->engineerProjectModel->checkSchduleConfirmed($item->scheduleID,$eng_Id)){
             $insDatesStr .= substr($item->date,0,10)." , ";
           } else {
             $insDatesStr .= '<i title="Not confirmed">'.substr($item->date,0,10)." </i>, ";
@@ -102,6 +103,11 @@
           }
         };
         $insDatesStr = substr_replace($insDatesStr, "", -2,2);
+        $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
+        $today = new DateTime();
+
+        if ($firstInspDate<=$today)
+          $inspFlag = TRUE;
       }
 
       if (count($delDates)<1){
@@ -112,14 +118,7 @@
         };
         $delDatesStr = substr_replace($delDatesStr, "", -2,2);
       }
-      $firstInspDate = new DateTime(substr($insDates[0]->date,0,10));
-      $today = new DateTime();
-
-      if ($firstInspDate<=$today){
-        $inspFlag = TRUE;
-      } else {
-        $inspFlag = FALSE;
-      }
+      
 
       
 
@@ -131,7 +130,7 @@
       ];
       $this->view('Engineer/project-details', $data);
 
-    }
+      }
 
     public function acceptInspection($projectID,$scheduleID){
       if(!isLoggedIn()){
