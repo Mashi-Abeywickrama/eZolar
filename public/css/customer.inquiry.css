@@ -82,8 +82,8 @@
 }
 .inquiry-details-btn{
     z-index: 1;
-    width: 85%;
-    border-radius: 0px 0px 0 5px;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
     height: 2.5em;
     display: flex;
     /* height: 40px; */
@@ -129,6 +129,10 @@
     width: 26px;
     height: auto;
 }
+.add-inquiry-input{
+    border-radius: 10px;
+    height: 1.5rem;
+}
 .add-inquiry-btn a{
     text-decoration: none;
     color: #2C61A3;
@@ -173,11 +177,27 @@
     margin: 5px;
     font-size: 18px;
 }
-.search-inquiry-btn{
+.search-inquiry-btn {
     width: 58%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.search-inquiry-img {
+    border-radius: 5px;
+    background: #2C61A3;
+    padding: 0.1rem;
+    /* margin-left: 0.2rem; */
+    display: flex;
+    height: 50%;
+    width: 1rem;
+    /* height: 50%; */
+    align-items: center;
+}
+.search-inquiry-img>img {
+    height: 75%;
+    width: 100%;
 }
 a{
     text-decoration: none;

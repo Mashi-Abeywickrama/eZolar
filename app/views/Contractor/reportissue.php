@@ -36,9 +36,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         <div class="dashboard-common-main-topic">
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
-                    <a href=”” “text-decoration: none”>
+
                         <img src="\ezolar\public\img\customer\Issue.png" alt="inquiry">
-                    </a>
+
                 </div>
                 <div class="common-main-txt">
                     Report an Issue
@@ -95,7 +95,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         function validateTopic(){
             var topic = document.getElementById('topic-box').value;
             if(topic.length<1){
-                document.getElementById("topic-err").innerHTML='Topic cannot be blank';
+                document.getElementById("topic-err").innerHTML='Topic cannot be empty';
                 return false;
             }
             else{
@@ -107,7 +107,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         function validateMessage(){
             var message = document.getElementById('msg-box').value;
             if(message.length<1){
-                document.getElementById("msg-err").innerHTML='Message cannot be blank';
+                document.getElementById("msg-err").innerHTML='Message cannot be empty';
                 return false;
             }
             else{

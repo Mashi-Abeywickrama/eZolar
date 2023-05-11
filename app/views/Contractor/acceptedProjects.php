@@ -57,15 +57,19 @@ require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
         <div class="body-list-container">
 
             <?php
-            $results = $_SESSION['rows'];
+            $results = $data['rows'];
             foreach($results as $row){
+                // if (!empty($row->status=="Z0")){
+                // echo '<div class="no-projects-text">There are no ongoing projects...</div>';
+                // break;
+                // }
                 // print_r($row);die;
                 if($row->status!="Z0"){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
                                 <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                <div class="project-text-name"><b>Status : Awaiting for Installation</b></div>
                                 <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>

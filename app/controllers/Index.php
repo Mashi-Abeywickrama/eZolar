@@ -15,10 +15,10 @@ class Index extends Controller {
       }
      
       // $this->view('Includes/header', $data);
-      // $this->view('Includes/header', $data);
-      //   $this->view('Includes/navbar1', $data);
-        $this->view('Customer/ratings', $data);
-      // $this->view('home', $data);
+        // $this->view('Includes/navbar1', $data);
+        $this->view('Customer/navbar', $data);
+      $this->view('Includes/navbar', $data);
+      $this->view('home', $data);
     }
     public function home(){
       $data = [

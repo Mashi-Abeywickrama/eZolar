@@ -87,7 +87,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                             } else {
                                 className += ' event-pending';
                             }
-                            var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[2] +" : "+ item[3].toUpperCase() +"</div></a>"; 
+                            var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3].toUpperCase() +"</div></a>"; 
                             
                             event_list = event_list + new_event;
                             element.innerHTML = event_list;

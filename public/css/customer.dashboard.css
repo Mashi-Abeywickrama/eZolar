@@ -81,14 +81,15 @@ a{
     align-items: center;
     justify-content: center;
     background-color: rgb(201, 0, 0);
-    width: 95%;
+    width: 65%;
     border-radius: 5px;
     text-overflow: ellipsis;
     overflow: hidden;
-    padding: 5px;
+    padding: 3px;
     color: white;
     text-align: left;
     white-space: nowrap;
+    font-size: 0.65rem;
 }
 
 .clandar-header-container {

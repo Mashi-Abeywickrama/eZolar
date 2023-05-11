@@ -32,14 +32,16 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     ?>
 
 <div class="common-main-container">
-        <div class="dashboard-common-heading-container">
-            <div class="dashboard-common-heading-back-btn">
+        <div class="dashboard-common-main-topic">
+            <div class="common-main-topic-left">
+                <div class="common-main-left-img">
                 <a href="<?=URLROOT?>/user/profile" “text-decoration: none”>
                     <img src="\ezolar\public\img\admin\back.png">
                 </a>
             </div>
-            <div class="dashboard-common-heading-text">
-                <b>Edit My Profile</b>
+            <div class="common-main-txt">
+                Edit Profile
+            </div>
             </div>
 
 
@@ -56,15 +58,15 @@ foreach($results as $row){
             <div class="form-inline">
                 <div class="form-item-container">
                     <div class="form-item-text" id ="name-label">
-                        Name :
+                        Name :<span class="star">*</span><span class="err-box" id="name-err"></span>
                     </div>
-                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '" required>
+                    <input class="form-item-input" name="name" id="name" type="text" value="' . $row ->name . '" required onkeyup="validateName()">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text" id="email-label">
-                        Email :
+                        Email :<span class="star">*</span><span class="err-box" id="email-err"></span>
                     </div>
-                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '" required>
+                    <input class="form-item-input" name="email" id="email" type="text" value="' . $_SESSION['user_email'] . '" required onkeyup="validateEmail()">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -74,9 +76,9 @@ foreach($results as $row){
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
-                        Contact Number :
+                        Contact Number :<span class="star">*</span><span class="err-box" id="mobile-err"></span>
                     </div>
-                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '" required>
+                    <input class="form-item-input" name="mobile" id="mobile" type="text" value="' . $row ->mobile . '" required onkeyup="validateTelNo()">
                 </div>
                 <div class="form-item-container">
                     <div class="form-item-text">
@@ -109,7 +111,7 @@ foreach($results as $row){
                     <button class="form-cancel-btn" type="reset" value="reset" onclick="clearErrorMessage()">Cancel</button>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" name="sub" id="submitbtn" class="form-submit-btn" onclick="document.getElementById('."'id01'".').style.display='."'block'".';"return validateEditProfile()" >Submit</button>
+                    <button type="submit" name="sub" id="submitbtn" class="submitbtn" onclick=document.getElementById('."'id01'".').style.display='."'block'".';>Submit</button>
                 </div>
             </div>
             
@@ -124,6 +126,72 @@ foreach($results as $row){
 <div class = "f"> 
     <?php require_once(__ROOT__.'\app\views\Includes\footer.php'); ?>
 </div>
-<script type="text/javascript" src="\ezolar\public\js\validation.js"></script>
+<script>
+    function validateName(){
+        var fname = document.getElementById('name').value;
+        var regName = /^[a-zA-Z]+ [a-zA-Z]+$/
+        if(fname === ""){
+            document.getElementById("name-err").innerHTML='This field is required';
+        }
+        else{
+            if(!regName.test(fname)){
+                document.getElementById("name-err").innerHTML='Enter a valid name';
+                return false;
+            }else{
+                if(fname.length>45){
+                document.getElementById("name-err").innerHTML='Exceed character limit';
+                return false;
+                }
+                else{
+                document.getElementById("name-err").innerHTML = " ";
+                return true;
+
+                }
+            }
+        }
+    }
+    function validateEmail(){
+        var email = document.getElementById("email").value;
+        var format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
+        if (email.match(format)){
+            document.getElementById("email-err").innerHTML = "";
+            return true;
+        }
+        else{
+            document.getElementById("email-err").innerHTML = "Enter a Valid Email";
+            return false;
+        }
+        //  document.getElementById("email-err").innerHTML = "aaaaaaaaaaaaa"
+    }
+    function validateTelNo(){
+        var mobileN = document.getElementById("mobile").value;
+        if(mobileN.length>10 || mobileN.length<10){
+            document.getElementById("mobile-err").innerHTML='Length : 10 characters';
+            return false;
+        }else {
+            if(isNaN(mobileN)){
+                document.getElementById("mobile-err").innerHTML='Contact Number should contain numbers';
+                return false;
+            }
+            else{
+                document.getElementById("mobile-err").innerHTML = "";
+                return true;
+            }
+        }
+    }
+
+    function validateEditProfile(){
+        if(!validateName() || !validateTelNo() || !validateEmail()){
+            document.querySelector(".submitbtn").disabled = true;
+            document.querySelector(".submitbtn").style.backgroundColor = grey;
+            return false;
+        }
+        else{
+            document.querySelector(".submitbtn").disabled = false;
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

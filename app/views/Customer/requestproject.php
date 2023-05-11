@@ -69,14 +69,14 @@
                             <span class="err-box" id="location-err"></span>
                         </div>
                     </div>
-                    <input class="p-in" name="location" id="location" type="text" placeholder="no.123,someplace" required>
+                    <input class="p-in" name="location" id="location" type="text" placeholder="no.123,someplace" required onkeyup="validateLocation()">
                     <div class="err">Contact number:
                         <div class = "err group">
                             <span class="star">*</span>
-                            <span class="err-box" id="pwd-err"></span>
+                            <span class="err-box" id="mobile-err"></span>
                         </div>
                     </div>
-                    <input class="p-in" name="mobile" id="mobile" type="text" placeholder="insert Contact number" required>
+                    <input class="p-in" name="mobile" id="mobile" type="text" placeholder="insert Contact number" required onkeyup="validateMobile()">
 
                     <div class="err">Upload payment reciept:
                         <div class = "err-group">
@@ -100,7 +100,7 @@
                         </script>
                     <div class = "group" >
                         <button class="cancel-btn" type="cancel" name="cancel">Cancel</button>
-                        <button class="submit-btn" type="submit" name="sub" onclick="document.getElementById('id02').style.display='block'" > Submit </button>
+                        <button class="submit-btn" type="submit" name="sub" id="submit-btn" onclick=" validateForm(); document.getElementById('id02').style.display='block'" > Submit </button>
                     </div>
                 </form>
             </div>
@@ -170,5 +170,46 @@
           $this->view('Includes/footer', $data);
     ?>
 </div>
+    <script>
+        function validateLocation(){
+            var topic = document.getElementById('location').value;
+            if(topic.length<1){
+                document.getElementById("location-err").innerHTML='Please fill out this field';
+                return false;
+            }
+            else{
+                document.getElementById("location-err").innerHTML='';
+                return true;
+            }
+        }   
+
+        function validateMobile(){
+            var mobileN = document.getElementById('mobile').value;
+            if(mobileN.length>10 || mobileN.length<10){
+                document.getElementById("mobile-err").innerHTML='Length : 10 characters';
+                return false;
+            }else {
+                if(isNaN(mobileN)){
+                    document.getElementById("mobile-err").innerHTML='Contact Number should contain numbers';
+                    return false;
+                }
+                else{
+                    document.getElementById("mobile-err").innerHTML='';
+                    return true;
+                }
+            }
+        }
+        
+        function validateForm(){
+            if(!validateLocation() || !validateMobile()){
+                document.getElementById("submit-btn").style.backgroundColor = "grey";
+                document.querySelector("submit-btn").disabled = true;
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>

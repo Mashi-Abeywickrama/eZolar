@@ -49,12 +49,15 @@
         <div class="body-list-container">
         <?php
             $results = $data['project'];
+            if (count($results)<=0){
+                echo '<div class="no-projects-text">No project requests yet...</div>';
+            }
             foreach($results as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
                                 <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                <div class="project-text-name"><b>Status : Waiting for your Confirmation</b></div>
                                 <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>

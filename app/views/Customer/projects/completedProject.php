@@ -50,24 +50,26 @@
         <div class="body-list-container">
 
             <?php
-
+            if (count($data['rows'])<=0){
+                echo '<div class="project-box">You have no Completed Projects yet...</div>';
+            }else{ 
             foreach ($data['rows'] as $row){
                 echo '<div class="project-box">
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
                                 <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
+                                <div class="project-text-name"><b>Status: Completed</b></div>
                                 <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
                             </div>
                         </span>
-                        <span class="project-details-btn-container">
+                        <span class="project-details-btn-container1">
                             <div class="project-details-btn">
                                 <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/5?project_id=' .  $row -> projectID . '" style = "color: #FFFFFF";>More info</a></span>
                             </div>
                         </span>
                         
                     </div>';
-            }
+            }}
             ?>
             
         </div>

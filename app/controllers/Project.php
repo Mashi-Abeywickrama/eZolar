@@ -239,9 +239,12 @@ class Project extends Controller
     $schedule = $this->projectModel->getSchedule($_GET['project_id']);
     $engineer = $this->projectModel->getEngineer($_GET['project_id']);
     $product = $this->projectModel->getproduct($_GET['project_id']);
+    // $extra = $this->projectModel->getExtraItems($_GET['project_id']);
+    // print_r($extra);die();
     $dschedule = $this->projectModel->getdSchedule($_GET['project_id']);
+    $productname =  $this->projectModel->getproductname($_GET['project_id']);
     
-    // print_r($product );die();
+    // print_r($productname );die();
     // print_r($salesperson );die();
     $data = [
       'title' => 'eZolar Request Project',
@@ -253,7 +256,8 @@ class Project extends Controller
       'engineer' => $engineer,
       'product' => $product,
       'dschedule' => $dschedule,
-      'deliverypayment' => $deliverypayment
+      'deliverypayment' => $deliverypayment,
+      'productname' => $productname
     ];
     if ($id == 1) {
       $this->view('Customer/projects/projectdetails', $data);
@@ -457,12 +461,14 @@ class Project extends Controller
     if (isset($_GET['project_id'])) {
       $data = [
         'title' => 'eZolar COntractor Assigned Projects',
-        'product' => $product
+        'product' => $product,
+        'rows' => $rows
       ];
     }
     if(!isset($_GET['project_id']) && !isset($_GET['projectid'])){
       $data = [
         'title' => 'eZolar COntractor Assigned Projects',
+        'rows' => $rows
       ];
     }
     $this->view('Contractor/acceptedProjects', $data);

@@ -167,14 +167,14 @@
             
             <!-- take package details from db -->
             <div class="p-details-container-t">
-                <div class="pack-d">
+                <div class="pack-d-n">
                     <?php echo $row->productName ?>
                 </div>
                 <div class="pack-d">
                    <?php echo $row->productQuantity ?>
                 </div>
-                <div class="pack-d">
-                    <?php echo $row->cost;
+                <div class="pack-d-p">
+                    Rs.<?php echo $row->cost; echo '.00';
                     $total = $total + ($row->cost*$row->productQuantity) ?>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                     INSPECTION PAYMENT
                 </div>
                 <div class="pdate-t">
-                    Rs. 10000
+                    Rs. 10000.00
                 </div>
             </div>
             <div class="p-details-container-t">
@@ -198,15 +198,23 @@
                     ORDER CONFIRMATION
                 </div>
                 <div class="pdate-t">
-                    Rs. <?php echo $total; ?>
+                    Rs. <?php echo $total; ?>.00
                 </div>
             </div>
+            <!-- <div class="p-details-container-t">
+                <div class="pid-t">
+                    ADD ON
+                </div>
+                <div class="pdate-t">
+                    Rs.
+                </div>
+            </div> -->
             <div class="p-details-container-t">
                 <div class="pid-t">
                     TOTAL
                 </div>
                 <div class="pdate-t">
-                    Rs. <?php echo $total + 10000 ?> 
+                    Rs. <?php echo $total + 10000 ?>.00
                 </div>
             </div>
 

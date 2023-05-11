@@ -108,11 +108,17 @@
     margin-bottom: 5px;
 }
 .form-background-edit{
+        /* padding: 1rem; */
+    background: #ffffff;
     margin-top: 1rem;
     width: 95%;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+    overflow: hidden;
     align-items: center;
+    height: 100%;
 }
 
 .form-item-input{
@@ -141,6 +147,20 @@
     font-size:16px;
     width: 93%;
     min-height: 30px;
+}
+.star{
+    font-size: 0.7rem;
+    color: #e32;
+
+}
+.err{
+    width: 75%;
+    display: flex;
+}
+.err-box{
+    font-size: 0.7rem;
+    color: #DE8500;
+    margin-left: 1%;
 }
 
 .edit-profile-btn{

@@ -43,6 +43,21 @@
 
     }
 
+    public function getAllInquiriesSearch($id,$search){
+      // print_r($id);die;
+      
+      $this->db->query('SELECT * FROM inquiry WHERE  customerID = :customerID
+      AND topic LIKE :search 
+      ORDER BY `inquiryID` DESC');
+
+      // print_r($this->db->resultSet());die;
+      $row = $this->db->resultSet(['customerID' => $id,'search' => '%'.$search.'%']);
+      // print_r($row);die;
+      return $row;
+
+
+    }
+
     public function viewMore($id){
       $this->db->query('SELECT * FROM inquiry INNER JOIN employee ON employee.empID = inquiry.Salesperson_Employee_empID WHERE inquiryID = :inquiryID');
 

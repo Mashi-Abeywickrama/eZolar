@@ -109,7 +109,7 @@ left sub panel and the topic, left image and right image*/
     margin: 0 2.5vh 0;
     flex-direction: column;
     justify-items: center;
-    overflow: auto;
+    /* overflow: auto; */
     /* margin-left: 250px; */
     /* align-items: center; */
     

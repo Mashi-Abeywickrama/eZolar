@@ -32,7 +32,9 @@
       return $row;
     }
     public function getAssignedProjectDetails( $prj_ID){
-      $this->db->query('SELECT * FROM projectengineer INNER JOIN project ON projectengineer.Project_projectID = project.projectID INNER JOIN customer ON project.customerID = customer.customerID  WHERE Project_projectID = :prjID');
+      $this->db->query('SELECT * FROM project
+      INNER JOIN customer ON project.customerID = customer.customerID 
+      WHERE projectID = :prjID');
       $row = $this->db->single(['prjID' => $prj_ID]);
       return $row;
     }
@@ -91,6 +93,11 @@
     public function advanceProject($prjID,$status){
       $this->db->query('UPDATE `project` SET `status` = :status WHERE projectID  = :projectID;');
       $this->db->execute(['projectID'=>$prjID,'status'=> $status]);
+    }
+    public function addVerifyDate($receiptID){
+      $date = Date('y-m-d');
+      $this->db->query('UPDATE `paymentreceipt` SET verifiedDate =  :cdate WHERE receiptID = :receiptID;');
+      $this->db->execute(['receiptID' => $receiptID, 'cdate' =>$date]);
     }
 
     public function getEngName($prjID){

@@ -14,7 +14,7 @@ class SalespersonProject extends Controller
   }
 
   private function getProjectStatusName($status){
-    $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
+    $names = array('A0'=>'Request Recieved','A1'=>'Awaiting Payment Verification','A2'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
     'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','X0'=>'Project Cancelled','Z0'=>'Project Completed');
     if (array_key_exists($status,$names)){
       return $names[$status];
@@ -36,7 +36,7 @@ class SalespersonProject extends Controller
     
     $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
     foreach ($rows as $project){
-      if (($project->status == "A0")||($project->status == "D0")){
+      if (($project->status == "A1")||($project->status == "D0")){
         $_SESSION['rows']['priority'][] = $project;
       } else if (($project->status == "X0")||($project->status == "Z0")){
         $_SESSION['rows']['finished'][] = $project;
@@ -66,6 +66,7 @@ class SalespersonProject extends Controller
     }
     $eng_Id = $this->SalespersonProjectModel->getUserID([$_SESSION['user_email']]);
     $row = $this->SalespersonProjectModel->getAssignedProjectDetails($prjID);
+    // print_r($row);die;
     if ($row->Salesperson_Employee_empID == ''){
       $row->Salesperson_Employee_empID = 'Not Assigned';
     }
@@ -212,8 +213,9 @@ class SalespersonProject extends Controller
     $returnLink = base64_encode($returnLinkplain);
     if((int)$isAccepted){
       $this->SalespersonProjectModel->verifyReceipt($recID);
+      $this->SalespersonProjectModel->addVerifyDate($recID);
       if($type == "Inspection"){
-        $this->SalespersonProjectModel->advanceProject($prjID,'A1');
+        $this->SalespersonProjectModel->advanceProject($prjID,'A2');
         redirect($returnLinkplain);
       } else if ($type == "Full") {
         $this->SalespersonProjectModel->advanceProject($prjID,'D1');

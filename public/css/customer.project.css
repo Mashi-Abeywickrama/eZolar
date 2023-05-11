@@ -2,7 +2,12 @@
     color: #ffffff;
     background-color: #0b2f64;
 }
-
+.body-list-container{
+    margin-top: 20px;
+    height: 55vh;
+    align-self: center;
+    width: 99%;
+}
 .project-type{
     height: 2.5rem;
     margin-top: 1rem;
@@ -36,21 +41,23 @@
     border: 0.2rem solid #0B2F64;
 }
 .project-box{
+    padding: 0.2rem;
     display: flex;
     justify-content: space-evenly;
     /* height: 120px; */
-    width: 90%;
+    width: 98%;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     overflow: auto;
 }
 
 .project-text-container{
     display: flex;
     height: 90px;
-    width: 75%;
+    width: 85%;
     /* min-width: 250px; */
     /* max-width: calc(100% - 280px); */
     margin-top: 5px;
@@ -394,9 +401,16 @@ a{
     margin-right:20px;
     line-height: 1.8;
 }
-
-.project-details-btn-container{
-    width: 65%;
+.project-details-btn-container {
+    margin-top: 2.5rem;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.project-details-btn-container1{
+    width: 25%;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -574,4 +588,12 @@ a{
 }
 .budget-cal-btn-img{
     width: 70%;
+}
+
+.no-projects-text{
+    margin-top: 200px;
+    text-align: center;
+    font-style: italic;
+    font-size: 25px;
+    color: #757575;
 }

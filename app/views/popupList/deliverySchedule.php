@@ -53,17 +53,17 @@ $('.datepicker').datepicker({
 
         const date2 = new Date(d2);
         const date3 = new Date(d3);
-       
-        console.log(date.getTime());
+       console.log(date.getDay());
+  
 		var showDay = true;
 		if (date.getDay() == 0 || date.getDay() == 6) {
 			showDay = false;
 		}
-        if (date.getTime() == date2.getTime()) {
+        if (date.getDay() == date2.getDay() && date.getDate() == date2.getDate() && date.getMonth() == date2.getMonth() && date.getFullYear() == date2.getFullYear() ) {
 			showDay = false;
         }
 
-        if (date.getTime() == date3.getTime()) {
+        if (date.getDay() == date3.getDay() && date.getDate() == date3.getDate() && date.getMonth() == date3.getMonth() && date.getFullYear() == date3.getFullYear()) {
 			showDay = false;
         }
 		
@@ -86,11 +86,11 @@ $('.datepicker2').datepicker({
 			showDay = false;
 		}
 
-        if (date.getTime() == date1.getTime()) {
+        if (date.getDay() == date1.getDay() && date.getDate() == date1.getDate() && date.getMonth() == date1.getMonth() && date.getFullYear() == date1.getFullYear()) {
 			showDay = false;
         }
 
-        if (date.getTime() == date3.getTime()) {
+        if (date.getDay() == date3.getDay() && date.getDate() == date3.getDate() && date.getMonth() == date3.getMonth() && date.getFullYear() == date3.getFullYear()) {
 			showDay = false;
         }
 		
@@ -113,11 +113,11 @@ $('.datepicker3').datepicker({
 			showDay = false;
 		}
 
-        if (date.getTime() == date1.getTime()){
+        if (date.getDay() == date1.getDay() && date.getDate() == date1.getDate() && date.getMonth() == date1.getMonth() && date.getFullYear() == date1.getFullYear()){
 			showDay = false;
         }
 
-        if (date.getTime() == date2.getTime()) {
+        if (date.getDay() == date2.getDay() && date.getDate() == date2.getDate() && date.getMonth() == date2.getMonth() && date.getFullYear() == date2.getFullYear()) {
 			showDay = false;
         }
 		

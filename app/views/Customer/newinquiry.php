@@ -25,7 +25,7 @@
             <div class="common-main-topic-left">
                 <div class="common-main-left-img">
 <!-- need to embed the link of my profile in the image -->
-                    <a href=”” “text-decoration: none”>
+
                         <img src="\ezolar\public\img\customer\Inquiry.png" alt="inquiry">
                     </a>
                 </div>
@@ -33,16 +33,14 @@
                     New Inquiry
                 </div>
             </div>
-            <div class="common-main-right-img">
-                <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>    
+               
         </div>
 
     <div class="right-content">
         <form name="Inquiry Form" action="/ezolar/inquiry/newInquiry" method="POST">
             <div class="topic-container">
                 Topic:<span class="star">*</span><span class="err-box" id="topic-err"></span></br>
-                <input class="topic-box" name="topic-box" id="topic-box" type="text" required>
+                <input class="topic-box" name="topic-box" id="topic-box" type="text" required onkeyup=" validateTopic()">
             </div>
             <div class="type-id-container">
                 <div class="type-container">
@@ -60,11 +58,11 @@
             </div>
             <div class="msg-container">
                 Message:<span class="star">*</span><span class="err-box" id="msg-err"></span></br>
-                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required></textarea>
+                <textarea class="msg-box" name="msg-box" id="msg-box" type="text" rows="6" cols="50" required onkeyup="validateMessage()"></textarea>
             </div>
             <div class="inquiry-btns">
             <!-- <button class="clearbtn">Clear</button> -->
-                <button class="sendbtn" type="submit" id="inq-submit">Send</button>
+                <button class="sendbtn" type="submit" id="inq-submit" onclick="validateForm()">Send</button>
             </div>
         </form>
     </div>
@@ -77,6 +75,41 @@
     ?>
 </div>
 <div>
-<script src="public\js\validation.js"></script>
+    <script>
+        function validateTopic(){
+            var topic = document.getElementById('topic-box').value;
+            if(topic.length<1){
+                document.getElementById("topic-err").innerHTML='Please fill out this field';
+                return false;
+            }
+            else{
+                document.getElementById("topic-err").innerHTML='';
+                return true;
+            }
+        }   
+
+        function validateMessage(){
+            var message = document.getElementById('msg-box').value;
+            if(message.length<1){
+                document.getElementById("msg-err").innerHTML='An empty message cannot be sent';
+                return false;
+            }
+            else{
+                document.getElementById("msg-err").innerHTML = "";
+                return true;
+            }
+        }
+        
+        function validateForm(){
+            if(!validateTopic() || !validateMessage() || !ValidateSelect()){
+                document.getElementById("inq-submit").style.backgroundColor = "grey";
+                document.querySelector("inq-submit").disabled = true;
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+    </script>
 </body>
 </html>

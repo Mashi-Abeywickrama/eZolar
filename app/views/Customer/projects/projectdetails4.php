@@ -173,10 +173,10 @@
                             ?>
                             <b>Delivery Date:</b>
                             <?php
-                            if ($data['dschedule'][0]->isConfirmed == 1) {
-                                echo $data['dschedule'][0]->date;
-                            } else {
+                            if (empty($data['dschedule'][0]) ){
                                 echo ' None';
+                            } else if ($data['dschedule'][0]->isConfirmed == 1) {
+                                echo $data['dschedule'][0]->date;
                             }
 
                             ?>
@@ -204,7 +204,7 @@
                         Schedule 
                         </div>
                     </div>
-                    <a href="/ezolar/project/"><div class="add-project-btn">
+                    <a href="<?=URLROOT?>/inquiry/newInquiryPage"><div class="add-project-btn">
                         <div class="add-project-btn-text">
                         Send Inquiry 
                         </div>

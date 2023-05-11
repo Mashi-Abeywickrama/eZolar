@@ -37,7 +37,7 @@ class Contractor extends Controller
       $contractor_info = $this->issueModel->getUser([$_SESSION['user_email']]);
       $UserID = $contractor_info -> userID;
       // print_r($_POST);die;
-      $project_ID = $_POST['id-box'];
+      $project_ID = $_POST['project-id'];
       $topic = $_POST['topic-box'];
       $message = $_POST['msg-box'];
       
@@ -94,12 +94,14 @@ class Contractor extends Controller
     if (isset($_GET['project_id'])) {
       $data = [
         'title' => 'eZolar Contractor Completed Projects',
-        'product' => $product
+        'product' => $product,
+        'rows' => $rows,
       ];
     }
     if(!isset($_GET['project_id']) && !isset($_GET['projectid'])){
       $data = [
         'title' => 'eZolar Contractor Completed Projects',
+        'rows' => $rows
       ];
     }
       $this->view('Contractor/completedProjects', $data);
@@ -127,7 +129,7 @@ class Contractor extends Controller
         $schedule = $this->projectModel->getdSchedule($id);
         
         $engineer = $this->projectModel->getEngineer($id);
-        // print_r($schedule);die();
+        // print_r($product);die();
         $data = [
           'title' => 'eZolar COntractor Assigned Projects',
           'product' => $product,
@@ -193,4 +195,17 @@ class Contractor extends Controller
         }
     }
 
+    public function reports()
+    {
+        $con_id =$this->projectModel->getUserID([$_SESSION['user_email']]);
+        $res = $this->projectModel->getReport($con_id);
+        $res2 = $this->projectModel->getReport2();
+        // print_r($res);die();
+        $data = [
+            'title' => 'Contractor Reports',
+            'completed' => $res,
+            'total' => $res2
+        ];
+        $this->view('Contractor/reports', $data);
+    }
 }

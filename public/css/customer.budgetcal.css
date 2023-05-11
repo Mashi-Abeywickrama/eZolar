@@ -154,8 +154,24 @@ a{
     align-items: center;
     justify-content: center; 
 }
-
-
+.pack-d-n{
+  margin-left: 1.5rem;
+    height: 100%;
+    width: 33%;
+    color: grey !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.pack-d-p{
+  padding-left: 7.5rem;
+  /* margin-left: -11.5rem; */
+  height: 100%;
+  width: 33%;
+  color: grey !important;
+  display: flex;
+  align-items: center;
+}
 
 
 .download-btn{
@@ -207,8 +223,8 @@ select{
   max-width: 1200px;
   /* margin: 0 auto; */
   transform: rotate(90deg);
-  margin-top: -13rem;
-  margin-bottom: -204px;
+  margin-top: -19rem;
+  margin-bottom: -310px;
 }
 
 /* The actual timeline (the vertical ruler) */
@@ -225,10 +241,10 @@ select{
 
 /* Container around content */
 .container {
-  padding: 10px 40px;
-  position: relative;
-  background-color: inherit;
-  width: 50%;
+  padding: 10px 22px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
 }
 
 /* The circles on the timeline */

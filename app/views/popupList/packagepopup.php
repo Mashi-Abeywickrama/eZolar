@@ -11,7 +11,7 @@
         <form class="modal-content" id="del" action="" method="POST">
 
             <div class="container">
-                <h1>Package ID: <?php echo $data['product'][0]->Package_packageID ?> </h1>
+                <h1>Package: <?php echo $data['productname'][0]->name ?> </h1>
                 <table style="width:100%">
                     <tr>
                         <th>Product ID</th>
@@ -25,10 +25,10 @@
                     foreach ($data['product'] as $row) {
                         echo '
                         <tr>
-                            <td>'.$row ->Product_productID.'</td>
-                            <td>'.$row ->productName.'</td>
+                            <td>'.$row ->productID.'</td>
+                            <td class="td-name">'.$row ->productName.'</td>
                             <td>'.$row ->productQuantity.'</td>
-                            <td>'.$row ->cost.'</td>
+                            <td>Rs.'.$row ->cost.'.00</td>
                         </tr>';
                         $product = ($row ->productQuantity)*($row ->cost);
                         $totalCost = $totalCost + $product;
@@ -38,7 +38,7 @@
                     
                     
                 </table>
-                <p>Total Cost: Rs.<?php echo $totalCost?></p>
+                <p>Total Cost: Rs.<?php echo $totalCost?>.00</p>
                 <div class="clearfix">
                     <button type="button" onclick="location.href=''" class="okbtn">OK</button>
                 </div>

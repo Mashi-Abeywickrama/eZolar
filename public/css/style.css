@@ -454,3 +454,8 @@ a {
     /* font-family: 'Poppins'; */
     font-style: normal;
 }
+
+.td-name{
+    display: flex;
+    justify-content: flex-start;
+}

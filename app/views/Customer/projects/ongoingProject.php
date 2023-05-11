@@ -69,14 +69,37 @@
                         <span class="project-text-container">
                             <div class="project-text-container-inner">
                                 <div class="project-text-no">Project No: ' .  $row -> projectID . '</div>
-                                <div class="project-text-name"><b>Status : ' . $row -> status . '</b></div>
-                                <div class="project-text-no">Site Location: ' .  $row -> siteAddress . '</div>
+                                <div class="project-text-name"><b>Status : ';?>
+                                <?php
+                                if (($row -> status) == 'A0' || ($row -> status) == 'A1') {
+                                    echo ' Request Recieved';
+                                }
+                                else if (($row -> status) == 'B0' || ($row -> status) == 'B1'  ) {
+                                   echo 'Awaiting for Confirmation';
+                                }
+                                else if (($row -> status) == 'C0' || ($row -> status) == 'C1'  ) {
+                                   echo ' Inspection';
+                                }
+                                else if (($row -> status) == 'D0' || ($row -> status) == 'D1'  ) {
+                                    echo 'Awaiting for Confirmation';
+                                 }
+                                 else if (($row -> status) == 'E0' || ($row -> status) == 'E1'  ) {
+                                    echo'Awaiting for Delivery';
+                                 }
+                                 else{
+                                    echo ' Schedule for Inspection';
+                                 }
+                                 
+                                ?>
+                                </b>
+                                <?php echo'<div class="project-text-no">Site Location : ' . $row -> siteAddress . '</div>';?>
+                                </div>
                             </div>
                         </span>
-                        <span class="project-details-btn-container">
-                            <div class="project-details-btn">';
+                        <span class="project-details-btn-container1">
+                            <div class="project-details-btn">   
 
-                            if (($row -> status) == 'B0' || ($row -> status) == 'B1') {
+                            <?php if (($row -> status) == 'B0' || ($row -> status) == 'B1') {
                                echo ' <span class="project-details-btn-text"><a href="' .URLROOT. '/project/projectdetails/2?project_id='.$row -> projectID.'" style = "color: #FFFFFF">More info</a></span> ';
                             }
                             else if (($row -> status) == 'C0' || ($row -> status) == 'C1'  ) {
@@ -97,8 +120,8 @@
                             </div>
                         </span>
                         
-                    </div>';
-            }
+                    </div>'; ?>
+            <?php }
             ?>
             
         </div>

@@ -23,7 +23,7 @@
         </div>
         <div class="otp-web-text">
             <div class="form-container-fp">
-                    <form class = "fp-form" action="" method="POST">
+                    <form class = "fp-form" action="./resetpassword" method="POST">
                         <div class="fp-subHeader">
                             <ol><li>Please check your emails</li>
                             <li>Enter the OTP (One Time Password) In the given Box.</li></ol>

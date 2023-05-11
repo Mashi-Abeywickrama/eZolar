@@ -125,7 +125,10 @@
       }
 
 
-      public function updatePassword($data,$id){
-        $this->db->query('UPDATE user SET password = :name userID = :userid');
-      }
+      public function updatePassword($email, $password){
+    // Update the user's password in the database
+        $this->db->query('UPDATE user SET password = ? WHERE email = ?');
+        $this->db->execute([$password, $email]);
+  }
+
   }

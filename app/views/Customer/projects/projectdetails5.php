@@ -100,19 +100,73 @@
                         ?>
                     </div>
                     <div class="project-details-info-container">
-                        <b>Project No:</b> 123556 <br>
-                        <b>Site Location:</b> 158, Puhulyaya Road, Ambalantota <br>
-                        <b>Package:</b> Pending <br>
-                        <b>Contractor:</b> Pending <br>
-                        <b>Status:</b> Ongoing <br>
-                        <b>Scheduled Dates:</b> None<br>
+                    <b>Project No:</b>
+                            <?php echo $data['project'][0]->projectID ?> <br>
+                            <b>Site Location:</b>
+                            <?php echo $data['project'][0]->siteAddress ?> <br>
+                            <b>Package:</b>
+                            <?php
+                            if (($data['project'][0]->Package_packageID) == NULL) {
+                                echo 'Pending ';
+                            } else {
+                                echo $data['project'][0]->Package_packageID;
+                            }
+
+                            ?> <br>
+                            <b>Salesperson:</b>
+                            <?php
+                            if (($data['project'][0]->Salesperson_Employee_empID) == NULL) {
+                                echo 'Pending ';
+                            } else {
+                                echo $data['salesperson'][0]->name;
+                            }
+
+                            ?>
+                            <br>
+                            <b>Inspection Date:</b>
+                            <?php
+                            if ($data['schedule'][0]->isConfirmed == 1) {
+                                echo $data['schedule'][0]->date;
+                            } else {
+                                echo ' None';
+                            }
+
+                            ?>
+                            <br>
+
+                            <?php
+                           
+                                echo '<b>Engineer:</b> '
+                                    . $data['engineer'][0]->name . '<br>';
+                            
+
+                            ?>
+                            <b>Delivery Date:</b>
+                            <?php
+                            if (empty($data['dschedule'][0]) ){
+                                echo ' None';
+                            } else if ($data['dschedule'][0]->isConfirmed == 1) {
+                                echo $data['dschedule'][0]->date;
+                            }
+
+                            ?>
+                             <br>
+                            <b>Contractor name:</b>
+                            <?php
+                            if (empty($data['contractor'])) {
+                                echo 'Not Assigned ';
+                            } else {
+                                echo $data['contractor'][0]->name;
+                            }
+
+                            ?>
                     </div>
                 </div>
                 <div class="project-details-btn-container">
                     
                     <div class="add-project-btn">
                         <div class="add-project-btn-text">
-                        <a href="/ezolar/project/requestProjectPage">Send Inquiry</a> 
+                        <a href="<?=URLROOT?>/inquiry/newInquiryPage">Send Inquiry</a> 
                         </div>
                     </div>
                 </div>

@@ -786,37 +786,13 @@ public function UpdateScheduleItem($projectID,$date1,$date2,$date3)
 }
 
 public function getproduct($projectID){
-  $this->db->query('SELECT * FROM project 
-  WHERE projectID = :projectID');
-  $row = $this->db->resultSet(['projectID' => $projectID]);
   
-  $packageID = $row[0]->Package_packageID;
-
-  $this->db->query('SELECT count(productID) AS pcount FROM modifiedpackage_product 
-  WHERE projectID = :projectID
-  ');
-  $res = $this->db->resultSet(['projectID' => $projectID]);
-  // print_r($res[0]->pcount);die();
-
-  if ($res[0]->pcount > 0) {
     $this->db->query('SELECT * FROM modifiedpackage_product 
-    INNER JOIN product ON product.productID = modifiedpackage_product.projectID  
+    INNER JOIN product ON product.productID = modifiedpackage_product.productID  
     WHERE modifiedpackage_product.projectID = :projectID');
     $row = $this->db->resultSet(['projectID' => $projectID]);
     return $row;
   
-  } else {
-    $this->db->query('SELECT * FROM package_product 
-    INNER JOIN product ON product.productID = package_product.Product_productID  
-    WHERE package_product.Package_packageID = :packageID');
-    $row = $this->db->resultSet(['packageID' => $packageID]);
-    return $row;
-  
-  }
-  
-
-
-
 
 
 }
@@ -889,5 +865,84 @@ public function acceptScheduleCon($scheduleID,$con_id)
   
 }
 
+public function getExtraItems($projectID){
+  $this->db->query('SELECT * FROM `modifiedpackage_extra` 
+  WHERE projectID = :projectID');
+  $row=$this->db->execute(':projectID',$projectID);
+  if ($row) {
+    return true;
+  } else {
+   return false;
   }
+  }
+
+
+  //this function is used to get the project details of a completed projects of the given contractor
+  public function getReport($cont_id)
+    {
+        $months = array();
+        for ($i = 0; $i < 12; $i++) {
+            $months[date('Y-m', strtotime("-$i months"))] = 0;
+        }
+        $this->db->query('SELECT COUNT(*) as count, scheduleitem.date FROM `project` 
+        INNER JOIN scheduleitem ON scheduleitem.Project_projectID = project.projectID 
+        INNER JOIN projectcontractor ON projectcontractor.Project_projectID = project.projectID 
+        WHERE projectcontractor.Contractor_contractorID = :Contractor_contractorID
+        AND project.status = :status
+        AND scheduleitem.type = :delivery
+        AND scheduleitem.isCompleted = :isconf
+        GROUP BY MONTH(scheduleitem.date),YEAR(scheduleitem.date)');
+        $com_pro=$this->db->resultSet(['Contractor_contractorID' => $cont_id,'status' => "Z0",'delivery' => "Delivery",'isconf' => "1"]);
+        
+        foreach ($com_pro as $row) {
+          // print_r( $row);die();
+            $year_month = date('Y-m', strtotime($row->date));
+            if (array_key_exists($year_month, $months)) {
+                $months[$year_month] += $row->count;
+            }
+        }
+        //Rename the key of the array to month plus year 
+        $months = array_combine(array_map(function ($key) {
+            return date('F Y', strtotime($key));
+        }, array_keys($months)), array_values($months));
+
+        //Reverse the array to show the earliest month first
+        $months = array_reverse($months);
+        // print_r($months);die();
+        return $months;
+    }
+
+
+    //this function is used to get the details of projects by eZolar
+    public function getReport2()
+    {
+        $months = array();
+        for ($i = 0; $i < 12; $i++) {
+            $months[date('Y-m', strtotime("-$i months"))] = 0;
+        }
+        $this->db->query('SELECT COUNT(*) as count, requestDate FROM `project` 
+        GROUP BY MONTH(requestDate),YEAR(requestDate)');
+        $com_pro=$this->db->resultSet([]);
+        
+        foreach ($com_pro as $row) {
+          // print_r( $row);die();
+            $year_month = date('Y-m', strtotime($row->requestDate));
+            if (array_key_exists($year_month, $months)) {
+                $months[$year_month] += $row->count;
+            }
+        }
+        //Rename the key of the array to month plus year 
+        $months = array_combine(array_map(function ($key) {
+            return date('F Y', strtotime($key));
+        }, array_keys($months)), array_values($months));
+
+        //Reverse the array to show the earliest month first
+        $months = array_reverse($months);
+        // print_r($months);die();
+        return $months;
+    }
+
+}
+
+
 ?>

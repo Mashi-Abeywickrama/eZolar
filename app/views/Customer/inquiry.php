@@ -15,6 +15,22 @@
     <title>My Projects</title>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#search-invoice").keyup(function(){
+				var searchText = $(this).val();
+				$.ajax({
+					url: './inquiry/inquiry_search',
+					type: 'post',
+					data: {search: searchText},
+					success: function(response){
+						$("#body-list-container").html(response);
+					}
+				});
+			});
+		});
+	</script>
     <div class = "body-container-main">
         <div class="body-container">
         <?php
@@ -44,16 +60,16 @@
                         </div>
                         <div class="search-inquiry-btn">
                             <div class="add-inquiry-input">
-                                <input type="text" placeholder="Search.."/>
+                                <input id="search-invoice" type="text" placeholder="Search..">
                             </div>
                             <div class = "search-inquiry-img">
-                                p
+                                <img src="\ezolar\public\img\customer\loupe.png" alt="">
                             </div>
                         </div>
                     </div>
   
                 </div>
-                <div class="body-list-container">
+                <div id="body-list-container" class="body-list-container">
 
             <?php
             $results = $_SESSION['rows'];
@@ -69,9 +85,7 @@
                             <div class="inquiry-details-btn">
                                 <span class="inquiry-details-btn-text"><a href="'.URLROOT.'/inquiry/viewInquiry/'.$row -> inquiryID.'" style ="color: #FFFFFF ">More info</a></span>
                             </div>
-                            <div class="inquiry-delete-btn">
-                                <img class = "delete-icon" src="\ezolar\public\img\customer\delete.png" alt="Inquiry">
-                            </div>
+                            
                         </span>
                         
                     </div>';

@@ -11,7 +11,7 @@
     }
 
     private function getProjectStatusName($status){
-      $names = array('A0'=>'Request Recieved','A1'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
+    $names = array('A0'=>'Request Recieved','A1'=>'Awaiting Payment Verification','A2'=>'Inspection Payment Verified','B0'=>'Inspection Dates Selection', 'C0'=>'Awaiting Inspection', 'C1'=>'Package Confirmed','D0'=>'Payment Verification',
       'D1'=>'Delivery Dates Selection','E0'=>'Awaiting Delivery','X0'=>'Project Cancelled','Z0'=>'Project Completed');
       if (array_key_exists($status,$names)){
         return $names[$status];
@@ -248,7 +248,7 @@
           $_SESSION['PackMod'] = array('Info' => $packageInfo,'Content' => $packageContent, 'Extras' => $packageExtra);
         } else {
           $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-          $packID = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID)->Package_packageID;
+          $packID = $this->engineerProjectModel->getAssignedProjectDetails($projectID)->Package_packageID;
           $packageInfo = $this->PackageModel->getPackageDetails($packID);
           $packageInfo->projectID = $projectID;
           $packageContent = $this->PackageModel->getPackageContent($packID);
@@ -433,7 +433,7 @@
         redirect('login');
       }
       if($this->engineerProjectModel->checkModifiedPackage($projectID)){
-        $this->engineerProjectModel->advanceProject($projectID,'D0');
+        $this->engineerProjectModel->advanceProject($projectID,'C1');
         redirect('EngineerProject/projectDetailsPage/'.$projectID);
       }
 

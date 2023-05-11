@@ -61,22 +61,22 @@
                     <img src="\ezolar\public\img\setting\Appearence.png" alt="Appearence">
                </div>
             </div> -->
-            <div class="dashboard-settings-container-content">
+            <a href="<?=URLROOT?>/user/deleteAccount"><div class="dashboard-settings-container-content">
                     <div class="dashboard-container-txt">
-                        Delete Account
+                        Deactivate Account
                     </div>
                     <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\setting\Delete.png" alt="Delete">
                     </div>
-            </div>
-            <div class="dashboard-settings-container-content">
+            </div></a>
+            <a href=""><div class="dashboard-settings-container-content">
                     <div class="dashboard-container-txt">
                         Help
                     </div>
                     <div class="dashboard-container-img">
                         <img src="\ezolar\public\img\setting\Help.png" alt="Help Outline">
                     </div>
-            </div>
+            </div></a>
         </div>
     </div>
 </div>

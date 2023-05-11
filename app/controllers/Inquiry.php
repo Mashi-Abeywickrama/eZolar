@@ -24,6 +24,31 @@
       ];
       $this->view('Customer/inquiry', $data);
     }
+
+    public function inquiry_search(){
+      $customer_Id = $this->userModel->getUserID2([$_SESSION['user_email']]);
+      // print_r($customer_Id);die;
+      $rows  = $this->inquiryModel-> getAllInquiriesSearch($customer_Id,$_POST['search']);
+      foreach($rows as $row){
+        echo '<div class="inquiry-box">
+                <span class="inquiry-text-container">
+                    <div class="inquiry-text-container-inner">
+                        <div class="inquiry-text-no">Type:' .  $row -> type . '</div>
+                        <div class="inquiry-text-name"><b>' . $row -> topic . '</b></div>
+                    </div>
+                </span>
+                <span class="inquiry-details-btn-container">
+                    <div class="inquiry-details-btn">
+                        <span class="inquiry-details-btn-text"><a href="'.URLROOT.'/inquiry/viewInquiry/'.$row -> inquiryID.'" style ="color: #FFFFFF ">More info</a></span>
+                    </div>
+                    
+                </span>
+                
+            </div>';
+    }
+      
+      
+    }
     public function newInquiryPage(){
       if(!isLoggedIn()){
 
@@ -131,4 +156,6 @@
         $this->view('Salesperson/inquiries', $data);
 
     }
+
+   
   }

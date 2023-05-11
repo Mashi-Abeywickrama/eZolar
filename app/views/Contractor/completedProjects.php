@@ -55,9 +55,10 @@ require_once(__ROOT__ . '\app\views\popupList\projectDpopup.php');
         </div>
         <div class="body-list-container">
         <?php
-            $results = $_SESSION['rows'];
+            // $results = $_SESSION['rows'];
+            $results = $data['rows'];
             foreach($results as $row){
-                // print_r($row);die;
+                // print_r($data);die;
                 if($row->status=="Z0"){
                 echo '<div class="project-box">
                         <span class="project-text-container">

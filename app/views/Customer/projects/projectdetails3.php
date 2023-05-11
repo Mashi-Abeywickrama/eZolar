@@ -219,7 +219,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                         </div>
                         <div class="make-inquiry-btn">
                             <div class="make-inquiry-btn-text">
-                            <a href="/ezolar/project/">Send Inquiry</a> 
+                            <a href="<?=URLROOT?>/inquiry/newInquiryPage">Send Inquiry</a> 
                             </div>
                         </div>
                     </div>
@@ -303,7 +303,7 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                                     Amount:
                                 </div>
                                 <div class="d">
-                                    Rs. 10000.00
+                                Rs.<?php echo $totalCost?>.00
                                 </div>
                             </div>
                         </div>

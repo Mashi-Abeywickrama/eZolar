@@ -60,7 +60,7 @@
           'delivery' => $delivery
         ];
         $this->view('Customer/reports', $data);
-        // print_r($delivery);
+        // print_r($products);
       }
 }
 ?>

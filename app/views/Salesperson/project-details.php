@@ -100,7 +100,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 <div class="project-details-btns-container">
 
                     <?php 
-                    if (($_SESSION['row']->status == 'A0')&& array_key_exists('receipt',$_SESSION['rows'])){
+                    if (($_SESSION['row']->status == 'A1')&& array_key_exists('receipt',$_SESSION['rows'])){
                         echo '<a href="/ezolar/SalespersonProject/verifyInspectionPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Inspection Payment</div></a>';
                     }
                     else if (($_SESSION['row']->status == 'D0')&& array_key_exists('receipt',$_SESSION['rows'])){

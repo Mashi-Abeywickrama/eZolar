@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 
   class Login extends Controller {
     public function __construct(){ 
+      $this->userModel = $this->model('UserModel');
     }
     
     public function index(){
@@ -38,8 +39,8 @@ require '../vendor/autoload.php';
             $mail->Host = "smtp.gmail.com";
             $mail->Port = 587;
             $mail->SMTPAuth = true;
-            $mail->Username = 'team.ezolar@gmail.com';
-            $mail->Password = 'blgrajvyohisnita';
+            $mail->Username = 'ezolarteam@gmail.com';
+            $mail->Password = 'pydosfncorutffbj';
             //From email address and name
             $mail->From = "ezolar.team@gmail.com";
             $mail->FromName = "Ezolar";
@@ -89,10 +90,51 @@ require '../vendor/autoload.php';
 
     public function resetpassword()
     {
+      // print_r($_POST['otp'] . " " .$_SESSION['token']);die();
+
+      if (!isset($_POST['OTPBtn'])) {
+        header("Location: ./forgotpassword");
+        exit;
+    }
+
+
+    if($_POST['otp'] == $_SESSION['token']){
+        header('Location: ./newpassword');
+
+    }
+    else {
+        $_SESSION['error'] = 'Verification failed try again';
+        header('Location: ./enterOTP');
+    }
       $data = [
         'title' => 'eZolar Reset Password',
       ];
       $this->view('Customer/Settings/resetPassword', $data); 
     }
 
+    public function newpassword()
+    {
+      $data = [
+        'title' => 'eZolar New Password',
+      ];
+      $this->view('Customer/Settings/resetPassword', $data); 
+    }
+
+    public function pwd_set(){
+      // print_r($_SESSION['email_reset']);die;
+      $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      if ($_POST['password'] == $_POST['cpassword']) {
+        if($this->userModel->updatePassword($_SESSION['email_reset'],$pwd)){
+          redirect('/user/logout');
+        }
+        else{
+          redirect('/user/logout');
+            // print_r('false');die();
+        };
+    }
+    else{
+        $_SESSION['error'] = 'Passwords dont match';
+        header('Location:');
+    }
+    }
   }

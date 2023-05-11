@@ -13,6 +13,9 @@
                 <a href="<?=URLROOT?>/contractor/reportIssue"><div class="box4">
                     Report an Issue
                 </div></a>
+                <a href="<?=URLROOT?>/contractor/reports"><div class="box7">
+                    Reports and Charts
+                </div></a>
             </div>
             <div class="rest-bottom">
                 <a href="<?=URLROOT?>/user/profile"><div class="box5">

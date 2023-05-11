@@ -71,9 +71,13 @@
     justify-content: space-between;
 }
 .settings-body-container {
+    display: flex;
     margin-top: 20px;
     height: 55vh;
-    width: 80%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1rem;
 }
 /* a{
     text-decoration: none;

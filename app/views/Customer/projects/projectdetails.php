@@ -180,7 +180,7 @@
                     </div>
                     <div class="make-inquiry-btn">
                         <div class="make-inquiry-btn-text">
-                        <a href="/ezolar/project/">Send Inquiry</a> 
+                        <a href="<?=URLROOT?>/inquiry/newInquiryPage">Send Inquiry</a> 
                         </div>
                     </div>
                 </div>

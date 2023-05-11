@@ -178,7 +178,7 @@ class User extends Controller {
     public function getName(){
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
       $name = $this->userModel->getProfile($role,$_SESSION['user_email']);
-      print_r($name);die;
+      // print_r($name);die;
       $_SESSION['name'] = $name;
     }
 // this function is for viewing user profile
@@ -309,10 +309,12 @@ class User extends Controller {
         }
 
         $inputs = ($_POST); 
+       
         // print_r($inputs);die;
         if($this->userModel->editProfile($inputs,$role, $user_Id,$filename)){
           $_SESSION['user_pic'] = $filename;
           $_SESSION['name'] = $inputs['name'];
+          
 
           if ($role == "Storekeeper"){
             $this->view('Storekeeper/editprofile', $title);
@@ -321,8 +323,9 @@ class User extends Controller {
           }elseif ($role == "Salesperson"){
             $this->view('Salesperson/editprofile', $title);
           }elseif ($role == "Contractor"){
-            $this->view('Contractor/editprofile', $title);
+           header('Location: ./editprofile');
           }
+          
         }
         else{
           echo "Mashi is idiot";
@@ -356,10 +359,15 @@ class User extends Controller {
       }
     }
 
-//update password
+//this function is to update user password
 public function updatePassword(){
-  print_r($_POST);
-  die;
+  // $curpwd = $_POST['currentpassword'];
+  $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  // $confirm = $_POST['cpassword'];
+  // print_r($confirm);die;
+  $this->userModel->updatePassword($_SESSION['user_email'],$pwd);
+  flash($name = 'test', $message = 'Updated', $class = 'success alert-msg');
+  // redirect('login');
 
 }
     public function createUserSession($user){

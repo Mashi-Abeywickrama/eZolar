@@ -29,11 +29,7 @@
             <div class="dashboard-common-heading-text">
                 <b>Reset Password</b>
             </div>
-            <div class="dashboard-common-heading-image">
-                <a “text-decoration: none”>
-                    <img src="\ezolar\public\img\setting\Lock.png" alt="pwd-icon">
-                </a>
-            </div>
+            
 
         </div>
         <div class="form-container-reset">
@@ -45,6 +41,7 @@
                     </div>
                 </div>
                 <input class="r-in" name="currentpassword" id="curpwd" type="password" placeholder="********" required onkeyup="validatePassword()">
+                <br>
 
                 <div class="err">New Password
                     <div class = "err group">
@@ -53,6 +50,8 @@
                     </div>
                 </div>
                 <input class="r-in" name="password" id="pwd" type="password" placeholder="********" required onkeyup="validatePassword1()">
+                <br>
+
                 <div class="err">Confirm Password
                     <div class = "err-group">
                         <span class="star">*</span>
@@ -60,9 +59,9 @@
                     </div>
                 </div>
                 <input class="r-in" name="cpassword" id="cpwd" type="password" placeholder="********" required onkeyup="validatePassword()">
-
+                <br>
                 <div class = "group" >
-                    <button class="cancel-btn" type="cancel" >Cancel</button>
+                    <!-- <button class="cancel-btn" type="cancel" >Cancel</button> -->
                     <button class="submit-btn" type="submit" onclick="document.getElementById('id01').style.display='block'" >Submit</button>
                 </div>
             <!-- </form> -->
@@ -74,6 +73,6 @@
         require_once(__ROOT__.'\app\views\Includes\footer.php');
     ?>
 </div>
-<script src="<?=URLROOT?>/public/js/validation.js"></script>
+<script src="<?=URLROOT?>/public/js/customer/passwordValidation.js"></script>
 </body>
 </html>

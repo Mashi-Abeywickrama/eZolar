@@ -2,8 +2,7 @@
     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 
     require_once(__ROOT__.'\Includes\header.php');
-    require_once(__ROOT__.'\Includes\navbar.php');
-    require_once(__ROOT__.'\Includes\footer.php');
+    // require_once(__ROOT__.'\Includes\navbar.php');
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +18,7 @@
 </head>
 <body>
     <?php
-        require_once(__ROOT__.'\Includes\popup.php');
+        // require_once(__ROOT__.'\Includes\popup.php');
         if (isset($_POST['sub'])) {
             print_r("Shit");
             echo '
@@ -32,7 +31,7 @@
     ?>
 <div class="body-container">
 <?php
-        require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
+        // require_once(__ROOT__.'\app\views\Customer\navigationpanel.php');
     ?>
 
     <div class="common-main-container">
@@ -47,9 +46,9 @@
                     Settings
                 </div>
             </div>
-            <div class="common-main-right-img">
+            <!-- <div class="common-main-right-img">
                 <img src="\ezolar\public\img\profile.png" alt="profile">
-            </div>
+            </div> -->
         </div>
 
         <div class="dashboard-common-heading-container">
@@ -64,7 +63,7 @@
 
         </div>
         <div class="form-container-reset">
-            <!-- <form name="Reset Form" action="#" method="POST"> -->
+            <form name="Reset Form" action="./pwd_set" method="POST">
                 <div class="err">New Password
                     <div class = "err group">
                         <span class="star">*</span>
@@ -80,13 +79,23 @@
                 </div>
                 <input class="r-in" name="cpassword" id="cpwd" type="password" placeholder="********" required onkeyup="validatePassword()">
 
+                <?php if (isset($_SESSION['error'])) {  ?>
+                <p class="error-pwd"><?php echo ($_SESSION['error']); ?></p>
+                <?php $_SESSION['error'] = '';
+                } ?>
+
                 <div class = "group" >
-                    <button class="cancel-btn" type="cancel" >Cancel</button>
+                    <!-- <button class="cancel-btn" type="cancel" >Cancel</button> -->
                     <button class="submit-btn" type="submit" onclick="document.getElementById('id01').style.display='block'" >Submit</button>
                 </div>
-            <!-- </form> -->
+            </form>
         </div>
     </div>
+</div>
+<div class="f">
+<?php 
+    require_once(__ROOT__.'\Includes\footer.php');
+?>
 </div>
 <script src="<?=URLROOT?>/public/js/validation.js"></script>
 </body>
