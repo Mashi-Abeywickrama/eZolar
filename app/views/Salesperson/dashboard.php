@@ -82,6 +82,17 @@
             </div>
         </a>
 
+        <a href="<?=URLROOT?>/SalespersonReports">
+            <div class="dashboard-container-content">
+                <div class="dashboard-container-txt">
+                    Reports
+                </div>
+                <div class="dashboard-container-img">
+                    <img src="\ezolar\public\img\salesperson\reports.png" alt="reports">
+                </div>
+            </div>
+        </a>
+
         <a href="<?=URLROOT?>/user/profile">
             <div class="dashboard-container-content">
                 <div class="dashboard-container-txt">

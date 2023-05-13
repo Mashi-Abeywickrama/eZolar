@@ -1,5 +1,5 @@
 <?php
-require_once(__ROOT__.'\app\views\Customer\navbar.php');
+    require_once(__ROOT__.'\app\views\Customer\navbar.php');
 require(__ROOT__.'\app\libraries\Calendar.php');
 
      $calendar = new Calendar();

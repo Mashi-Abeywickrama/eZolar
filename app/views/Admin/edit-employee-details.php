@@ -26,6 +26,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Employee"><div class="box7" style="color: #ffffff;background-color: #0b2f64;">
                     Employees
                 </div></a>
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9">
+                    Projects
+            </div></a>
             <a href="<?=URLROOT?>/Package"><div class="box2">
                     Packages
             </div></a>
@@ -34,6 +37,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div></a>
             <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
                     Reports
+            </div></a>
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
             </div></a>
             
 

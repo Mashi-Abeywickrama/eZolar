@@ -27,7 +27,7 @@
         </div>
         <div class="dashboard-container-nav" align="center">
         
-            <a href="/ezolar/Employee">
+            <a href="<?=URLROOT?>/Employee">
                 <div class="dashboard-container-content">
                     <div class="dashboard-container-txt" >
                     Employees
@@ -38,7 +38,18 @@
                 </div>
             </a>
 
-            <a href="/ezolar/Package">
+            <a href="<?=URLROOT?>/AdminProject">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt" >
+                    Projects
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\projects.png" alt="projects">
+                    </div>
+                </div>
+            </a>
+
+            <a href="<?=URLROOT?>/Package">
                 <div class="dashboard-container-content">
                     <div class="dashboard-container-txt">
                             Packages
@@ -49,7 +60,7 @@
                 </div>
             </a>
 
-            <a href="/ezolar/Product">
+            <a href="<?=URLROOT?>/Product">
                 <div class="dashboard-container-content">
                     <div class="dashboard-container-txt">
                             Products
@@ -60,7 +71,18 @@
                 </div>
             </a>
 
-            <a href="/ezolar/Statistics/salesPerMonth">
+            <a href="<?=URLROOT?>/AdminIssue">
+                <div class="dashboard-container-content">
+                    <div class="dashboard-container-txt">
+                            Issues
+                    </div>
+                    <div class="dashboard-container-img">
+                            <img src="\ezolar\public\img\admin\reportIssue.png" alt="issues">
+                    </div>
+                </div>
+            </a>
+
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth">
                 <div class="dashboard-container-content">
                     <div class="dashboard-container-txt">
                             Reports
@@ -71,7 +93,7 @@
                 </div>
             </a>
 
-            <a href="/ezolar/AdminViewProfile">
+            <a href="<?=URLROOT?>/AdminViewProfile">
                 <div class="dashboard-container-content">
                     <div class="dashboard-container-txt">
                             Profile

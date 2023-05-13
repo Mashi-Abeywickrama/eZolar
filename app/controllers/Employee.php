@@ -237,18 +237,5 @@ require_once(__ROOT__.'/app/helpers/session_helper.php');
         redirect('Employee');
     }
 
-
-
-
-    // public function addSuccessful(){
-    //   $data = [
-    //     'title' => 'ezolar successful',
-    //   ];
-    
-    //   $this->view('Admin/add-employee-successful', $data);
-    // }
-
-
-
   }
   ?>

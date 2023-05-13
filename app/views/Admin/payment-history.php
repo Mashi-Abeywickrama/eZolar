@@ -16,32 +16,35 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 <body>
 
 <div class="body-container">
-    <div class="left-panel">
+<div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Salesperson Dashboard
+            Admin Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
-                    Assigned Projects
-                </div></a>
-            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
-                    Inquiries
+            <a href="<?=URLROOT?>/Employee"><div class="box7" style="color: #0b2f64;background-color: #ffffff;">
+                    Employees
             </div></a>
-            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
-                Inspection Schedule
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9" style="color: #ffffff;background-color: #0b2f64;">
+                    Projects
             </div></a>
-            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
-                Delivery Schedule
+            <a href="<?=URLROOT?>/Package"><div class="box2">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
             </div></a>
             
-            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
-            Engineers & Contractors
-            </div></a>
 
         </div>
         <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
                 Profile
             </div></a>
             <a href="<?=URLROOT?>/"><div class="box6">
@@ -82,7 +85,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                                     </div>
                                 </div>
                                 <div class="project-details-btn-container">
-                                    <a href="/ezolar/SalespersonProject/viewReceipt/'.$row -> receiptID.'">
+                                    <a href="/ezolar/AdminProject/viewReceipt/'.$row -> receiptID.'">
                                         <div class="project-details-btn">
                                             <div class="project-details-btn-text">View Receipt</div>
                                         </div>

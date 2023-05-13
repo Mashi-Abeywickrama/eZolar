@@ -12,9 +12,6 @@ class Statistics extends Controller
     public function index()
     {
 
-
-
-
     }
 
     public function salesPerMonth(){
@@ -59,6 +56,6 @@ class Statistics extends Controller
         } else if ($this->StatisticsModel->getUserRole($_SESSION['user_email']) == "Storekeeper"){
             $this->view('Storekeeper/statistics', $data);
         }
-    }   
+    }  
 
 }

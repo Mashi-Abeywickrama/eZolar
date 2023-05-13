@@ -1,0 +1,15 @@
+.popup-btn-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.popup-no-btn, .popup-yes-btn{
+    width: 40px;
+    padding: 5px;
+}
+
+.popup-no-btn{
+    background-color: darkgray;
+    border-radius: 5px;
+}

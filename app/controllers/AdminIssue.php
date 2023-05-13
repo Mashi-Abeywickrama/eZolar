@@ -16,13 +16,15 @@
       }
 
       $issues = $this->issueModel->getAllIssues();
-      $_SESSION['rows'] = array('read'=>[],'unread'=>[]);
+      $_SESSION['rows'] = array('read'=>[],'unread'=>[],'resolved'=>[]);
 
       foreach ($issues as $item){
-        if ($item->isRead == 0){
+        if ($item->isRead == 0 && $item->isResolved == 0){
           $_SESSION['rows']['unread'][] = $item;
-        } else {
+        } else if ($item->isRead == 1 && $item->isResolved == 0) {
           $_SESSION['rows']['read'][] = $item;
+        }else if ($item->isRead == 1 && $item->isResolved == 1){
+          $_SESSION['rows']['resolved'][] = $item; 
         }
       }
       $data = [
@@ -33,7 +35,6 @@
 
     public function viewIssue($IssueID){
       if(!isLoggedIn()){
-
         redirect('login');
       }
       $issue = $this->issueModel->getIssueDeatils($IssueID);
@@ -43,7 +44,14 @@
         'title' => 'eZolar View Issue Details',
       ];
       $this->view('Admin/view-issue-details', $data);
-        
+    }
+
+    public function resolveIssue($IssueID){
+      if(!isLoggedIn()){
+        redirect('login');
+      }
+      $issue = $this->issueModel->resolveIssue($IssueID);
+      redirect('AdminIssue');
 
     }
 
