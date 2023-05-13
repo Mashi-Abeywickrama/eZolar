@@ -31,6 +31,9 @@
                 <a class="sidebar-anchor" href="/ezolar/EngineerIssue"><div class="sidebar-link-container-selected">
                     Report an Issue
                 </div></a>
+                <a class="sidebar-anchor" href="/ezolar/EngineerReport"><div class="sidebar-link-container">
+                    My Performace Report
+                </div></a>
             </div>
 
             <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container-bottom">
