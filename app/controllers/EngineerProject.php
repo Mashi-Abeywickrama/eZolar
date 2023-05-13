@@ -212,7 +212,7 @@
         $_SESSION['PackMod'] = array('Info' => $packageInfo,'Content' => $packageContent, 'Extras' => $packageExtra);
       } else {
         $eng_Id = $this->engineerProjectModel->getUserID([$_SESSION['user_email']]);
-        $packID = $this->engineerProjectModel->getAssignedProjectDetails($eng_Id,$projectID)->Package_packageID;
+        $packID = $this->engineerProjectModel->getAssignedProjectDetails($projectID)->Package_packageID;
         $packageInfo = $this->PackageModel->getPackageDetails($packID);
         $packageInfo->projectID = $projectID;
         $packageContent = $this->PackageModel->getPackageContent($packID);

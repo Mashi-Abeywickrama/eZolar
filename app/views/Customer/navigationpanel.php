@@ -31,6 +31,11 @@
                     Ratings and Reviews
                 </div>
             </a>
+            <a href="<?= URLROOT ?>/project/troubleshoot">
+                <div class="box9">
+                    Troubleshoot
+                </div>
+            </a>
         </div>
         <div class="rest-bottom">
             <a href="<?= URLROOT ?>/user/profile">

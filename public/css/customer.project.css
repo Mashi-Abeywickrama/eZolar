@@ -433,7 +433,7 @@ a{
     color: #2C61A3;
     display: flex;
     line-height: 1.1rem;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
 }

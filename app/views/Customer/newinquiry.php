@@ -47,7 +47,7 @@
                         Type:<span class="star">*</span></br>
                     <select class="type-box" name="inquiry-type" id="inquiry-type" type="text" required>
                         <option value="general">General</option> 
-                        <option value="warrenty">Warrenty</option> 
+                        <option value="project">Project Related</option> 
                         <option value="troubleshoot">Troubleshoot</option>
                     </select> 
                 </div>

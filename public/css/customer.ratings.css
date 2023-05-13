@@ -125,9 +125,10 @@ form{
     display: flex;
     flex-direction: column;
 }
-.feedback-topic{
-    font-size: 20px;
-    font-weight: bold;
+.feedback-topic {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0.5rem;
 }
 .u-comment{
     width: 99.2%;

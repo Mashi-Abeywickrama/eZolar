@@ -161,8 +161,12 @@
                 </div>
             </div>
             <?php
-            $total = 0;
-             foreach ($data['products'] as $row) { ?>
+            $total = 0;$extra = 0;
+            foreach ($data['extra'] as $row){
+                $extra = $extra + $row->price;
+            }
+            
+            foreach ($data['products'] as $row) { ?>
                 
             
             <!-- take package details from db -->
@@ -201,20 +205,20 @@
                     Rs. <?php echo $total; ?>.00
                 </div>
             </div>
-            <!-- <div class="p-details-container-t">
+            <div class="p-details-container-t">
                 <div class="pid-t">
                     ADD ON
                 </div>
                 <div class="pdate-t">
-                    Rs.
+                    Rs. <?php echo $extra; ?>.00
                 </div>
-            </div> -->
+            </div>
             <div class="p-details-container-t">
                 <div class="pid-t">
                     TOTAL
                 </div>
                 <div class="pdate-t">
-                    Rs. <?php echo $total + 10000 ?>.00
+                    Rs. <?php echo $total + 10000 + $extra?>.00
                 </div>
             </div>
 

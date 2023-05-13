@@ -51,6 +51,18 @@
                 <img src="\ezolar\public\img\customer\Issue.png" alt="Issues">
            </div>
         </div></a>
+        <a href="<?=URLROOT?>/contractor/reports"><div class="dashboard-container-content">
+           <div class="dashboard-container-txt">
+                Your Activity
+           </div>
+           <div class="dashboard-container-img" style="    display: flex;
+               width: 5rem;
+               height: 100%;
+               align-items: center;
+               justify-content: flex-end;">
+                <img src="\ezolar\public\img\customer\analytics.png" style="width:50%" alt="Issues">
+           </div>
+        </div></a>
 
         <a href="<?=URLROOT?>/user/profile"><div class="dashboard-container-content">
            <div class="dashboard-container-txt">

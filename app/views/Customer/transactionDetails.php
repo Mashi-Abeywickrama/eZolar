@@ -108,7 +108,7 @@
                             foreach ($data['product'] as $row) {
                                 echo '
                                 <tr>
-                                    <td>'.$row ->Product_productID.'</td>
+                                    <td>'.$row ->productID.'</td>
                                     <td>'.$row ->productName.'</td>
                                     <td>'.$row ->productQuantity.'</td>
                                 </tr>';

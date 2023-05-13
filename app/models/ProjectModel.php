@@ -306,6 +306,7 @@ public function getScheduleDetails($projectID)
 
 public function getDeliveryScheduleDetails($projectID)
 {
+  //this is for delivery details which is not confirmed
   $type = "Delivery";
   $this->db->query('SELECT * FROM scheduleitem  
   WHERE Project_projectID = :projectID
@@ -349,6 +350,7 @@ public function getDeliveryScheduleDetails($projectID)
 
 public function getScheduleDates($projectID)
 {
+  //this is for inspection
   $this->db->query('SELECT * FROM scheduleitem  
   WHERE Project_projectID = :projectID
   AND type = "Inspection"
@@ -371,6 +373,7 @@ public function getScheduleDates($projectID)
 
 public function getDeliveryScheduleDates($projectID)
 {
+  //this is for delivery
   $this->db->query('SELECT * FROM scheduleitem  
   WHERE Project_projectID = :projectID
   AND type = "Delivery"
@@ -581,6 +584,7 @@ public function addCon($projectID,$userid)
 
 public function rejectSchedule($schedule_id)
 {
+  //this is for engineer
   $this->db->query('UPDATE scheduleitem SET isConfirmed = :status WHERE scheduleID = :scheduleID');
   $results = $this->db->execute(['status' => "2",'scheduleID' => $schedule_id]);
 }
@@ -708,6 +712,7 @@ public function checkContractor($date){
 }
 
 public function cancelProduct($projectID){
+  //This function is for cancelling a project
   $this->db->query('UPDATE project SET status = :status WHERE projectID = :projectID');
   $result = $this->db->execute(['status' => "F",'projectID' => $projectID]);
   if($result){
@@ -786,7 +791,7 @@ public function UpdateScheduleItem($projectID,$date1,$date2,$date3)
 }
 
 public function getproduct($projectID){
-  
+  //this function will give the product ID and quantity of each product to make the suitable package after inspection.
     $this->db->query('SELECT * FROM modifiedpackage_product 
     INNER JOIN product ON product.productID = modifiedpackage_product.productID  
     WHERE modifiedpackage_product.projectID = :projectID');
@@ -798,6 +803,7 @@ public function getproduct($projectID){
 }
 
 public function getproductname($projectID){
+  //we need to use this function in order to get the product name to display in the view.
   $this->db->query('SELECT * FROM project 
   INNER JOIN package ON package.packageID =  project.Package_packageID
   WHERE project.projectID = :projectID');
@@ -814,6 +820,7 @@ public function getProjectDetailsCustomer($projectID){
 }
 
 public function markAsComplete($projectID){
+  //this function will mark the project as complete and will change the status of the project to Z0 (contractor completed)
   $this->db->query('UPDATE scheduleitem SET isCompleted = :status WHERE Project_projectID = :projectID');
   $result = $this->db->execute(['status' => "1",'projectID' => $projectID]);
 
@@ -828,6 +835,7 @@ public function markAsComplete($projectID){
 }
 
 public function getScheduleItems($userID,$month,$year){
+        //this function will get the schedule items for the customer
         $this->db->query('SELECT * FROM scheduleitem  inner join project on project.projectID = scheduleitem.Project_projectID  where project.customerID	 = :userID AND scheduleitem.isConfirmed = 1 AND scheduleitem.date >= :startDate AND scheduleitem.date <= :endDate');
 
         $start = $year.'-'.str_pad(strval($month),2,'0',STR_PAD_LEFT).'-01';
@@ -839,6 +847,7 @@ public function getScheduleItems($userID,$month,$year){
 
 public function rejectScheduleCon($scheduleID,$con_id)
 {
+  //this function will reject the schedule item for the contractor
   $this->db->query('UPDATE scheduleitem_assignedcontr SET status = 2 
   WHERE Scheduleitem_scheduleID = :scheduleID
   AND contractorID = :con_id');
@@ -853,6 +862,7 @@ public function rejectScheduleCon($scheduleID,$con_id)
 
 public function acceptScheduleCon($scheduleID,$con_id)
 {
+  //this function will accept the schedule item for the contractor
   $this->db->query('UPDATE scheduleitem_assignedcontr SET status = 1 
   WHERE Scheduleitem_scheduleID = :scheduleID
   AND contractorID = :con_id');
@@ -866,14 +876,11 @@ public function acceptScheduleCon($scheduleID,$con_id)
 }
 
 public function getExtraItems($projectID){
+  //we will add the extra items to the modified package table and then we will use this function to get the extra items to display in the view.
   $this->db->query('SELECT * FROM `modifiedpackage_extra` 
   WHERE projectID = :projectID');
-  $row=$this->db->execute(':projectID',$projectID);
-  if ($row) {
-    return true;
-  } else {
-   return false;
-  }
+  $row=$this->db->resultSet(['projectID'=>$projectID]);
+  return $row;
   }
 
 
@@ -940,6 +947,21 @@ public function getExtraItems($projectID){
         $months = array_reverse($months);
         // print_r($months);die();
         return $months;
+    }
+
+
+    //to get all troubleshoot details of that customer
+    public function getTroubleshootReq($userID){
+      $this->db->query('SELECT * FROM scheduleitem  inner join project on project.projectID = scheduleitem.Project_projectID  where project.customerID = :userID AND scheduleitem.type = :type');
+      $row = $this->db->resultSet(['userID' => $userID,'type' => "Troubleshoot"]);
+      return $row;
+    }
+
+    //this function is to get troubleshoot details of a particular project
+    public function getTroubleshootDetails($projectID){
+      $this->db->query('SELECT * FROM scheduleitem  inner join project on project.projectID = scheduleitem.Project_projectID  where project.projectID = :projectID AND scheduleitem.type = :type');
+      $row = $this->db->resultSet(['projectID' => $projectID,'type' => "Troubleshoot"]);
+      return $row;
     }
 
 }

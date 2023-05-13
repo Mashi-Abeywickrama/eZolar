@@ -40,16 +40,21 @@
                         <span class="err-box" id="cur-pwd-err"></span>
                     </div>
                 </div>
-                <input class="r-in" name="currentpassword" id="curpwd" type="password" placeholder="********" required onkeyup="validatePassword()">
+                <input class="r-in" name="currentpassword" id="curpwd" type="password" placeholder="********">
                 <br>
+                <div class="session-err">
+                <?php
+                    echo $_SESSION['pwd-error'];
+                ?>
+                </div>
 
                 <div class="err">New Password
-                    <div class = "err group">
+                    <div class = "err-group">
                         <span class="star">*</span>
                         <span class="err-box" id="pwd-err"></span>
                     </div>
                 </div>
-                <input class="r-in" name="password" id="pwd" type="password" placeholder="********" required onkeyup="validatePassword1()">
+                <input class="r-in" name="password" id="pwd" type="password" placeholder="********" required>
                 <br>
 
                 <div class="err">Confirm Password
@@ -58,13 +63,13 @@
                         <span class="err-box" id="cpwd-err"></span>
                     </div>
                 </div>
-                <input class="r-in" name="cpassword" id="cpwd" type="password" placeholder="********" required onkeyup="validatePassword()">
+                <input class="r-in" name="cpassword" id="cpwd" type="password" placeholder="********" required>
                 <br>
                 <div class = "group" >
                     <!-- <button class="cancel-btn" type="cancel" >Cancel</button> -->
-                    <button class="submit-btn" type="submit" onclick="document.getElementById('id01').style.display='block'" >Submit</button>
+                    <button class="submit-btn" type="submit" id="update-button" onclick="document.getElementById('id01').style.display='block'" >Submit</button>
                 </div>
-            <!-- </form> -->
+            </form>
         </div>
     </div>
 </div>

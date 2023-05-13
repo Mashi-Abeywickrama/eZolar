@@ -102,9 +102,21 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                     <h1>Budget Calculator</h1>
                     <p>Enter your details in the calculator below.</p>
                     <label for="unit" class="unit">Average Monthly Units Used</label>
-                    <input name="unit" class="units" type="number" required onkeyup="checkInvestment(this.value)" onchange="checkInvestment(this.value)">
+                    <input name="unit" class="units" type="number" id="my-input" required onkeyup="checkInvestment(this.value)" onchange="checkInvestment(this.value)">
                     <p>The following is the approximate cost of solar panels only. Final cost will depend on site conditions.</p>
-            
+                    <script>
+                        const inputEl = document.getElementById('my-input');
+
+                        inputEl.addEventListener('input', function() {
+                          const value = parseFloat(inputEl.value);
+                          if (value < 0 || isNaN(value)) {
+                            alert('Please enter a positive value');
+                          } else {
+                            
+                          }
+                        });
+
+                    </script>
                     <div class="result">
                         <div class="investment-div">
                             <label for="investment">Investment Required:</label>

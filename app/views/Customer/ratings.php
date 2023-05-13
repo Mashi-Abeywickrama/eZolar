@@ -214,7 +214,7 @@
                     Comment:
                 </div>
                 <div>
-                    <input class="u-comment" type="text" name="comment" id="comment" placeholder="leave your comment here...">
+                    <input class="u-comment" type="text" name="comment" id="comment" placeholder="leave your comment here..." required>
                 </div>
                 <div class="btn-div">
                     <button type="submit" value="submit">submit</button>

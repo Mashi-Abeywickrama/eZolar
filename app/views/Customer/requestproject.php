@@ -185,12 +185,12 @@
 
         function validateMobile(){
             var mobileN = document.getElementById('mobile').value;
-            if(mobileN.length>10 || mobileN.length<10){
-                document.getElementById("mobile-err").innerHTML='Length : 10 characters';
+            if(isNaN(mobileN)){
+                document.getElementById("mobile-err").innerHTML='Contact Number should contain numbers';
                 return false;
             }else {
-                if(isNaN(mobileN)){
-                    document.getElementById("mobile-err").innerHTML='Contact Number should contain numbers';
+                if(mobileN.length>10 || mobileN.length<10){
+                    document.getElementById("mobile-err").innerHTML='Length : 10 characters';
                     return false;
                 }
                 else{

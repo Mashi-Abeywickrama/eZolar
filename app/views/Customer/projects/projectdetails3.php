@@ -303,7 +303,13 @@ require_once(__ROOT__ . '\app\views\Customer\navbar.php');
                                     Amount:
                                 </div>
                                 <div class="d">
-                                Rs.<?php echo $totalCost?>.00
+                                <?php
+                                    $total = 0;$extra = 0;
+                                    foreach ($data['extra'] as $row){
+                                        $extra = $extra + $row->price;
+                                    }
+                                ?>
+                                Rs.<?php echo $totalCost + $extra?>.00
                                 </div>
                             </div>
                         </div>

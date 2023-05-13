@@ -289,7 +289,18 @@
                                     Amount:
                                 </div>
                                 <div class="d">
-                                    Rs. 10000.00
+                                <?php
+                                    $total = 0;
+                                    foreach ($data['extra'] as $row){
+                                        $total = $total + $row->price;
+                                    }
+
+                                    foreach ($data['product'] as $row) {
+                                        $product = ($row ->productQuantity)*($row ->cost);
+                                        $total = $total + $product;
+                                    }
+                                ?>
+                                Rs.<?php echo $total?>.00
                                 </div>
                             </div>
                         </div>

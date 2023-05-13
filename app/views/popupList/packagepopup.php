@@ -33,6 +33,17 @@
                         $product = ($row ->productQuantity)*($row ->cost);
                         $totalCost = $totalCost + $product;
                         }
+
+                        foreach ($data['extra'] as $row) {
+                            echo '
+                            <tr>
+                                <td> -</td>
+                                <td class="td-name">'.$row ->description.'</td>
+                                <td>-</td>
+                                <td>Rs.'.$row ->price.'.00</td>
+                            </tr>';
+                            $totalCost = $totalCost + $row ->price;
+                            }
                     ?>
                     
                     

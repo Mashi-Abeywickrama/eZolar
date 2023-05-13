@@ -10,6 +10,7 @@ class Project extends Controller
 
     // $this->projectModel = new ProductModel();
     $this->projectModel = $this->model('ProjectModel');
+    $this->userModel = $this->model('userModel');
   }
 
   public function index()
@@ -239,7 +240,7 @@ class Project extends Controller
     $schedule = $this->projectModel->getSchedule($_GET['project_id']);
     $engineer = $this->projectModel->getEngineer($_GET['project_id']);
     $product = $this->projectModel->getproduct($_GET['project_id']);
-    // $extra = $this->projectModel->getExtraItems($_GET['project_id']);
+    $extra = $this->projectModel->getExtraItems($_GET['project_id']);
     // print_r($extra);die();
     $dschedule = $this->projectModel->getdSchedule($_GET['project_id']);
     $productname =  $this->projectModel->getproductname($_GET['project_id']);
@@ -257,7 +258,8 @@ class Project extends Controller
       'product' => $product,
       'dschedule' => $dschedule,
       'deliverypayment' => $deliverypayment,
-      'productname' => $productname
+      'productname' => $productname,
+      'extra' => $extra,
     ];
     if ($id == 1) {
       $this->view('Customer/projects/projectdetails', $data);
@@ -481,9 +483,47 @@ class Project extends Controller
     }
     $this->projectModel->markAsComplete($_GET['projectid']);
     $data = [
-      'title' => 'eZolar Salesperson Assigned Projects',
+      'title' => 'eZolar Assigned Projects',
     ];
     redirect('Project/COntractorAssignedProjects');
   }
 
+  public function troubleshoot(){
+    if (!isLoggedIn()) {
+      redirect('login');
+    }
+    $rows = $this->projectModel->getTroubleshootReq($this->projectModel->getUserID([$_SESSION['user_email']]));
+    // print_r($rows);die();
+
+    $data = [
+      'title' => 'eZolar Troubleshoot',
+      'rows' => $rows
+    ];
+    if ($this->userModel->getUserRole($_SESSION['user_email'])=='Customer'){
+      $this->view('Customer/troubleshoot', $data);
+    }
+    else{
+    $this->view('Customer/error', 'Access Denied');
+    }
+    
+  }
+  public function troubleshootdetails($projectID){
+    if (!isLoggedIn()) {
+      redirect('login');
+    }
+    $rows = $this->projectModel->getTroubleshootDetails($projectID);
+    // print_r($rows);die();
+
+    $data = [
+      'title' => 'eZolar Troubleshoot',
+      'rows' => $rows
+    ];
+    if ($this->userModel->getUserRole($_SESSION['user_email'])=='Customer'){
+      $this->view('Customer/troubleshootdetails', $data);
+    }
+    else{
+    $this->view('Customer/error', 'Access Denied');
+    }
+    
+  }
 }

@@ -23,6 +23,10 @@ class Contractor extends Controller
   
     public function reportIssue()
     {
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
       $rows = $this->projectModel->getContractorProjects($this->projectModel->getUserID([$_SESSION['user_email']]));
     $_SESSION['rows'] = $rows;
     // print_r($rows);die;
@@ -34,6 +38,10 @@ class Contractor extends Controller
     }
 
     public function newIssue(){
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
       $contractor_info = $this->issueModel->getUser([$_SESSION['user_email']]);
       $UserID = $contractor_info -> userID;
       // print_r($_POST);die;
@@ -49,6 +57,10 @@ class Contractor extends Controller
     }
     public function ongoingprojects()
     {
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
         $data = [
             'title' => 'eZolar Login',
         ];
@@ -56,6 +68,10 @@ class Contractor extends Controller
     }
     public function projectrequests()
     {
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
       $rows = $this->projectModel->getContractorProjectsRequest($this->projectModel->getUserID([$_SESSION['user_email']]));
     // print_r($rows);die();
 
@@ -69,6 +85,10 @@ class Contractor extends Controller
 
     //get contractors completed projects
     public function completedprojects(){
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
       if (isset($_GET['project_id'])) {
         $product = $this->projectModel->getproduct($_GET['project_id']);
       }
@@ -109,17 +129,29 @@ class Contractor extends Controller
 
 
     public function schedule(){
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
         $data = [
             'title' => 'eZolar Login',
         ];
+        if ($this->userModel->getUserRole($_SESSION['user_email'])=='Contractor'){
         $this->view('Contractor/schedule', $data);
+        }
+        else{
+        $this->view('Customer/error', 'Access Denied');
+        }
     }
 
     public function projectdetails($id)
     {
       //  print_r($id);die();
-       
-        
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
+
         $product = $this->projectModel->getproduct($id);
         $project = $this->projectModel->getProjectDetails($id);
         $cus_details = $this->userModel->getProfile($project[0]->customerID,'Customer');
@@ -141,10 +173,17 @@ class Contractor extends Controller
 
         ];
       
-        $this->view('Contractor/projectDetails', $data);
+        if ($this->userModel->getUserRole($_SESSION['user_email'])=='Contractor'){
+          $this->view('Contractor/projectDetails', $data);
+        }
+
+        else{
+          $this->view('Customer/error', 'Access Denied');
+        }
     }
 
     public function reject_project($scheduleID,$project_ID) {
+      
         $con_id =$this->projectModel->getUserID([$_SESSION['user_email']]);
         $res = $this->projectModel->rejectScheduleCon($scheduleID,$con_id);
         if ($res) {
@@ -197,6 +236,10 @@ class Contractor extends Controller
 
     public function reports()
     {
+      if(!isLoggedIn()){
+  
+        redirect('login');
+      }
         $con_id =$this->projectModel->getUserID([$_SESSION['user_email']]);
         $res = $this->projectModel->getReport($con_id);
         $res2 = $this->projectModel->getReport2();
@@ -206,6 +249,12 @@ class Contractor extends Controller
             'completed' => $res,
             'total' => $res2
         ];
+      if ($this->userModel->getUserRole($_SESSION['user_email'])=='Contractor'){
         $this->view('Contractor/reports', $data);
+      }
+      
+      else {
+        $this->view('Customer/error', 'Access Denied');
+      }
     }
 }

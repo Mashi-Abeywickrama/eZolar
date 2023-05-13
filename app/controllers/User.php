@@ -319,7 +319,7 @@ class User extends Controller {
           if ($role == "Storekeeper"){
             $this->view('Storekeeper/editprofile', $title);
           }elseif ($role == "Customer"){
-            $this->view('Customer/Settings/editprofile', $title);
+            header('Location: ./editprofile');
           }elseif ($role == "Salesperson"){
             $this->view('Salesperson/editprofile', $title);
           }elseif ($role == "Contractor"){
@@ -333,6 +333,7 @@ class User extends Controller {
     }
 // load the page for update password
     public function updatePasswordpage(){
+      $_SESSION['pwd-error'] = "";
       if(!isLoggedIn()){
 
         redirect('login');
@@ -347,7 +348,7 @@ class User extends Controller {
       
       $title = "edit profile";
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
-      //redirect to the correct edit profile page according to the user
+      //redirect to the correct edit password page according to the user
       if ($role == "Storekeeper"){
         $this->view('Storekeeper/editprofile', $title);
       }elseif ($role == "Customer"){
@@ -361,13 +362,18 @@ class User extends Controller {
 
 //this function is to update user password
 public function updatePassword(){
-  // $curpwd = $_POST['currentpassword'];
-  $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
-  // $confirm = $_POST['cpassword'];
-  // print_r($confirm);die;
-  $this->userModel->updatePassword($_SESSION['user_email'],$pwd);
-  flash($name = 'test', $message = 'Updated', $class = 'success alert-msg');
-  // redirect('login');
+  $curpwd = $_POST['currentpassword'];
+  // print_r($curpwd);die; 
+  if ($this->userModel->login($_SESSION['user_email'],$_POST['currentpassword'])) {
+    $_SESSION['pwd-error'] = "";
+    $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $this->userModel->updatePassword($_SESSION['user_email'],$pwd);
+    redirect('login');
+  redirect('user/updatePasswordpage');
+} else {
+  $_SESSION['pwd-error'] = "Current password is incorrect";
+  header('Location: ./updatePasswordpage');
+}
 
 }
     public function createUserSession($user){

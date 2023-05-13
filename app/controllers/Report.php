@@ -32,8 +32,9 @@
           $inspection = $this->projectModel->getdSchedule($projectID);
           $delivery = $this->projectModel->getSchedule($projectID);
           $lastpay = $this->transactionModel->getCompletedPayment($projectID);
-          $fpayment = $this->transactionModel->getCompletedInspectionPayment($projectID);;
-          // print_r($products);die();
+          $fpayment = $this->transactionModel->getCompletedInspectionPayment($projectID);
+          $extra = $this->projectModel->getExtraItems($projectID);
+          // print_r($extra);die();
         }else{
           $project = $this->projectModel->getProjectDetails($com_projects[0]->projectID);
           $productname =  $this->projectModel->getproductname($com_projects[0]->projectID);
@@ -41,7 +42,9 @@
           $delivery = $this->projectModel->getdSchedule($com_projects[0]->projectID);
           $products = $this->projectModel->getproduct($com_projects[0]->projectID);
           $lastpay = $this->transactionModel->getCompletedPayment($com_projects[0]->projectID);
-          $fpayment = $this->transactionModel->getCompletedInspectionPayment($com_projects[0]->projectID);;
+          $fpayment = $this->transactionModel->getCompletedInspectionPayment($com_projects[0]->projectID);
+          $extra = $this->projectModel->getExtraItems($com_projects[0]->projectID);
+          // print_r($extra);die();
         }
         
         // print_r($customer_Id);die;
@@ -57,7 +60,8 @@
           'productname' => $productname,
           'fpayment' => $fpayment,
           'inspection' => $inspection,
-          'delivery' => $delivery
+          'delivery' => $delivery,
+          'extra' => $extra,
         ];
         $this->view('Customer/reports', $data);
         // print_r($products);

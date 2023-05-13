@@ -60,7 +60,7 @@ $('.datepicker').datepicker({
 			showDay = false;
 		}
 
-        if (date.getDay() == date1.getDay() && date.getDate() == date1.getDate() && date.getMonth() == date1.getMonth() && date.getFullYear() == date1.getFullYear()) {
+        if (date.getDay() == date2.getDay() && date.getDate() == date2.getDate() && date.getMonth() == date2.getMonth() && date.getFullYear() == date2.getFullYear()) {
 			showDay = false;
         }
 
@@ -118,7 +118,7 @@ $('.datepicker3').datepicker({
 			showDay = false;
         }
 
-        if (date.getDay() == date3.getDay() && date.getDate() == date3.getDate() && date.getMonth() == date3.getMonth() && date.getFullYear() == date3.getFullYear()) {
+        if (date.getDay() == date2.getDay() && date.getDate() == date2.getDate() && date.getMonth() == date2.getMonth() && date.getFullYear() == date2.getFullYear()) {
 			showDay = false;
         }
 		
