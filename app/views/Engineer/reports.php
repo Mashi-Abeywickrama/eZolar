@@ -12,7 +12,7 @@
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\customer.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\engineer.dashboard.common.css">
-    <link rel="stylesheet" href="\ezolar\public\css\reports.css">
+    <link rel="stylesheet" href="\ezolar\public\css\engineer-reports.css">
     <title>My Projects</title>
 </head>
 <body>
