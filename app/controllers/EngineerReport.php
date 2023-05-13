@@ -2,11 +2,11 @@
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 require_once(__ROOT__ . '/app/helpers/session_helper.php');
 
-class Report extends Controller
+class EngineerReport extends Controller
 {
     public function __construct()
     {
-        $this->ReportModel = $this->model('ReportModel');
+        $this->ReportModel = $this->model('EngineerReportModel');
     }
 
     private function getweekData($date){
@@ -52,13 +52,6 @@ class Report extends Controller
     
 
     public function index()
-    {
-        if ($this->ReportModel->getUserRole($_SESSION['user_email']) == "Engineer"){
-            redirect('Report/engineerReports');
-          }
-    }
-
-    public function engineerReports()
     {
       $engID = $this->ReportModel->getUserID($_SESSION['user_email']);
       $_SESSION['inspection'] = array('current'=>$this->ReportModel->getweeksInspectionsofUser($this->getweekData(date('y-m-d')),$engID),

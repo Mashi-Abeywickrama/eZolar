@@ -2,7 +2,7 @@
     margin-top: 5px;
     margin-bottom: 10px;
     width :100%;
-    min-height: 800px;
+    min-height: 600px;
     box-sizing: border-box;
     overflow-x: hidden;
 }
@@ -12,12 +12,12 @@
 }
 
 .report-title-text{
-    font-size: larger;
+    font-size: 30px;
     font-weight: bold;
 }
 
 .reporrt-subtitle-text{
-    font-size: large;
+    font-size: 24px;
 }
 
 .report-table-container{
@@ -97,4 +97,93 @@
     border-radius: 10px;
     box-sizing: border-box;
     padding: 15px;
+}
+
+.project-total-list{
+    min-height: 130px;
+    width:95%;
+    margin-left:20px;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+
+.modpack-title-container{
+    width: 100%;
+    height: 60px;
+    background: #f1f1f1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
+}
+.modpack-title-text{
+    margin-left: 30px;
+    font-size: 25px;
+}
+.modpack-title-btn{
+    margin-right: 30px;
+    transition-duration: 200ms;
+}
+.modpack-title-btn.expanded{
+    transform: rotate(90deg);
+}
+
+.modpack-content-container{
+    display: none;
+    margin-top: -10px;
+    box-sizing: border-box;
+    padding: 10px;  
+    margin-bottom: 10px;
+    background: #d9d9d9;
+    border-radius: 10px;
+}
+
+.modpack-content-container.expanded{
+    display: block;
+}
+
+
+
+.report-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 150;
+    color: black;
+    text-decoration: none;
+    border-bottom: none;    
+  }
+
+.report-line.small{
+    font-size: 15px;
+    margin-top: 2px;
+    height: auto;
+}
+
+.report-line.mid{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    height: auto;
+}
+  
+  .left {
+    display:block;
+  }
+  
+  .right {
+    display:block;
+  }
+
+  .no-package-text{
+    margin-top: 50px;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    color: #757575;
 }

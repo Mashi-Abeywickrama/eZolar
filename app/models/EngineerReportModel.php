@@ -1,7 +1,7 @@
 <?php
 
 
-class ReportModel
+class EngineerReportModel
 {
     private $db;
 
@@ -58,7 +58,7 @@ class ReportModel
         $this->db->query('SELECT * FROM modifiedpackage_extra WHERE projectID = :projectID;');
         $extras = $this->db->resultSet(['projectID'=>$prjID]);
 
-        return array('products'=>$products,'extras'=>$extras);
+        return array('projectID'=>$prjID,'products'=>$products,'extras'=>$extras);
     }
 
 

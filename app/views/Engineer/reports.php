@@ -32,6 +32,9 @@
                 <a class="sidebar-anchor" href="/ezolar/EngineerIssue"><div class="sidebar-link-container">
                     Report an Issue
                 </div></a>
+                <a class="sidebar-anchor" href="/ezolar/EngineerReport"><div class="sidebar-link-container-selected">
+                    My Performace Report
+                </div></a>
             </div>
 
             <a class="sidebar-anchor" href="/ezolar/User/profile"><div class="sidebar-link-container-bottom">
@@ -59,27 +62,68 @@
                 <div class="report-inline">
                     <div class="eng-report-inspections-section">
                         <div class="report-title-text"> Inspections Statistics </div>
-                        Number of Inspections this week : <?php echo $_SESSION['inspection']['current'];?> <br>  
-                        Number of Inspections last week : <?php echo $_SESSION['inspection']['last'];?> <br>
-                        Change : <?php echo $_SESSION['inspection']['change'];?> <br><br>
-                        Company Average of the Week: <?php echo $_SESSION['inspection']['average'];?>
+                        <div class="report-line"><span class="left">Number of Inspections this week : </span><span class="right"><?php echo $_SESSION['inspection']['current'];?></span></div>
+                        <div class="report-line"><span class="left">Number of Inspections last week : </span><span class="right"><?php echo $_SESSION['inspection']['last'];?></span></div>
+                        <div class="report-line"><span class="left">Change Percentage : </span><span class="right"><?php echo $_SESSION['inspection']['change'];?></span></div>
+                        <div class="report-line" style="margin-top:40px;"><span class="left">Company Average of the Week: </span><span class="right"><?php echo $_SESSION['inspection']['average'];?></span></div>
                     </div>
                     <div class="eng-report-package-section">
                         <div class="report-title-text"> Package Price Statistics </div>
-                        Package Prices of your projects: <br>
+                        <div class="report-line">Package Prices of your projects:</div>
+                        <div class="project-total-list">
                         <?php 
                         $subtotal = 0;
-                        foreach($_SESSION['package'] as $project){
-                            echo 'From '.$project['projectID'].' : '.'Rs.'.number_format($project['total'],0,'.',',').'/= <br>';
-                            $subtotal += $project['total'];
+                        if (count($_SESSION['package'])<=0){
+                            echo '<div class="no-package-text">No packages were confirmed this week</div>';
+                        } else {
+                            foreach($_SESSION['package'] as $project){
+                                echo '<div class="report-line"><span class="left">From '.strtoupper($project['projectID']).' :</span>'.'<span class="right">Rs. '.number_format($project['total'],0,'.',',').'/= </span></div>';
+                                $subtotal += $project['total'];
+                            }
                         }
 
-                        echo '<br> Total : '.'Rs.'.number_format($subtotal,0,'.',',').'/= <br>'
+                        echo '</div><div class="report-line" style="font-weight:bold;"><span class="left">Total : </span>'.'<span class="right">Rs. '.number_format($subtotal,0,'.',',').'/=</span></div>';
                         ?>
+                        
 
                     </div>
                 </div>
-                <div class="eng-report-project-section"></div>
+                <div class="eng-report-project-section">
+                <div class="report-title-text"> Confirmed Packages Information </div>
+                    <?php
+                    if (count($_SESSION['package'])<=0){
+                        echo '<div class="no-package-text">No packages were confirmed this week</div>';
+                    } else {
+                        foreach($_SESSION['project'] as $modpack){
+                            echo '<div class="modpack-title-container" id="card-'.$modpack['projectID'].'"><span class="modpack-title-text">From Project : '.strtoupper($modpack['projectID']).'</span><img src="\ezolar\public\img\engineer\Forward.png" class="modpack-title-btn" id="btn-'.$modpack['projectID'].'"></div>';
+                            $total = 0;
+                            echo '<div class="modpack-content-container" id=content-'.$modpack['projectID'].'><div class="report-line mid">Package you recommended :</div><div class="">';
+                            foreach($modpack['products'] as $product){
+                                echo '<div class="report-line small"><span class="left">'.$product->productName.' X '.$product->productQuantity.'</span><span class="right">Rs. '.number_format($product->productQuantity*$product->cost,0,'.',',').'/=</span></div>';
+                                $total += $product->productQuantity*$product->cost;
+                            }
+                            echo '</div>';
+                            foreach($modpack['extras'] as $extra){
+                                echo '<div class="report-line small"><span class="left">'.$extra->description.'</span><span class="right">Rs. '.number_format($extra->price,0,'.',',').'/=</span></div>';
+                                $total += $extra->price;
+                            }
+                            echo '<div class="report-line mid"><span class="left">Total</span><span class="right">Rs. '.number_format($total,0,'.',',').'/=</span></div></div>';  
+                            echo '
+                                <script>
+                                    var card_'.$modpack['projectID'].' = document.getElementById("card-'.$modpack['projectID'].'");
+                                    var btn_'.$modpack['projectID'].' = document.getElementById("btn-'.$modpack['projectID'].'");
+                                    var content_'.$modpack['projectID'].' = document.getElementById("content-'.$modpack['projectID'].'");
+
+                                    card_'.$modpack['projectID'].'.addEventListener(\'click\', function(card){
+                                        content_'.$modpack['projectID'].'.classList.toggle(\'expanded\');
+                                        btn_'.$modpack['projectID'].'.classList.toggle(\'expanded\');
+                                    });
+                                </script>
+                            ';
+                        }
+                    }
+                    ?>
+                </div>
             </div>
             
         
