@@ -6,6 +6,7 @@
       $this->db = new Database;
     }
 
+    // get user details
     public function getUserID($email){
       $this->db->query('SELECT UserID FROM user where email = :email');
       $row = $this->db->single(['email' => $email[0]]);
@@ -17,12 +18,12 @@
       return ($row->type);
     }
     public function getAssignedProjects($id){
-      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status <> "F" AND status <> "Z0"');
+      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID');
       $row = $this->db->resultSet(['SPID' => $id]);
       return $row;
     }
     public function getCancelledProjects($id){
-      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status = "F"');
+      $this->db->query('SELECT * FROM project WHERE  Salesperson_Employee_empID  = :SPID AND status = "X0"');
       $row = $this->db->resultSet(['SPID' => $id]);
       return $row;
     }
@@ -130,11 +131,20 @@
       return $rows;
     }
 
+    // change schedule dates
     public function updateSchedule($scheduleID,$date){
       $this->db->query('UPDATE scheduleitem SET `date` = :sdate WHERE scheduleID = :scheduleID');
       $this->db->execute(['sdate' => $date,'scheduleID' => $scheduleID]);
     }
 
+    // check project is completed or not
+    public function projectCompleted($prjID){
+      $this->db->query('SELECT status FROM project WHERE projectID=:prjID');
+      $rows = $this->db->single(['prjID' => $prjID]);
+      return $rows;
+    }
+
+    // Add new schedule for troubleshooting
     public function addSchedule($prjID,$date,$empID){
       $this->db->query('INSERT INTO scheduleitem(`Project_projectID`,`type`,`date`,`isConfirmed`) VALUES (:projID,"Troubleshoot",:sdate,1)');
       $this->db->execute(['sdate' => $date,'projID' => $prjID]);

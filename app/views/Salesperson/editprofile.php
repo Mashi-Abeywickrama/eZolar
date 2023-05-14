@@ -38,6 +38,10 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             Engineers & Contractors
             </div></a>
 
+            <a href="<?=URLROOT?>/SalespersonReports"><div class="box9">
+            Reports
+            </div></a>
+
         </div>
         <div class="rest-bottom">
             <a href="<?=URLROOT?>/user/profile"><div class="box5">

@@ -17,7 +17,7 @@
       return ($row->type);
     }
     public function getProjects(){
-      $this->db->query('SELECT * FROM project WHERE status <> "F" AND status <> "Z0"');
+      $this->db->query('SELECT * FROM project');
       $row = $this->db->resultSet([]);
       return $row;
     }
@@ -31,7 +31,7 @@
       $row = $this->db->resultSet(['SPID' => $id]);
       return $row;
     }
-    public function getAssignedProjectDetails( $prj_ID){
+    public function getAssignedProjectDetails($prj_ID){
       $this->db->query('SELECT * FROM project
       INNER JOIN customer ON project.customerID = customer.customerID 
       WHERE projectID = :prjID');

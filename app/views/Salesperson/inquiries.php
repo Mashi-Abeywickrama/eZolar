@@ -38,6 +38,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
+            <a href="<?=URLROOT?>/SalespersonReports"><div class="box9">
+            Reports
+            </div></a>
 
         </div>
         <div class="rest-bottom">
@@ -53,18 +56,18 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
 <div class="common-main-container">
     <div class="dashboard-common-main-topic">
-        <div class="common-main-left-img">
-            <a href=”” “text-decoration: none”>
+
+        <div class = "common-main-topic-left">
+            <div class="common-main-left-img">
+                <a href=”#” “text-decoration: none”>
                 <img src="\ezolar\public\img\customer\Inquiry.png" alt="Inquiry">
-            </a>
-        </div>
-        <div class="common-main-txt">
-            Inquiries
+                </a>
+            </div>
+            <div class="common-main-txt">
+                Inquiries
+            </div>
         </div>
 
-        <div class="common-main-right-img">
-            <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>
     </div>
     <div class="inquiry-list-container">
 

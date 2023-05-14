@@ -38,6 +38,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
+            <a href="<?=URLROOT?>/SalespersonReports"><div class="box9">
+            Reports
+            </div></a>
 
         </div>
         <div class="rest-bottom">
@@ -103,14 +106,20 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             }
             ?>
         </div>
+        <?php 
+            $status = $_SESSION['rows']['status'];
+            if($status == "Z0"){
+                echo '        
+                <form class="add-inspection" action="/ezolar/SalespersonProject/addNewSchedule/'.$_SESSION['rows']['projID'].'/'.$row->empID.'" method="POST">
+                <h3>Add Troubleshoot Inspection</h3>
+                <div class="add-schedule-container">
+                    <input class="schedule-form-item-input" name="schedule-date" id="schedule-date" type="date">
+                    <button type="submit" class="add-inspection-button">Add Inspection</button>
+                </div>
+                </form>';
+            }
+        ?>
 
-        <form class="add-inspection" action="/ezolar/SalespersonProject/addNewSchedule/<?php echo $_SESSION['rows']['projID'].'/'.$row->empID?>" method="POST">
-        <h3>Add Inspection Schedules</h3>
-        <div class="add-schedule-container">
-            <input class="schedule-form-item-input" name="schedule-date" id="schedule-date" type="date">
-            <button type="submit" class="add-inspection-button">Add Inspection</button>
-        </div>
-        </form>
 
         <h2>Delivery Schedules</h2>
         <div class="payment-list-container">
@@ -126,24 +135,25 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                         $isComplete = "disabled";
                         $display = 'style="display:none;"';
                     } 
-                    echo '<form class="project-box" action="/ezolar/SalespersonProject/changeScheduleDate/'.$row->scheduleID.'/'.$row->Project_projectID.'" method="post">
-                                <div class="project-text-container">
-                                    <div class="project-text-container-inner">
-                                        <div class="project-text-no">Contractor Name:</div>
-                                        <div class="project-text-name"><b>' . $row -> name . '</b></div>
-                                    </div>
-                                    <div class="project-text-container-inner">
-                                    <input class="form-item-input" name="schedule-date" id="schedule-date" type="date" value="'. substr($row->date,0,10).'" '.$isComplete.'>
-                                    
+                        echo '<form class="project-box" action="/ezolar/SalespersonProject/changeScheduleDate/'.$row->scheduleID.'/'.$row->Project_projectID.'" method="POST">
+                        <div class="project-text-container" style="flex-direction:column;">
+                            <div class="project-text-container-inner" style="flex-direction:row;">
+                                <div class="project-text-no">Contractor Name:</div>
+                                <div class="project-text-name"><b>' . $row -> name . '</b></div>
+                            </div>
+                            </br>
+                            <div class="project-text-container-inner" style="flex-direction:row;">
+                            <div class="project-text-no">Scheduled date:</div>
+                            <input class="form-item-input" name="schedule-date" id="schedule-date" type="date" value="'. substr($row->date,0,10).'" '.$isComplete.'>
+                            </div>
+                        </div>
+                        <div class="schedule-btn-container" style="padding:5px;width:auto;margin=0;">
+                            <button type="submit" '.$display.'>
+                                <div class="schedule-btn">
+                                    <div class="project-details-btn-text">Change Date</div>
                                 </div>
-                                </div>
-                                <div class="schedule-btn-container">
-                                    <button type="submit" '.$display.'>
-                                        <div class="schedule-btn">
-                                            <div class="project-details-btn-text">Change Date</div>
-                                        </div>
-                                    </button>
-                                </div>
+                            </button>
+                        </div>
                         </form>';
                 }
             }
