@@ -74,7 +74,9 @@
                 </div>
             </div>  
             <div class="form-background">
-                <form class="form-container" action="/ezolar/Package/newPackage" method="POST">
+                <form class="form-container" action="/ezolar/Package/editPackageInfo/<?php
+                            $row = $_SESSION['row'];
+                            echo $row -> packageID;?>" method="POST">
                     <div class="form-inline">
                         <div class="form-item-container">
                             <div class="form-item-text">
