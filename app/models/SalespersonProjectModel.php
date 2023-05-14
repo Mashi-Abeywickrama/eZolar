@@ -117,5 +117,31 @@
       $rows = $this->db->resultSet(['prjID' => $prjID]);
       return $rows;
     }
+
+    public function getInspectionDetails($prjID){
+      $this->db->query('SELECT * FROM `scheduleitem` INNER JOIN `scheduleitem_assignedemp` ON scheduleID = scheduleitem_assignedemp.ScheduleItem_scheduleID INNER JOIN employee ON userID = empID WHERE Project_projectID = :prjID;');
+      $rows = $this->db->resultSet(['prjID' => $prjID]);
+      return $rows;
+    }
+
+    public function getDeliveryDetails($prjID){
+      $this->db->query('SELECT * FROM `scheduleitem` INNER JOIN `scheduleitem_assignedcontr` ON scheduleID = ScheduleItem_scheduleID INNER JOIN employee ON contractorID = empID WHERE Project_projectID = :prjID;');
+      $rows = $this->db->resultSet(['prjID' => $prjID]);
+      return $rows;
+    }
+
+    public function updateSchedule($scheduleID,$date){
+      $this->db->query('UPDATE scheduleitem SET `date` = :sdate WHERE scheduleID = :scheduleID');
+      $this->db->execute(['sdate' => $date,'scheduleID' => $scheduleID]);
+    }
+
+    public function addSchedule($prjID,$date,$empID){
+      $this->db->query('INSERT INTO scheduleitem(`Project_projectID`,`type`,`date`,`isConfirmed`) VALUES (:projID,"Troubleshoot",:sdate,1)');
+      $this->db->execute(['sdate' => $date,'projID' => $prjID]);
+      $this->db->query('SELECT scheduleID FROM scheduleitem WHERE Project_projectID = :projID AND `date`=:sdate');
+      $scheduleID = $this->db->single(['sdate' => $date,'projID' => $prjID])->scheduleID;
+      $this->db->query('INSERT INTO scheduleitem_assignedemp(`ScheduleItem_scheduleID`,`UserID`,`Status`) VALUES (:scheduleID,:empID,1)');
+      $this->db->execute(['empID' => $empID,'scheduleID' => $scheduleID]);
+    }
     
   }

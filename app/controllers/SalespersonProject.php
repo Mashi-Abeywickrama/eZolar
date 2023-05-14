@@ -273,5 +273,38 @@ class SalespersonProject extends Controller
     ];
     $this->view('Salesperson/view-receipt', $data);
   }
+
+  public function manualAssignPage($projectID){
+    if(!isLoggedIn()){
+      redirect('login');
+    }
+    $inspectionItems = $this->SalespersonProjectModel->getInspectionDetails($projectID);
+    $deliveryItems = $this->SalespersonProjectModel->getDeliveryDetails($projectID);
+    $_SESSION['rows'] = array('inspection' => $inspectionItems, 'delivery' => $deliveryItems,'projID' => $projectID);
+    $data = [
+      'title' => 'eZolar Manual Assign',
+    ];
+    $this->view('Salesperson/manual-assign', $data);
+  }
+
+  public function changeScheduleDate($scheduleID,$projectID){
+    if(!isLoggedIn()){
+      redirect('login');
+    }
+    $date = $_POST['schedule-date'];
+    $this->SalespersonProjectModel->updateSchedule($scheduleID,$date);
+    redirect('SalespersonProject/manualAssignPage/'.$projectID);
+  }
+
+  public function addNewSchedule($projectID,$empID){
+    if(!isLoggedIn()){
+      redirect('login');
+    }
+    $date = $_POST['schedule-date'];
+    $this->SalespersonProjectModel->addSchedule($projectID,$date,$empID);
+    redirect('SalespersonProject/manualAssignPage/'.$projectID);
+  }
+
+
 }
 

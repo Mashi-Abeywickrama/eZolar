@@ -26,7 +26,7 @@
 
 .project-box{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     height: 125px;
     width: 100%;
     background: #F9F9F9;
@@ -140,4 +140,39 @@ a{
     font-style: italic;
     font-size: 25px;
     color: #757575;
+}
+
+.add-schedule-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-inspection-button{
+    width : 100%;
+    height:auto;
+    padding: 10px;
+
+}
+
+h2,h3{
+    color: #DE8500;
+}
+
+h3{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.schedule-btn-container{
+    width: 200px;
+    height: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 0px;
+    width: 90px;
+}
+
+.schedule-form-item-input{
+    height: 30px;
 }
