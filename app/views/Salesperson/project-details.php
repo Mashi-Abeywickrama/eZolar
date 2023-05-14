@@ -22,7 +22,7 @@
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
+            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7"  style="color: #ffffff;background-color: #0b2f64;">
                     Assigned Projects
                 </div></a>
             <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
@@ -106,6 +106,10 @@
                     } ?>
                 
                     <a href="/ezolar/SalespersonProject/paymentHistory/<?php echo $_SESSION['row']->projectID; ?>"><div class="project-details-btns">View Payment History</div></a>
+                    <?php if($_SESSION['rows']['EngineerNames'] != "Not Assigned"){
+                        echo '<a href="/ezolar/SalespersonProject/manualAssignPage/'.$_SESSION['row']->projectID.' "><div class="project-details-btns">Manually Assign Schedules</div></a>';
+                    }?>
+                    
 
                 </div>
                     
