@@ -14,7 +14,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <title>My Projects</title>
 </head>
 <body>
-<?php require_once(__ROOT__.'/app/views/popupList/confirmationPopup.php');?> 
 
 <div class="body-container">
     <div class="left-panel">
@@ -143,7 +142,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                         </a>
                     
                         <a href="/ezolar/Employee/deleteEmployee/'.$row -> empID.'">
-                            <button class="delete-profile-btn" id="del_btn">Deactivate Profile</button>
+                            <button class="delete-profile-btn" id="del_btn">Deactivate</button>
                         </a>
                     </div>
                 
@@ -164,20 +163,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 $this->view('Includes/footer', $data);
 ?>
 </div>
-<script>
-    var del_btn = document.getElementById('del-btn');
-    var text_box = document.getElementById('text');
-    var yes_btn = document.getElementById('yes-btn');
-    var no_btn = document.getElementById('no-btn');
-
-    del_btn.addEventListener('click', function()
-    {
-        text_box.innerHTML = "This will Delete the product \"<?php echo $row -> productName;?>\" <br> Do you wish to proceed?";
-        yes_btn.setAttribute("href", "/ezolar/Product/removeProduct/<?php echo $row -> productID;?>");
-        document.getElementById("confirm-pop").style.display="block";
-    });
-    
-</script>
 </body>
 </html>
 
