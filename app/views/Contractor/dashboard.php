@@ -73,7 +73,7 @@
            </div>
         </div></a>
         
-        <a href=""> <div class="dashboard-container-content">
+        <a href="<?=URLROOT?>/contractor/settings"> <div class="dashboard-container-content">
            <div class="dashboard-container-txt">
                 Settings
            </div>

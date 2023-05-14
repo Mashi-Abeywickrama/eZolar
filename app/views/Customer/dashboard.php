@@ -82,12 +82,15 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                             var className = "calendar-event-container";
                             if (item[2] == "Inspection"){
                                 className += ' event-inspection';
+                                var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3].toUpperCase() +"</div></a>";
                             } else if (item[2] == "Delivery") {
                                 className += ' event-delivery';
+                                var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3].toUpperCase() +"</div></a>";
                             } else {
                                 className += ' event-pending';
+                                var new_event = "<a href=\"/ezolar/project/troubleshootdetails/"+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3].toUpperCase() +"</div></a>";
                             }
-                            var new_event = "<a href=\"/ezolar/project/projectdetails/5?project_id="+item[3]+"\" class=\"calendar-event-anchor\"><div class=\""+className+"\">"+ item[3].toUpperCase() +"</div></a>"; 
+                             
                             
                             event_list = event_list + new_event;
                             element.innerHTML = event_list;
@@ -102,7 +105,7 @@ require(__ROOT__.'\app\libraries\Calendar.php');
                     <h1>Budget Calculator</h1>
                     <p>Enter your details in the calculator below.</p>
                     <label for="unit" class="unit">Average Monthly Units Used</label>
-                    <input name="unit" class="units" type="number" id="my-input" required onkeyup="checkInvestment(this.value)" onchange="checkInvestment(this.value)">
+                    <input min="0" name="unit" class="units" type="number" id="my-input" required onkeyup="checkInvestment(this.value)" onchange="checkInvestment(this.value)">
                     <p>The following is the approximate cost of solar panels only. Final cost will depend on site conditions.</p>
                     <script>
                         const inputEl = document.getElementById('my-input');

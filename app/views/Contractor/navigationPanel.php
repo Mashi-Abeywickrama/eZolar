@@ -21,7 +21,7 @@
                 <a href="<?=URLROOT?>/user/profile"><div class="box5">
                     Profile
                 </div></a>
-                <a href="<?=URLROOT?>/setting"> <div class="box6">
+                <a href="<?=URLROOT?>/contractor/settings"> <div class="box6">
                     Settings
                 </div></a>
             </div>

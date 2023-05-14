@@ -964,6 +964,13 @@ public function getExtraItems($projectID){
       return $row;
     }
 
+    //get troubleshoot engineer from scheduleitem_assigned Engineer and employee table
+    public function getTroubleshootEngineer($scheduleID){
+      $this->db->query('SELECT * FROM scheduleitem_assignedemp  inner join employee on employee.empID = scheduleitem_assignedemp.UserID  where scheduleitem_assignedemp.Scheduleitem_scheduleID = :scheduleID');
+      $row = $this->db->resultSet(['scheduleID' => $scheduleID]);
+      return $row;
+    }
+
 }
 
 

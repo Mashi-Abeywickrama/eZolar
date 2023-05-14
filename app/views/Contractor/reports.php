@@ -30,7 +30,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                     <img src="\ezolar\public\img\customer\Person.png" alt="profile">
                 </div>
                 <div class="common-main-txt">
-                    Reports and Charts
+                    your Activity
                 </div>
             </div>
             
@@ -50,7 +50,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                             echo json_encode($values);
                         ?>,
                 datasets: [{
-                    label:'Completed Projects',
+                    label:'Your projects',
                     data: <?php 
                                 $values = array_values($data['completed']);
                                 echo json_encode($values);

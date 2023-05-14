@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="common-main-txt">
-                    Trouble Shooting
+                    Troubleshooting
                 </div>
             </div>
            

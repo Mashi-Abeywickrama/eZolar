@@ -354,7 +354,7 @@ class User extends Controller {
       }elseif ($role == "Customer"){
         $this->view('Customer/Settings/changepassword', $title);
       }elseif ($role == "Contractor"){
-        $this->view('Contractor/editprofile', $title);
+        $this->view('Contractor/updatepassword', $title);
       }elseif ($role == "Salesperson"){
         $this->view('Salesperson/editProfile',$title);
       }

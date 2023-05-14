@@ -512,11 +512,15 @@ class Project extends Controller
       redirect('login');
     }
     $rows = $this->projectModel->getTroubleshootDetails($projectID);
-    // print_r($rows);die();
-
+    // print_r($rows[0]->scheduleID);die();
+    $salesperson = $this->projectModel->getSalesPersonDetails($projectID);
+    $engineer = $this->projectModel->getTroubleshootEngineer($rows[0]->scheduleID);
+    // print_r($engineer);die();
     $data = [
       'title' => 'eZolar Troubleshoot',
-      'rows' => $rows
+      'rows' => $rows,
+      'salesperson' => $salesperson,
+      'engineer' => $engineer
     ];
     if ($this->userModel->getUserRole($_SESSION['user_email'])=='Customer'){
       $this->view('Customer/troubleshootdetails', $data);

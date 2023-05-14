@@ -257,4 +257,25 @@ class Contractor extends Controller
         $this->view('Customer/error', 'Access Denied');
       }
     }
+    
+    public function settings()
+    {
+        if(!isLoggedIn()){
+
+            redirect('login');
+        
+        }
+        $data = [
+            'title' => 'eZolar Settings',
+        ];
+        if ($this->userModel->getUserRole($_SESSION['user_email'])=='Contractor'){
+          $this->view('Contractor/settings', $data);
+        }
+        
+        else {
+          $this->view('Customer/error', 'Access Denied');
+        }
+        
+
+    }
 }
