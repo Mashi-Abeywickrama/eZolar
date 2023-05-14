@@ -1,5 +1,4 @@
 .dashboard-common-heading-and-background-container{
-    /* width: 80%; */
     max-width: 1000px;
     min-width: 800px;
     overflow: auto;
@@ -8,11 +7,8 @@
 
 .employee-list-container{
     margin-top: 20px;
-    /*height: 80%;*/
-    height: 58vh;
     min-height: 400px;
-    max-height: 550px;
-    width: 70%;
+    width: 80%;
     min-width: 500px;
     max-width: 1000px;
     overflow-y: scroll;
@@ -23,10 +19,6 @@
     color: #ffffff;
     background-color: #0b2f64;
 }
-
-/*.employee-list-container::-webkit-scrollbar {
-    display: none;
-}*/
 
 .employee-card{
     display: block;
@@ -102,26 +94,6 @@
 .employee-details-btn-text{
     align-self: center;
 }
-
-/* .add-product-btn{
-    display: flex;
-    height: 40px;
-    width: 200px;
-    background: #2C61A3;
-    border-radius: 20px;
-    color: #FFFFFF;
-    justify-content: center;
-    margin-top: -50px;
-}
-.add-product-btn:hover{
-    cursor: pointer;
-    background: #0B2F64;
-    transition-duration: 200ms;
-}
-.add-product-btn-text{
-    align-self: center;
-} */
-
 
 .employee-text-no{
     margin: 5px;

@@ -41,6 +41,9 @@
             <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
+            <a href="<?=URLROOT?>/SalespersonReports"><div class="box9">
+            Reports
+            </div></a>
 
         </div>
         <div class="rest-bottom">

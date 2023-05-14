@@ -94,7 +94,7 @@
         return $row;
       }
 
-      // ***********************
+      // Get employees as List according to the employee type
       public function getEmployees($empType){
           $this->db->query('SELECT employee_telno.telno,employee.empID,employee.name,user.type,user.isDeactivated
                         FROM employee_telno 
@@ -113,6 +113,7 @@
           return $row;
       }
 
+      // Edit employee accounts
       public function editEmployee($empID,$data){
         $this->db->query('UPDATE employee,employee_telno,user
                         SET employee_telno.telno = :telno ,employee.name = :name,employee.bio = :bio,user.email = :email
@@ -120,13 +121,9 @@
                         AND employee.empID = employee_telno.Employee_empID 
                         AND employee.empID = :userid;');
         $this->db->execute(['userid' => $empID,'name' => $data[0],'bio' => $data[1],'telno' => $data[2],'email' => $data[3]]);
-
-//          $this->db->query('UPDATE employee SET name = :name,bio = :bio WHERE empID = :userid');
-//          $this->db->execute(['userid' => $empID,'name' => $data[0],'bio' => $data[1]]);
-//          $this->db->query('UPDATE employee_telno SET telno = :telno WHERE Employee_empID = :userid');
-//          $this->db->execute(['userid' => $empID,'telno' => $data[2]]);
       }
 
+      // Deactivate Employee accounts
       public function deleteEmployee($empID){
         $this->db->query('UPDATE user SET isDeactivated = 1 WHERE userID = :empID');
         $this->db->execute(['empID' => $empID]);

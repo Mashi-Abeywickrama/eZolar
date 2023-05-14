@@ -36,6 +36,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
             Engineers & Contractors
             </div></a>
+            <a href="<?=URLROOT?>/SalespersonReports"><div class="box9">
+            Reports
+            </div></a>
 
         </div>
         <div class="rest-bottom">
@@ -68,11 +71,6 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
 
         </div>
 
-        <!-- TODO -> add peofile -->
-        <!-- <div class="common-main-right-img">
-            <img src="\ezolar\public\img\profile.png" alt="profile">
-        </div>   -->
-
 
         <div class="employee-list-container">
 
@@ -85,7 +83,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 </div>
                 <div class="employee-text-container">
                     <div class="employee-text-container-inner">
-                    <div class="employee-text-no">' . $row -> empID . '</div>
+                    <div class="employee-text-no"> Emp ID: ' . $row -> empID . '</div>
                     <div class="employee-text-name"><b>' .  $row -> name . '</b></div>
                     <div class="employee-text-price">Telephone No: ' .  $row -> telno . '</div>
                     </div>

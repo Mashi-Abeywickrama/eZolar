@@ -26,7 +26,7 @@
 
 .project-box{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 125px;
     width: 100%;
     background: #F9F9F9;
@@ -149,7 +149,7 @@ a{
 }
 
 .add-inspection-button{
-    width : 100%;
+    width : 150px;
     height:auto;
     padding: 10px;
 
@@ -175,4 +175,5 @@ h3{
 
 .schedule-form-item-input{
     height: 30px;
+    width: 150px;
 }

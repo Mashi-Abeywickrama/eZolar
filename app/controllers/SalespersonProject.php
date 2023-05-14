@@ -118,7 +118,7 @@ class SalespersonProject extends Controller
       $EngNamesStr = "Not Assigned";
     }else {
       foreach ($EngNames as $item){
-        $EngNamesStr .= substr($item->name,0,10)." , ";
+        $EngNamesStr .= $item->name ." , ";
       };
       $EngNamesStr = substr_replace($EngNamesStr, "", -2,2);
     }
@@ -129,7 +129,7 @@ class SalespersonProject extends Controller
       $ContrNamesStr = "Not Assigned";
     }else {
       foreach ($ContrNames as $item){
-        $ContrNamesStr .= substr($item->name,0,10)." , ";
+        $ContrNamesStr .= $item->name ." , ";
       };
       $ContrNamesStr = substr_replace($ContrNamesStr, "", -2,2);
     }
@@ -235,9 +235,6 @@ class SalespersonProject extends Controller
       $this->SalespersonProjectModel->rejectReceipt($recID);
     }
 
-    
-
-
   }
 
   public function paymentHistory($projectID){
@@ -280,7 +277,8 @@ class SalespersonProject extends Controller
     }
     $inspectionItems = $this->SalespersonProjectModel->getInspectionDetails($projectID);
     $deliveryItems = $this->SalespersonProjectModel->getDeliveryDetails($projectID);
-    $_SESSION['rows'] = array('inspection' => $inspectionItems, 'delivery' => $deliveryItems,'projID' => $projectID);
+    $status = $this->SalespersonProjectModel->projectCompleted($projectID);
+    $_SESSION['rows'] = array('inspection' => $inspectionItems, 'delivery' => $deliveryItems,'projID' => $projectID,'status' => $status->status);
     $data = [
       'title' => 'eZolar Manual Assign',
     ];
@@ -296,6 +294,7 @@ class SalespersonProject extends Controller
     redirect('SalespersonProject/manualAssignPage/'.$projectID);
   }
 
+  // adding new schedule to troubleshoot
   public function addNewSchedule($projectID,$empID){
     if(!isLoggedIn()){
       redirect('login');
