@@ -45,7 +45,7 @@ $JSarrayString = substr_replace($JSarrayString, "]", -1)
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/Project/SalespersonViewProjects"><div class="box7">
+            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
                     Assigned Projects
                 </div></a>
             <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">

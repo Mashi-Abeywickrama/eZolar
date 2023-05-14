@@ -3,7 +3,7 @@
     width: 100%;
     min-width: 500px;
     overflow-x: scroll;
-    height: 80%;
+    /* height: 80%; */
     min-height: 400px;
     max-height: 550px;
 }
@@ -156,7 +156,8 @@ a{
     margin-top: 10px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     align-items: center;
 }
 

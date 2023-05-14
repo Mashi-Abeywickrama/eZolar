@@ -1,5 +1,4 @@
 <?php
-//     define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 <!DOCTYPE html>
@@ -25,6 +24,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
                 </div></a>
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9">
+                    Projects
+            </div></a>
             <a href="<?=URLROOT?>/Package"><div class="box2">
                     Packages
             </div></a>
@@ -34,7 +36,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
                     Reports
             </div></a>
-            
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
+            </div></a>
 
         </div>
         <div class="rest-bottom">

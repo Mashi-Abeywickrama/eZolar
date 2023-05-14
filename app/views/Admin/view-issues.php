@@ -1,8 +1,5 @@
 <?php
-//  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
-// require_once(__ROOT__.'\app\views\Includes\header.php');
 require_once(__ROOT__.'\app\views\Customer\navbar.php');
-// require_once(__ROOT__.'\app\views\Includes\footer.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +24,10 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <div class="rest-top">
             <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
-                </div></a>
+            </div></a>
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9">
+                    Projects
+            </div></a>
             <a href="<?=URLROOT?>/Package"><div class="box2">
                     Packages
             </div></a>
@@ -36,6 +36,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div></a>
             <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
                     Reports
+            </div></a>
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
             </div></a>
             
 
@@ -66,7 +69,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <div class="category-container">
         <div class="category-btn" id="unread-btn">Unread</div>
         <div class="category-btn" id="read-btn">Read</div>
+        <div class="category-btn" id="resolved-btn">Resolved</div>
     </div>
+
 
     <div class="issue-list-container" id="unread-issues">
         <?php
@@ -78,9 +83,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 echo '<div class="issue-box">
                             <div class="issue-text-container">
                                 <div class="issue-text-container-inner">
-                                    <div class="issue-text-no">Issue No.: ' .  str_pad($row -> issueID, 6, "0", STR_PAD_LEFT) . '</div>
+                                    <div class="issue-text-no">Issue No : ' .  str_pad($row -> issueID, 6, "0", STR_PAD_LEFT) . '</div>
                                     <div class="issue-text-name"><b>Topic : ' . $row -> topic . '</b></div>
-                                    <div class="issue-text-no">Sender: ' .  $row -> name . '</div>
+                                    <div class="issue-text-no">Sender : ' .  $row -> name . '</div>
                                 </div>
                             </div>
                             <div class="issue-details-btn-container">
@@ -121,7 +126,34 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 }
             }
             ?>
-        </div>
+    </div>
+    <div class="issue-list-container" id="resolved-issues">
+            <?php
+            $results = $_SESSION['rows']['resolved'];
+            if (count($results)<=0){
+                echo '<div class="no-issues-text">No Resolved Issues here.</div>';
+            } else {
+                foreach($results as $row){
+                    echo '<div class="issue-box">
+                                <div class="issue-text-container">
+                                    <div class="issue-text-container-inner">
+                                        <div class="issue-text-no">Issue No.: ' .  str_pad($row -> issueID, 6, "0", STR_PAD_LEFT) . '</div>
+                                        <div class="issue-text-name"><b>Topic : ' . $row -> topic . '</b></div>
+                                        <div class="issue-text-no">Sender: ' .  $row -> name . '</div>
+                                    </div>
+                                </div>
+                                <div class="issue-details-btn-container">
+                                    <a href="/ezolar/AdminIssue/viewIssue/'.$row -> issueID.'">
+                                        <div class="issue-details-btn">
+                                            <div class="issue-details-btn-text">More Info</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>';
+                }
+            }
+            ?>
+    </div>
 </div>
 </div>
         </div>
@@ -134,9 +166,11 @@ unset($_SESSION['rows']);
 <script>
     var unread_btn = document.getElementById("unread-btn");
     var read_btn = document.getElementById("read-btn");
+    var resolved_btn = document.getElementById("resolved-btn");
 
     var unread_cont = document.getElementById("unread-issues");
     var read_cont = document.getElementById("read-issues");
+    var resolved_cont = document.getElementById("resolved-issues")
     var all_cont = document.getElementsByClassName("issue-list-container");
     Array.from(all_cont).forEach(hideCont);
     unread_btn.classList.add('select');
@@ -154,19 +188,24 @@ unset($_SESSION['rows']);
         pack.classList.add('select');
     }
 
-
     unread_btn.addEventListener('click', function(btn) {
         btn.target.classList.add('select');
         read_btn.classList.remove('select');
+        resolved_btn.classList.remove('select');
         selectPackages(unread_cont);
     });
     read_btn.addEventListener('click', function(btn) {
         btn.target.classList.add('select');
         unread_btn.classList.remove('select');
+        resolved_btn.classList.remove('select');
         selectPackages(read_cont);
     });
-
-
+    resolved_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        read_btn.classList.remove('select');
+        unread_btn.classList.remove('select');
+        selectPackages(resolved_cont);
+    });
 </script>
 </body>
 </html>

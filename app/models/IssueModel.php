@@ -47,5 +47,10 @@
       $this->db->execute(['IID'=>$issueID]);
     }
 
+    public function resolveIssue($issueID){
+      $this->db->query('UPDATE issue SET isResolved=1 WHERE issueID =:IID');
+      $this->db->execute(['IID'=>$issueID]);
+    }
+
   }
 ?>

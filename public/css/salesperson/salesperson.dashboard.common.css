@@ -95,7 +95,7 @@ left sub panel and the topic, left image and right image*/
     justify-content: space-evenly;
     align-items: stretch;
 }
-.box2,.box3,.box4,.box5, .box6, .box7, .box8{
+.box2,.box3,.box4,.box5, .box6, .box7, .box8, .box9{
     display: flex;
     border-bottom: 0.5rem solid #F1F1F1;
     align-content: space-around;

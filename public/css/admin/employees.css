@@ -3,6 +3,12 @@
     background-color: #0b2f64;
 }
 
+.add-employee-btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .add-employee-btn{
     display: flex;
     height: 40px;

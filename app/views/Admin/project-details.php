@@ -1,5 +1,4 @@
 <?php
-    //  define('__ROOT__', dirname(dirname(dirname(__FILE__))));
     require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
@@ -16,32 +15,35 @@
 </head>
 <body>
 <div class="body-container">
-<div class="left-panel">
+    <div class="left-panel">
         <a href="<?=URLROOT?>/user/dashboard"><div class ="box1">
-            Salesperson Dashboard
+            Admin Dashboard
         </div></a>
         <div class="rest">
             <div class="rest-top">
-            <a href="<?=URLROOT?>/SalespersonProject"><div class="box7">
-                    Assigned Projects
-                </div></a>
-            <a href="<?=URLROOT?>/Inquiry/getSalespersonInquiries"><div class="box2">
-                    Inquiries
+            <a href="<?=URLROOT?>/Employee"><div class="box7" style="color: #0b2f64;background-color: #ffffff;">
+                    Employees
             </div></a>
-            <a href="<?=URLROOT?>/SalespersonSchedules/InspectionSchedule"><div class="box3">
-                Inspection Schedule
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9" style="color: #ffffff;background-color: #0b2f64;">
+                    Projects
             </div></a>
-            <a href="<?=URLROOT?>/SalespersonSchedules/DeliverySchedule"><div class="box4">
-                Delivery Schedule
+            <a href="<?=URLROOT?>/Package"><div class="box2">
+                    Packages
+            </div></a>
+            <a href="<?=URLROOT?>/Product"><div class="box3">
+                    Products
+            </div></a>
+            <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
+                    Reports
+            </div></a>
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
             </div></a>
             
-            <a href="<?=URLROOT?>/Employee/EngineersAndContractors"><div class="box8">
-            Engineers & Contractors
-            </div></a>
 
         </div>
         <div class="rest-bottom">
-            <a href="<?=URLROOT?>/user/profile"><div class="box5">
+            <a href="<?=URLROOT?>/AdminViewProfile"><div class="box5">
                 Profile
             </div></a>
             <a href="<?=URLROOT?>/"><div class="box6">
@@ -53,12 +55,12 @@
     <div class="common-main-container">
     <div class="dashboard-common-main-topic" style ="margin-left: 0; margin-top: 0; justify-content:start; align-items:center;">
             <div class="common-main-left-img">
-                <a href="<?=URLROOT?>/SalespersonProject" style= “text-decoration: none”>
+                <a href="<?=URLROOT?>/AdminProject" style= “text-decoration: none”>
                     <img src="\ezolar\public\img\storekeeper\Back.png" alt="Back Button">
                 </a>
             </div>
             <div class="common-main-txt">
-                Assigned Project : <?php echo strtoupper($_SESSION['row']->projectID);?>
+                Project : <?php echo strtoupper($_SESSION['row']->projectID);?>
             </div>
             
             </div>
@@ -67,6 +69,7 @@
                     <div class="project-details-basic-container">
                         <p class="project-details-basic-status-text"><b>Project Status : <?php echo strtoupper($_SESSION['rows']['StatusName']); ?></b></p>
                         <p><b>Site address : </b> <?php echo $_SESSION['row']->siteAddress ?></p>
+                        <p><b>Assigned Salesperson : </b> <?php echo $_SESSION['rows']['SalespersonName']?> </p>
                         <p><b>Assigned Engineer : </b> <?php echo $_SESSION['rows']['EngineerNames']?> </p>
                         <p><b>Assigned Contractor : </b> <?php echo $_SESSION['rows']['ContractorNames']?> </p>
 
@@ -90,7 +93,7 @@
                         if ($_SESSION['row']->Package_packageID == 'Not Assigned'){
                             $packAssignedFlag = False;
                         } else {
-                            echo '<a href="/ezolar/SalespersonProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
+                            echo '<a href="/ezolar/AdminProject/projectPackageDetailsPage/'.$_SESSION['row']->projectID.'"><div class="product-details-pack-btn">More Info</div></a>';
                         }
                     }
                     ?>
@@ -105,8 +108,8 @@
                         echo '<a href="/ezolar/SalespersonProject/verifyFullPaymentPage/'.$_SESSION['rows']['receipt']->receiptID.'"><div class="project-details-btns">Verify Payment</div></a>';
                     } ?>
                 
-                    <a href="/ezolar/SalespersonProject/paymentHistory/<?php echo $_SESSION['row']->projectID; ?>"><div class="project-details-btns">View Payment History</div></a>
-
+                    <a href="/ezolar/AdminProject/changeEmployees/<?php echo $_SESSION['row']->projectID; ?>"><div class="project-details-btns">Change Employees</div></a>
+                    <a href="/ezolar/AdminProject/paymentHistory/<?php echo $_SESSION['row']->projectID; ?>"><div class="project-details-btns">View Payment History</div></a>
                 </div>
                     
                 

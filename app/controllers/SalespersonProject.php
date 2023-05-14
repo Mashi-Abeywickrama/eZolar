@@ -33,7 +33,7 @@ class SalespersonProject extends Controller
 
     $SP_Id = $this->SalespersonProjectModel->getUserID([$_SESSION['user_email']]);
     $rows = $this->SalespersonProjectModel->getAssignedProjects($SP_Id);
-    
+  
     $_SESSION['rows'] = array('priority'=>[],'ongoing'=>[],'finished'=>[]);
     foreach ($rows as $project){
       if (($project->status == "A1")||($project->status == "D0")){
@@ -51,6 +51,12 @@ class SalespersonProject extends Controller
             unset($rows[$newindex]);
           }
         }
+      }
+    }
+    $_SESSION['rows']['priority'] = array_merge($rows,$_SESSION['rows']['priority']);
+    foreach ($_SESSION['rows'] as $key => $sub_arrays){
+      foreach ($sub_arrays as $index=>$project){
+        $_SESSION['rows'][$key][$index]->status = $this->getProjectStatusName($project->status);
       }
     }
     $data = [

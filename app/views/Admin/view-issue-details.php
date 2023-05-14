@@ -24,7 +24,10 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             <div class="rest-top">
             <a href="<?=URLROOT?>/Employee"><div class="box7" >
                     Employees
-                </div></a>
+            </div></a>
+            <a href="<?=URLROOT?>/AdminProject"><div class="box9">
+                    Projects
+            </div></a>
             <a href="<?=URLROOT?>/Package"><div class="box2">
                     Packages
             </div></a>
@@ -33,6 +36,9 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
             </div></a>
             <a href="<?=URLROOT?>/Statistics/salesPerMonth"><div class="box4">
                     Reports
+            </div></a>
+            <a href="<?=URLROOT?>/AdminIssue"><div class="box8">
+                    Issues
             </div></a>
             
 
@@ -89,7 +95,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                         </div>
                     </div>
                     <div class="form-inline">
-                    <div class="form-item-container">
+                        <div class="form-item-container">
                             <div class="form-item-text">
                                 Message: <span class="err-box" id="issue-mssg-err"></span>
                             </div>
@@ -98,6 +104,14 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                     </div>
                 </form>
             </div>
+
+            <a href="<?=URLROOT?>/AdminIssue/resolveIssue/<?php echo $_SESSION['row']->issueID; ?>">
+                <div class="resolved-btn-container">
+                    <div class="resolved-btn">
+                        Resolved
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

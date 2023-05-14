@@ -10,6 +10,12 @@ class StatisticsModel
         $this->db = new Database;
     }
 
+    public function getUserID($email){
+        $this->db->query('SELECT UserID FROM user where email = :email');
+        $row = $this->db->single(['email' => $email[0]]);
+        return ($row -> UserID);
+      }
+
     public function salesPerMonth(){
         $year = date('Y');
         $this->db->query("SELECT COUNT(*) AS count, DATE_FORMAT(date, '%M') AS month
@@ -61,5 +67,11 @@ class StatisticsModel
         return ($row->type);
       }
 
-
+      public function salespersonInteraction($userId,$weekdata){
+        $this->db->query('SELECT COUNT(*) AS message_count FROM inquiry_message INNER JOIN 
+        inquiry ON inquiry_message.Inquiry_inquiryID = inquiry.inquiryID WHERE Salesperson_Employee_empID= :userId AND 
+        time BETWEEN :startDate AND :endDate AND sender=0');
+        $row = $this->db->single(['userId' => $userId, 'startDate' => $weekdata[0], 'endDate' => $weekdata[1]]);
+        return ($row->message_count);
+      }
 }

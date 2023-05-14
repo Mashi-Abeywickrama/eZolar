@@ -307,3 +307,58 @@ p{
     font-size: 25px;
     color: #757575;
 }
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+    border-radius: 5px;
+    padding-bottom: 10px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  img {
+    border-radius: 5px 5px 0 0;
+    /* opacity: 0.1; */
+  }
+  
+  .container {
+    padding: 2px 16px;
+    padding-top: 15px;
+  }
+
+  .title{
+    color: #11488b;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .employee-cards-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 50px;
+  }
+
+  .emp-id{
+    font-size: 15px;
+    color: #757575;
+    font-weight: bold;
+  }
+
+  .change-btn-container{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .change-sales-btn,.change-eng-btn,.change-contr-btn{
+    color: #FFFFFF;
+    background-color: #2C61A3;
+    border-radius: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
