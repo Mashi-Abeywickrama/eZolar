@@ -58,7 +58,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <div class="dashboard-common-main-topic" style="display:flex; justify-content:start; align-items:center;">
 
         <div class="common-main-left-img">
-            <a href="<?=URLROOT?>/SalespersonProject/projectDetailsPage/<?php echo $_SESSION['projectID']?>" style= “text-decoration: none”>
+            <a href="<?=URLROOT?>/AdminProject/projectDetailsPage/<?php echo $_SESSION['projectID']?>" style= “text-decoration: none”>
                 <img src="\ezolar\public\img\storekeeper\Back.png" alt="Back Button">
             </a>
         </div>

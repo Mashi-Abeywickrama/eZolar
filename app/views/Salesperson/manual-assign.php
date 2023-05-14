@@ -11,6 +11,7 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\salesperson.dashboard.common.css">
     <link rel="stylesheet" href="\ezolar\public\css\salesperson\payment-history.css">
+    <link rel="stylesheet" href="\ezolar\public\css\salesperson\assigned-projects.css">
     <title>My Projects</title>
 </head>
 <body>
@@ -67,8 +68,13 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
         </div>
 
 
-    </div>
-        <div class="payment-list-container">
+        <!-- List of inspection schedules of a project -->
+    </div class="inspection-list-container">
+        <div class="category-container">
+            <div class="category-btn" id="inspection-list-btn">Inspections</div>
+            <div class="category-btn" id="delivery-list-btn">Delivery</div>
+        </div>
+        <div class="payment-list-container" id="inspection-list">
             <h2>Inspection Schedules</h2>
             <?php
             $results = $_SESSION['rows']['inspection'];
@@ -105,8 +111,8 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 }
             }
             ?>
-        </div>
-        <?php 
+
+            <?php 
             $status = $_SESSION['rows']['status'];
             if($status == "Z0"){
                 echo '        
@@ -119,10 +125,12 @@ require_once(__ROOT__.'\app\views\Customer\navbar.php');
                 </form>';
             }
         ?>
+        </div>
 
 
+        <!-- List of delivery schedules of a project -->
+        <div class="payment-list-container" id="delivery-list">
         <h2>Delivery Schedules</h2>
-        <div class="payment-list-container">
             <?php
             $results = $_SESSION['rows']['delivery'];
             if (count($results)<=0){
@@ -169,7 +177,40 @@ $this->view('Includes/footer', $data);
 ?>
 </div>
 <?php unset($_SESSION['projectID'], $_SESSION['rows'])?>
-</body>
+<script>
+    var inspection_list_btn = document.getElementById("inspection-list-btn");
+    var delivery_list_btn= document.getElementById("delivery-list-btn");
 
+    var inspection_list = document.getElementById("inspection-list");
+    var delivery_list = document.getElementById("delivery-list");
+    var all_list = document.getElementsByClassName("payment-list-container");
+    Array.from(all_list).forEach(hideList);
+    inspection_list_btn.classList.add('select');
+    inspection_list.classList.remove('hide');
+    inspection_list.classList.add('select');
+
+    function hideList(list){
+        list.classList.remove('select');
+        list.classList.add('hide');
+    }
+
+    function selectList(list){
+        Array.from(all_list).forEach(hideList);
+        list.classList.remove('hide');
+        list.classList.add('select');
+    }
+
+    inspection_list_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        delivery_list_btn.classList.remove('select');
+        selectList(inspection_list);
+    });
+    delivery_list_btn.addEventListener('click', function(btn) {
+        btn.target.classList.add('select');
+        inspection_list_btn.classList.remove('select');
+        selectList(delivery_list);
+    })
+</script>
+</body>
 </html>
 

@@ -1,5 +1,5 @@
 <?php
-    require_once(__ROOT__.'\app\views\Customer\navbar.php');
+require_once(__ROOT__.'\app\views\Customer\navbar.php');
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +58,7 @@
     <div class="common-main-container">
         <div class="dashboard-common-main-topic" style ="margin-left: 0; margin-top: 0; justify-content:start; align-items:center;">
             <div class="common-main-left-img">
-                <a href="<?=URLROOT?>/SalespersonProject/paymentHistory/<?php echo $_SESSION['row']->Project_projectID?>" style= “text-decoration: none”>
+                <a href="<?=URLROOT?>/AdminProject/paymentHistory/<?php echo $_SESSION['row']->Project_projectID?>" style= “text-decoration: none”>
                     <img src="\ezolar\public\img\storekeeper\Back.png" alt="Back Button">
                 </a>
             </div>

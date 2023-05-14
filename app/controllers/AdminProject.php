@@ -61,6 +61,7 @@ class AdminProject extends Controller
     $this->view('Admin/projects', $data);
   }
 
+  // ge the project details
   public function projectDetailsPage($prjID){
     if(!isLoggedIn()){
 
@@ -103,6 +104,7 @@ class AdminProject extends Controller
       $delDatesStr = "Not Scheduled";
     }else {
       foreach ($delDates as $item){
+        // get the first 10 digits of string
         $delDatesStr .= substr($item->date,0,10)." , ";
       };
       $delDatesStr = substr_replace($delDatesStr, "", -2,2);
@@ -140,7 +142,6 @@ class AdminProject extends Controller
       };
       $SalesNamesStr = substr_replace($SalesNamesStr, "", -2,2);
     }
-
 
     $_SESSION['rows'] = array("InspectDates" => $insDatesStr, "DeliverDates" => $delDatesStr, "StatusName" => $this->getProjectStatusName($row->status), "EngineerNames"=>$EngNamesStr, "ContractorNames"=>$ContrNamesStr, "SalespersonName"=>$SalesNamesStr);
 

@@ -143,10 +143,10 @@
     min-height: 30px;
 }
 
-.edit-profile-btn{
+.edit-profile-btn, .delete-profile-btn{
     display: flex;
     height: 40px;
-    width: 66.2%;
+    width: 110px;
     background: #2C61A3;
     border-radius: 5px;
     color: #FFFFFF;
@@ -165,5 +165,15 @@ a{
     text-decoration: none;
     color: #0B2F64;
 }
+
+.form-inline-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+
+
 
 
