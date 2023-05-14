@@ -41,7 +41,7 @@
     }
 
     public function editPackage($data){
-      $this->db->query('UPDATE package SET `packageName` = :packName, `type` = :type_, `budgetRange` = :budget WHERE `packageID` = :packID'); 
+      $this->db->query('UPDATE package SET `name` = :packName, `type` = :type_, `budgetRange` = :budget WHERE `packageID` = :packID'); 
       $this->db->execute(['packID' => $data[0], 'packName' => $data[1], 'type_' => $data[2], 'budget' => $data[3]]);
     }
 
