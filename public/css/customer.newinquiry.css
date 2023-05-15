@@ -2,6 +2,10 @@
     color: #ffffff;
     background-color: #0b2f64;
 }
+.box2{
+    color: #0b2f64 !important;
+    background-color: #ffffff !important;
+}
 .common-main-left-img{
     margin-top: 0.5%;
 }

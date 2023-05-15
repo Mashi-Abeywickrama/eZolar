@@ -22,7 +22,7 @@ class ContractorModel
         return ($rows);
     }
     public function getContractorProjects($id){
-        $this->db->query('SELECT * FROM projectContractor INNER JOIN project ON projectContractor.Project_projectID = project.projectID where Contractor_contractorID = :userID');
+        $this->db->query('SELECT * FROM projectContractor INNER JOIN project ON projectContractor.Project_projectID = project.projectID where Contractor_contractorID = :userID Order by requestDate Desc');
         $row = $this->db->resultSet(['userID'=>$id]);
         return $row;
   

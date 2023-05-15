@@ -20,7 +20,7 @@
     public function getAllProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status <> "F" AND status <> "Z0"');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status <> "F" AND status <> "Z0" Order by requestDate Desc');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
@@ -30,7 +30,7 @@
     public function getCancelledProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "F"');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "F" Order by requestDate Desc');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
@@ -40,7 +40,7 @@
     public function getCompletedProjects($id){
       // print_r($id);die;
       
-      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "Z0"');
+      $this->db->query('SELECT * FROM project WHERE  customerID = :customerID AND status = "Z0" Order by requestDate Desc');
       // $this->db->bind(':customerID', $id);
 
       // print_r($this->db->resultSet(['customerID' => $id]));die;
@@ -115,7 +115,7 @@
        
     }
      public function getContractorProjects($id){
-      $this->db->query('SELECT * FROM projectContractor INNER JOIN project ON projectContractor.Project_projectID = project.projectID where Contractor_contractorID = :userID');
+      $this->db->query('SELECT * FROM projectContractor INNER JOIN project ON projectContractor.Project_projectID = project.projectID where Contractor_contractorID = :userID Order by requestDate Desc');
       $row = $this->db->resultSet(['userID'=>$id]);
       return $row;
 

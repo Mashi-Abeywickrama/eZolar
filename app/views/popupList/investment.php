@@ -19,7 +19,18 @@
             <p>Enter your details in the calculator below.</p>
 
             <label for="unit" class="unit">Average Monthly Units Used</label>
-            <input name="unit" class="units" type="number" required onkeyup=checkInvestment(this.value)>
+            <input name="unit" class="units" type="number" id="my-input" required onkeyup=checkInvestment(this.value)>
+            <script>
+                    const inputEl = document.getElementById('my-input');
+                    inputEl.addEventListener('input', function() {
+                      const value = parseFloat(inputEl.value);
+                      if (value < 0 || isNaN(value)) {
+                        alert('Please enter a positive value');
+                      } else {
+                        
+                      }
+                    });
+                </script>
 
                 <p>The following is the approximate cost of solar panels only. Final cost will depend on site conditions.</p>
             

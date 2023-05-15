@@ -355,7 +355,7 @@ if (($data['project'][0]->status) == "D0") {
 
         document.getElementById('make-payment-btn').style.display = "none";
         document.getElementById('add-schedule-btn').style.display = "none";
-        // document.getElementById("req-received").style.display =none;
+        document.getElementById("extra").style.display ="none";
 
        
         document.getElementById('c4-link').removeAttribute("href");
@@ -371,10 +371,11 @@ if (($data['project'][0]->status) == "D0") {
         document.getElementById("request-received").style.fontWeight = "900";
         document.getElementById("salesperson-assignment").style.color = "#DE8500";
         document.getElementById("salesperson-assignment").style.fontWeight = "900";
-
+        document.getElementById('add-schedule-btn').style.display = "none";
         document.getElementById('make-payment-btn').style.display = "none";
         // document.getElementById("req-received").style.display =none;
 
+        document.getElementById("extra").style.display ="none";
        
         document.getElementById('c4-link').removeAttribute("href");
         document.getElementById('c4-link').style.cursor = "default";

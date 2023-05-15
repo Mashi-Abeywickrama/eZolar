@@ -44,7 +44,8 @@
                 <br>
                 <div class="session-err">
                 <?php
-                    echo $_SESSION['pwd-error'];
+                if (isset($_SESSION['pwd-error'])){
+                    echo $_SESSION['pwd-error'];}
                 ?>
                 </div>
 

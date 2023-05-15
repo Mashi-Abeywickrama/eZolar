@@ -333,12 +333,15 @@ class User extends Controller {
     }
 // load the page for update password
     public function updatePasswordpage(){
-      $_SESSION['pwd-error'] = "";
+      // $_SESSION['pwd-error'] = "";
+
       if(!isLoggedIn()){
 
         redirect('login');
       }
-      
+      if (isset($_POST['refresh'])) {
+        unset($_SESSION['pwd-error']);
+      }
       $role = $this->userModel->getUserRole($_SESSION['user_email']);
       
       $id = $this->userModel->getUserID($_SESSION['user_email']);

@@ -8,7 +8,7 @@ class Project extends Controller
   public function __construct()
   {
 
-    // $this->projectModel = new ProductModel();
+    
     $this->projectModel = $this->model('ProjectModel');
     $this->userModel = $this->model('userModel');
   }
